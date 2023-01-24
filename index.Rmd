@@ -13,6 +13,41 @@ description: "Standard Operating Procedures for Experiments and Data Analysis at
 code_folding: show
 ---
 
-# Preface {-}
+# Preface {.unnumbered}
 
-This is the very first part of the book.
+This provides statistical guidance for randomized experiments conducted at The Lab \@ DC.
+
+The appendices provide examples of some fundamental operations in R and some standards for managing code and workflow. These examples intend to serve as templates that you can copy, alter, and use in your project work.
+
+Please also see our developing data science standard operating [procedures](https://github.com/thelabdc/labDsSops) and, perhaps, our older [wiki](https://github.com/thelabdc/LAB-Wiki/wiki).
+
+## Colophon {.unnumbered}
+
+This version of the book was built with
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library(dplyr)
+
+all_pkgs <- renv::dependencies(progress = FALSE) %>% 
+ pull(Package) 
+
+session <- devtools::session_info(pkgs = all_pkgs)
+
+session$platform
+```
+
+Along with these packages:
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+session$packages %>% 
+  select(package, loadedversion, date, source) %>% 
+  DT::datatable(rownames = FALSE,
+                class = 'cell-border stripe',
+                filter = list(position = 'top'),
+                options = list(pageLength = nrow(session$packages), 
+                           autoWidth = TRUE,
+                           bInfo = FALSE,
+                           paging = FALSE))
+```
+
+The code for building this colophon comes from Jenny Bryan's book [here](https://github.com/rstudio-education/stat545/blob/master/index.Rmd).

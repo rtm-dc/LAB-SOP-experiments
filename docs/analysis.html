@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Analysis | SOPs for The Lab @ DC</title>
+  <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Analysis | SOPs for The Lab @ DC" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  <meta name="github-repo" content="rtm-dc/LAB-SOP-experiments" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Analysis | SOPs for The Lab @ DC" />
+  
+  <meta name="twitter:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  
+
+<meta name="author" content="Ryan T. Moore" />
+
+
+<meta name="date" content="2023-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="implementation.html"/>
+<link rel="next" href="publication.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SOPs for The Lab @ DC</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#colophon"><i class="fa fa-check"></i>Colophon</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a></li>
+<li class="chapter" data-level="2" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>2</b> Design</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="design.html"><a href="design.html#units"><i class="fa fa-check"></i><b>2.1</b> Units</a></li>
+<li class="chapter" data-level="2.2" data-path="design.html"><a href="design.html#level-of-randomization"><i class="fa fa-check"></i><b>2.2</b> Level of Randomization</a></li>
+<li class="chapter" data-level="2.3" data-path="design.html"><a href="design.html#blocking-on-background-characteristics"><i class="fa fa-check"></i><b>2.3</b> Blocking on Background Characteristics</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.3.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a></li>
+<li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.5.1</b> Formula-based Power Analysis</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design.html"><a href="design.html#simulation-based-power-analysis"><i class="fa fa-check"></i><b>2.5.2</b> Simulation-based Power Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="design.html"><a href="design.html#balance-checking"><i class="fa fa-check"></i><b>2.6</b> Balance Checking</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>3</b> Implementation</a></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#notation"><i class="fa fa-check"></i><b>4.1</b> Notation</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#estimands"><i class="fa fa-check"></i><b>4.2</b> Estimands</a></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#sec-unadj-itt"><i class="fa fa-check"></i><b>4.3</b> The Unadjusted ITT</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#sec-lin"><i class="fa fa-check"></i><b>4.4</b> Adjusting for covariates</a></li>
+<li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#sec-binary-outcomes"><i class="fa fa-check"></i><b>4.5</b> Binary or Count Outcomes</a></li>
+<li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#clusters-weights-fixed-effects"><i class="fa fa-check"></i><b>4.6</b> Clusters, weights, fixed effects</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="analysis.html"><a href="analysis.html#weights"><i class="fa fa-check"></i><b>4.6.1</b> Weights</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="analysis.html"><a href="analysis.html#sec-rand-inf"><i class="fa fa-check"></i><b>4.7</b> Randomization Inference</a></li>
+<li class="chapter" data-level="4.8" data-path="analysis.html"><a href="analysis.html#addressing-non-compliance"><i class="fa fa-check"></i><b>4.8</b> Addressing non-compliance</a></li>
+<li class="chapter" data-level="4.9" data-path="analysis.html"><a href="analysis.html#missing-data"><i class="fa fa-check"></i><b>4.9</b> Missing Data</a></li>
+<li class="chapter" data-level="4.10" data-path="analysis.html"><a href="analysis.html#multiple-comparisons"><i class="fa fa-check"></i><b>4.10</b> Multiple Comparisons</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="analysis.html"><a href="analysis.html#holm-bonferroni-adjustment"><i class="fa fa-check"></i><b>4.10.1</b> Holm-Bonferroni adjustment</a></li>
+<li class="chapter" data-level="4.10.2" data-path="analysis.html"><a href="analysis.html#westfall-young-adjustment"><i class="fa fa-check"></i><b>4.10.2</b> Westfall-Young adjustment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="analysis.html"><a href="analysis.html#posterior-probabilities"><i class="fa fa-check"></i><b>4.11</b> Posterior Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>5</b> Publication</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>A</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="r-basics.html"><a href="r-basics.html#get-r-and-rstudio"><i class="fa fa-check"></i><b>A.1</b> Get R and RStudio</a></li>
+<li class="chapter" data-level="A.2" data-path="r-basics.html"><a href="r-basics.html#read-in-data-files"><i class="fa fa-check"></i><b>A.2</b> Read in data files</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="r-basics.html"><a href="r-basics.html#csv"><i class="fa fa-check"></i><b>A.2.1</b> <code>.csv</code></a></li>
+<li class="chapter" data-level="A.2.2" data-path="r-basics.html"><a href="r-basics.html#xlsx"><i class="fa fa-check"></i><b>A.2.2</b> <code>.xlsx</code></a></li>
+<li class="chapter" data-level="A.2.3" data-path="r-basics.html"><a href="r-basics.html#box"><i class="fa fa-check"></i><b>A.2.3</b> Box</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="r-basics.html"><a href="r-basics.html#pipes"><i class="fa fa-check"></i><b>A.3</b> Pipes</a></li>
+<li class="chapter" data-level="A.4" data-path="r-basics.html"><a href="r-basics.html#rename-variables"><i class="fa fa-check"></i><b>A.4</b> Rename variables</a></li>
+<li class="chapter" data-level="A.5" data-path="r-basics.html"><a href="r-basics.html#create-a-new-variable"><i class="fa fa-check"></i><b>A.5</b> Create a New Variable</a>
+<ul>
+<li class="chapter" data-level="A.5.1" data-path="r-basics.html"><a href="r-basics.html#create-a-wave-id"><i class="fa fa-check"></i><b>A.5.1</b> Create a “wave ID”</a></li>
+<li class="chapter" data-level="A.5.2" data-path="r-basics.html"><a href="r-basics.html#create-a-primary-key"><i class="fa fa-check"></i><b>A.5.2</b> Create a primary key</a></li>
+<li class="chapter" data-level="A.5.3" data-path="r-basics.html"><a href="r-basics.html#transform-an-existing-variable"><i class="fa fa-check"></i><b>A.5.3</b> Transform an existing variable</a></li>
+<li class="chapter" data-level="A.5.4" data-path="r-basics.html"><a href="r-basics.html#create-a-sum-of-from-subset-of-variables"><i class="fa fa-check"></i><b>A.5.4</b> Create a sum of from subset of variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.6" data-path="r-basics.html"><a href="r-basics.html#recode-a-variables-values"><i class="fa fa-check"></i><b>A.6</b> Recode a variable’s values</a></li>
+<li class="chapter" data-level="A.7" data-path="r-basics.html"><a href="r-basics.html#treat-dates-as-dates"><i class="fa fa-check"></i><b>A.7</b> Treat dates as dates</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="r-basics.html"><a href="r-basics.html#make-an-age-variable"><i class="fa fa-check"></i><b>A.7.1</b> Make an age variable</a></li>
+<li class="chapter" data-level="A.7.2" data-path="r-basics.html"><a href="r-basics.html#make-a-month-count-variable"><i class="fa fa-check"></i><b>A.7.2</b> Make a month-count variable</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="r-basics.html"><a href="r-basics.html#sec-create-treatment"><i class="fa fa-check"></i><b>A.8</b> Create a completely randomised indicator</a></li>
+<li class="chapter" data-level="A.9" data-path="r-basics.html"><a href="r-basics.html#plot-a-variable"><i class="fa fa-check"></i><b>A.9</b> Plot a variable</a></li>
+<li class="chapter" data-level="A.10" data-path="r-basics.html"><a href="r-basics.html#calculate-a-data-summary"><i class="fa fa-check"></i><b>A.10</b> Calculate a data summary</a>
+<ul>
+<li class="chapter" data-level="A.10.1" data-path="r-basics.html"><a href="r-basics.html#proportions-for-a-categorical-variable"><i class="fa fa-check"></i><b>A.10.1</b> Proportions for a categorical variable</a></li>
+<li class="chapter" data-level="A.10.2" data-path="r-basics.html"><a href="r-basics.html#proportions-for-binary-variables"><i class="fa fa-check"></i><b>A.10.2</b> Proportions for binary variables</a></li>
+</ul></li>
+<li class="chapter" data-level="A.11" data-path="r-basics.html"><a href="r-basics.html#merge-join-dataframes"><i class="fa fa-check"></i><b>A.11</b> Merge (join) dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="managing-code.html"><a href="managing-code.html"><i class="fa fa-check"></i><b>B</b> Managing Code</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="managing-code.html"><a href="managing-code.html#best-practices"><i class="fa fa-check"></i><b>B.1</b> Best Practices</a></li>
+<li class="chapter" data-level="B.2" data-path="managing-code.html"><a href="managing-code.html#style"><i class="fa fa-check"></i><b>B.2</b> Style</a></li>
+<li class="chapter" data-level="B.3" data-path="managing-code.html"><a href="managing-code.html#sec-projects"><i class="fa fa-check"></i><b>B.3</b> Projects</a></li>
+<li class="chapter" data-level="B.4" data-path="managing-code.html"><a href="managing-code.html#sec-working-dir"><i class="fa fa-check"></i><b>B.4</b> Working Directory and Relative Paths</a>
+<ul>
+<li class="chapter" data-level="B.4.1" data-path="managing-code.html"><a href="managing-code.html#see-the-working-directory"><i class="fa fa-check"></i><b>B.4.1</b> See the working directory</a></li>
+<li class="chapter" data-level="B.4.2" data-path="managing-code.html"><a href="managing-code.html#see-the-project-directory"><i class="fa fa-check"></i><b>B.4.2</b> See the project directory</a></li>
+<li class="chapter" data-level="B.4.3" data-path="managing-code.html"><a href="managing-code.html#create-a-path-with-here"><i class="fa fa-check"></i><b>B.4.3</b> Create a path with <code>here()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="B.5" data-path="managing-code.html"><a href="managing-code.html#what-packages-are-installed"><i class="fa fa-check"></i><b>B.5</b> What Packages are Installed?</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="getting-started-with-git-and-github.html"><a href="getting-started-with-git-and-github.html"><i class="fa fa-check"></i><b>C</b> Getting Started with <code>git</code> and GitHub</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SOPs for The Lab @ DC</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Analysis<a href="analysis.html#analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In experiments, our standard operating procedure is to estimate the treatment
+effect via</p>
+<ul>
+<li>the <a href="analysis.html#sec-unadj-itt">unadjusted</a> ITT</li>
+<li>the <a href="analysis.html#sec-lin">adjusted</a> ITT, where we have potentially informative covariates</li>
+</ul>
+<p>We incorporate features of our design into our analysis. This includes blocking,
+<a href="analysis.html#clusters-weights-fixed-effects">clustering</a>, and <a href="analysis.html#weights">weighting</a> when
+treatment assignment probabilities vary.</p>
+<p>By default, we perform parametric statistical inference using HC2 standard
+errors if our assignment is not clustered. If our assignment is clustered, we
+use CR2 standard errors with <a href="analysis.html#clusters-weights-fixed-effects">clustering</a> at
+the level of assignment.</p>
+<p>Often, however, we specify that we will use design-based <a href="analysis.html#sec-rand-inf">randomization
+inference</a> instead of parametric inference. This
+design-based inference attempts to replicate all the features of our assignment
+and analysis. Some times that we rely on randomization inference include when we
+have a multistage or wave-based design that creates complex assignment
+probabilities, a skewed outcome<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> or
+other distributional concern, or a novel adjustment strategy.</p>
+<p>We report treatment effect estimates and associated confidence intervals. We
+often report the <a href="analysis.html#posterior-probabilities">posterior probability</a> that one
+condition is better than another.</p>
+<div id="notation" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Notation<a href="analysis.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Notation:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> units, indexed <span class="math inline">\(i \in \{1, \ldots, n\}\)</span></li>
+<li><span class="math inline">\(Z_i \in \{0, 1\}\)</span> indicates <em>assignment</em> to the control or treatment condition</li>
+<li><span class="math inline">\(D_i \in \{0, 1\}\)</span> indicates <em>receipt</em> of the control or treatment condition</li>
+<li><span class="math inline">\(Y_i(1)\)</span> the potential outcome for unit <span class="math inline">\(i\)</span> if assigned to treatment (more explicitly, <span class="math inline">\(Y_i(Z_i = 1)\)</span>)</li>
+<li><span class="math inline">\(Y_i(0)\)</span> the potential outcome for unit <span class="math inline">\(i\)</span> if assigned to control</li>
+<li><span class="math inline">\(Y_i\)</span> the <em>observed</em> potential outcome for unit <span class="math inline">\(i\)</span></li>
+</ul>
+</div>
+<div id="estimands" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Estimands<a href="analysis.html#estimands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Below are some estimands (targets) that we may be interested in.</p>
+<ul>
+<li>Average treatment effect: <span class="math inline">\(ATE = \frac{1}{n} \sum\limits_{i=1}^{n} (Y_i(1) - Y_i(0))\)</span></li>
+<li>LATE CACE</li>
+<li>Effect for those most helped <span class="citation">(<a href="#ref-rugfol21" role="doc-biblioref">Ruggeri and Folke 2021</a>)</span></li>
+</ul>
+</div>
+<div id="sec-unadj-itt" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> The Unadjusted ITT<a href="analysis.html#sec-unadj-itt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By default, in experiments, we estimate the intent-to-treat effect (ITT),
+unadjusted for covariates, using HC2 standard errors for inference. We do so by
+estimating the coefficients of the model</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 Z_i + \epsilon_i\]</span>
+using least squares. First, some preliminaries:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a href="analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb10-3"><a href="analysis.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb10-4"><a href="analysis.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="analysis.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data:</span></span>
+<span id="cb10-6"><a href="analysis.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>))</span></code></pre></div>
+<p>Our estimation procedure:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y <span class="sc">~</span> z, <span class="at">data =</span> df)</span>
+<span id="cb11-2"><a href="analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a>lm_out</span></code></pre></div>
+<pre><code>##             Estimate Std. Error  t value     Pr(&gt;|t|)  CI Lower CI Upper DF
+## (Intercept) 2.631066  0.2866799 9.177716 7.370994e-15 2.0621596 3.199973 98
+## z           1.548357  0.5367332 2.884779 4.816584e-03 0.4832272 2.613486 98</code></pre>
+<p>We can view the ITT treatment effect from the model object with
+<code>summary(lm_out)</code> or extract it with <code>lm_out$coefficients["z"]</code>.</p>
+</div>
+<div id="sec-lin" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Adjusting for covariates<a href="analysis.html#sec-lin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In analyzing experiments, we follow the guidance of <span class="citation">Lin (<a href="#ref-lin2013" role="doc-biblioref">2013</a>)</span>, using HC2 standard
+errors for inference, and, where we adjust for covariates, centering and
+interacting predictors with treatment status. Where <span class="math inline">\(Z\)</span> is treatment status and
+<span class="math inline">\(X\)</span> is a covariate, <span class="math inline">\(\beta_1\)</span> below is the ATE:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \epsilon_i\]</span>
+To implement this, we can use <code>lm_lin()</code> from the <code>estimatr</code> package<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a>lin_out <span class="ot">&lt;-</span> <span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
+<span id="cb13-2"><a href="analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>lin_out</span></code></pre></div>
+<pre><code>##              Estimate Std. Error  t value     Pr(&gt;|t|)    CI Lower  CI Upper DF
+## (Intercept) 2.8816525 0.15663330 18.39744 3.088795e-33  2.57073780 3.1925671 96
+## z           0.9487427 0.23402169  4.05408 1.023250e-04  0.48421335 1.4132721 96
+## x_c         0.8773304 0.06813581 12.87620 1.239045e-22  0.74208190 1.0125789 96
+## z:x_c       0.1224778 0.08153824  1.50209 1.363561e-01 -0.03937434 0.2843299 96</code></pre>
+<p>We can view the adjusted ITT treatment effect from the model object with
+<code>summary(lin_out)</code> or extract it with <code>lin_out$coefficients["z"]</code>.</p>
+<p>The estimate of the average treatment effect is <span class="math inline">\(0.949\)</span>, with a 95% confidence
+interval covering <span class="math inline">\((0.484, 1.413)\)</span>.</p>
+</div>
+<div id="sec-binary-outcomes" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Binary or Count Outcomes<a href="analysis.html#sec-binary-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We estimate the linear models above, even when we have binary or count outcomes. The Lin
+estimator returns a good estimate of the difference in means of non-normal outcomes; <span class="citation">Lin (<a href="#ref-lin2013" role="doc-biblioref">2013</a>)</span>
+provides an example with a highly skewed outcome, e.g.</p>
+</div>
+<div id="clusters-weights-fixed-effects" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Clusters, weights, fixed effects<a href="analysis.html#clusters-weights-fixed-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To specify other design or estimation components for <code>lm_robust()</code> or
+<code>lm_lin()</code>, start at the help file at
+<a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html" class="uri">https://declaredesign.org/r/estimatr/reference/lm_robust.html</a>. For example, for
+a clustered assignment analysis,</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_robust</span>(y <span class="sc">~</span> z, <span class="at">data =</span> df, <span class="at">clusters =</span> cluster_id)</span></code></pre></div>
+<p>Though our standard procedure is to cluster at the level of assignment, we note
+that “<a href="https://declaredesign.org/blog/sometimes-you-need-to-cluster-standard-errors-above-the-level-of-treatment.html">[s]ometimes you need to cluster standard errors above the level of
+treatment</a>.”</p>
+<div id="weights" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Weights<a href="analysis.html#weights" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When our units have different probabilities of assignment, we weight each unit
+by the reciprocal of the probability of being assigned to the condition that the
+unit is finally assigned to. We use <em>inverse probability weights</em> (IPW).<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>For example, suppose we have a monthly lottery from January to March, and those
+not selected for the program in the first month are still eligible to be
+selected in the second month. See <span class="citation">Avila et al. (<a href="#ref-avimammoo22" role="doc-biblioref">2022</a>)</span> for an example. Person <span class="math inline">\(A\)</span> is
+eligible for all three waves of a lottery because they apply in January and
+could be repeatedly assigned to the control group; person <span class="math inline">\(B\)</span> applies in March
+and is only eligible in the last lottery.</p>
+<p>If the probability of treatment in each wave is <span class="math inline">\(p\)</span>, then the probabilities of
+treatment and control for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Unit</th>
+<th align="center">Entry</th>
+<th align="center"><span class="math inline">\(Pr(Z = 1)\)</span></th>
+<th align="center"><span class="math inline">\(Pr(Z = 0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(A\)</span></td>
+<td align="center">January</td>
+<td align="center"><span class="math inline">\(p + (1-p)p + (1-p)^2p\)</span></td>
+<td align="center"><span class="math inline">\(1-[p + (1-p)p + (1-p)^2p]\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(B\)</span></td>
+<td align="center">March</td>
+<td align="center"><span class="math inline">\(p\)</span></td>
+<td align="center"><span class="math inline">\(1-p\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>and the weights are</p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="37%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Unit</th>
+<th align="center">Entry</th>
+<th align="center">IPW if <span class="math inline">\((Z = 1)\)</span></th>
+<th align="center">IPW if <span class="math inline">\(Z = 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(A\)</span></td>
+<td align="center">January</td>
+<td align="center"><span class="math inline">\(\frac{1}{p + (1-p)p + (1-p)^2p}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{1-[p + (1-p)p + (1-p)^2p]}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(B\)</span></td>
+<td align="center">March</td>
+<td align="center"><span class="math inline">\(\frac{1}{p}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{1-p}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If the assignment probability varies by wave, i.e., <span class="math inline">\(p\)</span> is not constant, then
+this fact needs to be taken into account.</p>
+</div>
+</div>
+<div id="sec-rand-inf" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Randomization Inference<a href="analysis.html#sec-rand-inf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Often, we prefer to rely on our <em>design</em>, rather than asymptotic or distributional assumptions, for statistical inference. For example, with modest sample sizes and a complex experimental design, in <span class="citation">Avila et al. (<a href="#ref-avimammoo22" role="doc-biblioref">2022</a>)</span> we use randomization inference. Below is an annotated example of doing so, using a <code>for</code> loop. We set the seed using the method in Section
+<a href="design.html#sec-set-seed">2.4</a>; we simulate treatment assignments using the method in Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed:</span></span>
+<span id="cb16-2"><a href="analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">534722898</span>)</span>
+<span id="cb16-3"><a href="analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="analysis.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set simulation size:</span></span>
+<span id="cb16-5"><a href="analysis.html#cb16-5" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb16-6"><a href="analysis.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="analysis.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create empty storage vector:</span></span>
+<span id="cb16-8"><a href="analysis.html#cb16-8" aria-hidden="true" tabindex="-1"></a>store_te <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> n_sims)</span>
+<span id="cb16-9"><a href="analysis.html#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="analysis.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Rerandomise and perform estimation n_sims times:</span></span>
+<span id="cb16-11"><a href="analysis.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
+<span id="cb16-12"><a href="analysis.html#cb16-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-13"><a href="analysis.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reassign 0/1 treatment:</span></span>
+<span id="cb16-14"><a href="analysis.html#cb16-14" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb16-15"><a href="analysis.html#cb16-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-16"><a href="analysis.html#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimate treatment effect:</span></span>
+<span id="cb16-17"><a href="analysis.html#cb16-17" aria-hidden="true" tabindex="-1"></a>  lm_tmp <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y <span class="sc">~</span> z_tmp, <span class="at">data =</span> df_tmp)</span>
+<span id="cb16-18"><a href="analysis.html#cb16-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-19"><a href="analysis.html#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store estimate:</span></span>
+<span id="cb16-20"><a href="analysis.html#cb16-20" aria-hidden="true" tabindex="-1"></a>  store_te[i] <span class="ot">&lt;-</span> lm_tmp<span class="sc">$</span>coefficients[<span class="st">&quot;z_tmp&quot;</span>]</span>
+<span id="cb16-21"><a href="analysis.html#cb16-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-22"><a href="analysis.html#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="analysis.html#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate treatment effect from actual assignment:</span></span>
+<span id="cb16-24"><a href="analysis.html#cb16-24" aria-hidden="true" tabindex="-1"></a>te_est <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>coefficients[<span class="st">&quot;z&quot;</span>]</span>
+<span id="cb16-25"><a href="analysis.html#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="analysis.html#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co"># The p-value:</span></span>
+<span id="cb16-27"><a href="analysis.html#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;What proportion of effects estimated under sharp null hypothesis</span></span>
+<span id="cb16-28"><a href="analysis.html#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co">#  are at least as extreme as that which we observed?&quot;</span></span>
+<span id="cb16-29"><a href="analysis.html#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(store_te) <span class="sc">&gt;=</span> <span class="fu">abs</span>(te_est))</span></code></pre></div>
+<pre><code>## [1] 0.003</code></pre>
+<p>Sometimes, this will differ greatly from the parametric <span class="math inline">\(p\)</span>-value. Here, the
+parametric <span class="math inline">\(p\)</span>-value is 0.00482.</p>
+</div>
+<div id="addressing-non-compliance" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Addressing non-compliance<a href="analysis.html#addressing-non-compliance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="missing-data" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Missing Data<a href="analysis.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="multiple-comparisons" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Multiple Comparisons<a href="analysis.html#multiple-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In frequentist hypothesis testing, the more tests we conduct, the more likely we
+become to “detect” a causal effect that isn’t real, but is only an artifact of
+natural variation and random assignment. However, we are often interested in
+learning as much as we can from an experiment, such as the effect of an
+intervention on several outcomes, or the effect in subgroups, or the effect of
+several conditions. This tension underlies the problem of multiple comparisons.</p>
+<p>One way to avoid this problem is to use Bayesian multilevel modeling, where
+post-analysis adjustment to probability statements or uncertainty intervals is
+usually not necessarily <span class="citation">(<a href="#ref-gelhilyaj12" role="doc-biblioref">Gelman, Hill, and Yajima 2012</a>)</span>.</p>
+<p>Another approach is to adjust frequentist <span class="math inline">\(p\)</span>-values. Our default strategy for
+multiple comparisons is to control the family-wise error rate (FWER). This
+approach also controls the false discovery rate (FDR), but can be very
+conservative.</p>
+<p>We account for multiple tests when a) we declare the tests to be confirmatory,
+and b) the tests form a family. Otherwise, we do not account for multiple tests.</p>
+<p>By default, we control the FWER using the Holm-Bonferroni procedure <span class="citation">(<a href="#ref-holm79" role="doc-biblioref">Holm 1979</a>)</span>.
+With many tests or correlated tests, this adjustment can result in significant
+losses in power. When we anticipate highly correlated tests, such as testing
+several outcome measures of the same construct, or are interested in interval
+estimation, we use a bootstrap resampling procedure <span class="citation">(<a href="#ref-wesyou93" role="doc-biblioref">Westfall and Young 1993</a>)</span>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<div id="holm-bonferroni-adjustment" class="section level3 hasAnchor" number="4.10.1">
+<h3><span class="header-section-number">4.10.1</span> Holm-Bonferroni adjustment<a href="analysis.html#holm-bonferroni-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we have conducted three confirmatory hypothesis tests in a family, with
+<span class="math inline">\(p\)</span>-values <span class="math inline">\(p_1 = .01\)</span>, <span class="math inline">\(p_2 = .02\)</span>, and <span class="math inline">\(p_3 = .08\)</span>, in increasing order. To
+adjust these <span class="math inline">\(p\)</span>-values with the Holm procedure, we use</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.adjust</span>(<span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.08</span>), <span class="at">method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.03 0.04 0.08</code></pre>
+<p>We see that the three adjusted <span class="math inline">\(p\)</span>-values are <span class="math inline">\(0.03\)</span>, <span class="math inline">\(0.04\)</span>, and <span class="math inline">\(0.08\)</span>. (Here, these are <span class="math inline">\(p_1 \times 3\)</span>, <span class="math inline">\(p_2 \times 2\)</span>, and <span class="math inline">\(p_3 \times 1\)</span>.)</p>
+</div>
+<div id="westfall-young-adjustment" class="section level3 hasAnchor" number="4.10.2">
+<h3><span class="header-section-number">4.10.2</span> Westfall-Young adjustment<a href="analysis.html#westfall-young-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">Westfall and Young (<a href="#ref-wesyou93" role="doc-biblioref">1993</a>)</span> provides a bootstrapping approach to <span class="math inline">\(p\)</span>-value adjustment that tends to be more powerful than the Holm-Bonferroni procedure.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> It strongly controls the FWER under the assumption of subset pivotality. We show an example using the implementation of <span class="citation">Hidalgo (<a href="#ref-hidalgo17" role="doc-biblioref">2017</a>)</span> below.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add another outcome and centered covariate:</span></span>
+<span id="cb20-2"><a href="analysis.html#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">y2 =</span> <span class="fl">0.5</span> <span class="sc">*</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(df), <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb20-3"><a href="analysis.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x_c =</span> <span class="fu">as.vector</span>(<span class="fu">scale</span>(x, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb20-4"><a href="analysis.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="analysis.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install multitestr:</span></span>
+<span id="cb20-6"><a href="analysis.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;fdhidalgo/multitestr&quot;)</span></span>
+<span id="cb20-7"><a href="analysis.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multitestr)</span>
+<span id="cb20-8"><a href="analysis.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="analysis.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define formulas with treatment (and interaction):</span></span>
+<span id="cb20-10"><a href="analysis.html#cb20-10" aria-hidden="true" tabindex="-1"></a>ff <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
+<span id="cb20-11"><a href="analysis.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;y ~ z + x_c + z * x_c&quot;</span>, </span>
+<span id="cb20-12"><a href="analysis.html#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;y2 ~ z + x_c + z * x_c&quot;</span>),</span>
+<span id="cb20-13"><a href="analysis.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  as.formula)</span>
+<span id="cb20-14"><a href="analysis.html#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="analysis.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define null formulas without treatment:</span></span>
+<span id="cb20-16"><a href="analysis.html#cb20-16" aria-hidden="true" tabindex="-1"></a>ff_null <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
+<span id="cb20-17"><a href="analysis.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;y ~ x_c&quot;</span>, </span>
+<span id="cb20-18"><a href="analysis.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;y2 ~ x_c&quot;</span>),</span>
+<span id="cb20-19"><a href="analysis.html#cb20-19" aria-hidden="true" tabindex="-1"></a>  as.formula)</span>
+<span id="cb20-20"><a href="analysis.html#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="analysis.html#cb20-21" aria-hidden="true" tabindex="-1"></a>wy_out <span class="ot">&lt;-</span> <span class="fu">boot_stepdown</span>(</span>
+<span id="cb20-22"><a href="analysis.html#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">full_formulas =</span> ff,</span>
+<span id="cb20-23"><a href="analysis.html#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">null_formulas =</span> ff_null,</span>
+<span id="cb20-24"><a href="analysis.html#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
+<span id="cb20-25"><a href="analysis.html#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_list =</span> <span class="fu">list</span>(<span class="at">coef =</span> <span class="fu">c</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;z:x_c&quot;</span>)),</span>
+<span id="cb20-26"><a href="analysis.html#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">nboots =</span> <span class="dv">1000</span>,</span>
+<span id="cb20-27"><a href="analysis.html#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-28"><a href="analysis.html#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">boot_type =</span> <span class="st">&quot;wild&quot;</span>,</span>
+<span id="cb20-29"><a href="analysis.html#cb20-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">pb =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-30"><a href="analysis.html#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-31"><a href="analysis.html#cb20-31" aria-hidden="true" tabindex="-1"></a>wy_out <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">3</span>))</span></code></pre></div>
+<pre><code>##     Hypothesis  coef bs_pvalues_unadjusted bs_pvalues_adjusted
+## 1 Hypothesis 1     z                 0.001               0.001
+## 2 Hypothesis 2 z:x_c                 0.148               0.268
+## 3 Hypothesis 1     z                 0.073               0.247
+## 4 Hypothesis 2 z:x_c                 0.180               0.268</code></pre>
+</div>
+</div>
+<div id="posterior-probabilities" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Posterior Probabilities<a href="analysis.html#posterior-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We may be interested in the probability that one treatment condition outperforms
+another. In <span class="citation">Moore et al. (<a href="#ref-mooganmin22" role="doc-biblioref">2022</a>)</span>, we calculate that open deadlines have probability 0.79
+of being better than specific deadlines. These probabilities can provide
+guidance for agencies about which treatment condition(s) to continue
+implementing after an experiment ends, especially when there appears to be
+little difference between conditions in effect or cost.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-avimammoo22" class="csl-entry">
+Avila, Maria, Natnaell Mammo, Ryan T. Moore, and Sam Quinney. 2022. <span>“Do Shallow Rental Subsidies Promote Housing Stability? Evidence on Costs and Effects from DC’s Shallow Flexible Rent Subsidy Program.”</span> <em>Under Review</em>.
+</div>
+<div id="ref-blacoocop22" class="csl-entry">
+Blair, Graeme, Jasper Cooper, Alexander Coppock, Macartan Humphreys, and Luke Sonnet. 2022. <em>Estimatr: Fast Estimators for Design-Based Inference</em>. <a href="https://CRAN.R-project.org/package=estimatr">https://CRAN.R-project.org/package=estimatr</a>.
+</div>
+<div id="ref-gelhilyaj12" class="csl-entry">
+Gelman, Andrew, Jennifer Hill, and Masanao Yajima. 2012. <span>“Why We (Usually) Don’t Have to Worry about Multiple Comparisons.”</span> <em>Journal of Research on Educational Effectiveness</em> 5 (2): 189–211. <a href="https://doi.org/10.1080/19345747.2011.618213">https://doi.org/10.1080/19345747.2011.618213</a>.
+</div>
+<div id="ref-gergre12" class="csl-entry">
+Gerber, Alan S., and Donald P. Green. 2012. <em>Field Experiments: Design, Analysis, and Interpretation</em>. WW Norton.
+</div>
+<div id="ref-hidalgo17" class="csl-entry">
+Hidalgo, F. Daniel. 2017. <em>Multitestr: Resampling-Based Multiple Testing Adjustments for Linear Regression</em>.
+</div>
+<div id="ref-holm79" class="csl-entry">
+Holm, Sture. 1979. <span>“A Simple Sequentially Rejective Multiple Test Procedure.”</span> <em>Scandinavian Journal of Statistics</em> 6: 65–70.
+</div>
+<div id="ref-lin2013" class="csl-entry">
+Lin, Winston. 2013. <span>“Agnostic Notes on Regression Adjustments to Experimental Data: Reexamining Freedman’s Critique.”</span> <em>The Annals of Applied Statistics</em> 7 (1): 295–318.
+</div>
+<div id="ref-mooganmin22" class="csl-entry">
+Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>“Anchor Management: A Field Experiment to Encourage Families to Meet Critical Program Deadlines.”</span> <em>Journal of Public Policy</em>.
+</div>
+<div id="ref-morgan17" class="csl-entry">
+Morgan, Kari Lock. 2017. <span>“Reallocating and Resampling: A Comparison for Inference.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.1708.02102">https://doi.org/10.48550/ARXIV.1708.02102</a>.
+</div>
+<div id="ref-rugfol21" class="csl-entry">
+Ruggeri, Kai, and Tomas Folke. 2021. <span>“Unstandard Deviation: The Untapped Value of Positive Deviance for Reducing Inequalities.”</span> <em>Perspectives on Psychological Science</em>. <a href="https://doi.org/10.1177/17456916211017865">https://doi.org/10.1177/17456916211017865</a>.
+</div>
+<div id="ref-wesyou93" class="csl-entry">
+Westfall, Peter H., and S. Stanley Young. 1993. <em>Resampling-Based Multiple Testing: Examples and Methods for p-Value Adjustment</em>. John Wiley &amp; Sons.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p><span class="citation">Gerber and Green (<a href="#ref-gergre12" role="doc-biblioref">2012</a>)</span> provides an instructive example.<a href="analysis.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>In the
+original paper, <span class="citation">Lin (<a href="#ref-lin2013" role="doc-biblioref">2013</a>)</span> describes “the OLS regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(T_i\)</span>, <span class="math inline">\(z_i\)</span>,
+and <span class="math inline">\(T_i(z_i − \bar{z})\)</span>”, where the covariates are only centered in the
+interaction. The implementation in <span class="citation">Blair et al. (<a href="#ref-blacoocop22" role="doc-biblioref">2022</a>)</span> and Lin’s supplementary materials, however, centers the covariates
+in their linear terms, using <span class="math inline">\(T_i\)</span>, <span class="math inline">\(z_i-\bar{z}\)</span>, and <span class="math inline">\(T_i(z_i − \bar{z})\)</span>. We
+show elsewhere that it doesn’t matter which of these models we estimate.<a href="analysis.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>The
+intuition: if the treatment and control groups look different, then we up-weight
+the controls that look more like the treateds, and vice versa. If you’re a
+control that looks like all the other controls, you’re less informative about
+the causal effect than if you’re a control that looks like the treateds.<a href="analysis.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>This procedure
+strongly controls the FWER under <em>subset pivotality</em>, a condition likely to
+obtain when we estimate the effect of a single treatment on many outcomes.<a href="analysis.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><span class="citation">Morgan (<a href="#ref-morgan17" role="doc-biblioref">2017</a>)</span> shows that resampling and reallocation methods behave very similarly (up to <span class="math inline">\(\frac{n-1}{n}\)</span>) in testing, and argues that, for interval estimation, we should prefer bootstrap resampling methods to reallocation methods (which depend on an equal-variances assumption and additivity).<a href="analysis.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="implementation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="publication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

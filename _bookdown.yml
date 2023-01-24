@@ -2,6 +2,6 @@ book_filename: "thelab_sop"
 chapter_name: "Chapter "
 repo: https://github.com/rtm-dc/LAB-SOP-experiments
 output_dir: docs
-rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-Design.Rmd"]
+rmd_files: ["index.Rmd", "01-Introduction.Rmd", "02-Design.Rmd", "03-Implementation.Rmd", "04-Analysis.Rmd", "05-Publication.Rmd", "90-R.Rmd", "95-Code.Rmd", "97-Git.Rmd", "99-References.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
