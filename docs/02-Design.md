@@ -168,7 +168,7 @@ power_out_mde$p2 - power_out_mde$p1
 ## [1] 0.2213224
 ```
 
-We see a minimum detectable effect of about `round(power_out_mde$p2 - power_out_mde$p1, 3)`, over a base rate of 0.5.
+We see a minimum detectable effect of about 0.22, over a base rate of 0.5.
 
 ### Simulation-based Power Analysis
 
