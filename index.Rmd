@@ -1,0 +1,17 @@
+--- 
+title: "SOPs for The Lab @ DC"
+author: "Ryan T. Moore"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rtm-dc/LAB-SOP-experiments
+url: 'https\://rtm-dc.github.io/LAB-SOP-experiments/'
+description: "Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC."
+---
+
+# Preface {-}
+
+This is the very first part of the book.
