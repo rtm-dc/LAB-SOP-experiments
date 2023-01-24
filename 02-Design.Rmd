@@ -116,6 +116,21 @@ power_out
 
 For two equally-sized samples drawn from a population with standard normal outcomes, we need `r ceiling(power_out$n)` observations in each group to have a probability of `r power_out$power` of detecting a true effect that is one standard deviation of the outcome in size, where "detecting" means rejecting a null hypothesis of $H_0: \mu_{Tr} = \mu_{Co}$ against an alternative of $H_a: \mu_{Tr} \neq \mu_{Co}$ using $\alpha = 0.05$.
 
+### Formula-based MDE (minimum detectable effect)
+
+An example of a formula-based MDE calculation follows, where the analysis plans for a two-sample test of proportions. The sample size is 75 (in _each_ group), and we want to detect stipulated effects with probability 0.8. Below, we make the most conservative (SE-maximizing) possible assumption about the base rate, that it is 0.5.
+
+```{r eval = TRUE, class.source = 'fold.hide'}
+power_out_mde <- power.prop.test(n = 75, 
+                                 p1 = 0.5,
+                                 power = 0.8)
+power_out_mde
+
+power_out_mde$p2 - power_out_mde$p1
+```
+
+We see a minimum detectable effect of about `round(power_out_mde$p2 - power_out_mde$p1, 3)`, over a base rate of 0.5.
+
 ### Simulation-based Power Analysis
 
 Simulation-based power analysis allows us to estimate the power of any
