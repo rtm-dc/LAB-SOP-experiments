@@ -1,15 +1,15 @@
 --- 
-title: "A Minimal Bookdown Book"
-author: "Sean Kross"
-date: "2016-12-09"
+title: "SOPs for The Lab @ DC"
+author: "Ryan T. Moore"
+date: "2023-01-24"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: seankross/bookdown-start
-url: 'http\://seankross.com/bookdown-start/'
-description: "Everything you need (and nothing more) to start a bookdown book."
+github-repo: rtm-dc/LAB-SOP-experiments
+url: 'https\://rtm-dc.github.io/LAB-SOP-experiments/'
+description: "Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC."
 ---
 
 # Preface {-}
