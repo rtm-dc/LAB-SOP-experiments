@@ -10,6 +10,7 @@ link-citations: yes
 github-repo: rtm-dc/LAB-SOP-experiments
 url: 'https\://rtm-dc.github.io/LAB-SOP-experiments/'
 description: "Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC."
+code_folding: show
 ---
 
 # Preface {-}

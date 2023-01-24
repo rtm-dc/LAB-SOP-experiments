@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Design | SOPs for The Lab @ DC</title>
+  <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Design | SOPs for The Lab @ DC" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  <meta name="github-repo" content="rtm-dc/LAB-SOP-experiments" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Design | SOPs for The Lab @ DC" />
+  
+  <meta name="twitter:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
+  
+
+<meta name="author" content="Ryan T. Moore" />
+
+
+<meta name="date" content="2023-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SOPs for The Lab @ DC</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a></li>
+<li class="chapter" data-level="2" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>2</b> Design</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="design.html"><a href="design.html#units"><i class="fa fa-check"></i><b>2.1</b> Units</a></li>
+<li class="chapter" data-level="2.2" data-path="design.html"><a href="design.html#level-of-randomization"><i class="fa fa-check"></i><b>2.2</b> Level of Randomization</a></li>
+<li class="chapter" data-level="2.3" data-path="design.html"><a href="design.html#blocking-on-background-characteristics"><i class="fa fa-check"></i><b>2.3</b> Blocking on Background Characteristics</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.3.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a></li>
+<li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.5.1</b> Formula-based Power Analysis</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design.html"><a href="design.html#simulation-based-power-analysis"><i class="fa fa-check"></i><b>2.5.2</b> Simulation-based Power Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="design.html"><a href="design.html#balance-checking"><i class="fa fa-check"></i><b>2.6</b> Balance Checking</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SOPs for The Lab @ DC</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="design" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Design<a href="design.html#design" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="units" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Units<a href="design.html#units" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We carefully define the units of observation. They maybe households, automobile
+registrations, 911 callers, or students, about which we are measuring
+application status, traffic tickets, primary care visits, or days of attendance
+in school, respectively.</p>
+</div>
+<div id="level-of-randomization" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Level of Randomization<a href="design.html#level-of-randomization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We define the level of randomization, which is not always the same as
+the unit of observation. In particular, the units of observation may be assigned
+in <em>clusters</em>. For example, we may assign some <em>classrooms</em> to a particular
+teacher-based intervention, and all students in intervention classrooms are
+assigned to the same intervention. When clusters are meaningful, this has
+substantial implications for our design and analysis.</p>
+<p>Generally, we prefer to randomize at lower levels of aggregation – at the
+student level rather than the classroom level, e.g. – because we will have more
+randomization units. However, there are often logistical or statistical reasons
+for assigning conditions in clusters. For example, logistically, a teacher can
+only deliver one particular curriculum to their class; statistically, we may be
+concerned about interference between students, where students in one condition
+interact with students in the other, and causal effects of the intervention are
+difficult to isolate.</p>
+</div>
+<div id="blocking-on-background-characteristics" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Blocking on Background Characteristics<a href="design.html#blocking-on-background-characteristics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A <em>blocked</em> randomization first creates groups of similar randomization units, and then randomizes within those groups. In a <em>random allocation</em>, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See <span class="citation">Moore (<a href="#ref-moore12" role="doc-biblioref">2012</a>)</span> for discussion.</p>
+<div id="examples" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Examples<a href="design.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Lab’s TANF recertification experiment <span class="citation">(<a href="#ref-mooganmin22" role="doc-biblioref">Moore et al. 2022</a>)</span> blocked participants on
+service center and assigned visit date.</p>
+</div>
+</div>
+<div id="sec-set-seed" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Setting the Assignment Seed<a href="design.html#sec-set-seed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Whenever our design or analysis involves randomization, we set the seed so that
+our results can be perfectly replicated.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>To set the random seed, run at the R prompt</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="design.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">1e9</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>then copy and paste the result as the argument of <code>set.seed()</code>. If the result of
+<code>sample(1e9, 1)</code> is <code>SSSSSSSSS</code>, then put</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="design.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span></code></pre></div>
+<p>at the top of the <code>.R</code> file, just after the <code>library()</code> commands that load and
+attach that file’s packages. In a short random assignment file, e.g., we might
+have</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="design.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages:</span></span>
+<span id="cb3-2"><a href="design.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb3-3"><a href="design.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="design.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed:</span></span>
+<span id="cb3-5"><a href="design.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span>
+<span id="cb3-6"><a href="design.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="design.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct Bernoulli randomization:</span></span>
+<span id="cb3-8"><a href="design.html#cb3-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb3-9"><a href="design.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, </span>
+<span id="cb3-10"><a href="design.html#cb3-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> <span class="fu">n</span>(),</span>
+<span id="cb3-11"><a href="design.html#cb3-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+</div>
+<div id="power" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Power<a href="design.html#power" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We conduct power analysis to determine how precise our experiment are likely to
+be. Power analysis should go beyond sample size, and attempt to account for as
+many features of the design, implementation, and analysis as possible. Sometimes
+we can achieve this with “formula-based” power strategies; other times we need
+to use simulation-based techniques. Power analyses should be conducted in code,
+so that they are replicable. If we use an online calculator for a quick
+calculation, we replicate the results in code.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>If our design and analysis plan match the assumptions of a formula-based power
+calculation well, we perform a formula-based power calculation. For example, if
+the design is complete randomization and the analysis plan is to conduct a
+two-sample <span class="math inline">\(t\)</span>-test, we might use R’s <code>power.t.test()</code>, as below. However, if
+the design includes blocked assignment in several waves, untreated units stay in
+the pool across waves, and assignment probabilities vary by wave, with an
+analysis plan of covariance-adjusted Lin <a href="#sec-lin">estimation</a> with strong
+covariates, then we need to use simulation. If we can’t find a formula-based
+approach that sufficiently approximates our design and analysis plan, we use
+simulation.</p>
+<div id="formula-based-power-analysis" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Formula-based Power Analysis<a href="design.html#formula-based-power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An example of formula-based power calculation, where the design is complete randomization and the analysis plans for a two-sample <span class="math inline">\(t\)</span>-test:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb4-1"><a href="design.html#cb4-1" aria-hidden="true" tabindex="-1"></a>power_out <span class="ot">&lt;-</span> <span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">1</span>, </span>
+<span id="cb4-2"><a href="design.html#cb4-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sd =</span> <span class="dv">1</span>,</span>
+<span id="cb4-3"><a href="design.html#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb4-4"><a href="design.html#cb4-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">power =</span> <span class="fl">0.8</span>)</span>
+<span id="cb4-5"><a href="design.html#cb4-5" aria-hidden="true" tabindex="-1"></a>power_out</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 16.71477
+##           delta = 1
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<p>For two equally-sized samples drawn from a population with standard normal outcomes, we need 17 observations in each group to have a probability of 0.8 of detecting a true effect that is one standard deviation of the outcome in size, where “detecting” means rejecting a null hypothesis of <span class="math inline">\(H_0: \mu_{Tr} = \mu_{Co}\)</span> against an alternative of <span class="math inline">\(H_a: \mu_{Tr} \neq \mu_{Co}\)</span> using <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<div id="simulation-based-power-analysis" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Simulation-based Power Analysis<a href="design.html#simulation-based-power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Simulation-based power analysis allows us to estimate the power of any
+combination of randomization technique, missing data treatment, estimation
+strategy, etc. that we like.</p>
+<p>Create some data to illustrate simulation-based power analysis:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="design.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb6-2"><a href="design.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb6-3"><a href="design.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-4"><a href="design.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="design.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">988869862</span>)</span>
+<span id="cb6-6"><a href="design.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="design.html#cb6-7" aria-hidden="true" tabindex="-1"></a>n_samp <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-8"><a href="design.html#cb6-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rchisq</span>(n_samp, <span class="at">df =</span> <span class="dv">3</span>),</span>
+<span id="cb6-9"><a href="design.html#cb6-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">z =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
+<span id="cb6-10"><a href="design.html#cb6-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> x <span class="sc">+</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(n_samp, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
+<span id="cb6-11"><a href="design.html#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="design.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>))</span></code></pre></div>
+<p>Suppose the estimation strategy is linear regression <span class="math inline">\(y_i = \beta_0 + \beta_1 z_i + \beta_2 x_i + \epsilon_i\)</span> with heteroskedasticity-robust HC2 standard errors, and the coefficient of interest is <span class="math inline">\(\beta_1\)</span>. Perform 1000 reassignments and determine what proportion of them reveal <span class="math inline">\(\hat{\beta}_1\)</span> that is statistically significant at <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="design.html#cb7-1" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb7-2"><a href="design.html#cb7-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb7-3"><a href="design.html#cb7-3" aria-hidden="true" tabindex="-1"></a>true_te <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-4"><a href="design.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="design.html#cb7-5" aria-hidden="true" tabindex="-1"></a>is_stat_sig <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>, n_sims) <span class="co"># Storage</span></span>
+<span id="cb7-6"><a href="design.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="design.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
+<span id="cb7-8"><a href="design.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-9"><a href="design.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-assign treatment and recalculate outcomes n_sims times:</span></span>
+<span id="cb7-10"><a href="design.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Note: conditions on original x in df, but not original y.)</span></span>
+<span id="cb7-11"><a href="design.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
+<span id="cb7-12"><a href="design.html#cb7-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y_tmp =</span> true_te <span class="sc">*</span> z_tmp <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
+<span id="cb7-13"><a href="design.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-14"><a href="design.html#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimation:</span></span>
+<span id="cb7-15"><a href="design.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  lm_out <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y_tmp <span class="sc">~</span> z_tmp <span class="sc">+</span> x, <span class="at">data =</span> df)</span>
+<span id="cb7-16"><a href="design.html#cb7-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-17"><a href="design.html#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store p-value:</span></span>
+<span id="cb7-18"><a href="design.html#cb7-18" aria-hidden="true" tabindex="-1"></a>  stat_sig_tmp <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>p.value[<span class="st">&quot;z_tmp&quot;</span>]</span>
+<span id="cb7-19"><a href="design.html#cb7-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-20"><a href="design.html#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store whether true effect is &#39;detected&#39;:</span></span>
+<span id="cb7-21"><a href="design.html#cb7-21" aria-hidden="true" tabindex="-1"></a>  is_stat_sig[idx] <span class="ot">&lt;-</span> (stat_sig_tmp <span class="sc">&lt;=</span> alpha)</span>
+<span id="cb7-22"><a href="design.html#cb7-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-23"><a href="design.html#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="design.html#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(is_stat_sig)</span></code></pre></div>
+<pre><code>## [1] 0.995</code></pre>
+<p>So the probability of detecting the true average treatment effect of 1 is about 0.995. This is high power comes largely from the strongly predictive nature of the covariate <code>x</code>. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly 0.45.</p>
+</div>
+</div>
+<div id="balance-checking" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Balance Checking<a href="design.html#balance-checking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To increase our certainty that our treatment and control conditions are balanced on predictive covariates, we compare the distributions of covariates. For example, in <span class="citation">Moore et al. (<a href="#ref-mooganmin22" role="doc-biblioref">2022</a>)</span>, we describe</p>
+<blockquote>
+<p>the median absolute deviation (MAD) of appointment dates is about 0.15 days (about 3.5 hours) or less in 99% of the trios. In other words, the medians of the treatment and control groups tend to vary by much less than a day across the months and Service Centers.</p>
+</blockquote>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Moore, Ryan T. 2012. <span>“Multivariate Continuous Blocking to Improve Political Science Experiments.”</span> <em>Political Analysis</em> 20 (4): 460–79.
+</div>
+<div class="csl-entry">
+Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>“Anchor Management: A Field Experiment to Encourage Families to Meet Critical Program Deadlines.”</span> <em>Journal of Public Policy</em>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-moore12" class="csl-entry">
+Moore, Ryan T. 2012. <span>“Multivariate Continuous Blocking to Improve Political Science Experiments.”</span> <em>Political Analysis</em> 20 (4): 460–79.
+</div>
+<div id="ref-mooganmin22" class="csl-entry">
+Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>“Anchor Management: A Field Experiment to Encourage Families to Meet Critical Program Deadlines.”</span> <em>Journal of Public Policy</em>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>We randomize treatment assignment in
+experiments, and we often simulate in power analysis and randomization
+inference.<a href="design.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>An online power calculator is
+available from <a href="https://egap.shinyapps.io/Power_Calculator/">EGAP</a>, e.g.<a href="design.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
