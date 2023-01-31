@@ -229,6 +229,10 @@ parametric $p$-value is 0.00482.
 
 ## Missing Data
 
+Unless we have solid justification to believe the missingness mechanism is MCAR (missing completely at random), we prefer to treat missing data with multiple imputation. 
+
+We recognize that not all missing data are the same, however. We can confidently impute values that we are certain exist, but we should be more circumspect regarding other values. For example, we can confidently impute a household income, but we should be more circumspect about a student's grade point average (GPA) or a survey preference. How would we interpret that GPA if the student actually dropped out of school? How can we be confident that the survey respondent actually has a preference for alternative $A$ or $B$, rather than being indifferent or having never considered the question?
+
 ## Multiple Comparisons
 
 In frequentist hypothesis testing, the more tests we conduct, the more likely we

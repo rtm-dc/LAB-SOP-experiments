@@ -4,7 +4,7 @@ You can view the book at https://rtm-dc.github.io/LAB-SOP-experiments/
 
 Alternatively, clone or download the repo and start by opening `/docs/index.html` in a browser. (Download the repo by clicking the green Code button, then Download ZIP, and opening the .zip file on your local machine.)
 
-(Due to hosting issues, the version here replaces the previous version that was visible at https://thelab.dc.gov/LAB-SOP-experiments/.)
+(Due to hosting issues, the version here replaces the previous version that was visible at https://thelab.dc.gov/LAB-SOP-experiments/. The URL tag specified in `index.Rmd` for that instantiation was `url: 'https\://thelab.dc.gov/LAB-SOP-experiments/'`)
 
 ## Environment
 

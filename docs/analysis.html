@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-01-24" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -503,6 +503,8 @@ parametric <span class="math inline">\(p\)</span>-value is 0.00482.</p>
 </div>
 <div id="missing-data" class="section level2 hasAnchor" number="4.9">
 <h2><span class="header-section-number">4.9</span> Missing Data<a href="analysis.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Unless we have solid justification to believe the missingness mechanism is MCAR (missing completely at random), we prefer to treat missing data with multiple imputation.</p>
+<p>We recognize that not all missing data are the same, however. We can confidently impute values that we are certain exist, but we should be more circumspect regarding other values. For example, we can confidently impute a household income, but we should be more circumspect about a student’s grade point average (GPA) or a survey preference. How would we interpret that GPA if the student actually dropped out of school? How can we be confident that the survey respondent actually has a preference for alternative <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, rather than being indifferent or having never considered the question?</p>
 </div>
 <div id="multiple-comparisons" class="section level2 hasAnchor" number="4.10">
 <h2><span class="header-section-number">4.10</span> Multiple Comparisons<a href="analysis.html#multiple-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
