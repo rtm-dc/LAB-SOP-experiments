@@ -3,10 +3,20 @@
 We use the `git` version control system and the GitHub web interface to manage
 version control.
 
-To get started, read and take steps 1 through 5 in section 18.2, "Initial set
-up", [here](https://r-pkgs.org/git.html). (There is nothing R-specific about
-these steps; RStudio provides an interface to get SSH set up so that you don't
-have to enter your password every time you make a commit or fetch remote code.)
+To get started, follow the steps outlined by the chapters in @bryan22_happy. In particular, 
+
+* Register a GitHub account (The Lab @ DC requests that you make a separate account from any person GitHub account you may have.)
+* Update R and RStudio (if you will use R, or use RStudio for interacting with `git` regardless of whether you use R)
+* Install `git`
+* Introduce yourself to `git`
+
+You are basically ready, but press on. First, simplify interacting with `git`, so that you
+don't have to enter your password every time you make a commit or fetch remote
+code. 
+
+* Set up a PAT or SSH key 
+
+Then, practice making a repo in the chapter "Connect to GitHub".
 
 At The Lab, we
 
