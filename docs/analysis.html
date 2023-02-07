@@ -528,6 +528,7 @@ With many tests or correlated tests, this adjustment can result in significant
 losses in power. When we anticipate highly correlated tests, such as testing
 several outcome measures of the same construct, or are interested in interval
 estimation, we use a bootstrap resampling procedure <span class="citation">(<a href="#ref-wesyou93" role="doc-biblioref">Westfall and Young 1993</a>)</span>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>If we test an outcome in several time periods, these tests are likely to be highly correlated with each other. For example, in the ATE project, we expect to test whether treatment affected the outcome at 3 months and at 6 months. In this case, we adjust for performing two tests using the bootstrap resampling procedure of <span class="citation">Westfall and Young (<a href="#ref-wesyou93" role="doc-biblioref">1993</a>)</span>.</p>
 <div id="holm-bonferroni-adjustment" class="section level3 hasAnchor" number="4.10.1">
 <h3><span class="header-section-number">4.10.1</span> Holm-Bonferroni adjustment<a href="analysis.html#holm-bonferroni-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose we have conducted three confirmatory hypothesis tests in a family, with
