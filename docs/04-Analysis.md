@@ -262,7 +262,11 @@ estimation, we use a bootstrap resampling procedure [@wesyou93].^[This procedure
 strongly controls the FWER under _subset pivotality_, a condition likely to
 obtain when we estimate the effect of a single treatment on many outcomes.]
 
-If we test an outcome in several time periods, these tests are likely to be highly correlated with each other. For example, in the ATE project, we expect to test whether treatment affected the outcome at 3 months and at 6 months. In this case, we adjust for performing two tests using the bootstrap resampling procedure of @wesyou93.
+If we test a single outcome in several time periods, these tests are likely to
+be highly correlated with each other. For example, in the ATE project, we expect
+to test whether treatment affected the outcome at 3 months and at 6 months. In
+this case, we adjust for performing two tests using the bootstrap resampling
+procedure of @wesyou93.
 
 ### Holm-Bonferroni adjustment
 

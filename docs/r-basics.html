@@ -214,7 +214,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="analysis.html"><a href="analysis.html#posterior-probabilities"><i class="fa fa-check"></i><b>4.11</b> Posterior Probabilities</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>5</b> Publication</a></li>
+<li class="chapter" data-level="5" data-path="observational-studies.html"><a href="observational-studies.html"><i class="fa fa-check"></i><b>5</b> Observational Studies</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="observational-studies.html"><a href="observational-studies.html#matching"><i class="fa fa-check"></i><b>5.1</b> Matching</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>A</b> R Basics</a>
 <ul>
@@ -284,16 +291,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-basics" class="section level1 hasAnchor" number="6">
+<div id="r-basics" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">A</span> R Basics<a href="r-basics.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="get-r-and-rstudio" class="section level2 hasAnchor" number="6.1">
+<div id="get-r-and-rstudio" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">A.1</span> Get R and RStudio<a href="r-basics.html#get-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First download and install R from <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a>.</p>
 <p>Then, download and install RStudio (Desktop) from <a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>.</p>
 <p>(You should have permission for both of these. If not, you may need to contact
 EOM IT.)</p>
 </div>
-<div id="read-in-data-files" class="section level2 hasAnchor" number="6.2">
+<div id="read-in-data-files" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">A.2</span> Read in data files<a href="r-basics.html#read-in-data-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can read data from many formats and many places, including from a local file
 or from the web. Many R packages contain their own data.</p>
@@ -304,7 +311,7 @@ or from the web. Many R packages contain their own data.</p>
 <span id="cb26-4"><a href="r-basics.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb26-5"><a href="r-basics.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
 <span id="cb26-6"><a href="r-basics.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
-<div id="csv" class="section level3 hasAnchor" number="6.2.1">
+<div id="csv" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">A.2.1</span> <code>.csv</code><a href="r-basics.html#csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data from the web (from the résumé audit experiment from <span class="citation">Bertrand and Mullainathan (<a href="#ref-bermul04" role="doc-biblioref">2004</a>)</span>):</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="r-basics.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kosukeimai/qss/master/CAUSALITY/resume.csv&quot;</span>)</span></code></pre></div>
@@ -331,12 +338,12 @@ can see the first few rows with</p>
 <a href="https://thelab.dc.gov/LAB-SOP-experiments/appendix-b-managing-code.html#working-directory-and-relative-paths">here</a>
 for more detail on how to use <code>here()</code> to create paths.</p>
 </div>
-<div id="xlsx" class="section level3 hasAnchor" number="6.2.2">
+<div id="xlsx" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">A.2.2</span> <code>.xlsx</code><a href="r-basics.html#xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use package <code>readxl</code> and function <code>read_excel()</code>. To read the second sheet from
 a multi-sheet spreadsheet, add an argument like <code>read_excel(..., sheet = 2)</code>.</p>
 </div>
-<div id="box" class="section level3 hasAnchor" number="6.2.3">
+<div id="box" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">A.2.3</span> Box<a href="r-basics.html#box" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To read a file directly from box, we use the <code>boxr</code> package. To do so,</p>
 <ul>
@@ -364,7 +371,7 @@ a multi-sheet spreadsheet, add an argument like <code>read_excel(..., sheet = 2)
 <p>For more information, see the <code>boxr</code> <a href="https://r-box.github.io/boxr/articles/boxr.html">vignette</a>.</p>
 </div>
 </div>
-<div id="pipes" class="section level2 hasAnchor" number="6.3">
+<div id="pipes" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">A.3</span> Pipes<a href="r-basics.html#pipes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Pipe operators make it easier for humans to follow a code chunk, and they allow
 us to string together a sequence of operations into a “pipeline”. The standard
@@ -379,7 +386,7 @@ will pass arguments <code>x</code> and <code>y</code> (in that order), I can wri
 <p>or</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="r-basics.html#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">f</span>(y)</span></code></pre></div>
 </div>
-<div id="rename-variables" class="section level2 hasAnchor" number="6.4">
+<div id="rename-variables" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">A.4</span> Rename variables<a href="r-basics.html#rename-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Variable names should adhere to good <a href="https://thelab.dc.gov/LAB-SOP-experiments/managing-code.html#best-practices">practices</a>.</p>
 <p>The <code>rename()</code> function in <code>dplyr</code> can rename several variables at once:</p>
@@ -389,27 +396,27 @@ will pass arguments <code>x</code> and <code>y</code> (in that order), I can wri
 <p>To automatically clean up all the names in a dataframe, the <code>janitor</code> package can help:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="r-basics.html#cb39-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span></code></pre></div>
 </div>
-<div id="create-a-new-variable" class="section level2 hasAnchor" number="6.5">
+<div id="create-a-new-variable" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">A.5</span> Create a New Variable<a href="r-basics.html#create-a-new-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose I want to create a new variable and attach it to the data frame (i.e.,
 to update the data frame to include the new variable). Mechanically, in the
 tidyverse I overwrite the old data frame with the new one. Sometimes we want to
 use a new name for the augmented data frame, but not when we create each new
 variable.</p>
-<div id="create-a-wave-id" class="section level3 hasAnchor" number="6.5.1">
+<div id="create-a-wave-id" class="section level3 hasAnchor" number="7.5.1">
 <h3><span class="header-section-number">A.5.1</span> Create a “wave ID”<a href="r-basics.html#create-a-wave-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A “wave ID” is a variable that is constant for every row in the data set.
 Suppose that the resume data were all from “wave 3” of a larger study. To
 identify them as such,</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="r-basics.html#cb40-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">wave =</span> <span class="dv">3</span>)</span></code></pre></div>
 </div>
-<div id="create-a-primary-key" class="section level3 hasAnchor" number="6.5.2">
+<div id="create-a-primary-key" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">A.5.2</span> Create a primary key<a href="r-basics.html#create-a-primary-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A “primary key” is a variable that uniquely identifies each row in the data set.
 To create a primary key or “ID variable”,</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="r-basics.html#cb41-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id_var =</span> <span class="fu">row_number</span>())</span></code></pre></div>
 </div>
-<div id="transform-an-existing-variable" class="section level3 hasAnchor" number="6.5.3">
+<div id="transform-an-existing-variable" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">A.5.3</span> Transform an existing variable<a href="r-basics.html#transform-an-existing-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below, we use the <code>mutate()</code> function with the character variable <code>sex</code>, which
 has levels <code>female</code> and <code>male</code>, to create a logical <code>TRUE</code>/<code>FALSE</code> variable
@@ -429,7 +436,7 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <p>Note that <code>mutate()</code> needs a dataframe as its first argument. Above, we pass
 <code>df_resume</code> to <code>mutate()</code> using the pipe.</p>
 </div>
-<div id="create-a-sum-of-from-subset-of-variables" class="section level3 hasAnchor" number="6.5.4">
+<div id="create-a-sum-of-from-subset-of-variables" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">A.5.4</span> Create a sum of from subset of variables<a href="r-basics.html#create-a-sum-of-from-subset-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below, we select a subset of columns from <code>df_resume</code>, take the sum across them, and add the sum as a new variable. Here, we locate the new variable right after those columns that it summed.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-basics.html#cb45-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> </span>
@@ -451,7 +458,7 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## # … with 4,860 more rows</code></pre>
 </div>
 </div>
-<div id="recode-a-variables-values" class="section level2 hasAnchor" number="6.6">
+<div id="recode-a-variables-values" class="section level2 hasAnchor" number="7.6">
 <h2><span class="header-section-number">A.6</span> Recode a variable’s values<a href="r-basics.html#recode-a-variables-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Instead of creating a new variable as above, we can use <code>mutate()</code> and <code>case_when()</code> to recode a variable. Suppose we wanted to code race:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-basics.html#cb47-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -498,7 +505,7 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## 10 Tyrone    male       1     0     3     10 FALSE   
 ## # … with 4,860 more rows</code></pre>
 </div>
-<div id="treat-dates-as-dates" class="section level2 hasAnchor" number="6.7">
+<div id="treat-dates-as-dates" class="section level2 hasAnchor" number="7.7">
 <h2><span class="header-section-number">A.7</span> Treat dates as dates<a href="r-basics.html#treat-dates-as-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we have dates stored as character strings, we transform them to dates.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-basics.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate date data:</span></span>
@@ -513,11 +520,11 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <span id="cb51-10"><a href="r-basics.html#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-11"><a href="r-basics.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_resume, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 8
-##   firstname sex    race   call  wave id_var isFemale dob      
-##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;    
-## 1 Allison   female white     0     3      1 TRUE     2/13/1927
-## 2 Kristen   female white     0     3      2 TRUE     9/18/1963
-## 3 Lakisha   female black     0     3      3 TRUE     5/12/1992</code></pre>
+##   firstname sex    race   call  wave id_var isFemale dob       
+##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     
+## 1 Allison   female white     0     3      1 TRUE     6/4/1963  
+## 2 Kristen   female white     0     3      2 TRUE     9/16/1930 
+## 3 Lakisha   female black     0     3      3 TRUE     12/17/1929</code></pre>
 <p>The tidyverse includes the <code>lubridate</code> package. If you know the format of the character strings, there are many shortcut parsers like <code>mdy()</code>. Below, we recode character dates to be of date type:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="r-basics.html#cb53-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
 <span id="cb53-2"><a href="r-basics.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">mdy</span>(dob)</span>
@@ -525,16 +532,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
-##  1 Allison   female white     0     3      1 TRUE     2/13/1927  1927-02-13
-##  2 Kristen   female white     0     3      2 TRUE     9/18/1963  1963-09-18
-##  3 Lakisha   female black     0     3      3 TRUE     5/12/1992  1992-05-12
-##  4 Latonya   female black     0     3      4 TRUE     6/18/1934  1934-06-18
-##  5 Carrie    female white     0     3      5 TRUE     7/6/1902   1902-07-06
-##  6 Jay       male   white     0     3      6 FALSE    6/23/1982  1982-06-23
-##  7 Jill      female white     0     3      7 TRUE     11/27/1963 1963-11-27
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1935   1935-02-02
-##  9 Latonya   female black     0     3      9 TRUE     5/4/1936   1936-05-04
-## 10 Tyrone    male   black     0     3     10 FALSE    12/7/1982  1982-12-07
+##  1 Allison   female white     0     3      1 TRUE     6/4/1963   1963-06-04
+##  2 Kristen   female white     0     3      2 TRUE     9/16/1930  1930-09-16
+##  3 Lakisha   female black     0     3      3 TRUE     12/17/1929 1929-12-17
+##  4 Latonya   female black     0     3      4 TRUE     3/19/1947  1947-03-19
+##  5 Carrie    female white     0     3      5 TRUE     8/10/1933  1933-08-10
+##  6 Jay       male   white     0     3      6 FALSE    2/12/1991  1991-02-12
+##  7 Jill      female white     0     3      7 TRUE     6/22/1904  1904-06-22
+##  8 Kenya     female black     0     3      8 TRUE     1/5/1911   1911-01-05
+##  9 Latonya   female black     0     3      9 TRUE     5/1/1924   1924-05-01
+## 10 Tyrone    male   black     0     3     10 FALSE    1/9/1921   1921-01-09
 ## # … with 4,860 more rows</code></pre>
 <p>If we aren’t sure of the format, or there are several, we use <code>parse_date_time()</code> and specify several “orders” of date format. <code>parse()</code> functions do their best to use the information in “orders”. Below, <code>"dmy"</code> alone would recode only the ambiguous dates, assuming they were in day-month-year order. Adding <code>"%m/%d/%Y"</code> instructs <code>parse()</code> to look for <code>month/day/year</code> formats. Finding many that are unambiguously that format, it assumes that format for the new variable.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="r-basics.html#cb55-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -546,18 +553,18 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
-##  1 Allison   female white     0     3      1 TRUE     2/13/1927  1927-02-13
-##  2 Kristen   female white     0     3      2 TRUE     9/18/1963  1963-09-18
-##  3 Lakisha   female black     0     3      3 TRUE     5/12/1992  1992-05-12
-##  4 Latonya   female black     0     3      4 TRUE     6/18/1934  1934-06-18
-##  5 Carrie    female white     0     3      5 TRUE     7/6/1902   1902-07-06
-##  6 Jay       male   white     0     3      6 FALSE    6/23/1982  1982-06-23
-##  7 Jill      female white     0     3      7 TRUE     11/27/1963 1963-11-27
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1935   1935-02-02
-##  9 Latonya   female black     0     3      9 TRUE     5/4/1936   1936-05-04
-## 10 Tyrone    male   black     0     3     10 FALSE    12/7/1982  1982-12-07
+##  1 Allison   female white     0     3      1 TRUE     6/4/1963   1963-06-04
+##  2 Kristen   female white     0     3      2 TRUE     9/16/1930  1930-09-16
+##  3 Lakisha   female black     0     3      3 TRUE     12/17/1929 1929-12-17
+##  4 Latonya   female black     0     3      4 TRUE     3/19/1947  1947-03-19
+##  5 Carrie    female white     0     3      5 TRUE     8/10/1933  1933-08-10
+##  6 Jay       male   white     0     3      6 FALSE    2/12/1991  1991-02-12
+##  7 Jill      female white     0     3      7 TRUE     6/22/1904  1904-06-22
+##  8 Kenya     female black     0     3      8 TRUE     1/5/1911   1911-01-05
+##  9 Latonya   female black     0     3      9 TRUE     5/1/1924   1924-05-01
+## 10 Tyrone    male   black     0     3     10 FALSE    1/9/1921   1921-01-09
 ## # … with 4,860 more rows</code></pre>
-<div id="make-an-age-variable" class="section level3 hasAnchor" number="6.7.1">
+<div id="make-an-age-variable" class="section level3 hasAnchor" number="7.7.1">
 <h3><span class="header-section-number">A.7.1</span> Make an age variable<a href="r-basics.html#make-an-age-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To make an age variable from the year component,</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="r-basics.html#cb57-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -566,16 +573,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
-##  1 Allison   female white     0     3      1 TRUE     2/13/1927 1927-02-13    95
-##  2 Kristen   female white     0     3      2 TRUE     9/18/1963 1963-09-18    59
-##  3 Lakisha   female black     0     3      3 TRUE     5/12/1992 1992-05-12    30
-##  4 Latonya   female black     0     3      4 TRUE     6/18/1934 1934-06-18    88
-##  5 Carrie    female white     0     3      5 TRUE     7/6/1902  1902-07-06   120
-##  6 Jay       male   white     0     3      6 FALSE    6/23/1982 1982-06-23    40
-##  7 Jill      female white     0     3      7 TRUE     11/27/19… 1963-11-27    59
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1935  1935-02-02    87
-##  9 Latonya   female black     0     3      9 TRUE     5/4/1936  1936-05-04    86
-## 10 Tyrone    male   black     0     3     10 FALSE    12/7/1982 1982-12-07    40
+##  1 Allison   female white     0     3      1 TRUE     6/4/1963  1963-06-04    59
+##  2 Kristen   female white     0     3      2 TRUE     9/16/1930 1930-09-16    92
+##  3 Lakisha   female black     0     3      3 TRUE     12/17/19… 1929-12-17    93
+##  4 Latonya   female black     0     3      4 TRUE     3/19/1947 1947-03-19    75
+##  5 Carrie    female white     0     3      5 TRUE     8/10/1933 1933-08-10    89
+##  6 Jay       male   white     0     3      6 FALSE    2/12/1991 1991-02-12    31
+##  7 Jill      female white     0     3      7 TRUE     6/22/1904 1904-06-22   118
+##  8 Kenya     female black     0     3      8 TRUE     1/5/1911  1911-01-05   111
+##  9 Latonya   female black     0     3      9 TRUE     5/1/1924  1924-05-01    98
+## 10 Tyrone    male   black     0     3     10 FALSE    1/9/1921  1921-01-09   101
 ## # … with 4,860 more rows</code></pre>
 <p>For more precision, the participants’ age today,</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="r-basics.html#cb59-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -586,19 +593,19 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
-##  1 Allison   female white     0     3      1 TRUE     2/13/1927 1927-02-13  96.0
-##  2 Kristen   female white     0     3      2 TRUE     9/18/1963 1963-09-18  59.4
-##  3 Lakisha   female black     0     3      3 TRUE     5/12/1992 1992-05-12  30.7
-##  4 Latonya   female black     0     3      4 TRUE     6/18/1934 1934-06-18  88.6
-##  5 Carrie    female white     0     3      5 TRUE     7/6/1902  1902-07-06 121. 
-##  6 Jay       male   white     0     3      6 FALSE    6/23/1982 1982-06-23  40.6
-##  7 Jill      female white     0     3      7 TRUE     11/27/19… 1963-11-27  59.2
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1935  1935-02-02  88.0
-##  9 Latonya   female black     0     3      9 TRUE     5/4/1936  1936-05-04  86.8
-## 10 Tyrone    male   black     0     3     10 FALSE    12/7/1982 1982-12-07  40.2
+##  1 Allison   female white     0     3      1 TRUE     6/4/1963  1963-06-04  59.7
+##  2 Kristen   female white     0     3      2 TRUE     9/16/1930 1930-09-16  92.4
+##  3 Lakisha   female black     0     3      3 TRUE     12/17/19… 1929-12-17  93.1
+##  4 Latonya   female black     0     3      4 TRUE     3/19/1947 1947-03-19  75.9
+##  5 Carrie    female white     0     3      5 TRUE     8/10/1933 1933-08-10  89.5
+##  6 Jay       male   white     0     3      6 FALSE    2/12/1991 1991-02-12  32.0
+##  7 Jill      female white     0     3      7 TRUE     6/22/1904 1904-06-22 119. 
+##  8 Kenya     female black     0     3      8 TRUE     1/5/1911  1911-01-05 112. 
+##  9 Latonya   female black     0     3      9 TRUE     5/1/1924  1924-05-01  98.8
+## 10 Tyrone    male   black     0     3     10 FALSE    1/9/1921  1921-01-09 102. 
 ## # … with 4,860 more rows</code></pre>
 </div>
-<div id="make-a-month-count-variable" class="section level3 hasAnchor" number="6.7.2">
+<div id="make-a-month-count-variable" class="section level3 hasAnchor" number="7.7.2">
 <h3><span class="header-section-number">A.7.2</span> Make a month-count variable<a href="r-basics.html#make-a-month-count-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We may have dates accurate to the day, but we want a count of which month of
 participation it is for each participant. Assume that each <code>firstname</code> in the
@@ -621,21 +628,21 @@ for that participant that we care about. We want to produce a variable that is 0
 ##    firstname dob        dob_date   dob_month  dob_month_count
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;               &lt;dbl&gt;
 ##  1 Aisha     4/24/1900  1900-04-24 1900-04-01               0
-##  2 Aisha     6/7/1900   1900-06-07 1900-06-01               2
-##  3 Aisha     6/8/1900   1900-06-08 1900-06-01               2
-##  4 Allison   2/4/1900   1900-02-04 1900-02-01               0
-##  5 Allison   5/4/1901   1901-05-04 1901-05-01              15
-##  6 Allison   12/19/1902 1902-12-19 1902-12-01              34
-##  7 Anne      5/3/1900   1900-05-03 1900-05-01               0
-##  8 Anne      7/3/1900   1900-07-03 1900-07-01               2
-##  9 Anne      7/27/1900  1900-07-27 1900-07-01               2
-## 10 Brad      2/14/1901  1901-02-14 1901-02-01               0
+##  2 Aisha     6/15/1900  1900-06-15 1900-06-01               2
+##  3 Aisha     11/24/1902 1902-11-24 1902-11-01              31
+##  4 Allison   2/19/1900  1900-02-19 1900-02-01               0
+##  5 Allison   6/19/1900  1900-06-19 1900-06-01               4
+##  6 Allison   12/15/1900 1900-12-15 1900-12-01              10
+##  7 Anne      4/8/1900   1900-04-08 1900-04-01               0
+##  8 Anne      7/28/1900  1900-07-28 1900-07-01               3
+##  9 Anne      9/18/1900  1900-09-18 1900-09-01               5
+## 10 Brad      4/25/1900  1900-04-25 1900-04-01               0
 ## # … with 98 more rows</code></pre>
 <p>If we prefer the first month to be labeled <code>1</code> rather than <code>0</code>, we just replace
 <code>%/% months(1)</code> with <code>%/% months(1) + 1</code>.</p>
 </div>
 </div>
-<div id="sec-create-treatment" class="section level2 hasAnchor" number="6.8">
+<div id="sec-create-treatment" class="section level2 hasAnchor" number="7.8">
 <h2><span class="header-section-number">A.8</span> Create a completely randomised indicator<a href="r-basics.html#sec-create-treatment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This uses <code>mutate()</code>, along with the <code>sample()</code> function to create a random
 vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it to <code>df_resume</code>:</p>
@@ -649,14 +656,14 @@ vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it 
 <pre><code>## # A tibble: 6 × 8
 ##   firstname sex    race   call  wave id_var dob_date   my_new_treatment_assg
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;date&gt;     &lt;chr&gt;                
-## 1 Allison   female white     0     3      1 1927-02-13 Treatment            
-## 2 Kristen   female white     0     3      2 1963-09-18 Control              
-## 3 Lakisha   female black     0     3      3 1992-05-12 Treatment            
-## 4 Latonya   female black     0     3      4 1934-06-18 Treatment            
-## 5 Carrie    female white     0     3      5 1902-07-06 Control              
-## 6 Jay       male   white     0     3      6 1982-06-23 Treatment</code></pre>
+## 1 Allison   female white     0     3      1 1963-06-04 Treatment            
+## 2 Kristen   female white     0     3      2 1930-09-16 Control              
+## 3 Lakisha   female black     0     3      3 1929-12-17 Treatment            
+## 4 Latonya   female black     0     3      4 1947-03-19 Treatment            
+## 5 Carrie    female white     0     3      5 1933-08-10 Control              
+## 6 Jay       male   white     0     3      6 1991-02-12 Treatment</code></pre>
 </div>
-<div id="plot-a-variable" class="section level2 hasAnchor" number="6.9">
+<div id="plot-a-variable" class="section level2 hasAnchor" number="7.9">
 <h2><span class="header-section-number">A.9</span> Plot a variable<a href="r-basics.html#plot-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use <code>ggplot()</code> to plot the distribution of calls back that these résumés
 receive. Calls are fairly rare.</p>
@@ -670,9 +677,9 @@ receive. Calls are fairly rare.</p>
 <p>Since there are exactly the same number of résumés with each race, these count
 distributions are comparable.</p>
 </div>
-<div id="calculate-a-data-summary" class="section level2 hasAnchor" number="6.10">
+<div id="calculate-a-data-summary" class="section level2 hasAnchor" number="7.10">
 <h2><span class="header-section-number">A.10</span> Calculate a data summary<a href="r-basics.html#calculate-a-data-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="proportions-for-a-categorical-variable" class="section level3 hasAnchor" number="6.10.1">
+<div id="proportions-for-a-categorical-variable" class="section level3 hasAnchor" number="7.10.1">
 <h3><span class="header-section-number">A.10.1</span> Proportions for a categorical variable<a href="r-basics.html#proportions-for-a-categorical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="r-basics.html#cb68-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">count</span>(firstname) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 36 × 3
@@ -690,7 +697,7 @@ distributions are comparable.</p>
 ## 10 Emily       227    0.0466 
 ## # … with 26 more rows</code></pre>
 </div>
-<div id="proportions-for-binary-variables" class="section level3 hasAnchor" number="6.10.2">
+<div id="proportions-for-binary-variables" class="section level3 hasAnchor" number="7.10.2">
 <h3><span class="header-section-number">A.10.2</span> Proportions for binary variables<a href="r-basics.html#proportions-for-binary-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="r-basics.html#cb70-1" aria-hidden="true" tabindex="-1"></a>summ_resume <span class="ot">&lt;-</span> df_resume <span class="sc">%&gt;%</span> </span>
 <span id="cb70-2"><a href="r-basics.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
@@ -706,7 +713,7 @@ distributions are comparable.</p>
 <p>The call-back rates differ by about 0.032; the proportion female, which will be balanced by the randomization on average, only differs by about 0.011.</p>
 </div>
 </div>
-<div id="merge-join-dataframes" class="section level2 hasAnchor" number="6.11">
+<div id="merge-join-dataframes" class="section level2 hasAnchor" number="7.11">
 <h2><span class="header-section-number">A.11</span> Merge (join) dataframes<a href="r-basics.html#merge-join-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For a fuller treatment of merges (“joins”), see <a href="https://r4ds.had.co.nz/relational-data.html#relational-data">here</a> in <span class="citation">Wickham and Grolemund (<a href="#ref-wicgro16" role="doc-biblioref">2016</a>)</span>.</p>
 <p>The four main mutating join commands are <code>left_join()</code>, <code>right_join()</code>, <code>inner_join()</code>, and <code>full_join()</code>.</p>

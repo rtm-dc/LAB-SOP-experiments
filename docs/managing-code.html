@@ -214,7 +214,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="analysis.html"><a href="analysis.html#posterior-probabilities"><i class="fa fa-check"></i><b>4.11</b> Posterior Probabilities</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>5</b> Publication</a></li>
+<li class="chapter" data-level="5" data-path="observational-studies.html"><a href="observational-studies.html"><i class="fa fa-check"></i><b>5</b> Observational Studies</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="observational-studies.html"><a href="observational-studies.html#matching"><i class="fa fa-check"></i><b>5.1</b> Matching</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>A</b> R Basics</a>
 <ul>
@@ -284,9 +291,9 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="managing-code" class="section level1 hasAnchor" number="7">
+<div id="managing-code" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">B</span> Managing Code<a href="managing-code.html#managing-code" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="best-practices" class="section level2 hasAnchor" number="7.1">
+<div id="best-practices" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">B.1</span> Best Practices<a href="managing-code.html#best-practices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Use “R projects” and the <code>here</code> package to manage the working directory and
@@ -328,11 +335,11 @@ for examples in R.</p></li>
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</li>
 </ol>
 </div>
-<div id="style" class="section level2 hasAnchor" number="7.2">
+<div id="style" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">B.2</span> Style<a href="managing-code.html#style" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we write in R, we tend to prefer the <code>tidyverse</code> style. See <a href="https://style.tidyverse.org" class="uri">https://style.tidyverse.org</a> for the full treatment with many examples. Of course, there is a package, <code>styler</code>, with functions that will style your code for you. See <a href="https://r-pkgs.org/r.html?q=style#code-style">here</a> for more detail.</p>
 </div>
-<div id="sec-projects" class="section level2 hasAnchor" number="7.3">
+<div id="sec-projects" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">B.3</span> Projects<a href="managing-code.html#sec-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create a <code>.Rproj</code> file in your project’s top-level directory, making your
 project an “R project”. In RStudio, File - New Project - Existing Directory (or
@@ -340,7 +347,7 @@ New Directory, if no project folder exists).</p>
 <p>Then, to start work, always open the <code>.Rproj</code> file. This ensures that you have a fresh
 instance of R and RStudio, and the working directory is always the same. The working directory is the top-level directory (that is, the directory within which the <code>.Rproj</code> file lives).</p>
 </div>
-<div id="sec-working-dir" class="section level2 hasAnchor" number="7.4">
+<div id="sec-working-dir" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">B.4</span> Working Directory and Relative Paths<a href="managing-code.html#sec-working-dir" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The “working directory” is the directory where R will look for data, code files,
 etc. and save your output objects (a new <code>.csv</code> or a plot <code>.pdf</code>) by default.</p>
@@ -352,17 +359,17 @@ platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="managing-code.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
-<div id="see-the-working-directory" class="section level3 hasAnchor" number="7.4.1">
+<div id="see-the-working-directory" class="section level3 hasAnchor" number="8.4.1">
 <h3><span class="header-section-number">B.4.1</span> See the working directory<a href="managing-code.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
 </div>
-<div id="see-the-project-directory" class="section level3 hasAnchor" number="7.4.2">
+<div id="see-the-project-directory" class="section level3 hasAnchor" number="8.4.2">
 <h3><span class="header-section-number">B.4.2</span> See the project directory<a href="managing-code.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code.html#sec-projects">B.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="managing-code.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
-<div id="create-a-path-with-here" class="section level3 hasAnchor" number="7.4.3">
+<div id="create-a-path-with-here" class="section level3 hasAnchor" number="8.4.3">
 <h3><span class="header-section-number">B.4.3</span> Create a path with <code>here()</code><a href="managing-code.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
@@ -392,7 +399,7 @@ read in the object:</p>
 ## 6 0.6943772 0 2.8216648</code></pre>
 </div>
 </div>
-<div id="what-packages-are-installed" class="section level2 hasAnchor" number="7.5">
+<div id="what-packages-are-installed" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">B.5</span> What Packages are Installed?<a href="managing-code.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="managing-code.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>

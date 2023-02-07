@@ -26,7 +26,10 @@ multiple-comparisons
 holm-bonferroni-adjustment
 westfall-young-adjustment
 posterior-probabilities
+observational-studies
+matching
 publication
+authorship
 r-basics
 get-r-and-rstudio
 read-in-data-files
