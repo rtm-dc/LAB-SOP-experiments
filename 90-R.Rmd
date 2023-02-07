@@ -6,7 +6,7 @@
 
 First download and install R from https://cran.r-project.org.
 
-Then, download and install RStudio (Desktop) from https://www.rstudio.com.
+Then, download and install RStudio (Desktop) from https://posit.co/products/open-source/rstudio/.
 
 (You should have permission for both of these. If not, you may need to contact
 EOM IT.)
@@ -35,7 +35,7 @@ Data from the web (from the résumé audit experiment from @bermul04):
 df_resume <- read_csv("https://raw.githubusercontent.com/kosukeimai/qss/master/CAUSALITY/resume.csv")
 ```
 
-Then we can examine the dimensions of the new object named `resume`:
+Then we can examine the dimensions of the new object named `df_resume`:
 
 ```{r}
 dim(df_resume)
@@ -241,7 +241,7 @@ df_resume %>% mutate(
 
 ## Treat dates as dates
 
-When we have dates stored as character strings, we transform them to dates.
+When we have dates stored as character strings, we transform them to dates. First, simulate some date data:
 
 ```{r}
 # Simulate date data:
@@ -289,7 +289,7 @@ To make an age variable from the year component,
 
 ```{r}
 df_resume %>% mutate(
-  age = 2022 - year(dob_date)
+  age = 2023 - year(dob_date)
 )
 ```
 

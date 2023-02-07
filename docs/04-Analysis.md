@@ -96,7 +96,7 @@ $$y_i = \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \ba
 To implement this, we can use `lm_lin()` from the `estimatr` package^[In the
 original paper, @lin2013 describes "the OLS regression of $Y_i$ on $T_i$, $z_i$,
 and $T_i(z_i − \bar{z})$", where the covariates are only centered in the
-interaction. The implementation in @blacoocop22 and Lin's supplementary materials, however, centers the covariates
+interaction. The implementation in @blacoocop22 and Lin's supplementary materials, however, center the covariates
 in their linear terms, using $T_i$, $z_i-\bar{z}$, and $T_i(z_i − \bar{z})$. We
 show elsewhere that it doesn't matter which of these models we estimate.]:
 

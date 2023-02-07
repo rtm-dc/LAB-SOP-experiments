@@ -15,7 +15,7 @@ code_folding: show
 
 # Preface {.unnumbered}
 
-This provides statistical guidance for randomized experiments conducted at The Lab \@ DC.
+This provides statistical guidance for randomized experiments, observational causal inference, and data analysis conducted at The Lab \@ DC.
 
 The appendices provide examples of some fundamental operations in R and some standards for managing code and workflow. These examples intend to serve as templates that you can copy, alter, and use in your project work.
 
