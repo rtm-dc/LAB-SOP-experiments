@@ -27,6 +27,10 @@ Download and install Python from
 
 https://www.python.org/downloads/
 
+* You should tick "add python to PATH"
+* Depending on the configuration of your machine, you may need to install _not_ as an admin
+
+
 ### Configure Python
 
 Via, e.g., 
