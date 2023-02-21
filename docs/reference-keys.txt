@@ -53,6 +53,16 @@ calculate-a-data-summary
 proportions-for-a-categorical-variable
 proportions-for-binary-variables
 merge-join-dataframes
+python-basics-using-rrstudio
+installing-tools-r-packages-and-python
+get-rtools
+get-tinytex
+get-python
+configure-python
+get-reticulate
+using-python
+from-a-python-prompt
+from-inside-a-quarto-document
 managing-code
 best-practices
 style

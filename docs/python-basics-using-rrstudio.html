@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Getting Started | SOPs for The Lab @ DC</title>
+  <title>B Python Basics (using R/RStudio) | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Getting Started | SOPs for The Lab @ DC" />
+  <meta property="og:title" content="B Python Basics (using R/RStudio) | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
   <meta name="github-repo" content="rtm-dc/LAB-SOP-experiments" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Getting Started | SOPs for The Lab @ DC" />
+  <meta name="twitter:title" content="B Python Basics (using R/RStudio) | SOPs for The Lab @ DC" />
   
   <meta name="twitter:description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="design.html"/>
+<link rel="prev" href="r-basics.html"/>
+<link rel="next" href="managing-code.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -307,25 +307,60 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="getting-started" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Getting Started<a href="getting-started.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Before the design of the experiment</p>
-<ul class="task-list">
-<li><input type="checkbox" disabled="" />Copy the Asana project template for your project</li>
-<li><input type="checkbox" disabled="" />Set up GitHub repository for the study</li>
-<li><input type="checkbox" disabled="" />Set up Google Drive folders for the study</li>
-<li><input type="checkbox" disabled="" />See the Asana project template for more</li>
-</ul>
-<p>The pre-analysis plan template lives at</p>
+<div id="python-basics-using-rrstudio" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">B</span> Python Basics (using R/RStudio)<a href="python-basics-using-rrstudio.html#python-basics-using-rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="installing-tools-r-packages-and-python" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">B.1</span> Installing tools, R packages, and Python<a href="python-basics-using-rrstudio.html#installing-tools-r-packages-and-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Posit provides instructions for using Python from RStudio (including <code>.py</code> files, and Python and R in the same document) at</p>
+<p><a href="https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE" class="uri">https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE</a></p>
+<div id="get-rtools" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">B.1.1</span> Get Rtools<a href="python-basics-using-rrstudio.html#get-rtools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You will need some developer tools. If you are on Windows, download the installer and click the <code>.exe</code> to install the latest version of Rtools from</p>
+<p><a href="https://cran.rstudio.com/bin/windows/Rtools/rtools43/rtools.html" class="uri">https://cran.rstudio.com/bin/windows/Rtools/rtools43/rtools.html</a></p>
+</div>
+<div id="get-tinytex" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">B.1.2</span> Get <code>tinytex</code><a href="python-basics-using-rrstudio.html#get-tinytex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Install the <code>tinytex</code> package (and <code>tinytex</code> itself) at the R Console via</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="python-basics-using-rrstudio.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tinytex&quot;</span>)</span>
+<span id="cb73-2"><a href="python-basics-using-rrstudio.html#cb73-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+</div>
+<div id="get-python" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">B.1.3</span> Get Python<a href="python-basics-using-rrstudio.html#get-python" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Download and install Python from</p>
+<p><a href="https://www.python.org/downloads/" class="uri">https://www.python.org/downloads/</a></p>
+</div>
+<div id="configure-python" class="section level3 hasAnchor" number="8.1.4">
+<h3><span class="header-section-number">B.1.4</span> Configure Python<a href="python-basics-using-rrstudio.html#configure-python" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Via, e.g.,</p>
+<pre class="shell"><code>./configure --enable-shared
+make
+make install</code></pre>
+</div>
+<div id="get-reticulate" class="section level3 hasAnchor" number="8.1.5">
+<h3><span class="header-section-number">B.1.5</span> Get <code>reticulate</code><a href="python-basics-using-rrstudio.html#get-reticulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Install the <code>reticulate</code> package at the R Console via</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="python-basics-using-rrstudio.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reticulate&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="using-python" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">B.2</span> Using Python<a href="python-basics-using-rrstudio.html#using-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="from-a-python-prompt" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">B.2.1</span> From a Python prompt<a href="python-basics-using-rrstudio.html#from-a-python-prompt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="python-basics-using-rrstudio.html#cb76-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span></code></pre></div>
+</div>
+<div id="from-inside-a-quarto-document" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">B.2.2</span> From inside a Quarto document<a href="python-basics-using-rrstudio.html#from-inside-a-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="managing-code.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
