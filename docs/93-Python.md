@@ -33,7 +33,7 @@ https://www.python.org/downloads/
 Via, e.g., 
 
 
-```shell
+```zsh
 ./configure --enable-shared
 make
 make install
