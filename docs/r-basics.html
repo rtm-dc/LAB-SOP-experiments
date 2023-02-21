@@ -538,9 +538,9 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 3 × 8
 ##   firstname sex    race   call  wave id_var isFemale dob       
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     
-## 1 Allison   female white     0     3      1 TRUE     12/18/1903
-## 2 Kristen   female white     0     3      2 TRUE     3/3/1999  
-## 3 Lakisha   female black     0     3      3 TRUE     3/10/1917</code></pre>
+## 1 Allison   female white     0     3      1 TRUE     3/5/1933  
+## 2 Kristen   female white     0     3      2 TRUE     4/8/1970  
+## 3 Lakisha   female black     0     3      3 TRUE     10/18/1953</code></pre>
 <p>The tidyverse includes the <code>lubridate</code> package. If you know the format of the character strings, there are many shortcut parsers like <code>mdy()</code>. Below, we recode character dates to be of date type:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="r-basics.html#cb53-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
 <span id="cb53-2"><a href="r-basics.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">mdy</span>(dob)</span>
@@ -548,16 +548,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
-##  1 Allison   female white     0     3      1 TRUE     12/18/1903 1903-12-18
-##  2 Kristen   female white     0     3      2 TRUE     3/3/1999   1999-03-03
-##  3 Lakisha   female black     0     3      3 TRUE     3/10/1917  1917-03-10
-##  4 Latonya   female black     0     3      4 TRUE     5/20/1995  1995-05-20
-##  5 Carrie    female white     0     3      5 TRUE     3/20/1917  1917-03-20
-##  6 Jay       male   white     0     3      6 FALSE    12/24/1985 1985-12-24
-##  7 Jill      female white     0     3      7 TRUE     4/28/1960  1960-04-28
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1943   1943-02-02
-##  9 Latonya   female black     0     3      9 TRUE     4/21/1968  1968-04-21
-## 10 Tyrone    male   black     0     3     10 FALSE    8/11/1923  1923-08-11
+##  1 Allison   female white     0     3      1 TRUE     3/5/1933   1933-03-05
+##  2 Kristen   female white     0     3      2 TRUE     4/8/1970   1970-04-08
+##  3 Lakisha   female black     0     3      3 TRUE     10/18/1953 1953-10-18
+##  4 Latonya   female black     0     3      4 TRUE     3/15/1971  1971-03-15
+##  5 Carrie    female white     0     3      5 TRUE     2/26/1992  1992-02-26
+##  6 Jay       male   white     0     3      6 FALSE    1/18/1923  1923-01-18
+##  7 Jill      female white     0     3      7 TRUE     3/20/1908  1908-03-20
+##  8 Kenya     female black     0     3      8 TRUE     6/7/1926   1926-06-07
+##  9 Latonya   female black     0     3      9 TRUE     8/8/1979   1979-08-08
+## 10 Tyrone    male   black     0     3     10 FALSE    8/26/1908  1908-08-26
 ## # … with 4,860 more rows</code></pre>
 <p>If we aren’t sure of the format, or there are several, we use <code>parse_date_time()</code> and specify several “orders” of date format. <code>parse()</code> functions do their best to use the information in “orders”. Below, <code>"dmy"</code> alone would recode only the ambiguous dates, assuming they were in day-month-year order. Adding <code>"%m/%d/%Y"</code> instructs <code>parse()</code> to look for <code>month/day/year</code> formats. Finding many that are unambiguously that format, it assumes that format for the new variable.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="r-basics.html#cb55-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -569,16 +569,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
-##  1 Allison   female white     0     3      1 TRUE     12/18/1903 1903-12-18
-##  2 Kristen   female white     0     3      2 TRUE     3/3/1999   1999-03-03
-##  3 Lakisha   female black     0     3      3 TRUE     3/10/1917  1917-03-10
-##  4 Latonya   female black     0     3      4 TRUE     5/20/1995  1995-05-20
-##  5 Carrie    female white     0     3      5 TRUE     3/20/1917  1917-03-20
-##  6 Jay       male   white     0     3      6 FALSE    12/24/1985 1985-12-24
-##  7 Jill      female white     0     3      7 TRUE     4/28/1960  1960-04-28
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1943   1943-02-02
-##  9 Latonya   female black     0     3      9 TRUE     4/21/1968  1968-04-21
-## 10 Tyrone    male   black     0     3     10 FALSE    8/11/1923  1923-08-11
+##  1 Allison   female white     0     3      1 TRUE     3/5/1933   1933-03-05
+##  2 Kristen   female white     0     3      2 TRUE     4/8/1970   1970-04-08
+##  3 Lakisha   female black     0     3      3 TRUE     10/18/1953 1953-10-18
+##  4 Latonya   female black     0     3      4 TRUE     3/15/1971  1971-03-15
+##  5 Carrie    female white     0     3      5 TRUE     2/26/1992  1992-02-26
+##  6 Jay       male   white     0     3      6 FALSE    1/18/1923  1923-01-18
+##  7 Jill      female white     0     3      7 TRUE     3/20/1908  1908-03-20
+##  8 Kenya     female black     0     3      8 TRUE     6/7/1926   1926-06-07
+##  9 Latonya   female black     0     3      9 TRUE     8/8/1979   1979-08-08
+## 10 Tyrone    male   black     0     3     10 FALSE    8/26/1908  1908-08-26
 ## # … with 4,860 more rows</code></pre>
 <div id="make-an-age-variable" class="section level3 hasAnchor" number="7.7.1">
 <h3><span class="header-section-number">A.7.1</span> Make an age variable<a href="r-basics.html#make-an-age-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -589,16 +589,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
-##  1 Allison   female white     0     3      1 TRUE     12/18/19… 1903-12-18   120
-##  2 Kristen   female white     0     3      2 TRUE     3/3/1999  1999-03-03    24
-##  3 Lakisha   female black     0     3      3 TRUE     3/10/1917 1917-03-10   106
-##  4 Latonya   female black     0     3      4 TRUE     5/20/1995 1995-05-20    28
-##  5 Carrie    female white     0     3      5 TRUE     3/20/1917 1917-03-20   106
-##  6 Jay       male   white     0     3      6 FALSE    12/24/19… 1985-12-24    38
-##  7 Jill      female white     0     3      7 TRUE     4/28/1960 1960-04-28    63
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1943  1943-02-02    80
-##  9 Latonya   female black     0     3      9 TRUE     4/21/1968 1968-04-21    55
-## 10 Tyrone    male   black     0     3     10 FALSE    8/11/1923 1923-08-11   100
+##  1 Allison   female white     0     3      1 TRUE     3/5/1933  1933-03-05    90
+##  2 Kristen   female white     0     3      2 TRUE     4/8/1970  1970-04-08    53
+##  3 Lakisha   female black     0     3      3 TRUE     10/18/19… 1953-10-18    70
+##  4 Latonya   female black     0     3      4 TRUE     3/15/1971 1971-03-15    52
+##  5 Carrie    female white     0     3      5 TRUE     2/26/1992 1992-02-26    31
+##  6 Jay       male   white     0     3      6 FALSE    1/18/1923 1923-01-18   100
+##  7 Jill      female white     0     3      7 TRUE     3/20/1908 1908-03-20   115
+##  8 Kenya     female black     0     3      8 TRUE     6/7/1926  1926-06-07    97
+##  9 Latonya   female black     0     3      9 TRUE     8/8/1979  1979-08-08    44
+## 10 Tyrone    male   black     0     3     10 FALSE    8/26/1908 1908-08-26   115
 ## # … with 4,860 more rows</code></pre>
 <p>For more precision, the participants’ age today,</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="r-basics.html#cb59-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
@@ -609,16 +609,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
-##  1 Allison   female white     0     3      1 TRUE     12/18/19… 1903-12-18 119. 
-##  2 Kristen   female white     0     3      2 TRUE     3/3/1999  1999-03-03  24.0
-##  3 Lakisha   female black     0     3      3 TRUE     3/10/1917 1917-03-10 106. 
-##  4 Latonya   female black     0     3      4 TRUE     5/20/1995 1995-05-20  27.8
-##  5 Carrie    female white     0     3      5 TRUE     3/20/1917 1917-03-20 106. 
-##  6 Jay       male   white     0     3      6 FALSE    12/24/19… 1985-12-24  37.2
-##  7 Jill      female white     0     3      7 TRUE     4/28/1960 1960-04-28  62.8
-##  8 Kenya     female black     0     3      8 TRUE     2/2/1943  1943-02-02  80.1
-##  9 Latonya   female black     0     3      9 TRUE     4/21/1968 1968-04-21  54.8
-## 10 Tyrone    male   black     0     3     10 FALSE    8/11/1923 1923-08-11  99.5
+##  1 Allison   female white     0     3      1 TRUE     3/5/1933  1933-03-05  90.0
+##  2 Kristen   female white     0     3      2 TRUE     4/8/1970  1970-04-08  52.9
+##  3 Lakisha   female black     0     3      3 TRUE     10/18/19… 1953-10-18  69.3
+##  4 Latonya   female black     0     3      4 TRUE     3/15/1971 1971-03-15  51.9
+##  5 Carrie    female white     0     3      5 TRUE     2/26/1992 1992-02-26  31.0
+##  6 Jay       male   white     0     3      6 FALSE    1/18/1923 1923-01-18 100. 
+##  7 Jill      female white     0     3      7 TRUE     3/20/1908 1908-03-20 115. 
+##  8 Kenya     female black     0     3      8 TRUE     6/7/1926  1926-06-07  96.7
+##  9 Latonya   female black     0     3      9 TRUE     8/8/1979  1979-08-08  43.5
+## 10 Tyrone    male   black     0     3     10 FALSE    8/26/1908 1908-08-26 114. 
 ## # … with 4,860 more rows</code></pre>
 </div>
 <div id="make-a-month-count-variable" class="section level3 hasAnchor" number="7.7.2">
@@ -643,16 +643,16 @@ for that participant that we care about. We want to produce a variable that is 0
 ## # Groups:   firstname [36]
 ##    firstname dob        dob_date   dob_month  dob_month_count
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;               &lt;dbl&gt;
-##  1 Aisha     1/13/1900  1900-01-13 1900-01-01               0
-##  2 Aisha     11/18/1900 1900-11-18 1900-11-01              10
-##  3 Aisha     12/12/1900 1900-12-12 1900-12-01              11
-##  4 Allison   8/14/1900  1900-08-14 1900-08-01               0
-##  5 Allison   10/8/1900  1900-10-08 1900-10-01               2
-##  6 Allison   4/12/1901  1901-04-12 1901-04-01               8
-##  7 Anne      8/19/1900  1900-08-19 1900-08-01               0
-##  8 Anne      9/18/1900  1900-09-18 1900-09-01               1
-##  9 Anne      12/4/1900  1900-12-04 1900-12-01               4
-## 10 Brad      6/23/1902  1902-06-23 1902-06-01               0
+##  1 Aisha     2/18/1900  1900-02-18 1900-02-01               0
+##  2 Aisha     8/15/1900  1900-08-15 1900-08-01               6
+##  3 Aisha     3/22/1901  1901-03-22 1901-03-01              13
+##  4 Allison   1/25/1900  1900-01-25 1900-01-01               0
+##  5 Allison   2/18/1902  1902-02-18 1902-02-01              25
+##  6 Allison   12/17/1903 1903-12-17 1903-12-01              47
+##  7 Anne      5/27/1900  1900-05-27 1900-05-01               0
+##  8 Anne      5/19/1901  1901-05-19 1901-05-01              12
+##  9 Anne      7/21/1901  1901-07-21 1901-07-01              14
+## 10 Brad      3/6/1907   1907-03-06 1907-03-01               0
 ## # … with 98 more rows</code></pre>
 <p>If we prefer the first month to be labeled <code>1</code> rather than <code>0</code>, we just replace
 <code>%/% months(1)</code> with <code>%/% months(1) + 1</code>.</p>
@@ -672,12 +672,12 @@ vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it 
 <pre><code>## # A tibble: 6 × 8
 ##   firstname sex    race   call  wave id_var dob_date   my_new_treatment_assg
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;date&gt;     &lt;chr&gt;                
-## 1 Allison   female white     0     3      1 1903-12-18 Treatment            
-## 2 Kristen   female white     0     3      2 1999-03-03 Control              
-## 3 Lakisha   female black     0     3      3 1917-03-10 Treatment            
-## 4 Latonya   female black     0     3      4 1995-05-20 Treatment            
-## 5 Carrie    female white     0     3      5 1917-03-20 Control              
-## 6 Jay       male   white     0     3      6 1985-12-24 Treatment</code></pre>
+## 1 Allison   female white     0     3      1 1933-03-05 Treatment            
+## 2 Kristen   female white     0     3      2 1970-04-08 Control              
+## 3 Lakisha   female black     0     3      3 1953-10-18 Treatment            
+## 4 Latonya   female black     0     3      4 1971-03-15 Treatment            
+## 5 Carrie    female white     0     3      5 1992-02-26 Control              
+## 6 Jay       male   white     0     3      6 1923-01-18 Treatment</code></pre>
 </div>
 <div id="plot-a-variable" class="section level2 hasAnchor" number="7.9">
 <h2><span class="header-section-number">A.9</span> Plot a variable<a href="r-basics.html#plot-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>

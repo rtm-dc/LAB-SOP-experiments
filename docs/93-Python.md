@@ -34,14 +34,9 @@ https://www.python.org/downloads/
 
 ### Configure Python
 
-Via, e.g., 
+From the RStudio menus, Tools -> Global Options -> Python -> Select -> (select one) -> OK.
 
-
-```zsh
-./configure --enable-shared
-make
-make install
-```
+Now restart RStudio.
 
 ### Get `reticulate`
 
