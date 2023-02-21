@@ -311,8 +311,9 @@ div.csl-indent {
 <h1><span class="header-section-number">B</span> Python Basics (using R/RStudio)<a href="python-basics-using-rrstudio.html#python-basics-using-rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="installing-tools-r-packages-and-python" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">B.1</span> Installing tools, R packages, and Python<a href="python-basics-using-rrstudio.html#installing-tools-r-packages-and-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Posit provides instructions for using Python from RStudio (including <code>.py</code> files, and Python and R in the same document) at</p>
+<p>For reference, Posit provides instructions for using Python from RStudio (including <code>.py</code> files, and Python and R in the same document) at</p>
 <p><a href="https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE" class="uri">https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE</a></p>
+<p>Follow the key steps below.</p>
 <div id="get-rtools" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">B.1.1</span> Get Rtools<a href="python-basics-using-rrstudio.html#get-rtools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You will need some developer tools. If you are on Windows, download the installer and click the <code>.exe</code> to install the latest version of Rtools from</p>
@@ -352,6 +353,9 @@ div.csl-indent {
 </div>
 <div id="from-inside-a-quarto-document" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">B.2.2</span> From inside a Quarto document<a href="python-basics-using-rrstudio.html#from-inside-a-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quarto documents can run both R and Python code.</p>
+<p>From the RStudio menus, File -&gt; New File -&gt; Quarto Document. Name and save the <code>.qmd</code> file.</p>
+<p>Then, edit one of the code chunks to run <code>python</code> instead of <code>r</code>. Knit the <code>.qmd</code> to (e.g.) <code>.html</code> and see the output. Your Quarto document has run both R and Python.</p>
 
 </div>
 </div>

@@ -2,9 +2,11 @@
 
 ## Installing tools, R packages, and Python
 
-Posit provides instructions for using Python from RStudio (including `.py` files, and Python and R in the same document) at
+For reference, Posit provides instructions for using Python from RStudio (including `.py` files, and Python and R in the same document) at
 
 https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE
+
+Follow the key steps below.
 
 ### Get Rtools
 
@@ -58,4 +60,9 @@ reticulate::repl_python()
 
 ### From inside a Quarto document
 
+Quarto documents can run both R and Python code.
+
+From the RStudio menus, File -> New File -> Quarto Document. Name and save the `.qmd` file. 
+
+Then, edit one of the code chunks to run `python` instead of `r`. Knit the `.qmd` to (e.g.) `.html` and see the output. Your Quarto document has run both R and Python. 
 
