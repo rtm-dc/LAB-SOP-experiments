@@ -168,7 +168,7 @@ this fact needs to be taken into account.
 
 ### Fixed Effects
 
-We note that treatment effect estimates from two-way fixed effect (TWFE) event-study regressions "can be severely biased", even with homogeneous treatment effects. See [here](https://bcallaway11.github.io/did/articles/TWFE.html) for an example.
+We note that treatment effect estimates from two-way fixed effect (TWFE) event-study regressions "[can be severely biased](https://bcallaway11.github.io/did/articles/TWFE.html)", even with homogeneous treatment effects.
 
 ## Randomization Inference {#sec-rand-inf}
 
