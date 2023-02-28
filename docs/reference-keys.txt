@@ -19,6 +19,7 @@ sec-lin
 sec-binary-outcomes
 clusters-weights-fixed-effects
 weights
+fixed-effects
 sec-rand-inf
 addressing-non-compliance
 missing-data
