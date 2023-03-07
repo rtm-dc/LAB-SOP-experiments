@@ -64,9 +64,11 @@ get-reticulate
 using-python
 from-a-python-prompt
 from-inside-a-quarto-document
-managing-code
+managing-code-and-scientific-communication
 best-practices
 style
+r
+equations
 sec-projects
 sec-working-dir
 see-the-working-directory

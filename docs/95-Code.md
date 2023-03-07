@@ -1,4 +1,4 @@
-# Managing Code
+# Managing Code and Scientific Communication
 
 ## Best Practices
 
@@ -53,7 +53,23 @@ comma, as in English (write `f(x, y)`, not `f(x,y)`).
 
 ## Style
 
+### R
+
 When we write in R, we tend to prefer the `tidyverse` style. See https://style.tidyverse.org for the full treatment with many examples. Of course, there is a package, `styler`, with functions that will style your code for you. See [here](https://r-pkgs.org/r.html?q=style#code-style) for more detail.
+
+### Equations
+
+When we use mathematical notation, we strive to make it as accurate and representative as possible. For example, we may write, "we will estimate the model below via least squares, where $\beta_1$ is our treatment effect estimate":
+
+$$y_i= \alpha + \beta_1 Z_i + \beta_2 X_i + \beta_{[3-20]} B_i^{[3-20]}+ \epsilon_i".$$
+
+Some stylistic notes embodied by this example:
+
+1. Quantities that vary by unit are indexed with $i$.
+2. For each unit $i$, for $j \in {3, ..., 20}$, each $B_i^j$ represents a different variable, perhaps one of 18 block indicators (though see [here](https://declaredesign.org/blog/biased-fixed-effects.html) before including such terms). Each $\beta_j$ represents the coefficient on one such variable. Each $B_i^j$ should be accompanied by a $\beta_j$. Another way to represent this would be to use a bold vector $\beta$ and a bold $B$. For another way that groups by variable type, see equation 4.1 on page 9 [here](http://www.stat.columbia.edu/~gelman/research/published/improving_mrp.pdf).  
+3. For each variable, there should be a coefficient if we are going to estimate one. 
+3. If there is only one coefficient represented by a particular Greek letter, it should not be numbered. See $\alpha$ above. 
+4. It can be difficult to write good notation in Google Drive. (For example, I don’t see a way to make a bold $\beta$.) One suggestion is to write the equation in \LaTeX and export the equation or an image of the equation into your document. (You can do this via Mac OS Pages, e.g.)
 
 
 ## Projects {#sec-projects}
@@ -195,54 +211,56 @@ lapply(.libPaths(), dir)
 ##  [17] "bslib"          "cachem"         "callr"          "car"           
 ##  [21] "carData"        "cellranger"     "checkmate"      "class"         
 ##  [25] "cli"            "clipr"          "cluster"        "codetools"     
-##  [29] "colorspace"     "commonmark"     "compiler"       "cpp11"         
-##  [33] "crayon"         "credentials"    "crosstalk"      "curl"          
-##  [37] "data.table"     "datasets"       "DBI"            "dbplyr"        
-##  [41] "desc"           "devtools"       "diffobj"        "digest"        
-##  [45] "directlabels"   "downlit"        "dplyr"          "DT"            
-##  [49] "dtplyr"         "ellipsis"       "estimatr"       "evaluate"      
-##  [53] "fabricatr"      "fansi"          "farver"         "fastmap"       
-##  [57] "fontawesome"    "forcats"        "foreach"        "foreign"       
-##  [61] "Formula"        "formula.tools"  "fs"             "gargle"        
-##  [65] "generics"       "gert"           "ggplot2"        "gh"            
-##  [69] "gitcreds"       "glue"           "googledrive"    "googlesheets4" 
-##  [73] "graphics"       "grDevices"      "grid"           "gridExtra"     
-##  [77] "gtable"         "haven"          "here"           "highr"         
-##  [81] "hms"            "htmltools"      "htmlwidgets"    "httpuv"        
-##  [85] "httr"           "ids"            "ini"            "isoband"       
-##  [89] "iterators"      "janitor"        "jquerylib"      "jsonlite"      
-##  [93] "KernSmooth"     "knitr"          "labeling"       "later"         
-##  [97] "lattice"        "lazyeval"       "lifecycle"      "lme4"          
-## [101] "lmtest"         "lubridate"      "magrittr"       "markdown"      
-## [105] "MASS"           "Matrix"         "MatrixModels"   "memoise"       
-## [109] "methods"        "metR"           "mgcv"           "mime"          
-## [113] "miniUI"         "minqa"          "modelr"         "multitestr"    
-## [117] "munsell"        "nlme"           "nloptr"         "nnet"          
-## [121] "numDeriv"       "openssl"        "openxlsx"       "operator.tools"
-## [125] "parallel"       "pbkrtest"       "pillar"         "pkgbuild"      
-## [129] "pkgconfig"      "pkgdown"        "pkgload"        "plyr"          
-## [133] "png"            "praise"         "prettyunits"    "processx"      
-## [137] "profvis"        "progress"       "promises"       "ps"            
-## [141] "purrr"          "quadprog"       "quantreg"       "R6"            
-## [145] "ragg"           "randomizr"      "rappdirs"       "rcmdcheck"     
-## [149] "RColorBrewer"   "Rcpp"           "RcppEigen"      "RcppTOML"      
-## [153] "readr"          "readxl"         "rematch"        "rematch2"      
-## [157] "remotes"        "renv"           "reprex"         "reticulate"    
-## [161] "rio"            "rJava"          "rlang"          "rmarkdown"     
-## [165] "roxygen2"       "rpart"          "rprojroot"      "rstudioapi"    
-## [169] "rversions"      "rvest"          "sandwich"       "sass"          
-## [173] "scales"         "selectr"        "sessioninfo"    "shiny"         
-## [177] "snakecase"      "sourcetools"    "sp"             "SparseM"       
-## [181] "spatial"        "splines"        "stats"          "stats4"        
-## [185] "stringi"        "stringr"        "survival"       "sys"           
-## [189] "systemfonts"    "tcltk"          "testthat"       "textshaping"   
-## [193] "tibble"         "tidyr"          "tidyselect"     "tidyverse"     
-## [197] "timechange"     "tinytex"        "tools"          "translations"  
-## [201] "tzdb"           "urlchecker"     "usethis"        "utf8"          
-## [205] "utils"          "uuid"           "vctrs"          "viridisLite"   
-## [209] "vroom"          "waldo"          "whisker"        "withr"         
-## [213] "xfun"           "xlsxjars"       "xml2"           "xopen"         
-## [217] "xtable"         "yaml"           "zip"            "zoo"
+##  [29] "colorspace"     "commonmark"     "compiler"       "config"        
+##  [33] "cpp11"          "crayon"         "credentials"    "crosstalk"     
+##  [37] "curl"           "data.table"     "datasets"       "DBI"           
+##  [41] "dbplyr"         "desc"           "devtools"       "diffobj"       
+##  [45] "digest"         "directlabels"   "downlit"        "dplyr"         
+##  [49] "DT"             "dtplyr"         "ellipsis"       "estimatr"      
+##  [53] "evaluate"       "fabricatr"      "fansi"          "farver"        
+##  [57] "fastmap"        "fontawesome"    "forcats"        "foreach"       
+##  [61] "foreign"        "forge"          "Formula"        "formula.tools" 
+##  [65] "fs"             "gargle"         "generics"       "gert"          
+##  [69] "ggplot2"        "gh"             "gitcreds"       "globals"       
+##  [73] "glue"           "googledrive"    "googlesheets4"  "graphics"      
+##  [77] "grDevices"      "grid"           "gridExtra"      "gtable"        
+##  [81] "haven"          "here"           "highr"          "hms"           
+##  [85] "htmltools"      "htmlwidgets"    "httpuv"         "httr"          
+##  [89] "ids"            "ini"            "isoband"        "iterators"     
+##  [93] "janitor"        "jquerylib"      "jsonlite"       "KernSmooth"    
+##  [97] "knitr"          "labeling"       "later"          "lattice"       
+## [101] "lazyeval"       "lifecycle"      "lme4"           "lmtest"        
+## [105] "lubridate"      "magrittr"       "markdown"       "MASS"          
+## [109] "Matrix"         "MatrixModels"   "memoise"        "methods"       
+## [113] "metR"           "mgcv"           "mime"           "miniUI"        
+## [117] "minqa"          "modelr"         "multitestr"     "munsell"       
+## [121] "nlme"           "nloptr"         "nnet"           "numDeriv"      
+## [125] "odbc"           "openssl"        "openxlsx"       "operator.tools"
+## [129] "parallel"       "pbkrtest"       "pillar"         "pkgbuild"      
+## [133] "pkgconfig"      "pkgdown"        "pkgload"        "plyr"          
+## [137] "png"            "praise"         "prettyunits"    "processx"      
+## [141] "profvis"        "progress"       "promises"       "ps"            
+## [145] "purrr"          "quadprog"       "quantreg"       "r2d3"          
+## [149] "R6"             "ragg"           "randomizr"      "rappdirs"      
+## [153] "rcmdcheck"      "RColorBrewer"   "Rcpp"           "RcppEigen"     
+## [157] "RcppTOML"       "readr"          "readxl"         "rematch"       
+## [161] "rematch2"       "remotes"        "renv"           "reprex"        
+## [165] "reticulate"     "rio"            "rJava"          "rlang"         
+## [169] "rmarkdown"      "roxygen2"       "rpart"          "rprojroot"     
+## [173] "rstudioapi"     "rversions"      "rvest"          "sandwich"      
+## [177] "sass"           "scales"         "selectr"        "sessioninfo"   
+## [181] "shiny"          "snakecase"      "sourcetools"    "sp"            
+## [185] "sparklyr"       "SparseM"        "spatial"        "splines"       
+## [189] "stats"          "stats4"         "stringi"        "stringr"       
+## [193] "survival"       "sys"            "systemfonts"    "tcltk"         
+## [197] "testthat"       "textshaping"    "tibble"         "tidyr"         
+## [201] "tidyselect"     "tidyverse"      "timechange"     "tinytex"       
+## [205] "tools"          "translations"   "tzdb"           "urlchecker"    
+## [209] "usethis"        "utf8"           "utils"          "uuid"          
+## [213] "vctrs"          "viridisLite"    "vroom"          "waldo"         
+## [217] "whisker"        "withr"          "xfun"           "xlsxjars"      
+## [221] "xml2"           "xopen"          "xtable"         "yaml"          
+## [225] "zip"            "zoo"
 ```
 
 
