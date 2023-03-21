@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-03-07" />
+<meta name="date" content="2023-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -315,17 +315,42 @@ div.csl-indent {
 <div id="observational-studies" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Observational Studies<a href="observational-studies.html#observational-studies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>We occasionally try to estimate causal effects using data from non-randomized, <em>observational</em> sources.</p>
-<p>When we do so, we seek to embody the principle of “design before analysis” and the techniques in <span class="citation">Rubin (<a href="#ref-rubin07" role="doc-biblioref">2007</a>)</span>.</p>
+<p>When we do so, we seek to embody the principle of “design before analysis” and the techniques in <span class="citation">Rubin (<a href="#ref-rubin07" role="doc-biblioref">2007</a>)</span>. These techniques include designing with no outcomes in sight and pre-registering analyses where possible.</p>
 <div id="matching" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Matching<a href="observational-studies.html#matching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many algorithms for producing matched samples.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> Depending on our data structures, we may consider</p>
+<ul>
+<li>propensity score <span class="citation">(<a href="#ref-rosrub83" role="doc-biblioref">Rosenbaum and Rubin 1983</a>)</span>,</li>
+<li>Mahalanobis distance <span class="citation">(<a href="#ref-rubin80" role="doc-biblioref">Rubin 1980</a>)</span>,</li>
+<li>genetic <span class="citation">(<a href="#ref-diasek13" role="doc-biblioref">Diamond and Sekhon 2013</a>)</span>, or</li>
+<li>coarsened exact matching <span class="citation">(<a href="#ref-iackinpor12" role="doc-biblioref">Iacus, King, and Porro 2012</a>)</span>.</li>
+</ul>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-rubin07" class="csl-entry">
-Rubin, Donald B. 2007. <span>“The Design <span><em>Versus</em></span> the Analysis of Observational Studies for Causal Effects: Parallels with the Design of Randomized Trials.”</span> <em>Statistics in Medicine</em> 26: 20–36.
+<div id="ref-diasek13" class="csl-entry">
+Diamond, Alexis, and Jasjeet S Sekhon. 2013. <span>“Genetic Matching for Estimating Causal Effects: A General Multivariate Matching Method for Achieving Balance in Observational Studies.”</span> <em>Review of Economics and Statistics</em> 95 (3): 932–45.
 </div>
+<div id="ref-iackinpor12" class="csl-entry">
+Iacus, Stefano M., Gary King, and Giuseppe Porro. 2012. <span>“Causal Inference Without Balance Checking: Coarsened Exact Matching.”</span> <em>Political Analysis</em> 20 (1): 1–24.
+</div>
+<div id="ref-rosrub83" class="csl-entry">
+Rosenbaum, Paul R, and Donald B Rubin. 1983. <span>“The Central Role of the Propensity Score in Observational Studies for Causal Effects.”</span> <em>Biometrika</em> 70 (1): 41–55.
+</div>
+<div id="ref-rubin80" class="csl-entry">
+Rubin, Donald B. 1980. <span>“Bias Reduction Using Mahalanobis-Metric Matching.”</span> <em>Biometrics</em>, 293–98.
+</div>
+<div id="ref-rubin07" class="csl-entry">
+———. 2007. <span>“The Design <span><em>Versus</em></span> the Analysis of Observational Studies for Causal Effects: Parallels with the Design of Randomized Trials.”</span> <em>Statistics in Medicine</em> 26: 20–36.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>Incidentally, there are many ways to estimate the conditional expectation function as well, of which ordinary least squares is only one.<a href="observational-studies.html#fnref8" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
