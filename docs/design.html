@@ -186,7 +186,8 @@ div.csl-indent {
 <li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="design.html"><a href="design.html#seeding-procedures"><i class="fa fa-check"></i><b>2.4.1</b> Seeding Procedures</a></li>
-<li class="chapter" data-level="2.4.2" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.4.2</b> Motivation</a></li>
+<li class="chapter" data-level="2.4.2" data-path="design.html"><a href="design.html#updating-the-seed"><i class="fa fa-check"></i><b>2.4.2</b> Updating the Seed</a></li>
+<li class="chapter" data-level="2.4.3" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.4.3</b> Motivation</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
 <ul>
@@ -371,17 +372,16 @@ our results can be perfectly replicated.</p>
 <h3><span class="header-section-number">2.4.1</span> Seeding Procedures<a href="design.html#seeding-procedures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use two types of seeds: <em>date</em> seeds and <em>sampled</em> seeds, which we describe below. By default, we use them in the following conditions:</p>
 <ol style="list-style-type: decimal">
-<li>The Lab’s first public-relevant implementation on a given day: <em>date</em></li>
-<li>Subsequent public-relevant implementations on a given day: <em>sampled</em></li>
+<li>Public-relevant implementations: <em>date</em></li>
 <li>Other implementations: <em>sampled</em></li>
 </ol>
-<p>We consider <em>public-relevant implementations</em> to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, random assignment of hypothetical treatments during confirmatory randomization inference, etc.</p>
+<p>We consider <em>public-relevant implementations</em> to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, and random assignment of hypothetical treatments during confirmatory randomization inference.</p>
 <p>We consider other implementations to include simulations to create example datasets, simulations to estimate power or bias, or other design or diagnostic procedures.</p>
 <div id="date-seeds" class="section level4 hasAnchor" number="2.4.1.1">
 <h4><span class="header-section-number">2.4.1.1</span> <em>Date</em> Seeds<a href="design.html#date-seeds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To seed the random seed, run at the R prompt</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="design.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(YYYYMMDD)</span></code></pre></div>
-<p>where <code>YYYY</code> is the four-digit year, <code>MM</code> is the two-digit month, and <code>DD</code> is the two-digit date of implementation.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="design.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(YYMMDDHH)</span></code></pre></div>
+<p>where <code>YY</code> is the two-digit year (<code>23</code> for 2023), <code>MM</code> is the two-digit month, <code>DD</code> is the two-digit date, and <code>HH</code> is the two-digit hour (between <code>00</code> and <code>23</code>) of implementation.</p>
 </div>
 <div id="sampled-seeds" class="section level4 hasAnchor" number="2.4.1.2">
 <h4><span class="header-section-number">2.4.1.2</span> <em>Sampled</em> Seeds<a href="design.html#sampled-seeds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -392,8 +392,13 @@ our results can be perfectly replicated.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="design.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span></code></pre></div>
 </div>
 </div>
-<div id="motivation" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Motivation<a href="design.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="updating-the-seed" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Updating the Seed<a href="design.html#updating-the-seed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We update <code>date</code> seeds to reflect the last time that the code was run for implementation.</p>
+<p>We do not need to update <code>sampled</code> seeds in our other design, demonstration, or diagnostic code.</p>
+</div>
+<div id="motivation" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Motivation<a href="design.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We want to ensure that our stochastic work can be exactly replicated. We do not manipulate seeds to obtain particular results. However, we do not want our draws to be entirely dependent within a given date, and we note that some seemingly-random phenomena are sometimes later found to have patterns. For an example of dependence, consider these two different draws that use the same seed:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="design.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">758296545</span>)</span>
 <span id="cb6-2"><a href="design.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">10</span>)</span></code></pre></div>

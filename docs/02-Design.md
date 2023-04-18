@@ -65,11 +65,10 @@ df <- df %>% mutate(
 
 We use two types of seeds: _date_ seeds and _sampled_ seeds, which we describe below. By default, we use them in the following conditions:
 
-1. The Lab's first public-relevant implementation on a given day: _date_
-2. Subsequent public-relevant implementations on a given day: _sampled_
-3. Other implementations: _sampled_
+1. Public-relevant implementations: _date_
+2. Other implementations: _sampled_
 
-We consider _public-relevant implementations_ to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, random assignment of hypothetical treatments during confirmatory randomization inference, etc.
+We consider _public-relevant implementations_ to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, and random assignment of hypothetical treatments during confirmatory randomization inference.
 
 We consider other implementations to include simulations to create example datasets, simulations to estimate power or bias, or other design or diagnostic procedures.
 
@@ -79,10 +78,10 @@ To seed the random seed, run at the R prompt
 
 
 ```r
-set.seed(YYYYMMDD)
+set.seed(YYMMDDHH)
 ```
 
-where `YYYY` is the four-digit year, `MM` is the two-digit month, and `DD` is the two-digit date of implementation.
+where `YY` is the two-digit year (`23` for 2023), `MM` is the two-digit month, `DD` is the two-digit date, and `HH` is the two-digit hour (between `00` and `23`) of implementation.
 
 #### _Sampled_ Seeds
 
@@ -102,7 +101,11 @@ set.seed(SSSSSSSSS)
 ```
 
 
+### Updating the Seed
 
+We update `date` seeds to reflect the last time that the code was run for implementation. 
+
+We do not need to update `sampled` seeds in our other design, demonstration, or diagnostic code.
 
 ### Motivation
 

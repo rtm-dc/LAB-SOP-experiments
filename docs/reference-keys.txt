@@ -8,6 +8,7 @@ sec-set-seed
 seeding-procedures
 date-seeds
 sampled-seeds
+updating-the-seed
 motivation
 power
 formula-based-power-analysis
