@@ -5,6 +5,10 @@ level-of-randomization
 blocking-on-background-characteristics
 examples
 sec-set-seed
+seeding-procedures
+date-seeds
+sampled-seeds
+motivation
 power
 formula-based-power-analysis
 formula-based-mde-minimum-detectable-effect

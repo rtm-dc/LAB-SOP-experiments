@@ -42,26 +42,9 @@ service center and assigned visit date.
 ## Setting the Assignment Seed {#sec-set-seed}
 
 Whenever our design or analysis involves randomization, we set the seed so that
-our results can be perfectly replicated.^[We randomize treatment assignment in
-experiments, and we often simulate in power analysis and randomization
-inference.]
+our results can be perfectly replicated.
 
-To set the random seed, run at the R prompt
-
-```{r eval=FALSE}
-sample(1e9, 1)
-```
-
-then copy and paste the result as the argument of `set.seed()`. If the result of
-`sample(1e9, 1)` is `SSSSSSSSS`, then put
-
-```{r eval=FALSE}
-set.seed(SSSSSSSSS)
-```
-
-at the top of the `.R` file, just after the `library()` commands that load and
-attach that file's packages. In a short random assignment file, e.g., we might
-have
+We set the seed at the top of the file, just after the (e.g., `library()`) commands that load and attach that file's packages. In a short random assignment file, e.g., we might have
 
 ```{r eval=FALSE}
 # Packages:
@@ -77,6 +60,58 @@ df <- df %>% mutate(
                      replace = TRUE))
 ```
 
+### Seeding Procedures
+
+We use two types of seeds: _date_ seeds and _sampled_ seeds, which we describe below. By default, we use them in the following conditions:
+
+1. The Lab's first public-relevant implementation on a given day: _date_
+2. Subsequent public-relevant implementations on a given day: _sampled_
+3. Other implementations: _sampled_
+
+We consider _public-relevant implementations_ to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, random assignment of hypothetical treatments during confirmatory randomization inference, etc.
+
+We consider other implementations to include simulations to create example datasets, simulations to estimate power or bias, or other design or diagnostic procedures.
+
+#### _Date_ Seeds
+
+To seed the random seed, run at the R prompt
+
+```{r dateseed, eval=FALSE}
+set.seed(YYYYMMDD)
+```
+
+where `YYYY` is the four-digit year, `MM` is the two-digit month, and `DD` is the two-digit date of implementation.
+
+#### _Sampled_ Seeds
+
+To set the random seed, run at the R prompt only once
+
+```{r sampledseed, eval=FALSE}
+sample(1e9, 1)
+```
+
+then copy and paste the result as the argument of `set.seed()`. If the result of
+`sample(1e9, 1)` is `SSSSSSSSS`, then set the seed with
+
+```{r eval=FALSE}
+set.seed(SSSSSSSSS)
+```
+
+
+
+
+### Motivation
+
+We want to ensure that our stochastic work can be exactly replicated. We do not manipulate seeds to obtain particular results. However, we do not want our draws to be entirely dependent within a given date, and we note that some seemingly-random phenomena are sometimes later found to have patterns. For an example of dependence, consider these two different draws that use the same seed: 
+```{r}
+set.seed(758296545)
+sample(100, 10)
+
+set.seed(758296545)
+sample(100, 11)
+```
+
+Note that the first 10 cases are identical.
 
 ## Power
 

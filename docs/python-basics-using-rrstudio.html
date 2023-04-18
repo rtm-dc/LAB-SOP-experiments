@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-03-21" />
+<meta name="date" content="2023-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,7 +183,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.3.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a></li>
+<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="design.html"><a href="design.html#seeding-procedures"><i class="fa fa-check"></i><b>2.4.1</b> Seeding Procedures</a></li>
+<li class="chapter" data-level="2.4.2" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.4.2</b> Motivation</a></li>
+</ul></li>
 <li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.5.1</b> Formula-based Power Analysis</a></li>
@@ -327,8 +331,8 @@ div.csl-indent {
 <div id="get-tinytex" class="section level3 hasAnchor" number="8.1.2">
 <h3><span class="header-section-number">B.1.2</span> Get <code>tinytex</code><a href="python-basics-using-rrstudio.html#get-tinytex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Install the <code>tinytex</code> package (and <code>tinytex</code> itself) at the R Console via</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="python-basics-using-rrstudio.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tinytex&quot;</span>)</span>
-<span id="cb73-2"><a href="python-basics-using-rrstudio.html#cb73-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="python-basics-using-rrstudio.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tinytex&quot;</span>)</span>
+<span id="cb78-2"><a href="python-basics-using-rrstudio.html#cb78-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 </div>
 <div id="get-python" class="section level3 hasAnchor" number="8.1.3">
 <h3><span class="header-section-number">B.1.3</span> Get Python<a href="python-basics-using-rrstudio.html#get-python" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -347,14 +351,14 @@ div.csl-indent {
 <div id="get-reticulate" class="section level3 hasAnchor" number="8.1.5">
 <h3><span class="header-section-number">B.1.5</span> Get <code>reticulate</code><a href="python-basics-using-rrstudio.html#get-reticulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Install the <code>reticulate</code> package at the R Console via</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="python-basics-using-rrstudio.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reticulate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="python-basics-using-rrstudio.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reticulate&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="using-python" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">B.2</span> Using Python<a href="python-basics-using-rrstudio.html#using-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="from-a-python-prompt" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">B.2.1</span> From a Python prompt<a href="python-basics-using-rrstudio.html#from-a-python-prompt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="python-basics-using-rrstudio.html#cb75-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="python-basics-using-rrstudio.html#cb80-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span></code></pre></div>
 </div>
 <div id="from-inside-a-quarto-document" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">B.2.2</span> From inside a Quarto document<a href="python-basics-using-rrstudio.html#from-inside-a-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h3>

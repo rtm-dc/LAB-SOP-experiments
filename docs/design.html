@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-03-21" />
+<meta name="date" content="2023-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,7 +183,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.3.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a></li>
+<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="design.html"><a href="design.html#seeding-procedures"><i class="fa fa-check"></i><b>2.4.1</b> Seeding Procedures</a></li>
+<li class="chapter" data-level="2.4.2" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.4.2</b> Motivation</a></li>
+</ul></li>
 <li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.5.1</b> Formula-based Power Analysis</a></li>
@@ -350,26 +354,55 @@ service center and assigned visit date.</p>
 <div id="sec-set-seed" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Setting the Assignment Seed<a href="design.html#sec-set-seed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Whenever our design or analysis involves randomization, we set the seed so that
-our results can be perfectly replicated.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>To set the random seed, run at the R prompt</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="design.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">1e9</span>, <span class="dv">1</span>)</span></code></pre></div>
+our results can be perfectly replicated.</p>
+<p>We set the seed at the top of the file, just after the (e.g., <code>library()</code>) commands that load and attach that file’s packages. In a short random assignment file, e.g., we might have</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="design.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages:</span></span>
+<span id="cb2-2"><a href="design.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb2-3"><a href="design.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="design.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed:</span></span>
+<span id="cb2-5"><a href="design.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span>
+<span id="cb2-6"><a href="design.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="design.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct Bernoulli randomization:</span></span>
+<span id="cb2-8"><a href="design.html#cb2-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb2-9"><a href="design.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, </span>
+<span id="cb2-10"><a href="design.html#cb2-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-11"><a href="design.html#cb2-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div id="seeding-procedures" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Seeding Procedures<a href="design.html#seeding-procedures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We use two types of seeds: <em>date</em> seeds and <em>sampled</em> seeds, which we describe below. By default, we use them in the following conditions:</p>
+<ol style="list-style-type: decimal">
+<li>The Lab’s first public-relevant implementation on a given day: <em>date</em></li>
+<li>Subsequent public-relevant implementations on a given day: <em>sampled</em></li>
+<li>Other implementations: <em>sampled</em></li>
+</ol>
+<p>We consider <em>public-relevant implementations</em> to include situations like a random assignment of a program to some members of a waitlist, a random selection of some households to participate in a survey, random assignment of hypothetical treatments during confirmatory randomization inference, etc.</p>
+<p>We consider other implementations to include simulations to create example datasets, simulations to estimate power or bias, or other design or diagnostic procedures.</p>
+<div id="date-seeds" class="section level4 hasAnchor" number="2.4.1.1">
+<h4><span class="header-section-number">2.4.1.1</span> <em>Date</em> Seeds<a href="design.html#date-seeds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To seed the random seed, run at the R prompt</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="design.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(YYYYMMDD)</span></code></pre></div>
+<p>where <code>YYYY</code> is the four-digit year, <code>MM</code> is the two-digit month, and <code>DD</code> is the two-digit date of implementation.</p>
+</div>
+<div id="sampled-seeds" class="section level4 hasAnchor" number="2.4.1.2">
+<h4><span class="header-section-number">2.4.1.2</span> <em>Sampled</em> Seeds<a href="design.html#sampled-seeds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To set the random seed, run at the R prompt only once</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="design.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">1e9</span>, <span class="dv">1</span>)</span></code></pre></div>
 <p>then copy and paste the result as the argument of <code>set.seed()</code>. If the result of
-<code>sample(1e9, 1)</code> is <code>SSSSSSSSS</code>, then put</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="design.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span></code></pre></div>
-<p>at the top of the <code>.R</code> file, just after the <code>library()</code> commands that load and
-attach that file’s packages. In a short random assignment file, e.g., we might
-have</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="design.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages:</span></span>
-<span id="cb4-2"><a href="design.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
-<span id="cb4-3"><a href="design.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="design.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed:</span></span>
-<span id="cb4-5"><a href="design.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span>
-<span id="cb4-6"><a href="design.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="design.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct Bernoulli randomization:</span></span>
-<span id="cb4-8"><a href="design.html#cb4-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
-<span id="cb4-9"><a href="design.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, </span>
-<span id="cb4-10"><a href="design.html#cb4-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> <span class="fu">n</span>(),</span>
-<span id="cb4-11"><a href="design.html#cb4-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<code>sample(1e9, 1)</code> is <code>SSSSSSSSS</code>, then set the seed with</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="design.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span></code></pre></div>
+</div>
+</div>
+<div id="motivation" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Motivation<a href="design.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We want to ensure that our stochastic work can be exactly replicated. We do not manipulate seeds to obtain particular results. However, we do not want our draws to be entirely dependent within a given date, and we note that some seemingly-random phenomena are sometimes later found to have patterns. For an example of dependence, consider these two different draws that use the same seed:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="design.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">758296545</span>)</span>
+<span id="cb6-2"><a href="design.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] 11 22 88 94 25 76  1  4 64 12</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="design.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">758296545</span>)</span>
+<span id="cb8-2"><a href="design.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">11</span>)</span></code></pre></div>
+<pre><code>##  [1] 11 22 88 94 25 76  1  4 64 12 35</code></pre>
+<p>Note that the first 10 cases are identical.</p>
+</div>
 </div>
 <div id="power" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Power<a href="design.html#power" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -379,7 +412,7 @@ many features of the design, implementation, and analysis as possible. Sometimes
 we can achieve this with “formula-based” power strategies; other times we need
 to use simulation-based techniques. Power analyses should be conducted in code,
 so that they are replicable. If we use an online calculator for a quick
-calculation, we replicate the results in code.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+calculation, we replicate the results in code.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>If our design and analysis plan match the assumptions of a formula-based power
 calculation well, we perform a formula-based power calculation. For example, if
 the design is complete randomization and the analysis plan is to conduct a
@@ -393,11 +426,11 @@ simulation.</p>
 <div id="formula-based-power-analysis" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Formula-based Power Analysis<a href="design.html#formula-based-power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An example of formula-based power calculation, where the design is complete randomization and the analysis plans for a two-sample <span class="math inline">\(t\)</span>-test:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb5-1"><a href="design.html#cb5-1" aria-hidden="true" tabindex="-1"></a>power_out <span class="ot">&lt;-</span> <span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">1</span>, </span>
-<span id="cb5-2"><a href="design.html#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sd =</span> <span class="dv">1</span>,</span>
-<span id="cb5-3"><a href="design.html#cb5-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb5-4"><a href="design.html#cb5-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">power =</span> <span class="fl">0.8</span>)</span>
-<span id="cb5-5"><a href="design.html#cb5-5" aria-hidden="true" tabindex="-1"></a>power_out</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb10-1"><a href="design.html#cb10-1" aria-hidden="true" tabindex="-1"></a>power_out <span class="ot">&lt;-</span> <span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">1</span>, </span>
+<span id="cb10-2"><a href="design.html#cb10-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sd =</span> <span class="dv">1</span>,</span>
+<span id="cb10-3"><a href="design.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb10-4"><a href="design.html#cb10-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">power =</span> <span class="fl">0.8</span>)</span>
+<span id="cb10-5"><a href="design.html#cb10-5" aria-hidden="true" tabindex="-1"></a>power_out</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -414,10 +447,10 @@ simulation.</p>
 <div id="formula-based-mde-minimum-detectable-effect" class="section level3 hasAnchor" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Formula-based MDE (minimum detectable effect)<a href="design.html#formula-based-mde-minimum-detectable-effect" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An example of a formula-based MDE calculation follows, where the analysis plans for a two-sample test of proportions. The sample size is 75 (in <em>each</em> group), and we want to detect stipulated effects with probability 0.8. Below, we make the most conservative (SE-maximizing) possible assumption about the base rate, that it is 0.5.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb7-1"><a href="design.html#cb7-1" aria-hidden="true" tabindex="-1"></a>power_out_mde <span class="ot">&lt;-</span> <span class="fu">power.prop.test</span>(<span class="at">n =</span> <span class="dv">75</span>, </span>
-<span id="cb7-2"><a href="design.html#cb7-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">p1 =</span> <span class="fl">0.5</span>,</span>
-<span id="cb7-3"><a href="design.html#cb7-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">power =</span> <span class="fl">0.8</span>)</span>
-<span id="cb7-4"><a href="design.html#cb7-4" aria-hidden="true" tabindex="-1"></a>power_out_mde</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb12-1"><a href="design.html#cb12-1" aria-hidden="true" tabindex="-1"></a>power_out_mde <span class="ot">&lt;-</span> <span class="fu">power.prop.test</span>(<span class="at">n =</span> <span class="dv">75</span>, </span>
+<span id="cb12-2"><a href="design.html#cb12-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">p1 =</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-3"><a href="design.html#cb12-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">power =</span> <span class="fl">0.8</span>)</span>
+<span id="cb12-4"><a href="design.html#cb12-4" aria-hidden="true" tabindex="-1"></a>power_out_mde</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample comparison of proportions power calculation 
 ## 
@@ -429,7 +462,7 @@ simulation.</p>
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb9-1"><a href="design.html#cb9-1" aria-hidden="true" tabindex="-1"></a>power_out_mde<span class="sc">$</span>p2 <span class="sc">-</span> power_out_mde<span class="sc">$</span>p1</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb14-1"><a href="design.html#cb14-1" aria-hidden="true" tabindex="-1"></a>power_out_mde<span class="sc">$</span>p2 <span class="sc">-</span> power_out_mde<span class="sc">$</span>p1</span></code></pre></div>
 <pre><code>## [1] 0.2213224</code></pre>
 <p>We see a minimum detectable effect of about 0.22, over a base rate of 0.5.</p>
 </div>
@@ -439,43 +472,43 @@ simulation.</p>
 combination of randomization technique, missing data treatment, estimation
 strategy, etc. that we like.</p>
 <p>Create some data to illustrate simulation-based power analysis:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="design.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
-<span id="cb11-2"><a href="design.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb11-3"><a href="design.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-4"><a href="design.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="design.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">988869862</span>)</span>
-<span id="cb11-6"><a href="design.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="design.html#cb11-7" aria-hidden="true" tabindex="-1"></a>n_samp <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb11-8"><a href="design.html#cb11-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rchisq</span>(n_samp, <span class="at">df =</span> <span class="dv">3</span>),</span>
-<span id="cb11-9"><a href="design.html#cb11-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">z =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
-<span id="cb11-10"><a href="design.html#cb11-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> x <span class="sc">+</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(n_samp, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
-<span id="cb11-11"><a href="design.html#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="design.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="design.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb16-2"><a href="design.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb16-3"><a href="design.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-4"><a href="design.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="design.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">988869862</span>)</span>
+<span id="cb16-6"><a href="design.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="design.html#cb16-7" aria-hidden="true" tabindex="-1"></a>n_samp <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb16-8"><a href="design.html#cb16-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rchisq</span>(n_samp, <span class="at">df =</span> <span class="dv">3</span>),</span>
+<span id="cb16-9"><a href="design.html#cb16-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">z =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
+<span id="cb16-10"><a href="design.html#cb16-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> x <span class="sc">+</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(n_samp, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
+<span id="cb16-11"><a href="design.html#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="design.html#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>))</span></code></pre></div>
 <p>Suppose the estimation strategy is linear regression <span class="math inline">\(y_i = \beta_0 + \beta_1 z_i + \beta_2 x_i + \epsilon_i\)</span> with heteroskedasticity-robust HC2 standard errors, and the coefficient of interest is <span class="math inline">\(\beta_1\)</span>. Perform 1000 reassignments and determine what proportion of them reveal <span class="math inline">\(\hat{\beta}_1\)</span> that is statistically significant at <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="design.html#cb12-1" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb12-2"><a href="design.html#cb12-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb12-3"><a href="design.html#cb12-3" aria-hidden="true" tabindex="-1"></a>true_te <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb12-4"><a href="design.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="design.html#cb12-5" aria-hidden="true" tabindex="-1"></a>is_stat_sig <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>, n_sims) <span class="co"># Storage</span></span>
-<span id="cb12-6"><a href="design.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="design.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
-<span id="cb12-8"><a href="design.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-9"><a href="design.html#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-assign treatment and recalculate outcomes n_sims times:</span></span>
-<span id="cb12-10"><a href="design.html#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Note: conditions on original x in df, but not original y.)</span></span>
-<span id="cb12-11"><a href="design.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
-<span id="cb12-12"><a href="design.html#cb12-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y_tmp =</span> true_te <span class="sc">*</span> z_tmp <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
-<span id="cb12-13"><a href="design.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-14"><a href="design.html#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimation:</span></span>
-<span id="cb12-15"><a href="design.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  lm_out <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y_tmp <span class="sc">~</span> z_tmp <span class="sc">+</span> x, <span class="at">data =</span> df)</span>
-<span id="cb12-16"><a href="design.html#cb12-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-17"><a href="design.html#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store p-value:</span></span>
-<span id="cb12-18"><a href="design.html#cb12-18" aria-hidden="true" tabindex="-1"></a>  stat_sig_tmp <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>p.value[<span class="st">&quot;z_tmp&quot;</span>]</span>
-<span id="cb12-19"><a href="design.html#cb12-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-20"><a href="design.html#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store whether true effect is &#39;detected&#39;:</span></span>
-<span id="cb12-21"><a href="design.html#cb12-21" aria-hidden="true" tabindex="-1"></a>  is_stat_sig[idx] <span class="ot">&lt;-</span> (stat_sig_tmp <span class="sc">&lt;=</span> alpha)</span>
-<span id="cb12-22"><a href="design.html#cb12-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-23"><a href="design.html#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="design.html#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(is_stat_sig)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="design.html#cb17-1" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb17-2"><a href="design.html#cb17-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb17-3"><a href="design.html#cb17-3" aria-hidden="true" tabindex="-1"></a>true_te <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb17-4"><a href="design.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="design.html#cb17-5" aria-hidden="true" tabindex="-1"></a>is_stat_sig <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>, n_sims) <span class="co"># Storage</span></span>
+<span id="cb17-6"><a href="design.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="design.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
+<span id="cb17-8"><a href="design.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-9"><a href="design.html#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-assign treatment and recalculate outcomes n_sims times:</span></span>
+<span id="cb17-10"><a href="design.html#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Note: conditions on original x in df, but not original y.)</span></span>
+<span id="cb17-11"><a href="design.html#cb17-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
+<span id="cb17-12"><a href="design.html#cb17-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y_tmp =</span> true_te <span class="sc">*</span> z_tmp <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
+<span id="cb17-13"><a href="design.html#cb17-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-14"><a href="design.html#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimation:</span></span>
+<span id="cb17-15"><a href="design.html#cb17-15" aria-hidden="true" tabindex="-1"></a>  lm_out <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y_tmp <span class="sc">~</span> z_tmp <span class="sc">+</span> x, <span class="at">data =</span> df)</span>
+<span id="cb17-16"><a href="design.html#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-17"><a href="design.html#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store p-value:</span></span>
+<span id="cb17-18"><a href="design.html#cb17-18" aria-hidden="true" tabindex="-1"></a>  stat_sig_tmp <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>p.value[<span class="st">&quot;z_tmp&quot;</span>]</span>
+<span id="cb17-19"><a href="design.html#cb17-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-20"><a href="design.html#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store whether true effect is &#39;detected&#39;:</span></span>
+<span id="cb17-21"><a href="design.html#cb17-21" aria-hidden="true" tabindex="-1"></a>  is_stat_sig[idx] <span class="ot">&lt;-</span> (stat_sig_tmp <span class="sc">&lt;=</span> alpha)</span>
+<span id="cb17-22"><a href="design.html#cb17-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-23"><a href="design.html#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="design.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(is_stat_sig)</span></code></pre></div>
 <pre><code>## [1] 0.995</code></pre>
 <p>So the probability of detecting the true average treatment effect of 1 is about 0.995. This is high power comes largely from the strongly predictive nature of the covariate <code>x</code>. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly 0.45.</p>
 </div>
@@ -501,11 +534,8 @@ Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>We randomize treatment assignment in
-experiments, and we often simulate in power analysis and randomization
-inference.<a href="design.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>An online power calculator is
-available from <a href="https://egap.shinyapps.io/Power_Calculator/">EGAP</a>, e.g.<a href="design.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>An online power calculator is
+available from <a href="https://egap.shinyapps.io/Power_Calculator/">EGAP</a>, e.g.<a href="design.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
