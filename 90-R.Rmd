@@ -245,13 +245,15 @@ When we have dates stored as character strings, we transform them to dates. Firs
 
 ```{r}
 # Simulate date data:
+set.seed(117894985)
+
 df_resume <- df_resume %>% 
   mutate( 
     dob = paste0(sample(1:12, n(), replace = TRUE), 
                  "/", 
                  sample(1:28, n(), replace = TRUE),
                  "/",
-                 sample(1900:2000, n(), replace = TRUE))
+                 sample(1950:2000, n(), replace = TRUE))
 )
 
 head(df_resume, 3)
