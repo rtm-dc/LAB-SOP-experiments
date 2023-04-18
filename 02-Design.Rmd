@@ -111,7 +111,7 @@ set.seed(758296545)
 sample(100, 10)
 
 set.seed(758296545)
-sample(100, 11)
+sample(100, 20)
 ```
 
 Note that the first 10 cases are identical.
