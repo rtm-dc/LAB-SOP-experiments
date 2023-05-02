@@ -295,15 +295,17 @@ df_resume %>% mutate(
 )
 ```
 
-For more precision, the participants' age today, 
+For more precision, the participants' ages as of 2 May 2023, 
 
 ```{r}
 df_resume %>% mutate(
   age = as.numeric(
-    interval(dob_date, today()), 
+    interval(dob_date, "2023-05-02"), 
     "years")
 )
 ```
+
+(To get participants' ages today, replace `"2023-05-02"` above with `today()`.)
 
 ### Make a month-count variable
 

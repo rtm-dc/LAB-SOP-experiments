@@ -69,6 +69,9 @@ Some stylistic notes embodied by this example:
 3. If there is only one coefficient represented by a particular Greek letter, it should not be numbered. See $\alpha$ above. 
 4. It can be difficult to write good notation in Google Drive, e.g. (For example, I don’t see a way to make a bold $\beta$.) One suggestion is to write the equation in \LaTeX and export the equation or an image of the equation into your document. (You can do this via Mac OS Pages, e.g.)
 
+### Statistical Quantities
+
+- Where we report statistical significance, we do so relative to an $\alpha$ level on $[0, 1]$. E.g., "$\hat{\beta}_1$ is statistically significant at $\alpha = 0.05$."
 
 ## Projects {#sec-projects}
 

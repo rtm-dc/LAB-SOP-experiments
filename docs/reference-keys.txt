@@ -74,6 +74,7 @@ best-practices
 style
 r
 equations
+statistical-quantities
 sec-projects
 sec-working-dir
 see-the-working-directory

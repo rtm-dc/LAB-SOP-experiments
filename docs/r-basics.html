@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-04-25" />
+<meta name="date" content="2023-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,6 +285,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="C.2.1" data-path="managing-code-and-scientific-communication.html"><a href="managing-code-and-scientific-communication.html#r"><i class="fa fa-check"></i><b>C.2.1</b> R</a></li>
 <li class="chapter" data-level="C.2.2" data-path="managing-code-and-scientific-communication.html"><a href="managing-code-and-scientific-communication.html#equations"><i class="fa fa-check"></i><b>C.2.2</b> Equations</a></li>
+<li class="chapter" data-level="C.2.3" data-path="managing-code-and-scientific-communication.html"><a href="managing-code-and-scientific-communication.html#statistical-quantities"><i class="fa fa-check"></i><b>C.2.3</b> Statistical Quantities</a></li>
 </ul></li>
 <li class="chapter" data-level="C.3" data-path="managing-code-and-scientific-communication.html"><a href="managing-code-and-scientific-communication.html#sec-projects"><i class="fa fa-check"></i><b>C.3</b> Projects</a></li>
 <li class="chapter" data-level="C.4" data-path="managing-code-and-scientific-communication.html"><a href="managing-code-and-scientific-communication.html#sec-working-dir"><i class="fa fa-check"></i><b>C.4</b> Working Directory and Relative Paths</a>
@@ -612,16 +613,16 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ##  9 Latonya   female black     0     3      9 TRUE     12/18/19… 1980-12-18    43
 ## 10 Tyrone    male   black     0     3     10 FALSE    7/25/1956 1956-07-25    67
 ## # ℹ 4,860 more rows</code></pre>
-<p>For more precision, the participants’ age today,</p>
+<p>For more precision, the participants’ ages as of 2 May 2023,</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="r-basics.html#cb64-1" aria-hidden="true" tabindex="-1"></a>df_resume <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
 <span id="cb64-2"><a href="r-basics.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">as.numeric</span>(</span>
-<span id="cb64-3"><a href="r-basics.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">interval</span>(dob_date, <span class="fu">today</span>()), </span>
+<span id="cb64-3"><a href="r-basics.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">interval</span>(dob_date, <span class="st">&quot;2023-05-02&quot;</span>), </span>
 <span id="cb64-4"><a href="r-basics.html#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;years&quot;</span>)</span>
 <span id="cb64-5"><a href="r-basics.html#cb64-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
-##  1 Allison   female white     0     3      1 TRUE     1/28/1994 1994-01-28  29.2
+##  1 Allison   female white     0     3      1 TRUE     1/28/1994 1994-01-28  29.3
 ##  2 Kristen   female white     0     3      2 TRUE     2/15/1983 1983-02-15  40.2
 ##  3 Lakisha   female black     0     3      3 TRUE     1/10/1977 1977-01-10  46.3
 ##  4 Latonya   female black     0     3      4 TRUE     2/28/1985 1985-02-28  38.2
@@ -629,9 +630,10 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ##  6 Jay       male   white     0     3      6 FALSE    11/2/1964 1964-11-02  58.5
 ##  7 Jill      female white     0     3      7 TRUE     10/25/19… 1954-10-25  68.5
 ##  8 Kenya     female black     0     3      8 TRUE     2/18/1963 1963-02-18  60.2
-##  9 Latonya   female black     0     3      9 TRUE     12/18/19… 1980-12-18  42.3
-## 10 Tyrone    male   black     0     3     10 FALSE    7/25/1956 1956-07-25  66.7
+##  9 Latonya   female black     0     3      9 TRUE     12/18/19… 1980-12-18  42.4
+## 10 Tyrone    male   black     0     3     10 FALSE    7/25/1956 1956-07-25  66.8
 ## # ℹ 4,860 more rows</code></pre>
+<p>(To get participants’ ages today, replace <code>"2023-05-02"</code> above with <code>today()</code>.)</p>
 </div>
 <div id="make-a-month-count-variable" class="section level3 hasAnchor" number="7.7.2">
 <h3><span class="header-section-number">A.7.2</span> Make a month-count variable<a href="r-basics.html#make-a-month-count-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
