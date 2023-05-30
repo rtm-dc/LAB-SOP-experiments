@@ -8,7 +8,7 @@ In our implementation of a random assignment, we follow a set of checking proced
 
 1. Develop a correct participant flow diagram.
 2. Formally review randomization code.
-3. Remove duplicates.
+3. Develop and implement a comprehensive plan for identifying and addressing any duplicates. Depending on the application, this may include duplicate households, vehicles, schools, etc. In individual-level applications or assignments, we often need to ensure that larger households or households that generate multiple applications do not have a higher probability of being selected than smaller households, or households that only submitted a single application or otherwise only appear in the data once.  
 4. Confirm that assignment sample is correct. It should include everyone who is eligible, and no one who is ineligible.
 5. Confirm that assignment probabilities are correct.
 

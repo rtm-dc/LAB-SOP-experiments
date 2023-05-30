@@ -39,7 +39,8 @@ posterior-probabilities
 observational-studies
 matching
 publication
-authorship
+authorship-in-pre-analysis-plans
+authorship-in-academic-articles
 r-basics
 get-r-and-rstudio
 read-in-data-files
