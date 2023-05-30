@@ -16,6 +16,10 @@ formula-based-mde-minimum-detectable-effect
 simulation-based-power-analysis
 balance-checking
 implementation
+along-the-way
+immediately-before-the-final-randomization
+the-final-randomization
+immediately-after-the-final-randomization
 analysis
 notation
 estimands
