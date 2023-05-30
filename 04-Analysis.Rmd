@@ -77,7 +77,7 @@ lm_out
 We can view the ITT treatment effect from the model object with
 `summary(lm_out)` or extract it with `lm_out$coefficients["z"]`.
 
-## Adjusting for covariates {#sec-lin}
+## Adjusting for Covariates {#sec-lin}
 
 In analyzing experiments, we follow the guidance of @lin2013, using HC2 standard
 errors for inference, and, where we adjust for covariates, centering and
@@ -116,7 +116,7 @@ estimator returns a good estimate of the difference in means of non-normal outco
 provides an example with a highly skewed outcome, e.g.
 
 
-## Clusters, weights, fixed effects
+## Clusters, Weights, Fixed Effects
 
 To specify other design or estimation components for `lm_robust()` or
 `lm_lin()`, start at the help file at
@@ -210,7 +210,7 @@ mean(abs(store_te) >= abs(te_est))
 Sometimes, this will differ greatly from the parametric $p$-value. Here, the
 parametric $p$-value is `r round(lm_out$p.value["z"], 5)`.
 
-## Addressing non-compliance
+## Addressing Non-compliance
 
 ## Missing Data
 
@@ -253,7 +253,7 @@ to test whether treatment affected the outcome at 3 months and at 6 months. In
 this case, we adjust for performing two tests using the bootstrap resampling
 procedure of @wesyou93.
 
-### Holm-Bonferroni adjustment
+### Holm-Bonferroni Adjustment
 
 Suppose we have conducted three confirmatory hypothesis tests in a family, with
 $p$-values $p_1 = .01$, $p_2 = .02$, and $p_3 = .08$, in increasing order. To
@@ -265,7 +265,7 @@ p.adjust(c(0.01, 0.02, 0.08), method = "holm")
 
 We see that the three adjusted $p$-values are $0.03$, $0.04$, and $0.08$. (Here, these are $p_1 \times 3$, $p_2 \times 2$, and $p_3 \times 1$.) 
 
-### Westfall-Young adjustment
+### Westfall-Young Adjustment
 
 @wesyou93 provides a bootstrapping approach to $p$-value adjustment that tends to be more powerful than the Holm-Bonferroni procedure.^[@morgan17 shows that resampling and reallocation methods behave very similarly (up to $\frac{n-1}{n}$) in testing, and argues that, for interval estimation, we should prefer bootstrap resampling methods to reallocation methods (which depend on an equal-variances assumption and additivity).] It strongly controls the FWER under the assumption of subset pivotality. We show an example using the implementation of @hidalgo17 below. 
 
