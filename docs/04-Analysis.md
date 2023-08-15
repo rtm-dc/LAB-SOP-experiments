@@ -157,7 +157,7 @@ the causal effect than if you're a control that looks like the treateds.]
 
 For example, suppose we have a monthly lottery from January to March, and those
 not selected for the program in the first month are still eligible to be
-selected in the second month. See @avimammoo22 for an example. Person $A$ is
+selected in the second month. See @avimammoo23 for an example. Person $A$ is
 eligible for all three waves of a lottery because they apply in January and
 could be repeatedly assigned to the control group; person $B$ applies in March
 and is only eligible in the last lottery.
@@ -186,7 +186,7 @@ We note that treatment effect estimates from two-way fixed effect (TWFE) event-s
 
 ## Randomization Inference {#sec-rand-inf}
 
-Often, we prefer to rely on our _design_, rather than asymptotic or distributional assumptions, for statistical inference. For example, with modest sample sizes and a complex experimental design, in @avimammoo22 we use randomization inference. Below is an annotated example of doing so, using a `for` loop. We set the seed using the method in Section 
+Often, we prefer to rely on our _design_, rather than asymptotic or distributional assumptions, for statistical inference. For example, with modest sample sizes and a complex experimental design, in @avimammoo23 we use randomization inference. Below is an annotated example of doing so, using a `for` loop. We set the seed using the method in Section 
 \@ref(sec-set-seed); we simulate treatment assignments using the method in Section \@ref(sec-create-treatment). More simulations reduces simulation error.
 
 
