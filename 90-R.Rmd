@@ -423,3 +423,39 @@ df_joined <- df1 %>% full_join(df2,
 ```
 
 Columns with the same name, but different types, will not join. E.g., if `df1$this_var` is numeric, but `df2$this_var` is character, the joins will throw an error.
+
+## Anonymize sensitive data
+
+Sometimes we want to preserve features of sensitive data, but not the values themselves. For example, we want to match individuals across datasets, but do not want to preserve the individuals' addresses.
+
+```{r warning=FALSE, echo=FALSE}
+sens <- tibble(Name = rep(c("Beth", "Esme", "Charles")),
+               Address = c("10 Downing St",
+                           "667 Dark Ave",
+                           "10 Downing St"),
+               Phone = c(123, 456, 789),
+               Score = c(90, 50, 70))
+```
+
+Suppose we have the data below, where each individual has a unique name and phone number, but two share an address:
+
+```{r warning = FALSE, echo=FALSE}
+sens
+```
+
+We can anonymize the `Address` and `Phone` columns in this data set (called `sens`) using the `digest()` function in package `{digest}`:
+
+```{r warning = FALSE}
+library(digest)
+
+cols_to_mask <- c("Address", "Phone")
+for(i in cols_to_mask){
+  anon <- sapply(unlist(sens[, i]), digest, algo = "sha1")
+  short_anon <- substr(anon, 1, 10)
+  sens[, i] <- short_anon
+}
+
+sens
+```
+
+Note that addresses 1 and 3 are the same, despite being hashed.

@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-08-15" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,6 +272,7 @@ div.csl-indent {
 <li class="chapter" data-level="A.10.2" data-path="r-basics.html"><a href="r-basics.html#proportions-for-binary-variables"><i class="fa fa-check"></i><b>A.10.2</b> Proportions for binary variables</a></li>
 </ul></li>
 <li class="chapter" data-level="A.11" data-path="r-basics.html"><a href="r-basics.html#merge-join-dataframes"><i class="fa fa-check"></i><b>A.11</b> Merge (join) dataframes</a></li>
+<li class="chapter" data-level="A.12" data-path="r-basics.html"><a href="r-basics.html#anonymize-sensitive-data"><i class="fa fa-check"></i><b>A.12</b> Anonymize sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="python-basics-using-rrstudio.html"><a href="python-basics-using-rrstudio.html"><i class="fa fa-check"></i><b>B</b> Python Basics (using R/RStudio)</a>
 <ul>
@@ -355,8 +356,8 @@ for more detail and painful counterexamples.</p>
 <li><p>Begin your code file with a <code>library()</code> command for every package required
 for that file to run. Keep these in alphabetical order.</p></li>
 </ol>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="managing-code-and-scientific-communication.html#cb81-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb81-2"><a href="managing-code-and-scientific-communication.html#cb81-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="managing-code-and-scientific-communication.html#cb84-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb84-2"><a href="managing-code-and-scientific-communication.html#cb84-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Do <strong>not</strong> include your “workflow” in your code files. Anything that’s
 interactive or changes the environment should be excluded. Do not include
@@ -367,7 +368,7 @@ e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 for examples in R.</p></li>
 <li><p>Use the assignment arrow for assignment. The structure:</p></li>
 </ol>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="managing-code-and-scientific-communication.html#cb82-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="managing-code-and-scientific-communication.html#cb85-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Use space around operators (write <code>3 + 4 = 7</code>, not <code>3+4=7</code>) and after a
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</li>
@@ -419,7 +420,7 @@ are not hard-coding a path that no one else has (like <code>~/Me/My Docs/my_spec
 platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="managing-code-and-scientific-communication.html#cb83-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="managing-code-and-scientific-communication.html#cb86-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="see-the-working-directory" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">C.4.1</span> See the working directory<a href="managing-code-and-scientific-communication.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
@@ -427,30 +428,30 @@ platform-independent. For more on the <code>here</code> package, see
 <div id="see-the-project-directory" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">C.4.2</span> See the project directory<a href="managing-code-and-scientific-communication.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code-and-scientific-communication.html#sec-projects">C.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="managing-code-and-scientific-communication.html#cb84-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="managing-code-and-scientific-communication.html#cb87-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
 <div id="create-a-path-with-here" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">C.4.3</span> Create a path with <code>here()</code><a href="managing-code-and-scientific-communication.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="managing-code-and-scientific-communication.html#cb86-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="managing-code-and-scientific-communication.html#cb89-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;02-01-df.RData&quot;</code></pre>
 <p>To see its full path,</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="managing-code-and-scientific-communication.html#cb88-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="managing-code-and-scientific-communication.html#cb91-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments/data/02-01-df.RData&quot;</code></pre>
 <p>To use that path to read in the data, I first create the path, then use it to
 read in the object:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="managing-code-and-scientific-communication.html#cb90-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
-<span id="cb90-2"><a href="managing-code-and-scientific-communication.html#cb90-2" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="managing-code-and-scientific-communication.html#cb90-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
-<span id="cb90-4"><a href="managing-code-and-scientific-communication.html#cb90-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="managing-code-and-scientific-communication.html#cb93-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
+<span id="cb93-2"><a href="managing-code-and-scientific-communication.html#cb93-2" tabindex="-1"></a></span>
+<span id="cb93-3"><a href="managing-code-and-scientific-communication.html#cb93-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
+<span id="cb93-4"><a href="managing-code-and-scientific-communication.html#cb93-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
 <p>(These could be combined into a single line.)</p>
 <p>The object <code>02-01-df.RData</code> contains a single dataframe called <code>df</code>. I can now see that dataframe in my environment:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="managing-code-and-scientific-communication.html#cb91-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="managing-code-and-scientific-communication.html#cb94-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;df&quot;            &quot;my_rdata_path&quot;</code></pre>
 <p>and examine it</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="managing-code-and-scientific-communication.html#cb93-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="managing-code-and-scientific-communication.html#cb96-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>##           x z         y
 ## 1 5.8873201 0 5.6125511
 ## 2 2.3428286 0 2.0830483
@@ -463,9 +464,9 @@ read in the object:</p>
 <div id="what-packages-are-installed" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">C.5</span> What Packages are Installed?<a href="managing-code-and-scientific-communication.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="managing-code-and-scientific-communication.html#cb95-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="managing-code-and-scientific-communication.html#cb98-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="managing-code-and-scientific-communication.html#cb96-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="managing-code-and-scientific-communication.html#cb99-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
 <pre><code>## [[1]]
 ##   [1] &quot;abind&quot;         &quot;askpass&quot;       &quot;backports&quot;     &quot;bandit&quot;       
 ##   [5] &quot;base&quot;          &quot;base64enc&quot;     &quot;bit&quot;           &quot;bit64&quot;        
@@ -504,30 +505,31 @@ read in the object:</p>
 ## [137] &quot;numDeriv&quot;      &quot;openssl&quot;       &quot;parallel&quot;      &quot;parallelly&quot;   
 ## [141] &quot;parsnip&quot;       &quot;patchwork&quot;     &quot;pbkrtest&quot;      &quot;pillar&quot;       
 ## [145] &quot;pkgbuild&quot;      &quot;pkgconfig&quot;     &quot;pkgdown&quot;       &quot;pkgload&quot;      
-## [149] &quot;png&quot;           &quot;praise&quot;        &quot;prettyunits&quot;   &quot;processx&quot;     
-## [153] &quot;prodlim&quot;       &quot;profvis&quot;       &quot;progress&quot;      &quot;progressr&quot;    
-## [157] &quot;promises&quot;      &quot;ps&quot;            &quot;purrr&quot;         &quot;quantreg&quot;     
-## [161] &quot;R6&quot;            &quot;ragg&quot;          &quot;randomizr&quot;     &quot;rappdirs&quot;     
-## [165] &quot;rcmdcheck&quot;     &quot;RColorBrewer&quot;  &quot;Rcpp&quot;          &quot;RcppEigen&quot;    
-## [169] &quot;readr&quot;         &quot;readxl&quot;        &quot;recipes&quot;       &quot;rematch&quot;      
-## [173] &quot;rematch2&quot;      &quot;remotes&quot;       &quot;renv&quot;          &quot;reprex&quot;       
-## [177] &quot;rlang&quot;         &quot;rmarkdown&quot;     &quot;roxygen2&quot;      &quot;rpart&quot;        
-## [181] &quot;rprojroot&quot;     &quot;rsample&quot;       &quot;rstudioapi&quot;    &quot;rversions&quot;    
-## [185] &quot;rvest&quot;         &quot;sass&quot;          &quot;scales&quot;        &quot;selectr&quot;      
-## [189] &quot;sessioninfo&quot;   &quot;shape&quot;         &quot;shiny&quot;         &quot;slider&quot;       
-## [193] &quot;sourcetools&quot;   &quot;SparseM&quot;       &quot;spatial&quot;       &quot;splines&quot;      
-## [197] &quot;SQUAREM&quot;       &quot;stargazer&quot;     &quot;stats&quot;         &quot;stats4&quot;       
-## [201] &quot;stringi&quot;       &quot;stringr&quot;       &quot;survival&quot;      &quot;svglite&quot;      
-## [205] &quot;sys&quot;           &quot;systemfonts&quot;   &quot;tcltk&quot;         &quot;testthat&quot;     
-## [209] &quot;textshaping&quot;   &quot;tibble&quot;        &quot;tidymodels&quot;    &quot;tidyr&quot;        
-## [213] &quot;tidyselect&quot;    &quot;tidyverse&quot;     &quot;timechange&quot;    &quot;timeDate&quot;     
-## [217] &quot;tinytex&quot;       &quot;tools&quot;         &quot;translations&quot;  &quot;tune&quot;         
-## [221] &quot;tzdb&quot;          &quot;urlchecker&quot;    &quot;usethis&quot;       &quot;utf8&quot;         
-## [225] &quot;utils&quot;         &quot;uuid&quot;          &quot;vctrs&quot;         &quot;viridisLite&quot;  
-## [229] &quot;vroom&quot;         &quot;waldo&quot;         &quot;warp&quot;          &quot;webshot&quot;      
-## [233] &quot;whisker&quot;       &quot;withr&quot;         &quot;workflows&quot;     &quot;workflowsets&quot; 
-## [237] &quot;xfun&quot;          &quot;xml2&quot;          &quot;xopen&quot;         &quot;xtable&quot;       
-## [241] &quot;yaml&quot;          &quot;yardstick&quot;     &quot;zip&quot;</code></pre>
+## [149] &quot;plyr&quot;          &quot;png&quot;           &quot;praise&quot;        &quot;prettyunits&quot;  
+## [153] &quot;processx&quot;      &quot;prodlim&quot;       &quot;profvis&quot;       &quot;progress&quot;     
+## [157] &quot;progressr&quot;     &quot;promises&quot;      &quot;ps&quot;            &quot;purrr&quot;        
+## [161] &quot;quantreg&quot;      &quot;R6&quot;            &quot;ragg&quot;          &quot;randomizr&quot;    
+## [165] &quot;rappdirs&quot;      &quot;rcmdcheck&quot;     &quot;RColorBrewer&quot;  &quot;Rcpp&quot;         
+## [169] &quot;RcppEigen&quot;     &quot;readr&quot;         &quot;readxl&quot;        &quot;recipes&quot;      
+## [173] &quot;rematch&quot;       &quot;rematch2&quot;      &quot;remotes&quot;       &quot;renv&quot;         
+## [177] &quot;reprex&quot;        &quot;reshape2&quot;      &quot;rlang&quot;         &quot;rmarkdown&quot;    
+## [181] &quot;roxygen2&quot;      &quot;rpart&quot;         &quot;rprojroot&quot;     &quot;rsample&quot;      
+## [185] &quot;rstudioapi&quot;    &quot;rversions&quot;     &quot;rvest&quot;         &quot;sass&quot;         
+## [189] &quot;scales&quot;        &quot;selectr&quot;       &quot;sessioninfo&quot;   &quot;shape&quot;        
+## [193] &quot;shiny&quot;         &quot;slider&quot;        &quot;sourcetools&quot;   &quot;SparseM&quot;      
+## [197] &quot;spatial&quot;       &quot;splines&quot;       &quot;SQUAREM&quot;       &quot;stargazer&quot;    
+## [201] &quot;stats&quot;         &quot;stats4&quot;        &quot;stringi&quot;       &quot;stringr&quot;      
+## [205] &quot;survival&quot;      &quot;svglite&quot;       &quot;sys&quot;           &quot;systemfonts&quot;  
+## [209] &quot;tcltk&quot;         &quot;testthat&quot;      &quot;textshaping&quot;   &quot;tibble&quot;       
+## [213] &quot;tidymodels&quot;    &quot;tidyr&quot;         &quot;tidyselect&quot;    &quot;tidyverse&quot;    
+## [217] &quot;timechange&quot;    &quot;timeDate&quot;      &quot;tinytex&quot;       &quot;tools&quot;        
+## [221] &quot;translations&quot;  &quot;tune&quot;          &quot;tzdb&quot;          &quot;urlchecker&quot;   
+## [225] &quot;usethis&quot;       &quot;utf8&quot;          &quot;utils&quot;         &quot;uuid&quot;         
+## [229] &quot;vctrs&quot;         &quot;viridisLite&quot;   &quot;vroom&quot;         &quot;waldo&quot;        
+## [233] &quot;warp&quot;          &quot;webshot&quot;       &quot;whisker&quot;       &quot;withr&quot;        
+## [237] &quot;workflows&quot;     &quot;workflowsets&quot;  &quot;xfun&quot;          &quot;xml2&quot;         
+## [241] &quot;xopen&quot;         &quot;xtable&quot;        &quot;yaml&quot;          &quot;yardstick&quot;    
+## [245] &quot;zip&quot;</code></pre>
 
 </div>
 </div>

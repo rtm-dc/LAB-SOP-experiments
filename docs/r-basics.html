@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-08-15" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,6 +272,7 @@ div.csl-indent {
 <li class="chapter" data-level="A.10.2" data-path="r-basics.html"><a href="r-basics.html#proportions-for-binary-variables"><i class="fa fa-check"></i><b>A.10.2</b> Proportions for binary variables</a></li>
 </ul></li>
 <li class="chapter" data-level="A.11" data-path="r-basics.html"><a href="r-basics.html#merge-join-dataframes"><i class="fa fa-check"></i><b>A.11</b> Merge (join) dataframes</a></li>
+<li class="chapter" data-level="A.12" data-path="r-basics.html"><a href="r-basics.html#anonymize-sensitive-data"><i class="fa fa-check"></i><b>A.12</b> Anonymize sensitive data</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="python-basics-using-rrstudio.html"><a href="python-basics-using-rrstudio.html"><i class="fa fa-check"></i><b>B</b> Python Basics (using R/RStudio)</a>
 <ul>
@@ -771,6 +772,35 @@ distributions are comparable.</p>
 <span id="cb77-2"><a href="r-basics.html#cb77-2" tabindex="-1"></a>                               <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span> <span class="ot">=</span> <span class="st">&quot;age&quot;</span>,</span>
 <span id="cb77-3"><a href="r-basics.html#cb77-3" tabindex="-1"></a>                                      <span class="st">&quot;Tallness&quot;</span> <span class="ot">=</span> <span class="st">&quot;height&quot;</span>))</span></code></pre></div>
 <p>Columns with the same name, but different types, will not join. E.g., if <code>df1$this_var</code> is numeric, but <code>df2$this_var</code> is character, the joins will throw an error.</p>
+</div>
+<div id="anonymize-sensitive-data" class="section level2 hasAnchor" number="7.12">
+<h2><span class="header-section-number">A.12</span> Anonymize sensitive data<a href="r-basics.html#anonymize-sensitive-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes we want to preserve features of sensitive data, but not the values themselves. For example, we want to match individuals across datasets, but do not want to preserve the individuals’ addresses.</p>
+<p>Suppose we have the data below, where each individual has a unique name and phone number, but two share an address:</p>
+<pre><code>## # A tibble: 3 × 4
+##   Name    Address       Phone Score
+##   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+## 1 Beth    10 Downing St   123    90
+## 2 Esme    667 Dark Ave    456    50
+## 3 Charles 10 Downing St   789    70</code></pre>
+<p>We can anonymize the <code>Address</code> and <code>Phone</code> columns in this data set (called <code>sens</code>) using the <code>digest()</code> function in package <code>{digest}</code>:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="r-basics.html#cb79-1" tabindex="-1"></a><span class="fu">library</span>(digest)</span>
+<span id="cb79-2"><a href="r-basics.html#cb79-2" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="r-basics.html#cb79-3" tabindex="-1"></a>cols_to_mask <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Address&quot;</span>, <span class="st">&quot;Phone&quot;</span>)</span>
+<span id="cb79-4"><a href="r-basics.html#cb79-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> cols_to_mask){</span>
+<span id="cb79-5"><a href="r-basics.html#cb79-5" tabindex="-1"></a>  anon <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">unlist</span>(sens[, i]), digest, <span class="at">algo =</span> <span class="st">&quot;sha1&quot;</span>)</span>
+<span id="cb79-6"><a href="r-basics.html#cb79-6" tabindex="-1"></a>  short_anon <span class="ot">&lt;-</span> <span class="fu">substr</span>(anon, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb79-7"><a href="r-basics.html#cb79-7" tabindex="-1"></a>  sens[, i] <span class="ot">&lt;-</span> short_anon</span>
+<span id="cb79-8"><a href="r-basics.html#cb79-8" tabindex="-1"></a>}</span>
+<span id="cb79-9"><a href="r-basics.html#cb79-9" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="r-basics.html#cb79-10" tabindex="-1"></a>sens</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 4
+##   Name    Address    Phone      Score
+##   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+## 1 Beth    c209e019b6 dac97294d4    90
+## 2 Esme    7ccc94e690 0f2c3261a0    50
+## 3 Charles c209e019b6 b13ceddf81    70</code></pre>
+<p>Note that addresses 1 and 3 are the same, despite being hashed.</p>
 
 </div>
 </div>
