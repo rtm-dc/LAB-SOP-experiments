@@ -789,11 +789,14 @@ distributions are comparable.</p>
 <span id="cb79-3"><a href="r-basics.html#cb79-3" tabindex="-1"></a>cols_to_mask <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Address&quot;</span>, <span class="st">&quot;Phone&quot;</span>)</span>
 <span id="cb79-4"><a href="r-basics.html#cb79-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> cols_to_mask){</span>
 <span id="cb79-5"><a href="r-basics.html#cb79-5" tabindex="-1"></a>  anon <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">unlist</span>(sens[, i]), digest, <span class="at">algo =</span> <span class="st">&quot;sha1&quot;</span>)</span>
-<span id="cb79-6"><a href="r-basics.html#cb79-6" tabindex="-1"></a>  short_anon <span class="ot">&lt;-</span> <span class="fu">substr</span>(anon, <span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb79-7"><a href="r-basics.html#cb79-7" tabindex="-1"></a>  sens[, i] <span class="ot">&lt;-</span> short_anon</span>
-<span id="cb79-8"><a href="r-basics.html#cb79-8" tabindex="-1"></a>}</span>
-<span id="cb79-9"><a href="r-basics.html#cb79-9" tabindex="-1"></a></span>
-<span id="cb79-10"><a href="r-basics.html#cb79-10" tabindex="-1"></a>sens</span></code></pre></div>
+<span id="cb79-6"><a href="r-basics.html#cb79-6" tabindex="-1"></a>  </span>
+<span id="cb79-7"><a href="r-basics.html#cb79-7" tabindex="-1"></a>  <span class="co"># Shorten anonymized column (only for presentation here):</span></span>
+<span id="cb79-8"><a href="r-basics.html#cb79-8" tabindex="-1"></a>  short_anon <span class="ot">&lt;-</span> <span class="fu">substr</span>(anon, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb79-9"><a href="r-basics.html#cb79-9" tabindex="-1"></a>  </span>
+<span id="cb79-10"><a href="r-basics.html#cb79-10" tabindex="-1"></a>  sens[, i] <span class="ot">&lt;-</span> short_anon</span>
+<span id="cb79-11"><a href="r-basics.html#cb79-11" tabindex="-1"></a>}</span>
+<span id="cb79-12"><a href="r-basics.html#cb79-12" tabindex="-1"></a></span>
+<span id="cb79-13"><a href="r-basics.html#cb79-13" tabindex="-1"></a>sens</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##   Name    Address    Phone      Score
 ##   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;

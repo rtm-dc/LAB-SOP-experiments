@@ -416,7 +416,7 @@ By default, joins will match on any columns that have the same name. So, if `age
 
 If column names differ, the `by = ...` argument can inform the join. E.g., if, instead, `df1` has variables `Age` and `Tallness`, we could join with 
 
-```{r eval=FALSE}
+```{r fulljoin, eval=FALSE}
 df_joined <- df1 %>% full_join(df2, 
                                by = c("Age" = "age",
                                       "Tallness" = "height"))
@@ -428,7 +428,7 @@ Columns with the same name, but different types, will not join. E.g., if `df1$th
 
 Sometimes we want to preserve features of sensitive data, but not the values themselves. For example, we want to match individuals across datasets, but do not want to preserve the individuals' addresses.
 
-```{r warning=FALSE, echo=FALSE}
+```{r sensitivedata, warning=FALSE, echo=FALSE}
 sens <- tibble(Name = rep(c("Beth", "Esme", "Charles")),
                Address = c("10 Downing St",
                            "667 Dark Ave",
@@ -445,13 +445,16 @@ sens
 
 We can anonymize the `Address` and `Phone` columns in this data set (called `sens`) using the `digest()` function in package `{digest}`:
 
-```{r warning = FALSE}
+```{r hash, warning = FALSE}
 library(digest)
 
 cols_to_mask <- c("Address", "Phone")
 for(i in cols_to_mask){
   anon <- sapply(unlist(sens[, i]), digest, algo = "sha1")
+  
+  # Shorten anonymized column (only for presentation here):
   short_anon <- substr(anon, 1, 10)
+  
   sens[, i] <- short_anon
 }
 
