@@ -79,6 +79,19 @@ We can view the ITT treatment effect from the model object with
 
 ## Adjusting for Covariates {#sec-lin}
 
+### Why we adjust for covariates
+
+We adjust for covariates for two reasons. First, we adjust to address covariate imbalances that remain in our sample, in order to minimize our estimation error.  As @tukey91[p. 123] describes, 
+
+> the degree of protection against either the consequences of inadequate randomization or the (random) occurrence of an unusual randomization is considerably increased by adjustment.  
+> *Greater security, rather than increased precision, or increased sensitivity will often be the basic reason for covariance adjustment in a randomized trial.*
+
+Despite the fact that the difference in means and regression equivalents are unbiased for the ATE under random allocation, we can only derive estimates from the sample at hand.
+
+Second, adjustment can increase our ATE estimate precision.
+
+### How we adjust for covariates
+
 In analyzing experiments, we follow the guidance of @lin2013, using HC2 standard
 errors for inference, and, where we adjust for covariates, centering and
 interacting predictors with treatment status. Where $Z$ is treatment status and
@@ -108,6 +121,26 @@ ci_high <- round(lin_out$conf.high["z"], 3)
 
 The estimate of the average treatment effect is $`r te`$, with a 95% confidence
 interval covering $(`r ci_low`, `r ci_high`)$.
+
+### Adjusting for Blocks {#sec-adjust-blocks}
+
+Where treatment probabilities or sample sizes vary across blocks we account for our blocking by either treating the block indicators $B_j$ as Lin covariates and estimating
+
+\begin{eqnarray*}
+y_i & = &  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \ldots \\
+&& \gamma_1 (B_1 - \bar{B}_1) + \gamma_2 (B_2 - \bar{B}_2) + \ldots \\
+&& \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) +  \epsilon_i
+\end{eqnarray*}
+
+or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via
+
+```{r eval=FALSE}
+lm_lin(y ~ z, covariates = ~ x + block1_id + block2_id + ..., data = df)
+lm_lin(y ~ z, covariates = ~ x + block_id_factor, data = df)
+```
+
+We do this because the "least squares dummy variable" approach produces biased estimates of the ATE and its standard error. This approach weights block-level effects by $p_j(1-p_j)n_j$, where $p_j$ is the probability of treatment in the block, and $n_j$ is the sample size in the block. See the helpful blog post [here](https://declaredesign.org/blog/posts/biased-fixed-effects.html).
+
 
 ## Binary or Count Outcomes {#sec-binary-outcomes}
 
@@ -172,7 +205,9 @@ We note that treatment effect estimates from two-way fixed effect (TWFE) event-s
 
 ## Randomization Inference {#sec-rand-inf}
 
-Often, we prefer to rely on our _design_, rather than asymptotic or distributional assumptions, for statistical inference. For example, with modest sample sizes and a complex experimental design, in @avimammoo23 we use randomization inference. Below is an annotated example of doing so, using a `for` loop. We set the seed using the method in Section 
+Often, we prefer to rely on our _design_, rather than asymptotic or distributional assumptions, for statistical inference. In particular, when we have complex designs or analysis strategies, we use randomization inference.
+
+For example, with modest sample sizes and a complex experimental design, in @avimammoo23 we use randomization inference. Below is an annotated example of doing so, using a `for` loop. We set the seed using the method in Section 
 \@ref(sec-set-seed); we simulate treatment assignments using the method in Section \@ref(sec-create-treatment). More simulations reduces simulation error.
 
 ```{r}
@@ -209,6 +244,8 @@ mean(abs(store_te) >= abs(te_est))
 
 Sometimes, this will differ greatly from the parametric $p$-value. Here, the
 parametric $p$-value is `r round(lm_out$p.value["z"], 5)`.
+
+For another example, see @gergre12, Chapter 3 for a demonstration using highly skewed data.
 
 ## Addressing Non-compliance
 

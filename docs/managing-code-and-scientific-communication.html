@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-08-22" />
+<meta name="date" content="2023-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,7 +213,12 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#notation"><i class="fa fa-check"></i><b>4.1</b> Notation</a></li>
 <li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#estimands"><i class="fa fa-check"></i><b>4.2</b> Estimands</a></li>
 <li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#sec-unadj-itt"><i class="fa fa-check"></i><b>4.3</b> The Unadjusted ITT</a></li>
-<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#sec-lin"><i class="fa fa-check"></i><b>4.4</b> Adjusting for Covariates</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#sec-lin"><i class="fa fa-check"></i><b>4.4</b> Adjusting for Covariates</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="analysis.html"><a href="analysis.html#why-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.1</b> Why we adjust for covariates</a></li>
+<li class="chapter" data-level="4.4.2" data-path="analysis.html"><a href="analysis.html#how-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.2</b> How we adjust for covariates</a></li>
+<li class="chapter" data-level="4.4.3" data-path="analysis.html"><a href="analysis.html#sec-adjust-blocks"><i class="fa fa-check"></i><b>4.4.3</b> Adjusting for Blocks</a></li>
+</ul></li>
 <li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#sec-binary-outcomes"><i class="fa fa-check"></i><b>4.5</b> Binary or Count Outcomes</a></li>
 <li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#clusters-weights-fixed-effects"><i class="fa fa-check"></i><b>4.6</b> Clusters, Weights, Fixed Effects</a>
 <ul>
@@ -356,8 +361,8 @@ for more detail and painful counterexamples.</p>
 <li><p>Begin your code file with a <code>library()</code> command for every package required
 for that file to run. Keep these in alphabetical order.</p></li>
 </ol>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="managing-code-and-scientific-communication.html#cb84-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb84-2"><a href="managing-code-and-scientific-communication.html#cb84-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="managing-code-and-scientific-communication.html#cb85-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb85-2"><a href="managing-code-and-scientific-communication.html#cb85-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Do <strong>not</strong> include your “workflow” in your code files. Anything that’s
 interactive or changes the environment should be excluded. Do not include
@@ -368,7 +373,7 @@ e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 for examples in R.</p></li>
 <li><p>Use the assignment arrow for assignment. The structure:</p></li>
 </ol>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="managing-code-and-scientific-communication.html#cb85-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="managing-code-and-scientific-communication.html#cb86-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Use space around operators (write <code>3 + 4 = 7</code>, not <code>3+4=7</code>) and after a
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</li>
@@ -420,7 +425,7 @@ are not hard-coding a path that no one else has (like <code>~/Me/My Docs/my_spec
 platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="managing-code-and-scientific-communication.html#cb86-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="managing-code-and-scientific-communication.html#cb87-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="see-the-working-directory" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">C.4.1</span> See the working directory<a href="managing-code-and-scientific-communication.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
@@ -428,30 +433,30 @@ platform-independent. For more on the <code>here</code> package, see
 <div id="see-the-project-directory" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">C.4.2</span> See the project directory<a href="managing-code-and-scientific-communication.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code-and-scientific-communication.html#sec-projects">C.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="managing-code-and-scientific-communication.html#cb87-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="managing-code-and-scientific-communication.html#cb88-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
 <div id="create-a-path-with-here" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">C.4.3</span> Create a path with <code>here()</code><a href="managing-code-and-scientific-communication.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="managing-code-and-scientific-communication.html#cb89-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="managing-code-and-scientific-communication.html#cb90-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;02-01-df.RData&quot;</code></pre>
 <p>To see its full path,</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="managing-code-and-scientific-communication.html#cb91-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="managing-code-and-scientific-communication.html#cb92-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments/data/02-01-df.RData&quot;</code></pre>
 <p>To use that path to read in the data, I first create the path, then use it to
 read in the object:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="managing-code-and-scientific-communication.html#cb93-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
-<span id="cb93-2"><a href="managing-code-and-scientific-communication.html#cb93-2" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="managing-code-and-scientific-communication.html#cb93-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
-<span id="cb93-4"><a href="managing-code-and-scientific-communication.html#cb93-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="managing-code-and-scientific-communication.html#cb94-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
+<span id="cb94-2"><a href="managing-code-and-scientific-communication.html#cb94-2" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="managing-code-and-scientific-communication.html#cb94-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
+<span id="cb94-4"><a href="managing-code-and-scientific-communication.html#cb94-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
 <p>(These could be combined into a single line.)</p>
 <p>The object <code>02-01-df.RData</code> contains a single dataframe called <code>df</code>. I can now see that dataframe in my environment:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="managing-code-and-scientific-communication.html#cb94-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="managing-code-and-scientific-communication.html#cb95-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;df&quot;            &quot;my_rdata_path&quot;</code></pre>
 <p>and examine it</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="managing-code-and-scientific-communication.html#cb96-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="managing-code-and-scientific-communication.html#cb97-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>##           x z         y
 ## 1 5.8873201 0 5.6125511
 ## 2 2.3428286 0 2.0830483
@@ -464,9 +469,9 @@ read in the object:</p>
 <div id="what-packages-are-installed" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">C.5</span> What Packages are Installed?<a href="managing-code-and-scientific-communication.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="managing-code-and-scientific-communication.html#cb98-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="managing-code-and-scientific-communication.html#cb99-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="managing-code-and-scientific-communication.html#cb99-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="managing-code-and-scientific-communication.html#cb100-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
 <pre><code>## [[1]]
 ##   [1] &quot;abind&quot;         &quot;askpass&quot;       &quot;backports&quot;     &quot;bandit&quot;       
 ##   [5] &quot;base&quot;          &quot;base64enc&quot;     &quot;bit&quot;           &quot;bit64&quot;        
