@@ -1,3 +1,4 @@
+tab:matchingeval
 getting-started
 design
 units
@@ -41,6 +42,10 @@ westfall-young-adjustment
 posterior-probabilities
 observational-studies
 matching
+methods
+selecting-the-method-for-analysis
+calipers
+alternatives
 publication
 authorship-in-pre-analysis-plans
 authorship-in-academic-articles

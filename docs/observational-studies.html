@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-08-29" />
+<meta name="date" content="2023-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="observational-studies.html"><a href="observational-studies.html"><i class="fa fa-check"></i><b>5</b> Observational Studies</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="observational-studies.html"><a href="observational-studies.html#matching"><i class="fa fa-check"></i><b>5.1</b> Matching</a></li>
+<li class="chapter" data-level="5.1" data-path="observational-studies.html"><a href="observational-studies.html#matching"><i class="fa fa-check"></i><b>5.1</b> Matching</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="observational-studies.html"><a href="observational-studies.html#methods"><i class="fa fa-check"></i><b>5.1.1</b> Methods</a></li>
+<li class="chapter" data-level="5.1.2" data-path="observational-studies.html"><a href="observational-studies.html#selecting-the-method-for-analysis"><i class="fa fa-check"></i><b>5.1.2</b> Selecting the Method for Analysis</a></li>
+<li class="chapter" data-level="5.1.3" data-path="observational-studies.html"><a href="observational-studies.html#calipers"><i class="fa fa-check"></i><b>5.1.3</b> Calipers</a></li>
+<li class="chapter" data-level="5.1.4" data-path="observational-studies.html"><a href="observational-studies.html#alternatives"><i class="fa fa-check"></i><b>5.1.4</b> Alternatives</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
 <ul>
@@ -337,18 +343,76 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="observational-studies" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Observational Studies<a href="observational-studies.html#observational-studies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>We occasionally try to estimate causal effects using data from non-randomized, <em>observational</em> sources.</p>
+<p>We occasionally try to estimate causal effects using data from non-randomized, observational sources.</p>
 <p>When we do so, we seek to embody the principle of “design before analysis” and the techniques in <span class="citation">Rubin (<a href="#ref-rubin07">2007</a>)</span>. These techniques include designing with no outcomes in sight and pre-registering analyses where possible.</p>
 <div id="matching" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Matching<a href="observational-studies.html#matching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are many algorithms for producing matched samples.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> Depending on our data structures, we may consider</p>
+<p>There are many algorithms for producing matched samples.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> By default, we implement several matching procedures and select the one that yields the best balance for our analysis. We developed this approach for our evaluation of a high school internship program; see <a href="https://thelabprojects.dc.gov/reimagine-dc-high-schools">here</a> for details of that application.</p>
+<div id="methods" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Methods<a href="observational-studies.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>By default, we implement</p>
 <ul>
-<li>propensity score <span class="citation">(<a href="#ref-rosrub83">Rosenbaum and Rubin 1983</a>)</span>,</li>
-<li>Mahalanobis distance <span class="citation">(<a href="#ref-rubin80">Rubin 1980</a>)</span>,</li>
-<li>genetic <span class="citation">(<a href="#ref-diasek13">Diamond and Sekhon 2013</a>)</span>, or</li>
+<li>optimal full nearest-neighbor matching</li>
+<li>optimal full nearest-neighbor matching with calipers</li>
+<li>(if the optimal methods above cannot be implemented, we instead use generalized full matching)</li>
+<li>genetic matching using the Mahalanobis distance, without replacement, and a 1-1 treatment-control ratio,</li>
+<li>genetic matching using the Mahalanobis distance, without replacement, and a 1-2 treatment-control ratio,</li>
+<li>genetic matching including the propensity score as a covariate, using the Mahalanobis distance, without replacement, calipers, and a 1-1 treatment-control ratio,</li>
+<li>genetic matching including the propensity score as a covariate, using the Mahalanobis distance, without replacement, calipers, and a 1-2 treatment-control ratio,</li>
+</ul>
+<p>If we encounter issues estimating the propensity score, where needed, we will exclude variables that are highly correlated with others. Our default procedure for doing so is to</p>
+<ol style="list-style-type: decimal">
+<li>include all of the covariates of interest;</li>
+<li>if the propensity score model does not estimate due to highly-correlated variables, calculate the pairwise correlations between all covariates;</li>
+<li>using that pairwise correlation, identify the most correlated pair, randomly exclude one of the two covariates, and re-estimate the propensity score model;</li>
+<li>continue until enough variables are excluded to successfully estimate the propensity score.</li>
+</ol>
+</div>
+<div id="selecting-the-method-for-analysis" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Selecting the Method for Analysis<a href="observational-studies.html#selecting-the-method-for-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We select a matching method and parameters for that method for primary analysis based on which method minimizes the worst imbalance on a covariate. We use the standardized mean difference to assess balance in each covariate, with the control group standard deviation as the denominator.</p>
+<p>For example, comparing two methods for three covariates with imbalance scores (where lower scores indicate better balance) of</p>
+<table>
+<caption><span id="tab:matchingeval">Table 5.1: </span>Comparing Matching Methods using Variables’ Balance Scores</caption>
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Method 1</td>
+<td align="right">0.6</td>
+<td align="right">0.9</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="even">
+<td align="left">Method 2</td>
+<td align="right">0.8</td>
+<td align="right">0.7</td>
+<td align="right">0.6</td>
+</tr>
+</tbody>
+</table>
+<p>we select <strong>Method 2</strong>. Its <em>worst</em> imbalance (0.8 on <code>x1</code>) is better than the worst balance of Method 1 (0.9 on <code>x2</code>).</p>
+</div>
+<div id="calipers" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Calipers<a href="observational-studies.html#calipers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="alternatives" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Alternatives<a href="observational-studies.html#alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Depending on our data structures, we may consider</p>
+<ul>
+<li>propensity score matching <span class="citation">(<a href="#ref-rosrub83">Rosenbaum and Rubin 1983</a>)</span>,</li>
+<li>Mahalanobis distance matching <span class="citation">(<a href="#ref-rubin80">Rubin 1980</a>)</span>,</li>
+<li>genetic matching <span class="citation">(<a href="#ref-diasek13">Diamond and Sekhon 2013</a>)</span>, or</li>
 <li>coarsened exact matching <span class="citation">(<a href="#ref-iackinpor12">Iacus, King, and Porro 2012</a>)</span>.</li>
 </ul>
 
+</div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -372,7 +436,7 @@ Rubin, Donald B. 1980. <span>“Bias Reduction Using Mahalanobis-Metric Matching
 <div class="footnotes">
 <hr />
 <ol start="7">
-<li id="fn7"><p>Incidentally, there are many ways to estimate the conditional expectation function as well, of which ordinary least squares is only one.<a href="observational-studies.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>There are also many ways to estimate the conditional expectation function, of which ordinary least squares is only one.<a href="observational-studies.html#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
