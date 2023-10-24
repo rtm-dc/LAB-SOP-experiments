@@ -46,6 +46,7 @@ new_obj_name <- value_of_that_object
 8. Use space around operators (write `3 + 4 = 7`, not `3+4=7`) and after a
 comma, as in English (write `f(x, y)`, not `f(x,y)`).
 
+9. Use the native pipe, `|>`. (If you use RStudio keyboard shortcuts, you can toggle the default pipe shortcut to use the native pipe. See Tools, Global Options, Code, "Use native pipe operator".)
 
 
 
