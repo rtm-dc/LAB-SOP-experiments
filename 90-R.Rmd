@@ -108,9 +108,7 @@ For more information, see the `boxr` [vignette](https://r-box.github.io/boxr/art
 ## Pipes
 
 Pipe operators make it easier for humans to follow a code chunk, and they allow
-us to string together a sequence of operations into a "pipeline". The standard
-pipe from package `magrittr` is most common (`%>%`), but there are others,
-including a native R pipe (`|>`).
+us to string together a sequence of operations into a "pipeline". The native R pipe is `|>`; the pipe from package `magrittr` is also very common (`%>%`).
 
 The pipe simply takes the argument on its left and passes it as the first
 argument of the function to its right. So, if I have function `f()` to which I
@@ -123,13 +121,13 @@ f(x, y)
 Using a pipe, I can equivalently write either
 
 ```{r eval=FALSE}
-x %>% f(y)
+x |> f(y)
 ```
 
 or
 
 ```{r eval=FALSE}
-x |> f(y)
+x %>% f(y)
 ```
 
 
@@ -140,7 +138,7 @@ Variable names should adhere to good  [practices](https://thelab.dc.gov/LAB-SOP-
 The `rename()` function in `dplyr` can rename several variables at once:
 
 ```{r eval=FALSE}
-df <- df %>% rename(new_var_name_1 = `Bad, old, long, spacey name`,
+df <- df |> rename(new_var_name_1 = `Bad, old, long, spacey name`,
                     new_var_name_2 = "inconsistentsquishedvarname",
                     new_var_name_3 = starts_with("Unique string old name starts with"))
 ```
@@ -148,7 +146,7 @@ df <- df %>% rename(new_var_name_1 = `Bad, old, long, spacey name`,
 To automatically clean up all the names in a dataframe, the `janitor` package can help:
 
 ```{r eval=FALSE}
-df <- df %>% clean_names()
+df <- df |> clean_names()
 ```
 
 
@@ -168,7 +166,7 @@ Suppose that the resume data were all from "wave 3" of a larger study. To
 identify them as such,
 
 ```{r}
-df_resume <- df_resume %>% mutate(wave = 3)
+df_resume <- df_resume |> mutate(wave = 3)
 ```
 
 ### Create a primary key
@@ -177,7 +175,7 @@ A "primary key" is a variable that uniquely identifies each row in the data set.
 To create a primary key or "ID variable",
 
 ```{r}
-df_resume <- df_resume %>% mutate(id_var = row_number())
+df_resume <- df_resume |> mutate(id_var = row_number())
 ```
 
 
@@ -188,7 +186,7 @@ has levels `female` and `male`, to create a logical `TRUE`/`FALSE` variable
 indicating whether the résumé had a putatively female name at the top:
 
 ```{r}
-df_resume <- df_resume %>% mutate(isFemale = sex == "female")
+df_resume <- df_resume |> mutate(isFemale = sex == "female")
 ```
 
 Now, `df_resume` has `r ncol(df_resume)` columns:
@@ -205,8 +203,8 @@ Note that `mutate()` needs a dataframe as its first argument. Above, we pass
 Below, we select a subset of columns from `df_resume`, take the sum across them, and add the sum as a new variable. Here, we locate the new variable right after those columns that it summed.
 
 ```{r}
-df_resume %>% 
-  mutate(new_sum = rowSums(select(df_resume, call:id_var))) %>% 
+df_resume |> 
+  mutate(new_sum = rowSums(select(df_resume, call:id_var))) |> 
   relocate(new_sum, .after = id_var)
 ```
 
@@ -217,7 +215,7 @@ df_resume %>%
 Instead of creating a new variable as above, we can use `mutate()` and `case_when()` to recode a variable. Suppose we wanted to code race:
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   race = case_when(
     race == "white" ~ "race_wh",       # recode "white" to "race_wh"
     race == "black" ~ "race_bl",       # recode "black" to "race_bl"
@@ -230,7 +228,7 @@ df_resume %>% mutate(
 There is also `recode()`, but its lifecycle status is "questioning":
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   race = recode(race,
     "white" = 0,
     "black" = 1
@@ -247,7 +245,7 @@ When we have dates stored as character strings, we transform them to dates. Firs
 # Simulate date data:
 set.seed(117894985)
 
-df_resume <- df_resume %>% 
+df_resume <- df_resume |> 
   mutate( 
     dob = paste0(sample(1:12, n(), replace = TRUE), 
                  "/", 
@@ -262,7 +260,7 @@ head(df_resume, 3)
 The tidyverse includes the `lubridate` package. If you know the format of the character strings, there are many shortcut parsers like `mdy()`. Below, we recode character dates to be of date type:
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   dob_date = mdy(dob)
 )
 ```
@@ -270,7 +268,7 @@ df_resume %>% mutate(
 If we aren't sure of the format, or there are several, we use `parse_date_time()` and specify several "orders" of date format. `parse()` functions do their best to use the information in "orders". Below, `"dmy"` alone would recode only the ambiguous dates, assuming they were in day-month-year order. Adding `"%m/%d/%Y"` instructs `parse()` to look for `month/day/year` formats. Finding many that are unambiguously that format, it assumes that format for the new variable. 
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   dob_date = as_date(    
     parse_date_time(dob, 
                     orders = c("dmy", "%m/%d/%Y"))
@@ -290,7 +288,7 @@ df_resume %<>% mutate(
 To make an age variable from the year component, 
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   age = 2023 - year(dob_date)
 )
 ```
@@ -298,7 +296,7 @@ df_resume %>% mutate(
 For more precision, the participants' ages as of 2 May 2023, 
 
 ```{r}
-df_resume %>% mutate(
+df_resume |> mutate(
   age = as.numeric(
     interval(dob_date, "2023-05-02"), 
     "years")
@@ -317,16 +315,16 @@ for that participant that we care about. We want to produce a variable that is 0
 Below, we group by `firstname`, then round all months to the first date of the month, then count those months (within `firstname`). We show the first three rows for each participant.
 
 ```{r}
-df_resume %>% 
+df_resume |> 
   # Ensure ranking _within_ firstname:
-  group_by(firstname) %>% 
+  group_by(firstname) |> 
   # Round all months to first date of the month, then count:
   mutate(dob_month = floor_date(dob_date, unit = "month"), 
          dob_month_count = (min(dob_month) %--% dob_month) %/% months(1)
-         ) %>%
+         ) |>
   # For presentation, select, arrange, and slice:
-  select(firstname, dob, dob_date, dob_month, dob_month_count) %>% 
-  arrange(firstname, dob_month_count) %>% 
+  select(firstname, dob, dob_date, dob_month, dob_month_count) |> 
+  arrange(firstname, dob_month_count) |> 
   slice(1:3)
 ```
 
@@ -341,14 +339,14 @@ vector of `Treatment`'s and `Control`'s and attach it to `df_resume`:
 ```{r}
 set.seed(317334706)
 
-df_resume <- df_resume %>% mutate(
+df_resume <- df_resume |> mutate(
   my_new_treatment_assg = sample(c("Treatment", "Control"), 
                                  size = n(), 
                                  replace = TRUE))
 ```
 
 ```{r}
-head(df_resume %>% select(-isFemale, -dob))
+head(df_resume |> select(-isFemale, -dob))
 ```
 
 
@@ -358,13 +356,13 @@ Use `ggplot()` to plot the distribution of calls back that these résumés
 receive. Calls are fairly rare.
 
 ```{r barplot_resume}
-df_resume %>% ggplot(aes(x = call)) + geom_bar()
+df_resume |> ggplot(aes(x = call)) + geom_bar()
 ```
 
 Look at the distribution by the putative race on the resume:
 
 ```{r barplot_resume_2}
-df_resume %>% 
+df_resume |> 
   ggplot(aes(x = call, fill = race)) + 
   geom_bar(position = "dodge2") 
 ```
@@ -377,14 +375,14 @@ distributions are comparable.
 ### Proportions for a categorical variable
 
 ```{r}
-df_resume %>% count(firstname) %>% mutate(proportion = n / sum(n))
+df_resume |> count(firstname) |> mutate(proportion = n / sum(n))
 ```
 
 ### Proportions for binary variables
 
 ```{r}
-summ_resume <- df_resume %>% 
-  group_by(race) %>%
+summ_resume <- df_resume |> 
+  group_by(race) |>
   summarise(call_back_rate = mean(call),         # mean of numeric 0/1
             prop_female = mean(sex == "female")) # mean of logical TRUE/FALSE
 
@@ -417,7 +415,7 @@ By default, joins will match on any columns that have the same name. So, if `age
 If column names differ, the `by = ...` argument can inform the join. E.g., if, instead, `df1` has variables `Age` and `Tallness`, we could join with 
 
 ```{r fulljoin, eval=FALSE}
-df_joined <- df1 %>% full_join(df2, 
+df_joined <- df1 |> full_join(df2, 
                                by = c("Age" = "age",
                                       "Tallness" = "height"))
 ```
