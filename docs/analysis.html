@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-10-24" />
+<meta name="date" content="2023-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -456,7 +456,11 @@ y_i &amp; = &amp;  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i
 <p>or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="analysis.html#cb24-1" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block1_id <span class="sc">+</span> block2_id <span class="sc">+</span> ..., <span class="at">data =</span> df)</span>
 <span id="cb24-2"><a href="analysis.html#cb24-2" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block_id_factor, <span class="at">data =</span> df)</span></code></pre></div>
-<p>We do this because the “least squares dummy variable” approach produces biased estimates of the ATE and its standard error. This approach weights block-level effects by <span class="math inline">\(p_j(1-p_j)n_j\)</span>, where <span class="math inline">\(p_j\)</span> is the probability of treatment in the block, and <span class="math inline">\(n_j\)</span> is the sample size in the block. See the helpful blog post <a href="https://declaredesign.org/blog/posts/biased-fixed-effects.html">here</a>.</p>
+<p>We do this because the “least squares dummy variable” approach produces biased
+estimates of the ATE and its standard error. This approach weights block-level
+effects by <span class="math inline">\(p_j(1-p_j)n_j\)</span>, where <span class="math inline">\(p_j\)</span> is the probability of treatment in the
+block, and <span class="math inline">\(n_j\)</span> is the sample size in the block. See the helpful blog post
+<a href="https://declaredesign.org/blog/posts/biased-fixed-effects.html">here</a>.</p>
 </div>
 </div>
 <div id="sec-binary-outcomes" class="section level2 hasAnchor" number="4.5">
@@ -548,14 +552,22 @@ this fact needs to be taken into account.</p>
 </div>
 <div id="fixed-effects" class="section level3 hasAnchor" number="4.6.2">
 <h3><span class="header-section-number">4.6.2</span> Fixed Effects<a href="analysis.html#fixed-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We note that treatment effect estimates from two-way fixed effect (TWFE) event-study regressions “<a href="https://bcallaway11.github.io/did/articles/TWFE.html">can be severely biased</a>”, even with homogeneous treatment effects.</p>
+<p>We note that treatment effect estimates from two-way fixed effect (TWFE)
+event-study regressions “<a href="https://bcallaway11.github.io/did/articles/TWFE.html">can be severely
+biased</a>”, even with
+homogeneous treatment effects.</p>
 </div>
 </div>
 <div id="sec-rand-inf" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Randomization Inference<a href="analysis.html#sec-rand-inf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Often, we prefer to rely on our <em>design</em>, rather than asymptotic or distributional assumptions, for statistical inference. In particular, when we have complex designs or analysis strategies, we use randomization inference.</p>
-<p>For example, with modest sample sizes and a complex experimental design, in <span class="citation">Avila et al. (<a href="#ref-avimammoo23">2023</a>)</span> we use randomization inference. Below is an annotated example of doing so, using a <code>for</code> loop. We set the seed using the method in Section
-<a href="design.html#sec-set-seed">2.4</a>; we simulate treatment assignments using the method in Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error.</p>
+<p>Often, we prefer to rely on our <em>design</em>, rather than asymptotic or
+distributional assumptions, for statistical inference. In particular, when we
+have complex designs or analysis strategies, we use randomization inference.</p>
+<p>For example, with modest sample sizes and a complex experimental design, in
+<span class="citation">Avila et al. (<a href="#ref-avimammoo23">2023</a>)</span> we use randomization inference. Below is an annotated example of
+doing so, using a <code>for</code> loop. We set the seed using the method in Section
+<a href="design.html#sec-set-seed">2.4</a>; we simulate treatment assignments using the method in
+Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="analysis.html#cb26-1" tabindex="-1"></a><span class="co"># Set seed:</span></span>
 <span id="cb26-2"><a href="analysis.html#cb26-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">534722898</span>)</span>
 <span id="cb26-3"><a href="analysis.html#cb26-3" tabindex="-1"></a></span>
@@ -595,8 +607,20 @@ parametric <span class="math inline">\(p\)</span>-value is 0.00482.</p>
 </div>
 <div id="missing-data" class="section level2 hasAnchor" number="4.9">
 <h2><span class="header-section-number">4.9</span> Missing Data<a href="analysis.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Unless we have solid justification to believe the missingness mechanism is MCAR (missing completely at random), we prefer to treat missing data with multiple imputation.</p>
-<p>We recognize that not all missing data are the same, however. We can confidently impute values that we are certain exist, but we should be more circumspect regarding other values. For example, we can confidently impute a household income, but we should be more circumspect about a student’s grade point average (GPA) or a survey preference. How would we interpret that GPA if the student actually dropped out of school? How can we be confident that the survey respondent actually has a preference for alternative <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, rather than being indifferent or having never considered the question?</p>
+<p>Unless we have solid justification to believe the missingness mechanism is MCAR
+(missing completely at random), we prefer to treat missing data with multiple
+imputation.</p>
+<p>We recognize that not all missing data are the same, however. We can confidently
+impute values that we are certain exist, but we should be more circumspect
+regarding other values. For example, we can confidently impute a household
+income, but we should be more circumspect about a student’s grade point average
+(GPA) or a survey preference. How would we interpret that GPA if the student
+actually dropped out of school? How can we be confident that the survey
+respondent actually has a preference for alternative <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, rather than
+being indifferent or having never considered the question?</p>
+<p>After multiple imputation, we analyze each of the completed data sets and
+combine estimates and uncertainties from across the completed data sets into a
+single estimate and uncertainty.</p>
 </div>
 <div id="multiple-comparisons" class="section level2 hasAnchor" number="4.10">
 <h2><span class="header-section-number">4.10</span> Multiple Comparisons<a href="analysis.html#multiple-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>

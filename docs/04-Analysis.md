@@ -153,7 +153,11 @@ lm_lin(y ~ z, covariates = ~ x + block1_id + block2_id + ..., data = df)
 lm_lin(y ~ z, covariates = ~ x + block_id_factor, data = df)
 ```
 
-We do this because the "least squares dummy variable" approach produces biased estimates of the ATE and its standard error. This approach weights block-level effects by $p_j(1-p_j)n_j$, where $p_j$ is the probability of treatment in the block, and $n_j$ is the sample size in the block. See the helpful blog post [here](https://declaredesign.org/blog/posts/biased-fixed-effects.html).
+We do this because the "least squares dummy variable" approach produces biased
+estimates of the ATE and its standard error. This approach weights block-level
+effects by $p_j(1-p_j)n_j$, where $p_j$ is the probability of treatment in the
+block, and $n_j$ is the sample size in the block. See the helpful blog post
+[here](https://declaredesign.org/blog/posts/biased-fixed-effects.html).
 
 
 ## Binary or Count Outcomes {#sec-binary-outcomes}
@@ -216,14 +220,22 @@ this fact needs to be taken into account.
 
 ### Fixed Effects
 
-We note that treatment effect estimates from two-way fixed effect (TWFE) event-study regressions "[can be severely biased](https://bcallaway11.github.io/did/articles/TWFE.html)", even with homogeneous treatment effects.
+We note that treatment effect estimates from two-way fixed effect (TWFE)
+event-study regressions "[can be severely
+biased](https://bcallaway11.github.io/did/articles/TWFE.html)", even with
+homogeneous treatment effects.
 
 ## Randomization Inference {#sec-rand-inf}
 
-Often, we prefer to rely on our _design_, rather than asymptotic or distributional assumptions, for statistical inference. In particular, when we have complex designs or analysis strategies, we use randomization inference.
+Often, we prefer to rely on our _design_, rather than asymptotic or
+distributional assumptions, for statistical inference. In particular, when we
+have complex designs or analysis strategies, we use randomization inference.
 
-For example, with modest sample sizes and a complex experimental design, in @avimammoo23 we use randomization inference. Below is an annotated example of doing so, using a `for` loop. We set the seed using the method in Section 
-\@ref(sec-set-seed); we simulate treatment assignments using the method in Section \@ref(sec-create-treatment). More simulations reduces simulation error.
+For example, with modest sample sizes and a complex experimental design, in
+@avimammoo23 we use randomization inference. Below is an annotated example of
+doing so, using a `for` loop. We set the seed using the method in Section
+\@ref(sec-set-seed); we simulate treatment assignments using the method in
+Section \@ref(sec-create-treatment). More simulations reduces simulation error.
 
 
 ```r
@@ -271,9 +283,22 @@ For another example, see @gergre12, Chapter 3 for a demonstration using highly s
 
 ## Missing Data
 
-Unless we have solid justification to believe the missingness mechanism is MCAR (missing completely at random), we prefer to treat missing data with multiple imputation. 
+Unless we have solid justification to believe the missingness mechanism is MCAR
+(missing completely at random), we prefer to treat missing data with multiple
+imputation.
 
-We recognize that not all missing data are the same, however. We can confidently impute values that we are certain exist, but we should be more circumspect regarding other values. For example, we can confidently impute a household income, but we should be more circumspect about a student's grade point average (GPA) or a survey preference. How would we interpret that GPA if the student actually dropped out of school? How can we be confident that the survey respondent actually has a preference for alternative $A$ or $B$, rather than being indifferent or having never considered the question?
+We recognize that not all missing data are the same, however. We can confidently
+impute values that we are certain exist, but we should be more circumspect
+regarding other values. For example, we can confidently impute a household
+income, but we should be more circumspect about a student's grade point average
+(GPA) or a survey preference. How would we interpret that GPA if the student
+actually dropped out of school? How can we be confident that the survey
+respondent actually has a preference for alternative $A$ or $B$, rather than
+being indifferent or having never considered the question?
+
+After multiple imputation, we analyze each of the completed data sets and
+combine estimates and uncertainties from across the completed data sets into a
+single estimate and uncertainty.
 
 ## Multiple Comparisons
 
