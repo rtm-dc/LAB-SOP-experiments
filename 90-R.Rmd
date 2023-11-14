@@ -198,7 +198,7 @@ head(df_resume)
 Note that `mutate()` needs a dataframe as its first argument. Above, we pass
 `df_resume` to `mutate()` using the pipe.
 
-### Create a sum of from subset of variables
+### Create a sum from a subset of variables
 
 Below, we select a subset of columns from `df_resume`, take the sum across them, and add the sum as a new variable. Here, we locate the new variable right after those columns that it summed.
 
@@ -349,6 +349,7 @@ df_resume <- df_resume |> mutate(
 head(df_resume |> select(-isFemale, -dob))
 ```
 
+See also the `{randomizr}` package for a variety of helpers.
 
 ## Plot a variable
 

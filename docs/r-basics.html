@@ -267,7 +267,7 @@ div.csl-indent {
 <li class="chapter" data-level="A.5.1" data-path="r-basics.html"><a href="r-basics.html#create-a-wave-id"><i class="fa fa-check"></i><b>A.5.1</b> Create a “wave ID”</a></li>
 <li class="chapter" data-level="A.5.2" data-path="r-basics.html"><a href="r-basics.html#create-a-primary-key"><i class="fa fa-check"></i><b>A.5.2</b> Create a primary key</a></li>
 <li class="chapter" data-level="A.5.3" data-path="r-basics.html"><a href="r-basics.html#transform-an-existing-variable"><i class="fa fa-check"></i><b>A.5.3</b> Transform an existing variable</a></li>
-<li class="chapter" data-level="A.5.4" data-path="r-basics.html"><a href="r-basics.html#create-a-sum-of-from-subset-of-variables"><i class="fa fa-check"></i><b>A.5.4</b> Create a sum of from subset of variables</a></li>
+<li class="chapter" data-level="A.5.4" data-path="r-basics.html"><a href="r-basics.html#create-a-sum-from-a-subset-of-variables"><i class="fa fa-check"></i><b>A.5.4</b> Create a sum from a subset of variables</a></li>
 </ul></li>
 <li class="chapter" data-level="A.6" data-path="r-basics.html"><a href="r-basics.html#recode-a-variables-values"><i class="fa fa-check"></i><b>A.6</b> Recode a variable’s values</a></li>
 <li class="chapter" data-level="A.7" data-path="r-basics.html"><a href="r-basics.html#treat-dates-as-dates"><i class="fa fa-check"></i><b>A.7</b> Treat dates as dates</a>
@@ -487,8 +487,8 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <p>Note that <code>mutate()</code> needs a dataframe as its first argument. Above, we pass
 <code>df_resume</code> to <code>mutate()</code> using the pipe.</p>
 </div>
-<div id="create-a-sum-of-from-subset-of-variables" class="section level3 hasAnchor" number="7.5.4">
-<h3><span class="header-section-number">A.5.4</span> Create a sum of from subset of variables<a href="r-basics.html#create-a-sum-of-from-subset-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="create-a-sum-from-a-subset-of-variables" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">A.5.4</span> Create a sum from a subset of variables<a href="r-basics.html#create-a-sum-from-a-subset-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below, we select a subset of columns from <code>df_resume</code>, take the sum across them, and add the sum as a new variable. Here, we locate the new variable right after those columns that it summed.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-basics.html#cb51-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
 <span id="cb51-2"><a href="r-basics.html#cb51-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">new_sum =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(df_resume, call<span class="sc">:</span>id_var))) <span class="sc">|&gt;</span> </span>
@@ -716,6 +716,7 @@ vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it 
 ## 4 Latonya   female black     0     3      4 1985-02-28 Treatment            
 ## 5 Carrie    female white     0     3      5 1957-05-01 Control              
 ## 6 Jay       male   white     0     3      6 1964-11-02 Treatment</code></pre>
+<p>See also the <code>{randomizr}</code> package for a variety of helpers.</p>
 </div>
 <div id="plot-a-variable" class="section level2 hasAnchor" number="7.9">
 <h2><span class="header-section-number">A.9</span> Plot a variable<a href="r-basics.html#plot-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>

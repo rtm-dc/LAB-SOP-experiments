@@ -61,7 +61,7 @@ create-a-new-variable
 create-a-wave-id
 create-a-primary-key
 transform-an-existing-variable
-create-a-sum-of-from-subset-of-variables
+create-a-sum-from-a-subset-of-variables
 recode-a-variables-values
 treat-dates-as-dates
 make-an-age-variable
