@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-10-31" />
+<meta name="date" content="2023-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -444,7 +444,7 @@ will pass arguments <code>x</code> and <code>y</code> (in that order), I can wri
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-basics.html#cb44-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">new_var_name_1 =</span> <span class="st">`</span><span class="at">Bad, old, long, spacey name</span><span class="st">`</span>,</span>
 <span id="cb44-2"><a href="r-basics.html#cb44-2" tabindex="-1"></a>                    <span class="at">new_var_name_2 =</span> <span class="st">&quot;inconsistentsquishedvarname&quot;</span>,</span>
 <span id="cb44-3"><a href="r-basics.html#cb44-3" tabindex="-1"></a>                    <span class="at">new_var_name_3 =</span> <span class="fu">starts_with</span>(<span class="st">&quot;Unique string old name starts with&quot;</span>))</span></code></pre></div>
-<p>To automatically clean up all the names in a dataframe, the <code>janitor</code> package can help:</p>
+<p>To automatically clean up all the names in a dataframe, the <code>{janitor}</code> package can help:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-basics.html#cb45-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span></code></pre></div>
 </div>
 <div id="create-a-new-variable" class="section level2 hasAnchor" number="7.5">

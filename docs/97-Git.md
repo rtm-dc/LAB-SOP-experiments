@@ -14,7 +14,9 @@ You are basically ready, but press on. First, simplify interacting with `git`, s
 don't have to enter your password every time you make a commit or fetch remote
 code. 
 
-* Set up a PAT or SSH key 
+* Set up a PAT or SSH key. GitHub provides [advice](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) about managing your secure keys, using "fine-grained" (repo-specific) keys, etc.
+
+* Add a copy of your key to your Lab LastPass account.
 
 Then, practice making a repo in the chapter "Connect to GitHub".
 

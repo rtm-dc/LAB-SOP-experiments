@@ -53,6 +53,8 @@ install.packages("reticulate")
 
 ### From a Python prompt
 
+To open a Python prompt from within R:
+
 
 ```r
 reticulate::repl_python()
@@ -64,5 +66,31 @@ Quarto documents can run both R and Python code.
 
 From the RStudio menus, File -> New File -> Quarto Document. Name and save the `.qmd` file. 
 
-Then, edit one of the code chunks to run `python` instead of `r`. Knit the `.qmd` to (e.g.) `.html` and see the output. Your Quarto document has run both R and Python. 
+Then, edit one of the code chunks to run `python` instead of `r`. Knit the `.qmd` to (e.g.) `.html` and see the output. Your Quarto document has run both R and Python. Here's some sample Python code:
+
+
+```python
+import pandas as pd
+
+df = pd.read_csv("test.csv")
+
+df.shape
+```
+
+To run code from a `.py` in a Python chunk:
+
+
+```python
+source("python.py")
+```
+
+To run a `.py` file from an R chunk:
+
+
+```r
+reticulate::source_python("python.py")
+```
+
+
+
 
