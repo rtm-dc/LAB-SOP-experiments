@@ -81,14 +81,14 @@ To run code from a `.py` in a Python chunk:
 
 
 ```python
-source("python.py")
+import mypythoncode
 ```
 
 To run a `.py` file from an R chunk:
 
 
 ```r
-reticulate::source_python("python.py")
+reticulate::source_python("mypythoncode.py")
 ```
 
 
