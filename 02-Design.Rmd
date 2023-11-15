@@ -220,7 +220,7 @@ for(idx in 1:n_sims){
 mean(is_stat_sig)
 ```
 
-So the probability of detecting the true average treatment effect of `r true_te` is about `r mean(is_stat_sig)`. This is high power comes largely from the strongly predictive nature of the covariate `x`. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly `r round(power.t.test(n = 50, delta = 1, sd = 2.7)$power, 3)`.
+So the probability of detecting the true average treatment effect of `r true_te` is about `r mean(is_stat_sig)`. This high power comes largely from the strongly predictive nature of the covariate `x`. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly `r round(power.t.test(n = 50, delta = 1, sd = 2.7)$power, 3)`.
 
 ## Balance Checking
 

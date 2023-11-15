@@ -1,4 +1,3 @@
-tab:matchingeval
 getting-started
 design
 units
@@ -49,7 +48,6 @@ alternatives
 publication
 authorship-in-pre-analysis-plans
 authorship-in-academic-articles
-r-basics
 get-r-and-rstudio
 read-in-data-files
 csv

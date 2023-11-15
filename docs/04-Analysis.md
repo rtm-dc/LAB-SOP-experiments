@@ -332,7 +332,7 @@ obtain when we estimate the effect of a single treatment on many outcomes.]
 If we test a single outcome in several time periods, these tests are likely to
 be highly correlated with each other. For example, in the ATE project, we expect
 to test whether treatment affected the outcome at 3 months and at 6 months. In
-this case, we adjust for performing two tests using the bootstrap resampling
+such cases, we adjust for performing two tests using the bootstrap resampling
 procedure of @wesyou93.
 
 ### Holm-Bonferroni Adjustment
@@ -359,8 +359,8 @@ We see that the three adjusted $p$-values are $0.03$, $0.04$, and $0.08$. (Here,
 
 ```r
 # Add another outcome and centered covariate:
-df <- df %>% mutate(y2 = 0.5 * z + rnorm(nrow(df), sd = 1),
-                    x_c = as.vector(scale(x, scale = FALSE)))
+df <- df |> mutate(y2 = 0.5 * z + rnorm(nrow(df), sd = 1),
+                   x_c = as.vector(scale(x, scale = FALSE)))
 
 # Install multitestr:
 # devtools::install_github("fdhidalgo/multitestr")
@@ -388,7 +388,21 @@ wy_out <- boot_stepdown(
   boot_type = "wild",
   pb = FALSE)
 
-wy_out %>% mutate(across(where(is.numeric), round, 3))
+wy_out |> mutate(across(where(is.numeric), round, 3))
+```
+
+```
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `across(where(is.numeric), round, 3)`.
+## Caused by warning:
+## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+## Supply arguments directly to `.fns` through an anonymous function instead.
+## 
+##   # Previously
+##   across(a:b, mean, na.rm = TRUE)
+## 
+##   # Now
+##   across(a:b, \(x) mean(x, na.rm = TRUE))
 ```
 
 ```
