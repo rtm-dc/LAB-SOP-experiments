@@ -370,8 +370,8 @@ for more detail and painful counterexamples.</p>
 <li><p>Begin your code file with a <code>library()</code> command for every package required
 for that file to run. Keep these in alphabetical order.</p></li>
 </ol>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="managing-code-and-scientific-communication.html#cb90-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb90-2"><a href="managing-code-and-scientific-communication.html#cb90-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="managing-code-and-scientific-communication.html#cb91-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb91-2"><a href="managing-code-and-scientific-communication.html#cb91-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Do <strong>not</strong> include your “workflow” in your code files. Anything that’s
 interactive or changes the environment should be excluded. Do not include
@@ -382,7 +382,7 @@ e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 for examples in R.</p></li>
 <li><p>Use the assignment arrow for assignment. The structure:</p></li>
 </ol>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="managing-code-and-scientific-communication.html#cb91-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="managing-code-and-scientific-communication.html#cb92-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Use space around operators (write <code>3 + 4 = 7</code>, not <code>3+4=7</code>) and after a
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</p></li>
@@ -435,7 +435,7 @@ are not hard-coding a path that no one else has (like <code>~/Me/My Docs/my_spec
 platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="managing-code-and-scientific-communication.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="managing-code-and-scientific-communication.html#cb93-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="see-the-working-directory" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">C.4.1</span> See the working directory<a href="managing-code-and-scientific-communication.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
@@ -443,30 +443,30 @@ platform-independent. For more on the <code>here</code> package, see
 <div id="see-the-project-directory" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">C.4.2</span> See the project directory<a href="managing-code-and-scientific-communication.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code-and-scientific-communication.html#sec-projects">C.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="managing-code-and-scientific-communication.html#cb93-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="managing-code-and-scientific-communication.html#cb94-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
 <div id="create-a-path-with-here" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">C.4.3</span> Create a path with <code>here()</code><a href="managing-code-and-scientific-communication.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="managing-code-and-scientific-communication.html#cb95-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="managing-code-and-scientific-communication.html#cb96-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;02-01-df.RData&quot;</code></pre>
 <p>To see its full path,</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="managing-code-and-scientific-communication.html#cb97-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="managing-code-and-scientific-communication.html#cb98-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments/data/02-01-df.RData&quot;</code></pre>
 <p>To use that path to read in the data, I first create the path, then use it to
 read in the object:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="managing-code-and-scientific-communication.html#cb99-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
-<span id="cb99-2"><a href="managing-code-and-scientific-communication.html#cb99-2" tabindex="-1"></a></span>
-<span id="cb99-3"><a href="managing-code-and-scientific-communication.html#cb99-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
-<span id="cb99-4"><a href="managing-code-and-scientific-communication.html#cb99-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="managing-code-and-scientific-communication.html#cb100-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
+<span id="cb100-2"><a href="managing-code-and-scientific-communication.html#cb100-2" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="managing-code-and-scientific-communication.html#cb100-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
+<span id="cb100-4"><a href="managing-code-and-scientific-communication.html#cb100-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
 <p>(These could be combined into a single line.)</p>
 <p>The object <code>02-01-df.RData</code> contains a single dataframe called <code>df</code>. I can now see that dataframe in my environment:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="managing-code-and-scientific-communication.html#cb100-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="managing-code-and-scientific-communication.html#cb101-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;df&quot;            &quot;my_rdata_path&quot;</code></pre>
 <p>and examine it</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="managing-code-and-scientific-communication.html#cb102-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="managing-code-and-scientific-communication.html#cb103-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>##           x z         y
 ## 1 5.8873201 0 5.6125511
 ## 2 2.3428286 0 2.0830483
@@ -479,9 +479,9 @@ read in the object:</p>
 <div id="what-packages-are-installed" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">C.5</span> What Packages are Installed?<a href="managing-code-and-scientific-communication.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="managing-code-and-scientific-communication.html#cb104-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="managing-code-and-scientific-communication.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="managing-code-and-scientific-communication.html#cb105-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="managing-code-and-scientific-communication.html#cb106-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
 <pre><code>## [[1]]
 ##   [1] &quot;abind&quot;         &quot;askpass&quot;       &quot;backports&quot;     &quot;bandit&quot;       
 ##   [5] &quot;base&quot;          &quot;base64enc&quot;     &quot;BH&quot;            &quot;bigmemory&quot;    
@@ -515,45 +515,46 @@ read in the object:</p>
 ## [117] &quot;KernSmooth&quot;    &quot;knitr&quot;         &quot;labeling&quot;      &quot;later&quot;        
 ## [121] &quot;lattice&quot;       &quot;lava&quot;          &quot;lazyeval&quot;      &quot;lhs&quot;          
 ## [125] &quot;libcoin&quot;       &quot;lifecycle&quot;     &quot;listenv&quot;       &quot;lme4&quot;         
-## [129] &quot;lubridate&quot;     &quot;magrittr&quot;      &quot;markdown&quot;      &quot;MASS&quot;         
-## [133] &quot;Matching&quot;      &quot;Matrix&quot;        &quot;MatrixModels&quot;  &quot;matrixStats&quot;  
-## [137] &quot;memoise&quot;       &quot;methods&quot;       &quot;mgcv&quot;          &quot;mice&quot;         
-## [141] &quot;mime&quot;          &quot;miniUI&quot;        &quot;minqa&quot;         &quot;mipfp&quot;        
-## [145] &quot;mitml&quot;         &quot;modeldata&quot;     &quot;modelenv&quot;      &quot;modelr&quot;       
-## [149] &quot;modeltools&quot;    &quot;multcomp&quot;      &quot;munsell&quot;       &quot;mvtnorm&quot;      
-## [153] &quot;nlme&quot;          &quot;nloptr&quot;        &quot;nnet&quot;          &quot;numDeriv&quot;     
-## [157] &quot;openssl&quot;       &quot;ordinal&quot;       &quot;pan&quot;           &quot;parallel&quot;     
-## [161] &quot;parallelly&quot;    &quot;parsnip&quot;       &quot;party&quot;         &quot;patchwork&quot;    
-## [165] &quot;pbkrtest&quot;      &quot;pillar&quot;        &quot;pkgbuild&quot;      &quot;pkgconfig&quot;    
-## [169] &quot;pkgdown&quot;       &quot;pkgload&quot;       &quot;plyr&quot;          &quot;png&quot;          
-## [173] &quot;polspline&quot;     &quot;praise&quot;        &quot;prettyunits&quot;   &quot;processx&quot;     
-## [177] &quot;prodlim&quot;       &quot;profvis&quot;       &quot;progress&quot;      &quot;progressr&quot;    
-## [181] &quot;promises&quot;      &quot;proto&quot;         &quot;proxy&quot;         &quot;ps&quot;           
-## [185] &quot;purrr&quot;         &quot;quantreg&quot;      &quot;R6&quot;            &quot;ragg&quot;         
-## [189] &quot;randomForest&quot;  &quot;randomizr&quot;     &quot;ranger&quot;        &quot;rappdirs&quot;     
-## [193] &quot;rcmdcheck&quot;     &quot;RColorBrewer&quot;  &quot;Rcpp&quot;          &quot;RcppEigen&quot;    
-## [197] &quot;RcppTOML&quot;      &quot;readr&quot;         &quot;readxl&quot;        &quot;recipes&quot;      
-## [201] &quot;rematch&quot;       &quot;rematch2&quot;      &quot;remotes&quot;       &quot;renv&quot;         
-## [205] &quot;reprex&quot;        &quot;reshape2&quot;      &quot;reticulate&quot;    &quot;rlang&quot;        
-## [209] &quot;rmarkdown&quot;     &quot;rmutil&quot;        &quot;roxygen2&quot;      &quot;rpart&quot;        
-## [213] &quot;rprojroot&quot;     &quot;rsample&quot;       &quot;Rsolnp&quot;        &quot;rstudioapi&quot;   
-## [217] &quot;rversions&quot;     &quot;rvest&quot;         &quot;sandwich&quot;      &quot;sass&quot;         
-## [221] &quot;scales&quot;        &quot;selectr&quot;       &quot;sessioninfo&quot;   &quot;shape&quot;        
-## [225] &quot;shiny&quot;         &quot;slider&quot;        &quot;snakecase&quot;     &quot;sourcetools&quot;  
-## [229] &quot;SparseM&quot;       &quot;spatial&quot;       &quot;splines&quot;       &quot;SQUAREM&quot;      
-## [233] &quot;stargazer&quot;     &quot;stats&quot;         &quot;stats4&quot;        &quot;stringi&quot;      
-## [237] &quot;stringr&quot;       &quot;strucchange&quot;   &quot;survival&quot;      &quot;svglite&quot;      
-## [241] &quot;synthpop&quot;      &quot;sys&quot;           &quot;systemfonts&quot;   &quot;tcltk&quot;        
-## [245] &quot;testthat&quot;      &quot;textshaping&quot;   &quot;TH.data&quot;       &quot;tibble&quot;       
-## [249] &quot;tidymodels&quot;    &quot;tidyr&quot;         &quot;tidyselect&quot;    &quot;tidyverse&quot;    
-## [253] &quot;timechange&quot;    &quot;timeDate&quot;      &quot;tinytex&quot;       &quot;tools&quot;        
-## [257] &quot;translations&quot;  &quot;truncnorm&quot;     &quot;tune&quot;          &quot;tzdb&quot;         
-## [261] &quot;ucminf&quot;        &quot;urlchecker&quot;    &quot;usethis&quot;       &quot;utf8&quot;         
-## [265] &quot;utils&quot;         &quot;uuid&quot;          &quot;vctrs&quot;         &quot;viridisLite&quot;  
-## [269] &quot;vroom&quot;         &quot;waldo&quot;         &quot;warp&quot;          &quot;webshot&quot;      
-## [273] &quot;whisker&quot;       &quot;withr&quot;         &quot;workflows&quot;     &quot;workflowsets&quot; 
-## [277] &quot;xfun&quot;          &quot;xml2&quot;          &quot;xopen&quot;         &quot;xtable&quot;       
-## [281] &quot;yaml&quot;          &quot;yardstick&quot;     &quot;zip&quot;           &quot;zoo&quot;</code></pre>
+## [129] &quot;lmtest&quot;        &quot;lubridate&quot;     &quot;magrittr&quot;      &quot;markdown&quot;     
+## [133] &quot;MASS&quot;          &quot;Matching&quot;      &quot;Matrix&quot;        &quot;MatrixModels&quot; 
+## [137] &quot;matrixStats&quot;   &quot;memoise&quot;       &quot;methods&quot;       &quot;mgcv&quot;         
+## [141] &quot;mice&quot;          &quot;mime&quot;          &quot;miniUI&quot;        &quot;minqa&quot;        
+## [145] &quot;mipfp&quot;         &quot;mitml&quot;         &quot;modeldata&quot;     &quot;modelenv&quot;     
+## [149] &quot;modelr&quot;        &quot;modeltools&quot;    &quot;multcomp&quot;      &quot;multitestr&quot;   
+## [153] &quot;munsell&quot;       &quot;mvtnorm&quot;       &quot;nlme&quot;          &quot;nloptr&quot;       
+## [157] &quot;nnet&quot;          &quot;numDeriv&quot;      &quot;openssl&quot;       &quot;ordinal&quot;      
+## [161] &quot;pan&quot;           &quot;parallel&quot;      &quot;parallelly&quot;    &quot;parsnip&quot;      
+## [165] &quot;party&quot;         &quot;patchwork&quot;     &quot;pbkrtest&quot;      &quot;pillar&quot;       
+## [169] &quot;pkgbuild&quot;      &quot;pkgconfig&quot;     &quot;pkgdown&quot;       &quot;pkgload&quot;      
+## [173] &quot;plyr&quot;          &quot;png&quot;           &quot;polspline&quot;     &quot;praise&quot;       
+## [177] &quot;prettyunits&quot;   &quot;processx&quot;      &quot;prodlim&quot;       &quot;profvis&quot;      
+## [181] &quot;progress&quot;      &quot;progressr&quot;     &quot;promises&quot;      &quot;proto&quot;        
+## [185] &quot;proxy&quot;         &quot;ps&quot;            &quot;purrr&quot;         &quot;quantreg&quot;     
+## [189] &quot;R6&quot;            &quot;ragg&quot;          &quot;randomForest&quot;  &quot;randomizr&quot;    
+## [193] &quot;ranger&quot;        &quot;rappdirs&quot;      &quot;rcmdcheck&quot;     &quot;RColorBrewer&quot; 
+## [197] &quot;Rcpp&quot;          &quot;RcppEigen&quot;     &quot;RcppTOML&quot;      &quot;readr&quot;        
+## [201] &quot;readxl&quot;        &quot;recipes&quot;       &quot;rematch&quot;       &quot;rematch2&quot;     
+## [205] &quot;remotes&quot;       &quot;renv&quot;          &quot;reprex&quot;        &quot;reshape2&quot;     
+## [209] &quot;reticulate&quot;    &quot;rlang&quot;         &quot;rmarkdown&quot;     &quot;rmutil&quot;       
+## [213] &quot;roxygen2&quot;      &quot;rpart&quot;         &quot;rprojroot&quot;     &quot;rsample&quot;      
+## [217] &quot;Rsolnp&quot;        &quot;rstudioapi&quot;    &quot;rversions&quot;     &quot;rvest&quot;        
+## [221] &quot;sandwich&quot;      &quot;sass&quot;          &quot;scales&quot;        &quot;selectr&quot;      
+## [225] &quot;sessioninfo&quot;   &quot;shape&quot;         &quot;shiny&quot;         &quot;slider&quot;       
+## [229] &quot;snakecase&quot;     &quot;sourcetools&quot;   &quot;SparseM&quot;       &quot;spatial&quot;      
+## [233] &quot;splines&quot;       &quot;SQUAREM&quot;       &quot;stargazer&quot;     &quot;stats&quot;        
+## [237] &quot;stats4&quot;        &quot;stringi&quot;       &quot;stringr&quot;       &quot;strucchange&quot;  
+## [241] &quot;survival&quot;      &quot;svglite&quot;       &quot;synthpop&quot;      &quot;sys&quot;          
+## [245] &quot;systemfonts&quot;   &quot;tcltk&quot;         &quot;testthat&quot;      &quot;textshaping&quot;  
+## [249] &quot;TH.data&quot;       &quot;tibble&quot;        &quot;tidymodels&quot;    &quot;tidyr&quot;        
+## [253] &quot;tidyselect&quot;    &quot;tidyverse&quot;     &quot;timechange&quot;    &quot;timeDate&quot;     
+## [257] &quot;tinytex&quot;       &quot;tools&quot;         &quot;translations&quot;  &quot;truncnorm&quot;    
+## [261] &quot;tune&quot;          &quot;tzdb&quot;          &quot;ucminf&quot;        &quot;urlchecker&quot;   
+## [265] &quot;usethis&quot;       &quot;utf8&quot;          &quot;utils&quot;         &quot;uuid&quot;         
+## [269] &quot;vctrs&quot;         &quot;viridisLite&quot;   &quot;vroom&quot;         &quot;waldo&quot;        
+## [273] &quot;warp&quot;          &quot;webshot&quot;       &quot;whisker&quot;       &quot;withr&quot;        
+## [277] &quot;workflows&quot;     &quot;workflowsets&quot;  &quot;xfun&quot;          &quot;xml2&quot;         
+## [281] &quot;xopen&quot;         &quot;xtable&quot;        &quot;yaml&quot;          &quot;yardstick&quot;    
+## [285] &quot;zip&quot;           &quot;zoo&quot;</code></pre>
 
 </div>
 </div>

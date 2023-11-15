@@ -358,22 +358,22 @@ EOM IT.)</p>
 <p>We can read data from many formats and many places, including from a local file
 or from the web. Many R packages contain their own data.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-basics.html#cb32-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb32-2"><a href="r-basics.html#cb32-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb32-3"><a href="r-basics.html#cb32-3" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb32-4"><a href="r-basics.html#cb32-4" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb32-5"><a href="r-basics.html#cb32-5" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb32-6"><a href="r-basics.html#cb32-6" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-basics.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb33-2"><a href="r-basics.html#cb33-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-3"><a href="r-basics.html#cb33-3" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb33-4"><a href="r-basics.html#cb33-4" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb33-5"><a href="r-basics.html#cb33-5" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb33-6"><a href="r-basics.html#cb33-6" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <div id="csv" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">A.2.1</span> <code>.csv</code><a href="r-basics.html#csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data from the web (from the résumé audit experiment from <span class="citation">Bertrand and Mullainathan (<a href="#ref-bermul04">2004</a>)</span>):</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-basics.html#cb33-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kosukeimai/qss/master/CAUSALITY/resume.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="r-basics.html#cb34-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kosukeimai/qss/master/CAUSALITY/resume.csv&quot;</span>)</span></code></pre></div>
 <p>Then we can examine the dimensions of the new object named <code>df_resume</code>:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="r-basics.html#cb34-1" tabindex="-1"></a><span class="fu">dim</span>(df_resume)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r-basics.html#cb35-1" tabindex="-1"></a><span class="fu">dim</span>(df_resume)</span></code></pre></div>
 <pre><code>## [1] 4870    4</code></pre>
 <p>So, <code>df_resume</code> has 4870 rows and 4 columns. We
 can see the first few rows with</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="r-basics.html#cb36-1" tabindex="-1"></a><span class="fu">head</span>(df_resume)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="r-basics.html#cb37-1" tabindex="-1"></a><span class="fu">head</span>(df_resume)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   firstname sex    race   call
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
@@ -384,9 +384,9 @@ can see the first few rows with</p>
 ## 5 Carrie    female white     0
 ## 6 Jay       male   white     0</code></pre>
 <p>For data from a local file, if data <code>mydata.csv</code> are in subdirectory <code>/data/</code>,</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="r-basics.html#cb38-1" tabindex="-1"></a>my_data_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mydata.csv&quot;</span>)</span>
-<span id="cb38-2"><a href="r-basics.html#cb38-2" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="r-basics.html#cb38-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(my_data_path)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="r-basics.html#cb39-1" tabindex="-1"></a>my_data_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mydata.csv&quot;</span>)</span>
+<span id="cb39-2"><a href="r-basics.html#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="r-basics.html#cb39-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(my_data_path)</span></code></pre></div>
 <p>See
 <a href="https://thelab.dc.gov/LAB-SOP-experiments/appendix-b-managing-code.html#working-directory-and-relative-paths">here</a>
 for more detail on how to use <code>here()</code> to create paths.</p>
@@ -407,20 +407,20 @@ a multi-sheet spreadsheet, add an argument like <code>read_excel(..., sheet = 2)
 </ul>
 <p>Here you should see a <code>client_id</code> and <code>client_secret</code> that you can copy.</p>
 <p>Then, run at the R Console</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="r-basics.html#cb39-1" tabindex="-1"></a><span class="fu">library</span>(boxr)</span>
-<span id="cb39-2"><a href="r-basics.html#cb39-2" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="r-basics.html#cb39-3" tabindex="-1"></a><span class="fu">box_auth</span>(<span class="at">client_id =</span> <span class="st">&quot;&lt;INSERT ID STRING HERE&gt;&quot;</span>,</span>
-<span id="cb39-4"><a href="r-basics.html#cb39-4" tabindex="-1"></a>         <span class="at">client_secret =</span> <span class="st">&quot;&lt;INSERT SECRET STRING HERE&gt;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="r-basics.html#cb40-1" tabindex="-1"></a><span class="fu">library</span>(boxr)</span>
+<span id="cb40-2"><a href="r-basics.html#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="r-basics.html#cb40-3" tabindex="-1"></a><span class="fu">box_auth</span>(<span class="at">client_id =</span> <span class="st">&quot;&lt;INSERT ID STRING HERE&gt;&quot;</span>,</span>
+<span id="cb40-4"><a href="r-basics.html#cb40-4" tabindex="-1"></a>         <span class="at">client_secret =</span> <span class="st">&quot;&lt;INSERT SECRET STRING HERE&gt;&quot;</span>)</span></code></pre></div>
 <p>replacing the strings with the information from the Configuration tab.</p>
 <p>If R prompts you to update the Renviron file to store this information for next time, you may do so.</p>
 <p>Then, your <code>.R</code> file that reads the data should include</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="r-basics.html#cb40-1" tabindex="-1"></a><span class="fu">library</span>(boxr)</span>
-<span id="cb40-2"><a href="r-basics.html#cb40-2" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="r-basics.html#cb40-3" tabindex="-1"></a><span class="fu">box_auth</span>() </span>
-<span id="cb40-4"><a href="r-basics.html#cb40-4" tabindex="-1"></a><span class="co"># (arguments can be empty, if credentials stored in Renviron)</span></span>
-<span id="cb40-5"><a href="r-basics.html#cb40-5" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="r-basics.html#cb40-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">box_read</span>(<span class="st">&quot;791112121820&quot;</span>)</span>
-<span id="cb40-7"><a href="r-basics.html#cb40-7" tabindex="-1"></a><span class="co"># (where 791112121820 is the Box ID for a .csv to read)</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="r-basics.html#cb41-1" tabindex="-1"></a><span class="fu">library</span>(boxr)</span>
+<span id="cb41-2"><a href="r-basics.html#cb41-2" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="r-basics.html#cb41-3" tabindex="-1"></a><span class="fu">box_auth</span>() </span>
+<span id="cb41-4"><a href="r-basics.html#cb41-4" tabindex="-1"></a><span class="co"># (arguments can be empty, if credentials stored in Renviron)</span></span>
+<span id="cb41-5"><a href="r-basics.html#cb41-5" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="r-basics.html#cb41-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">box_read</span>(<span class="st">&quot;791112121820&quot;</span>)</span>
+<span id="cb41-7"><a href="r-basics.html#cb41-7" tabindex="-1"></a><span class="co"># (where 791112121820 is the Box ID for a .csv to read)</span></span></code></pre></div>
 <p>For more information, see the <code>boxr</code> <a href="https://r-box.github.io/boxr/articles/boxr.html">vignette</a>.</p>
 </div>
 </div>
@@ -431,21 +431,21 @@ us to string together a sequence of operations into a “pipeline”. The native
 <p>The pipe simply takes the argument on its left and passes it as the first
 argument of the function to its right. So, if I have function <code>f()</code> to which I
 will pass arguments <code>x</code> and <code>y</code> (in that order), I can write</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="r-basics.html#cb41-1" tabindex="-1"></a><span class="fu">f</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="r-basics.html#cb42-1" tabindex="-1"></a><span class="fu">f</span>(x, y)</span></code></pre></div>
 <p>Using a pipe, I can equivalently write either</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="r-basics.html#cb42-1" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">f</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="r-basics.html#cb43-1" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">f</span>(y)</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="r-basics.html#cb43-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">f</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-basics.html#cb44-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">f</span>(y)</span></code></pre></div>
 </div>
 <div id="rename-variables" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">A.4</span> Rename variables<a href="r-basics.html#rename-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Variable names should adhere to good <a href="https://thelab.dc.gov/LAB-SOP-experiments/managing-code.html#best-practices">practices</a>.</p>
 <p>The <code>rename()</code> function in <code>dplyr</code> can rename several variables at once:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-basics.html#cb44-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">new_var_name_1 =</span> <span class="st">`</span><span class="at">Bad, old, long, spacey name</span><span class="st">`</span>,</span>
-<span id="cb44-2"><a href="r-basics.html#cb44-2" tabindex="-1"></a>                    <span class="at">new_var_name_2 =</span> <span class="st">&quot;inconsistentsquishedvarname&quot;</span>,</span>
-<span id="cb44-3"><a href="r-basics.html#cb44-3" tabindex="-1"></a>                    <span class="at">new_var_name_3 =</span> <span class="fu">starts_with</span>(<span class="st">&quot;Unique string old name starts with&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-basics.html#cb45-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">new_var_name_1 =</span> <span class="st">`</span><span class="at">Bad, old, long, spacey name</span><span class="st">`</span>,</span>
+<span id="cb45-2"><a href="r-basics.html#cb45-2" tabindex="-1"></a>                    <span class="at">new_var_name_2 =</span> <span class="st">&quot;inconsistentsquishedvarname&quot;</span>,</span>
+<span id="cb45-3"><a href="r-basics.html#cb45-3" tabindex="-1"></a>                    <span class="at">new_var_name_3 =</span> <span class="fu">starts_with</span>(<span class="st">&quot;Unique string old name starts with&quot;</span>))</span></code></pre></div>
 <p>To automatically clean up all the names in a dataframe, the <code>{janitor}</code> package can help:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-basics.html#cb45-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-basics.html#cb46-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span></code></pre></div>
 </div>
 <div id="create-a-new-variable" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">A.5</span> Create a New Variable<a href="r-basics.html#create-a-new-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -459,22 +459,22 @@ variable.</p>
 <p>A “wave ID” is a variable that is constant for every row in the data set.
 Suppose that the resume data were all from “wave 3” of a larger study. To
 identify them as such,</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-basics.html#cb46-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">wave =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-basics.html#cb47-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">wave =</span> <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div id="create-a-primary-key" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">A.5.2</span> Create a primary key<a href="r-basics.html#create-a-primary-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A “primary key” is a variable that uniquely identifies each row in the data set.
 To create a primary key or “ID variable”,</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-basics.html#cb47-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id_var =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="r-basics.html#cb48-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id_var =</span> <span class="fu">row_number</span>())</span></code></pre></div>
 </div>
 <div id="transform-an-existing-variable" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">A.5.3</span> Transform an existing variable<a href="r-basics.html#transform-an-existing-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below, we use the <code>mutate()</code> function with the character variable <code>sex</code>, which
 has levels <code>female</code> and <code>male</code>, to create a logical <code>TRUE</code>/<code>FALSE</code> variable
 indicating whether the résumé had a putatively female name at the top:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="r-basics.html#cb48-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">isFemale =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-basics.html#cb49-1" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">isFemale =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <p>Now, <code>df_resume</code> has 7 columns:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-basics.html#cb49-1" tabindex="-1"></a><span class="fu">head</span>(df_resume)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="r-basics.html#cb50-1" tabindex="-1"></a><span class="fu">head</span>(df_resume)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 7
 ##   firstname sex    race   call  wave id_var isFemale
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;   
@@ -490,9 +490,9 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <div id="create-a-sum-from-a-subset-of-variables" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">A.5.4</span> Create a sum from a subset of variables<a href="r-basics.html#create-a-sum-from-a-subset-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below, we select a subset of columns from <code>df_resume</code>, take the sum across them, and add the sum as a new variable. Here, we locate the new variable right after those columns that it summed.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-basics.html#cb51-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
-<span id="cb51-2"><a href="r-basics.html#cb51-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">new_sum =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(df_resume, call<span class="sc">:</span>id_var))) <span class="sc">|&gt;</span> </span>
-<span id="cb51-3"><a href="r-basics.html#cb51-3" tabindex="-1"></a>  <span class="fu">relocate</span>(new_sum, <span class="at">.after =</span> id_var)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="r-basics.html#cb52-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
+<span id="cb52-2"><a href="r-basics.html#cb52-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">new_sum =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(df_resume, call<span class="sc">:</span>id_var))) <span class="sc">|&gt;</span> </span>
+<span id="cb52-3"><a href="r-basics.html#cb52-3" tabindex="-1"></a>  <span class="fu">relocate</span>(new_sum, <span class="at">.after =</span> id_var)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 8
 ##    firstname sex    race   call  wave id_var new_sum isFemale
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;   &lt;dbl&gt; &lt;lgl&gt;   
@@ -512,14 +512,14 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <div id="recode-a-variables-values" class="section level2 hasAnchor" number="7.6">
 <h2><span class="header-section-number">A.6</span> Recode a variable’s values<a href="r-basics.html#recode-a-variables-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Instead of creating a new variable as above, we can use <code>mutate()</code> and <code>case_when()</code> to recode a variable. Suppose we wanted to code race:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="r-basics.html#cb53-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb53-2"><a href="r-basics.html#cb53-2" tabindex="-1"></a>  <span class="at">race =</span> <span class="fu">case_when</span>(</span>
-<span id="cb53-3"><a href="r-basics.html#cb53-3" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;white&quot;</span> <span class="sc">~</span> <span class="st">&quot;race_wh&quot;</span>,       <span class="co"># recode &quot;white&quot; to &quot;race_wh&quot;</span></span>
-<span id="cb53-4"><a href="r-basics.html#cb53-4" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;black&quot;</span> <span class="sc">~</span> <span class="st">&quot;race_bl&quot;</span>,       <span class="co"># recode &quot;black&quot; to &quot;race_bl&quot;</span></span>
-<span id="cb53-5"><a href="r-basics.html#cb53-5" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;missing&quot;</span> <span class="sc">~</span> <span class="cn">NA_character_</span>, <span class="co"># recode &quot;missing&quot; to (character) NA</span></span>
-<span id="cb53-6"><a href="r-basics.html#cb53-6" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> race                        <span class="co"># recode any other value to original value of race</span></span>
-<span id="cb53-7"><a href="r-basics.html#cb53-7" tabindex="-1"></a>  )</span>
-<span id="cb53-8"><a href="r-basics.html#cb53-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="r-basics.html#cb54-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb54-2"><a href="r-basics.html#cb54-2" tabindex="-1"></a>  <span class="at">race =</span> <span class="fu">case_when</span>(</span>
+<span id="cb54-3"><a href="r-basics.html#cb54-3" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;white&quot;</span> <span class="sc">~</span> <span class="st">&quot;race_wh&quot;</span>,       <span class="co"># recode &quot;white&quot; to &quot;race_wh&quot;</span></span>
+<span id="cb54-4"><a href="r-basics.html#cb54-4" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;black&quot;</span> <span class="sc">~</span> <span class="st">&quot;race_bl&quot;</span>,       <span class="co"># recode &quot;black&quot; to &quot;race_bl&quot;</span></span>
+<span id="cb54-5"><a href="r-basics.html#cb54-5" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">&quot;missing&quot;</span> <span class="sc">~</span> <span class="cn">NA_character_</span>, <span class="co"># recode &quot;missing&quot; to (character) NA</span></span>
+<span id="cb54-6"><a href="r-basics.html#cb54-6" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> race                        <span class="co"># recode any other value to original value of race</span></span>
+<span id="cb54-7"><a href="r-basics.html#cb54-7" tabindex="-1"></a>  )</span>
+<span id="cb54-8"><a href="r-basics.html#cb54-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 7
 ##    firstname sex    race     call  wave id_var isFemale
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;   
@@ -535,12 +535,12 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## 10 Tyrone    male   race_bl     0     3     10 FALSE   
 ## # ℹ 4,860 more rows</code></pre>
 <p>There is also <code>recode()</code>, but its lifecycle status is “questioning”:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="r-basics.html#cb55-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb55-2"><a href="r-basics.html#cb55-2" tabindex="-1"></a>  <span class="at">race =</span> <span class="fu">recode</span>(race,</span>
-<span id="cb55-3"><a href="r-basics.html#cb55-3" tabindex="-1"></a>    <span class="st">&quot;white&quot;</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
-<span id="cb55-4"><a href="r-basics.html#cb55-4" tabindex="-1"></a>    <span class="st">&quot;black&quot;</span> <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb55-5"><a href="r-basics.html#cb55-5" tabindex="-1"></a>    )</span>
-<span id="cb55-6"><a href="r-basics.html#cb55-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="r-basics.html#cb56-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb56-2"><a href="r-basics.html#cb56-2" tabindex="-1"></a>  <span class="at">race =</span> <span class="fu">recode</span>(race,</span>
+<span id="cb56-3"><a href="r-basics.html#cb56-3" tabindex="-1"></a>    <span class="st">&quot;white&quot;</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
+<span id="cb56-4"><a href="r-basics.html#cb56-4" tabindex="-1"></a>    <span class="st">&quot;black&quot;</span> <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb56-5"><a href="r-basics.html#cb56-5" tabindex="-1"></a>    )</span>
+<span id="cb56-6"><a href="r-basics.html#cb56-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 7
 ##    firstname sex     race  call  wave id_var isFemale
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;   
@@ -559,19 +559,19 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <div id="treat-dates-as-dates" class="section level2 hasAnchor" number="7.7">
 <h2><span class="header-section-number">A.7</span> Treat dates as dates<a href="r-basics.html#treat-dates-as-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we have dates stored as character strings, we transform them to dates. First, simulate some date data:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="r-basics.html#cb57-1" tabindex="-1"></a><span class="co"># Simulate date data:</span></span>
-<span id="cb57-2"><a href="r-basics.html#cb57-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">117894985</span>)</span>
-<span id="cb57-3"><a href="r-basics.html#cb57-3" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="r-basics.html#cb57-4" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> </span>
-<span id="cb57-5"><a href="r-basics.html#cb57-5" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb57-6"><a href="r-basics.html#cb57-6" tabindex="-1"></a>    <span class="at">dob =</span> <span class="fu">paste0</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb57-7"><a href="r-basics.html#cb57-7" tabindex="-1"></a>                 <span class="st">&quot;/&quot;</span>, </span>
-<span id="cb57-8"><a href="r-basics.html#cb57-8" tabindex="-1"></a>                 <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb57-9"><a href="r-basics.html#cb57-9" tabindex="-1"></a>                 <span class="st">&quot;/&quot;</span>,</span>
-<span id="cb57-10"><a href="r-basics.html#cb57-10" tabindex="-1"></a>                 <span class="fu">sample</span>(<span class="dv">1950</span><span class="sc">:</span><span class="dv">2000</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb57-11"><a href="r-basics.html#cb57-11" tabindex="-1"></a>)</span>
-<span id="cb57-12"><a href="r-basics.html#cb57-12" tabindex="-1"></a></span>
-<span id="cb57-13"><a href="r-basics.html#cb57-13" tabindex="-1"></a><span class="fu">head</span>(df_resume, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="r-basics.html#cb58-1" tabindex="-1"></a><span class="co"># Simulate date data:</span></span>
+<span id="cb58-2"><a href="r-basics.html#cb58-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">117894985</span>)</span>
+<span id="cb58-3"><a href="r-basics.html#cb58-3" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="r-basics.html#cb58-4" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> </span>
+<span id="cb58-5"><a href="r-basics.html#cb58-5" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb58-6"><a href="r-basics.html#cb58-6" tabindex="-1"></a>    <span class="at">dob =</span> <span class="fu">paste0</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb58-7"><a href="r-basics.html#cb58-7" tabindex="-1"></a>                 <span class="st">&quot;/&quot;</span>, </span>
+<span id="cb58-8"><a href="r-basics.html#cb58-8" tabindex="-1"></a>                 <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb58-9"><a href="r-basics.html#cb58-9" tabindex="-1"></a>                 <span class="st">&quot;/&quot;</span>,</span>
+<span id="cb58-10"><a href="r-basics.html#cb58-10" tabindex="-1"></a>                 <span class="fu">sample</span>(<span class="dv">1950</span><span class="sc">:</span><span class="dv">2000</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb58-11"><a href="r-basics.html#cb58-11" tabindex="-1"></a>)</span>
+<span id="cb58-12"><a href="r-basics.html#cb58-12" tabindex="-1"></a></span>
+<span id="cb58-13"><a href="r-basics.html#cb58-13" tabindex="-1"></a><span class="fu">head</span>(df_resume, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 8
 ##   firstname sex    race   call  wave id_var isFemale dob      
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;    
@@ -579,9 +579,9 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## 2 Kristen   female white     0     3      2 TRUE     2/15/1983
 ## 3 Lakisha   female black     0     3      3 TRUE     1/10/1977</code></pre>
 <p>The tidyverse includes the <code>lubridate</code> package. If you know the format of the character strings, there are many shortcut parsers like <code>mdy()</code>. Below, we recode character dates to be of date type:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="r-basics.html#cb59-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb59-2"><a href="r-basics.html#cb59-2" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">mdy</span>(dob)</span>
-<span id="cb59-3"><a href="r-basics.html#cb59-3" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="r-basics.html#cb60-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb60-2"><a href="r-basics.html#cb60-2" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">mdy</span>(dob)</span>
+<span id="cb60-3"><a href="r-basics.html#cb60-3" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
@@ -597,12 +597,12 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## 10 Tyrone    male   black     0     3     10 FALSE    7/25/1956  1956-07-25
 ## # ℹ 4,860 more rows</code></pre>
 <p>If we aren’t sure of the format, or there are several, we use <code>parse_date_time()</code> and specify several “orders” of date format. <code>parse()</code> functions do their best to use the information in “orders”. Below, <code>"dmy"</code> alone would recode only the ambiguous dates, assuming they were in day-month-year order. Adding <code>"%m/%d/%Y"</code> instructs <code>parse()</code> to look for <code>month/day/year</code> formats. Finding many that are unambiguously that format, it assumes that format for the new variable.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="r-basics.html#cb61-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb61-2"><a href="r-basics.html#cb61-2" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">as_date</span>(    </span>
-<span id="cb61-3"><a href="r-basics.html#cb61-3" tabindex="-1"></a>    <span class="fu">parse_date_time</span>(dob, </span>
-<span id="cb61-4"><a href="r-basics.html#cb61-4" tabindex="-1"></a>                    <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">&quot;dmy&quot;</span>, <span class="st">&quot;%m/%d/%Y&quot;</span>))</span>
-<span id="cb61-5"><a href="r-basics.html#cb61-5" tabindex="-1"></a>  )</span>
-<span id="cb61-6"><a href="r-basics.html#cb61-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="r-basics.html#cb62-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb62-2"><a href="r-basics.html#cb62-2" tabindex="-1"></a>  <span class="at">dob_date =</span> <span class="fu">as_date</span>(    </span>
+<span id="cb62-3"><a href="r-basics.html#cb62-3" tabindex="-1"></a>    <span class="fu">parse_date_time</span>(dob, </span>
+<span id="cb62-4"><a href="r-basics.html#cb62-4" tabindex="-1"></a>                    <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">&quot;dmy&quot;</span>, <span class="st">&quot;%m/%d/%Y&quot;</span>))</span>
+<span id="cb62-5"><a href="r-basics.html#cb62-5" tabindex="-1"></a>  )</span>
+<span id="cb62-6"><a href="r-basics.html#cb62-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 9
 ##    firstname sex    race   call  wave id_var isFemale dob        dob_date  
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;      &lt;date&gt;    
@@ -620,9 +620,9 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <div id="make-an-age-variable" class="section level3 hasAnchor" number="7.7.1">
 <h3><span class="header-section-number">A.7.1</span> Make an age variable<a href="r-basics.html#make-an-age-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To make an age variable from the year component,</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="r-basics.html#cb63-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb63-2"><a href="r-basics.html#cb63-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> <span class="fu">year</span>(dob_date)</span>
-<span id="cb63-3"><a href="r-basics.html#cb63-3" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="r-basics.html#cb64-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb64-2"><a href="r-basics.html#cb64-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> <span class="fu">year</span>(dob_date)</span>
+<span id="cb64-3"><a href="r-basics.html#cb64-3" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
@@ -638,11 +638,11 @@ indicating whether the résumé had a putatively female name at the top:</p>
 ## 10 Tyrone    male   black     0     3     10 FALSE    7/25/1956 1956-07-25    67
 ## # ℹ 4,860 more rows</code></pre>
 <p>For more precision, the participants’ ages as of 2 May 2023,</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="r-basics.html#cb65-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb65-2"><a href="r-basics.html#cb65-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">as.numeric</span>(</span>
-<span id="cb65-3"><a href="r-basics.html#cb65-3" tabindex="-1"></a>    <span class="fu">interval</span>(dob_date, <span class="st">&quot;2023-05-02&quot;</span>), </span>
-<span id="cb65-4"><a href="r-basics.html#cb65-4" tabindex="-1"></a>    <span class="st">&quot;years&quot;</span>)</span>
-<span id="cb65-5"><a href="r-basics.html#cb65-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="r-basics.html#cb66-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb66-2"><a href="r-basics.html#cb66-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb66-3"><a href="r-basics.html#cb66-3" tabindex="-1"></a>    <span class="fu">interval</span>(dob_date, <span class="st">&quot;2023-05-02&quot;</span>), </span>
+<span id="cb66-4"><a href="r-basics.html#cb66-4" tabindex="-1"></a>    <span class="st">&quot;years&quot;</span>)</span>
+<span id="cb66-5"><a href="r-basics.html#cb66-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 10
 ##    firstname sex    race   call  wave id_var isFemale dob       dob_date     age
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;lgl&gt;    &lt;chr&gt;     &lt;date&gt;     &lt;dbl&gt;
@@ -666,17 +666,17 @@ participation it is for each participant. Assume that each <code>firstname</code
 <code>resume</code> data represents a participant, and each <code>dob_date</code> represents an event
 for that participant that we care about. We want to produce a variable that is 0 for the first month of participation (say, February), and 2 for the month two months later (April), regardless of whether the month between (March) appears in the data, and even if participants start or finish participation at very different times.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
 <p>Below, we group by <code>firstname</code>, then round all months to the first date of the month, then count those months (within <code>firstname</code>). We show the first three rows for each participant.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="r-basics.html#cb67-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
-<span id="cb67-2"><a href="r-basics.html#cb67-2" tabindex="-1"></a>  <span class="co"># Ensure ranking _within_ firstname:</span></span>
-<span id="cb67-3"><a href="r-basics.html#cb67-3" tabindex="-1"></a>  <span class="fu">group_by</span>(firstname) <span class="sc">|&gt;</span> </span>
-<span id="cb67-4"><a href="r-basics.html#cb67-4" tabindex="-1"></a>  <span class="co"># Round all months to first date of the month, then count:</span></span>
-<span id="cb67-5"><a href="r-basics.html#cb67-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dob_month =</span> <span class="fu">floor_date</span>(dob_date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>), </span>
-<span id="cb67-6"><a href="r-basics.html#cb67-6" tabindex="-1"></a>         <span class="at">dob_month_count =</span> (<span class="fu">min</span>(dob_month) <span class="sc">%--%</span> dob_month) <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb67-7"><a href="r-basics.html#cb67-7" tabindex="-1"></a>         ) <span class="sc">|&gt;</span></span>
-<span id="cb67-8"><a href="r-basics.html#cb67-8" tabindex="-1"></a>  <span class="co"># For presentation, select, arrange, and slice:</span></span>
-<span id="cb67-9"><a href="r-basics.html#cb67-9" tabindex="-1"></a>  <span class="fu">select</span>(firstname, dob, dob_date, dob_month, dob_month_count) <span class="sc">|&gt;</span> </span>
-<span id="cb67-10"><a href="r-basics.html#cb67-10" tabindex="-1"></a>  <span class="fu">arrange</span>(firstname, dob_month_count) <span class="sc">|&gt;</span> </span>
-<span id="cb67-11"><a href="r-basics.html#cb67-11" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="r-basics.html#cb68-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
+<span id="cb68-2"><a href="r-basics.html#cb68-2" tabindex="-1"></a>  <span class="co"># Ensure ranking _within_ firstname:</span></span>
+<span id="cb68-3"><a href="r-basics.html#cb68-3" tabindex="-1"></a>  <span class="fu">group_by</span>(firstname) <span class="sc">|&gt;</span> </span>
+<span id="cb68-4"><a href="r-basics.html#cb68-4" tabindex="-1"></a>  <span class="co"># Round all months to first date of the month, then count:</span></span>
+<span id="cb68-5"><a href="r-basics.html#cb68-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dob_month =</span> <span class="fu">floor_date</span>(dob_date, <span class="at">unit =</span> <span class="st">&quot;month&quot;</span>), </span>
+<span id="cb68-6"><a href="r-basics.html#cb68-6" tabindex="-1"></a>         <span class="at">dob_month_count =</span> (<span class="fu">min</span>(dob_month) <span class="sc">%--%</span> dob_month) <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb68-7"><a href="r-basics.html#cb68-7" tabindex="-1"></a>         ) <span class="sc">|&gt;</span></span>
+<span id="cb68-8"><a href="r-basics.html#cb68-8" tabindex="-1"></a>  <span class="co"># For presentation, select, arrange, and slice:</span></span>
+<span id="cb68-9"><a href="r-basics.html#cb68-9" tabindex="-1"></a>  <span class="fu">select</span>(firstname, dob, dob_date, dob_month, dob_month_count) <span class="sc">|&gt;</span> </span>
+<span id="cb68-10"><a href="r-basics.html#cb68-10" tabindex="-1"></a>  <span class="fu">arrange</span>(firstname, dob_month_count) <span class="sc">|&gt;</span> </span>
+<span id="cb68-11"><a href="r-basics.html#cb68-11" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 108 × 5
 ## # Groups:   firstname [36]
 ##    firstname dob       dob_date   dob_month  dob_month_count
@@ -700,13 +700,13 @@ for that participant that we care about. We want to produce a variable that is 0
 <h2><span class="header-section-number">A.8</span> Create a completely randomised indicator<a href="r-basics.html#sec-create-treatment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This uses <code>mutate()</code>, along with the <code>sample()</code> function to create a random
 vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it to <code>df_resume</code>:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="r-basics.html#cb69-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">317334706</span>)</span>
-<span id="cb69-2"><a href="r-basics.html#cb69-2" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="r-basics.html#cb69-3" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb69-4"><a href="r-basics.html#cb69-4" tabindex="-1"></a>  <span class="at">my_new_treatment_assg =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Treatment&quot;</span>, <span class="st">&quot;Control&quot;</span>), </span>
-<span id="cb69-5"><a href="r-basics.html#cb69-5" tabindex="-1"></a>                                 <span class="at">size =</span> <span class="fu">n</span>(), </span>
-<span id="cb69-6"><a href="r-basics.html#cb69-6" tabindex="-1"></a>                                 <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="r-basics.html#cb70-1" tabindex="-1"></a><span class="fu">head</span>(df_resume <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>isFemale, <span class="sc">-</span>dob))</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="r-basics.html#cb70-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">317334706</span>)</span>
+<span id="cb70-2"><a href="r-basics.html#cb70-2" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="r-basics.html#cb70-3" tabindex="-1"></a>df_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb70-4"><a href="r-basics.html#cb70-4" tabindex="-1"></a>  <span class="at">my_new_treatment_assg =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Treatment&quot;</span>, <span class="st">&quot;Control&quot;</span>), </span>
+<span id="cb70-5"><a href="r-basics.html#cb70-5" tabindex="-1"></a>                                 <span class="at">size =</span> <span class="fu">n</span>(), </span>
+<span id="cb70-6"><a href="r-basics.html#cb70-6" tabindex="-1"></a>                                 <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="r-basics.html#cb71-1" tabindex="-1"></a><span class="fu">head</span>(df_resume <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>isFemale, <span class="sc">-</span>dob))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
 ##   firstname sex    race   call  wave id_var dob_date   my_new_treatment_assg
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;date&gt;     &lt;chr&gt;                
@@ -722,12 +722,12 @@ vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it 
 <h2><span class="header-section-number">A.9</span> Plot a variable<a href="r-basics.html#plot-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use <code>ggplot()</code> to plot the distribution of calls back that these résumés
 receive. Calls are fairly rare.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="r-basics.html#cb72-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="r-basics.html#cb73-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="90-R_files/figure-html/barplot_resume-1.png" width="672" /></p>
 <p>Look at the distribution by the putative race on the resume:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="r-basics.html#cb73-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
-<span id="cb73-2"><a href="r-basics.html#cb73-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call, <span class="at">fill =</span> race)) <span class="sc">+</span> </span>
-<span id="cb73-3"><a href="r-basics.html#cb73-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="r-basics.html#cb74-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a href="r-basics.html#cb74-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call, <span class="at">fill =</span> race)) <span class="sc">+</span> </span>
+<span id="cb74-3"><a href="r-basics.html#cb74-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>) </span></code></pre></div>
 <p><img src="90-R_files/figure-html/barplot_resume_2-1.png" width="672" /></p>
 <p>Since there are exactly the same number of résumés with each race, these count
 distributions are comparable.</p>
@@ -736,7 +736,7 @@ distributions are comparable.</p>
 <h2><span class="header-section-number">A.10</span> Calculate a data summary<a href="r-basics.html#calculate-a-data-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="proportions-for-a-categorical-variable" class="section level3 hasAnchor" number="7.10.1">
 <h3><span class="header-section-number">A.10.1</span> Proportions for a categorical variable<a href="r-basics.html#proportions-for-a-categorical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="r-basics.html#cb74-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">count</span>(firstname) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="r-basics.html#cb75-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">count</span>(firstname) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 36 × 3
 ##    firstname     n proportion
 ##    &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
@@ -754,12 +754,12 @@ distributions are comparable.</p>
 </div>
 <div id="proportions-for-binary-variables" class="section level3 hasAnchor" number="7.10.2">
 <h3><span class="header-section-number">A.10.2</span> Proportions for binary variables<a href="r-basics.html#proportions-for-binary-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="r-basics.html#cb76-1" tabindex="-1"></a>summ_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> </span>
-<span id="cb76-2"><a href="r-basics.html#cb76-2" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">|&gt;</span></span>
-<span id="cb76-3"><a href="r-basics.html#cb76-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">call_back_rate =</span> <span class="fu">mean</span>(call),         <span class="co"># mean of numeric 0/1</span></span>
-<span id="cb76-4"><a href="r-basics.html#cb76-4" tabindex="-1"></a>            <span class="at">prop_female =</span> <span class="fu">mean</span>(sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)) <span class="co"># mean of logical TRUE/FALSE</span></span>
-<span id="cb76-5"><a href="r-basics.html#cb76-5" tabindex="-1"></a></span>
-<span id="cb76-6"><a href="r-basics.html#cb76-6" tabindex="-1"></a>summ_resume</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="r-basics.html#cb77-1" tabindex="-1"></a>summ_resume <span class="ot">&lt;-</span> df_resume <span class="sc">|&gt;</span> </span>
+<span id="cb77-2"><a href="r-basics.html#cb77-2" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">|&gt;</span></span>
+<span id="cb77-3"><a href="r-basics.html#cb77-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">call_back_rate =</span> <span class="fu">mean</span>(call),         <span class="co"># mean of numeric 0/1</span></span>
+<span id="cb77-4"><a href="r-basics.html#cb77-4" tabindex="-1"></a>            <span class="at">prop_female =</span> <span class="fu">mean</span>(sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)) <span class="co"># mean of logical TRUE/FALSE</span></span>
+<span id="cb77-5"><a href="r-basics.html#cb77-5" tabindex="-1"></a></span>
+<span id="cb77-6"><a href="r-basics.html#cb77-6" tabindex="-1"></a>summ_resume</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 3
 ##   race  call_back_rate prop_female
 ##   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;
@@ -781,9 +781,9 @@ distributions are comparable.</p>
 <p>For any columns that didn’t appear in the original dataframe for a certain row, the joins will store <code>NA</code>.</p>
 <p>By default, joins will match on any columns that have the same name. So, if <code>age</code> and <code>height</code> are both in <code>df1</code> and <code>df2</code>, then <code>full_join(df1, df2)</code> will consider a row “matched” if the values of both <code>age</code> and <code>height</code> are the same in the datasets.</p>
 <p>If column names differ, the <code>by = ...</code> argument can inform the join. E.g., if, instead, <code>df1</code> has variables <code>Age</code> and <code>Tallness</code>, we could join with</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="r-basics.html#cb78-1" tabindex="-1"></a>df_joined <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span> <span class="fu">full_join</span>(df2, </span>
-<span id="cb78-2"><a href="r-basics.html#cb78-2" tabindex="-1"></a>                               <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span> <span class="ot">=</span> <span class="st">&quot;age&quot;</span>,</span>
-<span id="cb78-3"><a href="r-basics.html#cb78-3" tabindex="-1"></a>                                      <span class="st">&quot;Tallness&quot;</span> <span class="ot">=</span> <span class="st">&quot;height&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="r-basics.html#cb79-1" tabindex="-1"></a>df_joined <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span> <span class="fu">full_join</span>(df2, </span>
+<span id="cb79-2"><a href="r-basics.html#cb79-2" tabindex="-1"></a>                               <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span> <span class="ot">=</span> <span class="st">&quot;age&quot;</span>,</span>
+<span id="cb79-3"><a href="r-basics.html#cb79-3" tabindex="-1"></a>                                      <span class="st">&quot;Tallness&quot;</span> <span class="ot">=</span> <span class="st">&quot;height&quot;</span>))</span></code></pre></div>
 <p>Columns with the same name, but different types, will not join. E.g., if <code>df1$this_var</code> is numeric, but <code>df2$this_var</code> is character, the joins will throw an error.</p>
 </div>
 <div id="anonymize-sensitive-data" class="section level2 hasAnchor" number="7.12">
@@ -797,19 +797,19 @@ distributions are comparable.</p>
 ## 2 Esme    667 Dark Ave    456    50
 ## 3 Charles 10 Downing St   789    70</code></pre>
 <p>We can anonymize the <code>Address</code> and <code>Phone</code> columns in this data set (called <code>sens</code>) using the <code>digest()</code> function in package <code>{digest}</code>:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="r-basics.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(digest)</span>
-<span id="cb80-2"><a href="r-basics.html#cb80-2" tabindex="-1"></a></span>
-<span id="cb80-3"><a href="r-basics.html#cb80-3" tabindex="-1"></a>cols_to_mask <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Address&quot;</span>, <span class="st">&quot;Phone&quot;</span>)</span>
-<span id="cb80-4"><a href="r-basics.html#cb80-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> cols_to_mask){</span>
-<span id="cb80-5"><a href="r-basics.html#cb80-5" tabindex="-1"></a>  anon <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">unlist</span>(sens[, i]), digest, <span class="at">algo =</span> <span class="st">&quot;sha512&quot;</span>)</span>
-<span id="cb80-6"><a href="r-basics.html#cb80-6" tabindex="-1"></a>  </span>
-<span id="cb80-7"><a href="r-basics.html#cb80-7" tabindex="-1"></a>  <span class="co"># Shorten anonymized column (only for presentation here):</span></span>
-<span id="cb80-8"><a href="r-basics.html#cb80-8" tabindex="-1"></a>  short_anon <span class="ot">&lt;-</span> <span class="fu">substr</span>(anon, <span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb80-9"><a href="r-basics.html#cb80-9" tabindex="-1"></a>  </span>
-<span id="cb80-10"><a href="r-basics.html#cb80-10" tabindex="-1"></a>  sens[, i] <span class="ot">&lt;-</span> short_anon</span>
-<span id="cb80-11"><a href="r-basics.html#cb80-11" tabindex="-1"></a>}</span>
-<span id="cb80-12"><a href="r-basics.html#cb80-12" tabindex="-1"></a></span>
-<span id="cb80-13"><a href="r-basics.html#cb80-13" tabindex="-1"></a>sens</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="r-basics.html#cb81-1" tabindex="-1"></a><span class="fu">library</span>(digest)</span>
+<span id="cb81-2"><a href="r-basics.html#cb81-2" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="r-basics.html#cb81-3" tabindex="-1"></a>cols_to_mask <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Address&quot;</span>, <span class="st">&quot;Phone&quot;</span>)</span>
+<span id="cb81-4"><a href="r-basics.html#cb81-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> cols_to_mask){</span>
+<span id="cb81-5"><a href="r-basics.html#cb81-5" tabindex="-1"></a>  anon <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">unlist</span>(sens[, i]), digest, <span class="at">algo =</span> <span class="st">&quot;sha512&quot;</span>)</span>
+<span id="cb81-6"><a href="r-basics.html#cb81-6" tabindex="-1"></a>  </span>
+<span id="cb81-7"><a href="r-basics.html#cb81-7" tabindex="-1"></a>  <span class="co"># Shorten anonymized column (only for presentation here):</span></span>
+<span id="cb81-8"><a href="r-basics.html#cb81-8" tabindex="-1"></a>  short_anon <span class="ot">&lt;-</span> <span class="fu">substr</span>(anon, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb81-9"><a href="r-basics.html#cb81-9" tabindex="-1"></a>  </span>
+<span id="cb81-10"><a href="r-basics.html#cb81-10" tabindex="-1"></a>  sens[, i] <span class="ot">&lt;-</span> short_anon</span>
+<span id="cb81-11"><a href="r-basics.html#cb81-11" tabindex="-1"></a>}</span>
+<span id="cb81-12"><a href="r-basics.html#cb81-12" tabindex="-1"></a></span>
+<span id="cb81-13"><a href="r-basics.html#cb81-13" tabindex="-1"></a>sens</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##   Name    Address    Phone      Score
 ##   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
@@ -820,12 +820,12 @@ distributions are comparable.</p>
 <div id="salting" class="section level3 hasAnchor" number="7.12.1">
 <h3><span class="header-section-number">A.12.1</span> Salting<a href="r-basics.html#salting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Our default one-way procedure is to salt, hash, and key-stretch our sensitive data. Below is an example for a single value we wish to obscure.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="r-basics.html#cb82-1" tabindex="-1"></a><span class="fu">library</span>(openssl)</span>
-<span id="cb82-2"><a href="r-basics.html#cb82-2" tabindex="-1"></a></span>
-<span id="cb82-3"><a href="r-basics.html#cb82-3" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="st">&quot;1234567&quot;</span></span>
-<span id="cb82-4"><a href="r-basics.html#cb82-4" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="r-basics.html#cb82-5" tabindex="-1"></a><span class="fu">bcrypt_pbkdf</span>(sens,</span>
-<span id="cb82-6"><a href="r-basics.html#cb82-6" tabindex="-1"></a>             <span class="at">salt =</span> <span class="fu">raw</span>(<span class="dv">849025</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="r-basics.html#cb83-1" tabindex="-1"></a><span class="fu">library</span>(openssl)</span>
+<span id="cb83-2"><a href="r-basics.html#cb83-2" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="r-basics.html#cb83-3" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="st">&quot;1234567&quot;</span></span>
+<span id="cb83-4"><a href="r-basics.html#cb83-4" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="r-basics.html#cb83-5" tabindex="-1"></a><span class="fu">bcrypt_pbkdf</span>(sens,</span>
+<span id="cb83-6"><a href="r-basics.html#cb83-6" tabindex="-1"></a>             <span class="at">salt =</span> <span class="fu">raw</span>(<span class="dv">849025</span>))</span></code></pre></div>
 <pre><code>##  [1] 7c 23 71 da cd 7a 4b f3 3f 70 73 ce 4f 8e 15 a9 77 23 9c b6 d8 8d 85 19 16
 ## [26] ca 26 c6 88 d4 9a c6</code></pre>
 <p>Above, <code>849025</code> is a value obtained from <code>sample(1e6, 1)</code> that is used to create the raw salt vector. This value should change for each value we want to hash.</p>

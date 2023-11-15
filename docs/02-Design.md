@@ -277,7 +277,7 @@ mean(is_stat_sig)
 ## [1] 0.995
 ```
 
-So the probability of detecting the true average treatment effect of 1 is about 0.995. This is high power comes largely from the strongly predictive nature of the covariate `x`. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly 0.45.
+So the probability of detecting the true average treatment effect of 1 is about 0.995. This high power comes largely from the strongly predictive nature of the covariate `x`. Note that a naïve formula-based approach that ignores the data generating process estimates the power to be roughly 0.45.
 
 ## Balance Checking
 
