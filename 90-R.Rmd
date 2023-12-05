@@ -71,9 +71,9 @@ a multi-sheet spreadsheet, add an argument like `read_excel(..., sheet = 2)`.
 
 To read a file directly from box, we use the `boxr` package. To do so, 
 
-- Have Nathan add you as Box RStudio App collaborator
+- Have a member of the data science team (currently, Nathan) add you as Box RStudio App collaborator
 - Go to dcgov.box.com. At the bottom left, click "Dev Console"
-- Click on RStudio Access
+- Click on The Lab @ DC
 - Click the Configuration tab
 
 Here you should see a `client_id` and `client_secret` that you can copy.
