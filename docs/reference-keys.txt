@@ -49,6 +49,7 @@ alternatives
 publication
 authorship-in-pre-analysis-plans
 authorship-in-academic-articles
+publishing-data
 r-basics
 get-r-and-rstudio
 read-in-data-files

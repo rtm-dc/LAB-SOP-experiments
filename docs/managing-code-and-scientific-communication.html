@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2023-12-05" />
+<meta name="date" content="2024-02-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,6 +249,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship-in-pre-analysis-plans"><i class="fa fa-check"></i><b>6.1</b> Authorship in Pre-Analysis Plans</a></li>
 <li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#authorship-in-academic-articles"><i class="fa fa-check"></i><b>6.2</b> Authorship in Academic Articles</a></li>
+<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.3</b> Publishing Data</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>A</b> R Basics</a>
@@ -494,70 +495,73 @@ read in the object:</p>
 ##  [33] &quot;clock&quot;         &quot;cluster&quot;       &quot;cmm&quot;           &quot;codetools&quot;    
 ##  [37] &quot;coin&quot;          &quot;colorspace&quot;    &quot;commonmark&quot;    &quot;compiler&quot;     
 ##  [41] &quot;conflicted&quot;    &quot;cpp11&quot;         &quot;crayon&quot;        &quot;credentials&quot;  
-##  [45] &quot;crosstalk&quot;     &quot;curl&quot;          &quot;data.table&quot;    &quot;datasets&quot;     
-##  [49] &quot;datawizard&quot;    &quot;DBI&quot;           &quot;dbplyr&quot;        &quot;DeclareDesign&quot;
-##  [53] &quot;desc&quot;          &quot;devtools&quot;      &quot;diagram&quot;       &quot;dials&quot;        
-##  [57] &quot;DiceDesign&quot;    &quot;diffobj&quot;       &quot;digest&quot;        &quot;downlit&quot;      
-##  [61] &quot;dplyr&quot;         &quot;DT&quot;            &quot;dtplyr&quot;        &quot;e1071&quot;        
-##  [65] &quot;ellipsis&quot;      &quot;estimatr&quot;      &quot;evaluate&quot;      &quot;fabricatr&quot;    
-##  [69] &quot;fansi&quot;         &quot;farver&quot;        &quot;fastmap&quot;       &quot;fontawesome&quot;  
-##  [73] &quot;forcats&quot;       &quot;foreach&quot;       &quot;foreign&quot;       &quot;Formula&quot;      
-##  [77] &quot;fs&quot;            &quot;furrr&quot;         &quot;future&quot;        &quot;future.apply&quot; 
-##  [81] &quot;gam&quot;           &quot;gargle&quot;        &quot;generics&quot;      &quot;gert&quot;         
-##  [85] &quot;ggplot2&quot;       &quot;gh&quot;            &quot;gitcreds&quot;      &quot;glmnet&quot;       
-##  [89] &quot;globals&quot;       &quot;glue&quot;          &quot;googledrive&quot;   &quot;googlesheets4&quot;
-##  [93] &quot;gower&quot;         &quot;GPfit&quot;         &quot;graphics&quot;      &quot;grDevices&quot;    
-##  [97] &quot;grid&quot;          &quot;gridExtra&quot;     &quot;gtable&quot;        &quot;hardhat&quot;      
-## [101] &quot;haven&quot;         &quot;here&quot;          &quot;highr&quot;         &quot;hms&quot;          
-## [105] &quot;htmltools&quot;     &quot;htmlwidgets&quot;   &quot;httpuv&quot;        &quot;httr&quot;         
-## [109] &quot;httr2&quot;         &quot;ids&quot;           &quot;infer&quot;         &quot;ini&quot;          
-## [113] &quot;insight&quot;       &quot;ipred&quot;         &quot;isoband&quot;       &quot;iterators&quot;    
-## [117] &quot;janitor&quot;       &quot;jomo&quot;          &quot;jquerylib&quot;     &quot;jsonlite&quot;     
-## [121] &quot;kableExtra&quot;    &quot;KernSmooth&quot;    &quot;knitr&quot;         &quot;labeling&quot;     
-## [125] &quot;later&quot;         &quot;lattice&quot;       &quot;lava&quot;          &quot;lazyeval&quot;     
-## [129] &quot;lhs&quot;           &quot;libcoin&quot;       &quot;lifecycle&quot;     &quot;listenv&quot;      
-## [133] &quot;lme4&quot;          &quot;lmtest&quot;        &quot;lubridate&quot;     &quot;magrittr&quot;     
-## [137] &quot;markdown&quot;      &quot;MASS&quot;          &quot;Matching&quot;      &quot;Matrix&quot;       
-## [141] &quot;MatrixModels&quot;  &quot;matrixStats&quot;   &quot;memoise&quot;       &quot;methods&quot;      
-## [145] &quot;mgcv&quot;          &quot;mice&quot;          &quot;mime&quot;          &quot;miniUI&quot;       
-## [149] &quot;minqa&quot;         &quot;mipfp&quot;         &quot;mitml&quot;         &quot;modeldata&quot;    
-## [153] &quot;modelenv&quot;      &quot;modelr&quot;        &quot;modeltools&quot;    &quot;multcomp&quot;     
-## [157] &quot;multitestr&quot;    &quot;munsell&quot;       &quot;mvtnorm&quot;       &quot;nlme&quot;         
-## [161] &quot;nloptr&quot;        &quot;nnet&quot;          &quot;numDeriv&quot;      &quot;openssl&quot;      
-## [165] &quot;ordinal&quot;       &quot;pan&quot;           &quot;parallel&quot;      &quot;parallelly&quot;   
-## [169] &quot;parameters&quot;    &quot;parsnip&quot;       &quot;party&quot;         &quot;patchwork&quot;    
-## [173] &quot;pbkrtest&quot;      &quot;pillar&quot;        &quot;pkgbuild&quot;      &quot;pkgconfig&quot;    
-## [177] &quot;pkgdown&quot;       &quot;pkgload&quot;       &quot;plyr&quot;          &quot;png&quot;          
-## [181] &quot;polspline&quot;     &quot;praise&quot;        &quot;prettyunits&quot;   &quot;processx&quot;     
-## [185] &quot;prodlim&quot;       &quot;profvis&quot;       &quot;progress&quot;      &quot;progressr&quot;    
-## [189] &quot;promises&quot;      &quot;proto&quot;         &quot;proxy&quot;         &quot;ps&quot;           
-## [193] &quot;purrr&quot;         &quot;quantreg&quot;      &quot;R.methodsS3&quot;   &quot;R.oo&quot;         
-## [197] &quot;R.utils&quot;       &quot;R6&quot;            &quot;ragg&quot;          &quot;randomForest&quot; 
-## [201] &quot;randomizr&quot;     &quot;ranger&quot;        &quot;rappdirs&quot;      &quot;rcmdcheck&quot;    
-## [205] &quot;RColorBrewer&quot;  &quot;Rcpp&quot;          &quot;RcppEigen&quot;     &quot;RcppTOML&quot;     
-## [209] &quot;readr&quot;         &quot;readxl&quot;        &quot;recipes&quot;       &quot;rematch&quot;      
-## [213] &quot;rematch2&quot;      &quot;remotes&quot;       &quot;renv&quot;          &quot;reprex&quot;       
-## [217] &quot;reshape2&quot;      &quot;reticulate&quot;    &quot;rio&quot;           &quot;rlang&quot;        
-## [221] &quot;rmarkdown&quot;     &quot;rmutil&quot;        &quot;roxygen2&quot;      &quot;rpart&quot;        
-## [225] &quot;rprojroot&quot;     &quot;rsample&quot;       &quot;Rsolnp&quot;        &quot;rstudioapi&quot;   
-## [229] &quot;rversions&quot;     &quot;rvest&quot;         &quot;sandwich&quot;      &quot;sass&quot;         
-## [233] &quot;scales&quot;        &quot;selectr&quot;       &quot;sessioninfo&quot;   &quot;shape&quot;        
-## [237] &quot;shiny&quot;         &quot;slider&quot;        &quot;snakecase&quot;     &quot;sourcetools&quot;  
-## [241] &quot;SparseM&quot;       &quot;spatial&quot;       &quot;splines&quot;       &quot;SQUAREM&quot;      
-## [245] &quot;stargazer&quot;     &quot;stats&quot;         &quot;stats4&quot;        &quot;stringi&quot;      
-## [249] &quot;stringr&quot;       &quot;strucchange&quot;   &quot;survival&quot;      &quot;svglite&quot;      
-## [253] &quot;synthpop&quot;      &quot;sys&quot;           &quot;systemfonts&quot;   &quot;tcltk&quot;        
-## [257] &quot;testthat&quot;      &quot;textshaping&quot;   &quot;TH.data&quot;       &quot;tibble&quot;       
-## [261] &quot;tidymodels&quot;    &quot;tidyr&quot;         &quot;tidyselect&quot;    &quot;tidyverse&quot;    
-## [265] &quot;timechange&quot;    &quot;timeDate&quot;      &quot;tinytex&quot;       &quot;tools&quot;        
-## [269] &quot;translations&quot;  &quot;truncnorm&quot;     &quot;tune&quot;          &quot;tzdb&quot;         
-## [273] &quot;ucminf&quot;        &quot;urlchecker&quot;    &quot;usethis&quot;       &quot;utf8&quot;         
-## [277] &quot;utils&quot;         &quot;uuid&quot;          &quot;vctrs&quot;         &quot;viridisLite&quot;  
-## [281] &quot;vroom&quot;         &quot;waldo&quot;         &quot;warp&quot;          &quot;webshot&quot;      
-## [285] &quot;whisker&quot;       &quot;withr&quot;         &quot;workflows&quot;     &quot;workflowsets&quot; 
-## [289] &quot;writexl&quot;       &quot;xfun&quot;          &quot;xml2&quot;          &quot;xopen&quot;        
-## [293] &quot;xtable&quot;        &quot;yaml&quot;          &quot;yardstick&quot;     &quot;zip&quot;          
-## [297] &quot;zoo&quot;</code></pre>
+##  [45] &quot;crosstalk&quot;     &quot;curl&quot;          &quot;dagitty&quot;       &quot;data.table&quot;   
+##  [49] &quot;datasets&quot;      &quot;datawizard&quot;    &quot;DBI&quot;           &quot;dbplyr&quot;       
+##  [53] &quot;DeclareDesign&quot; &quot;desc&quot;          &quot;devtools&quot;      &quot;diagram&quot;      
+##  [57] &quot;dials&quot;         &quot;DiceDesign&quot;    &quot;diffobj&quot;       &quot;digest&quot;       
+##  [61] &quot;downlit&quot;       &quot;dplyr&quot;         &quot;DT&quot;            &quot;dtplyr&quot;       
+##  [65] &quot;e1071&quot;         &quot;ellipsis&quot;      &quot;estimatr&quot;      &quot;evaluate&quot;     
+##  [69] &quot;fabricatr&quot;     &quot;fansi&quot;         &quot;farver&quot;        &quot;fastmap&quot;      
+##  [73] &quot;fontawesome&quot;   &quot;forcats&quot;       &quot;foreach&quot;       &quot;foreign&quot;      
+##  [77] &quot;Formula&quot;       &quot;fs&quot;            &quot;furrr&quot;         &quot;future&quot;       
+##  [81] &quot;future.apply&quot;  &quot;gam&quot;           &quot;gargle&quot;        &quot;generics&quot;     
+##  [85] &quot;gert&quot;          &quot;ggdag&quot;         &quot;ggforce&quot;       &quot;ggplot2&quot;      
+##  [89] &quot;ggraph&quot;        &quot;ggrepel&quot;       &quot;gh&quot;            &quot;gitcreds&quot;     
+##  [93] &quot;glmnet&quot;        &quot;globals&quot;       &quot;glue&quot;          &quot;googledrive&quot;  
+##  [97] &quot;googlesheets4&quot; &quot;gower&quot;         &quot;GPfit&quot;         &quot;graphics&quot;     
+## [101] &quot;graphlayouts&quot;  &quot;grDevices&quot;     &quot;grid&quot;          &quot;gridExtra&quot;    
+## [105] &quot;gtable&quot;        &quot;hardhat&quot;       &quot;haven&quot;         &quot;here&quot;         
+## [109] &quot;highr&quot;         &quot;hms&quot;           &quot;htmltools&quot;     &quot;htmlwidgets&quot;  
+## [113] &quot;httpuv&quot;        &quot;httr&quot;          &quot;httr2&quot;         &quot;ids&quot;          
+## [117] &quot;igraph&quot;        &quot;infer&quot;         &quot;ini&quot;           &quot;insight&quot;      
+## [121] &quot;ipred&quot;         &quot;isoband&quot;       &quot;iterators&quot;     &quot;janitor&quot;      
+## [125] &quot;jomo&quot;          &quot;jquerylib&quot;     &quot;jsonlite&quot;      &quot;kableExtra&quot;   
+## [129] &quot;KernSmooth&quot;    &quot;knitr&quot;         &quot;labeling&quot;      &quot;later&quot;        
+## [133] &quot;lattice&quot;       &quot;lava&quot;          &quot;lazyeval&quot;      &quot;lhs&quot;          
+## [137] &quot;libcoin&quot;       &quot;lifecycle&quot;     &quot;listenv&quot;       &quot;lme4&quot;         
+## [141] &quot;lmtest&quot;        &quot;lubridate&quot;     &quot;magrittr&quot;      &quot;markdown&quot;     
+## [145] &quot;MASS&quot;          &quot;Matching&quot;      &quot;Matrix&quot;        &quot;MatrixModels&quot; 
+## [149] &quot;matrixStats&quot;   &quot;memoise&quot;       &quot;methods&quot;       &quot;mgcv&quot;         
+## [153] &quot;mice&quot;          &quot;mime&quot;          &quot;miniUI&quot;        &quot;minqa&quot;        
+## [157] &quot;mipfp&quot;         &quot;mitml&quot;         &quot;modeldata&quot;     &quot;modelenv&quot;     
+## [161] &quot;modelr&quot;        &quot;modeltools&quot;    &quot;multcomp&quot;      &quot;multitestr&quot;   
+## [165] &quot;munsell&quot;       &quot;mvtnorm&quot;       &quot;nlme&quot;          &quot;nloptr&quot;       
+## [169] &quot;nnet&quot;          &quot;numDeriv&quot;      &quot;openssl&quot;       &quot;ordinal&quot;      
+## [173] &quot;pan&quot;           &quot;parallel&quot;      &quot;parallelly&quot;    &quot;parameters&quot;   
+## [177] &quot;parsnip&quot;       &quot;party&quot;         &quot;patchwork&quot;     &quot;pbkrtest&quot;     
+## [181] &quot;pillar&quot;        &quot;pkgbuild&quot;      &quot;pkgconfig&quot;     &quot;pkgdown&quot;      
+## [185] &quot;pkgload&quot;       &quot;plyr&quot;          &quot;png&quot;           &quot;polspline&quot;    
+## [189] &quot;polyclip&quot;      &quot;praise&quot;        &quot;prettyunits&quot;   &quot;processx&quot;     
+## [193] &quot;prodlim&quot;       &quot;profvis&quot;       &quot;progress&quot;      &quot;progressr&quot;    
+## [197] &quot;promises&quot;      &quot;proto&quot;         &quot;proxy&quot;         &quot;ps&quot;           
+## [201] &quot;purrr&quot;         &quot;quantreg&quot;      &quot;R.methodsS3&quot;   &quot;R.oo&quot;         
+## [205] &quot;R.utils&quot;       &quot;R6&quot;            &quot;ragg&quot;          &quot;randomForest&quot; 
+## [209] &quot;randomizr&quot;     &quot;ranger&quot;        &quot;rappdirs&quot;      &quot;rcmdcheck&quot;    
+## [213] &quot;RColorBrewer&quot;  &quot;Rcpp&quot;          &quot;RcppArmadillo&quot; &quot;RcppEigen&quot;    
+## [217] &quot;RcppTOML&quot;      &quot;readr&quot;         &quot;readxl&quot;        &quot;recipes&quot;      
+## [221] &quot;rematch&quot;       &quot;rematch2&quot;      &quot;remotes&quot;       &quot;renv&quot;         
+## [225] &quot;reprex&quot;        &quot;reshape2&quot;      &quot;reticulate&quot;    &quot;rio&quot;          
+## [229] &quot;rlang&quot;         &quot;rmarkdown&quot;     &quot;rmutil&quot;        &quot;roxygen2&quot;     
+## [233] &quot;rpart&quot;         &quot;rprojroot&quot;     &quot;rsample&quot;       &quot;Rsolnp&quot;       
+## [237] &quot;rstudioapi&quot;    &quot;rversions&quot;     &quot;rvest&quot;         &quot;sandwich&quot;     
+## [241] &quot;sass&quot;          &quot;scales&quot;        &quot;selectr&quot;       &quot;sessioninfo&quot;  
+## [245] &quot;shape&quot;         &quot;shiny&quot;         &quot;slider&quot;        &quot;snakecase&quot;    
+## [249] &quot;sourcetools&quot;   &quot;SparseM&quot;       &quot;spatial&quot;       &quot;splines&quot;      
+## [253] &quot;SQUAREM&quot;       &quot;stargazer&quot;     &quot;stats&quot;         &quot;stats4&quot;       
+## [257] &quot;stringi&quot;       &quot;stringr&quot;       &quot;strucchange&quot;   &quot;survival&quot;     
+## [261] &quot;svglite&quot;       &quot;synthpop&quot;      &quot;sys&quot;           &quot;systemfonts&quot;  
+## [265] &quot;tcltk&quot;         &quot;testthat&quot;      &quot;textshaping&quot;   &quot;TH.data&quot;      
+## [269] &quot;tibble&quot;        &quot;tidygraph&quot;     &quot;tidymodels&quot;    &quot;tidyr&quot;        
+## [273] &quot;tidyselect&quot;    &quot;tidyverse&quot;     &quot;timechange&quot;    &quot;timeDate&quot;     
+## [277] &quot;tinytex&quot;       &quot;tools&quot;         &quot;translations&quot;  &quot;truncnorm&quot;    
+## [281] &quot;tune&quot;          &quot;tweenr&quot;        &quot;tzdb&quot;          &quot;ucminf&quot;       
+## [285] &quot;urlchecker&quot;    &quot;usethis&quot;       &quot;utf8&quot;          &quot;utils&quot;        
+## [289] &quot;uuid&quot;          &quot;V8&quot;            &quot;vctrs&quot;         &quot;viridis&quot;      
+## [293] &quot;viridisLite&quot;   &quot;vroom&quot;         &quot;waldo&quot;         &quot;warp&quot;         
+## [297] &quot;webshot&quot;       &quot;whisker&quot;       &quot;withr&quot;         &quot;workflows&quot;    
+## [301] &quot;workflowsets&quot;  &quot;writexl&quot;       &quot;xfun&quot;          &quot;xml2&quot;         
+## [305] &quot;xopen&quot;         &quot;xtable&quot;        &quot;yaml&quot;          &quot;yardstick&quot;    
+## [309] &quot;zip&quot;           &quot;zoo&quot;</code></pre>
 
 </div>
 </div>
