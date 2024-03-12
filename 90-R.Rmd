@@ -476,3 +476,72 @@ bcrypt_pbkdf(sens,
 ```
 
 Above, `849025` is a value obtained from `sample(1e6, 1)` that is used to create the raw salt vector. This value should change for each value we want to hash.
+
+## Deal with factors (ordered/unordered) in models
+
+In typical cases at The Lab, we reorder factor levels to be substantively sorted, but we do not use R "ordered factors". Reordering makes plotting and regression baselines substantively meaningful; using "unordered" factors ensures that our modeling yields the results we usually desire.
+
+R provides a useful data class called "factors" for categorical variables. See the relevant [chapter](https://r4ds.hadley.nz/factors) of @wiccetgro23 for a full introduction.
+
+We use factors to reorder the groups in a variable. E.g., a simple factor variable sorts its levels in alphabetical order (note the "`## Levels:`" comment below)
+
+```{r rfactorsimple}
+library(forcats)
+
+simple_fct <- factor(rep(c("Low", "Medium", "High"), each = 2))
+
+simple_fct
+```
+
+and thus plots in alphabetical, not substantive, order:
+
+```{r rfactorbar}
+# Make into data frame:
+df_factor <- tibble(simple_fct = simple_fct,
+                    random_outcome = rnorm(length(simple_fct)))
+
+ggplot(df_factor, aes(simple_fct)) + geom_bar() + labs(x = "A Poorly Ordered Factor")
+```
+
+So, we reorder the levels to improve our plotting and give us a better regression baseline category:
+
+```{r rfactorreorder}
+df_factor$reordered_fct <-  fct_relevel(simple_fct, 
+                                        "Low", "Medium", "High")
+
+df_factor$reordered_fct
+
+ggplot(df_factor, aes(reordered_fct)) + geom_bar() + labs(x = "A Substantively 'Ordered' Factor")
+```
+
+However, we have **not** created what R calls an "ordered" factor! 
+
+```{r rfactorisntordered}
+# The factor we reordered is not "ordered":
+is.ordered(df_factor$reordered_fct)
+```
+
+To make a factor R-ordered, we would need to set `ordered = TRUE`:
+
+```{r rfactorordered}
+df_factor$ordered_fct <- factor(df_factor$reordered_fct, ordered = TRUE)
+
+is.ordered(df_factor$ordered_fct)
+```
+
+However, for our typical modeling strategies we use an R-unordered factor (for `lm_lin()`, `lm()`, `glm()`, etc.):
+
+```{r rfctunorderedlm}
+# The "unordered" factor behaves as we usually want.
+# We compare levels Medium and High to the baseline:
+lm(random_outcome ~ reordered_fct, data = df_factor)
+```
+
+```{r rfctorderedlm}
+# The R "ordered" factor does something different:
+lm(random_outcome ~ ordered_fct, data = df_factor)
+```
+
+Unless we want these exact polynomial contrasts as your results, we avoid R "ordered" factors. 
+Where do these coefficients come from in the "ordered" factor model? See [here](https://stackoverflow.com/questions/57297771/interpretation-of-l-q-c-4-for-logistic-regression). For a deeper dive into how R forms the orthonormal basis to create the variables in the "ordered" factor model, see [here](https://stats.stackexchange.com/questions/105115/polynomial-contrasts-for-regression).
+

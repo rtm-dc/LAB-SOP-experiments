@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A R Basics | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A R Basics | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-02-13" />
+<meta name="date" content="2024-03-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,6 +288,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="A.12.1" data-path="r-basics.html"><a href="r-basics.html#salting"><i class="fa fa-check"></i><b>A.12.1</b> Salting</a></li>
 </ul></li>
+<li class="chapter" data-level="A.13" data-path="r-basics.html"><a href="r-basics.html#deal-with-factors-orderedunordered-in-models"><i class="fa fa-check"></i><b>A.13</b> Deal with factors (ordered/unordered) in models</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="python-basics-using-rrstudio.html"><a href="python-basics-using-rrstudio.html"><i class="fa fa-check"></i><b>B</b> Python Basics (using R/RStudio)</a>
 <ul>
@@ -830,14 +831,77 @@ distributions are comparable.</p>
 <pre><code>##  [1] 7c 23 71 da cd 7a 4b f3 3f 70 73 ce 4f 8e 15 a9 77 23 9c b6 d8 8d 85 19 16
 ## [26] ca 26 c6 88 d4 9a c6</code></pre>
 <p>Above, <code>849025</code> is a value obtained from <code>sample(1e6, 1)</code> that is used to create the raw salt vector. This value should change for each value we want to hash.</p>
-
 </div>
+</div>
+<div id="deal-with-factors-orderedunordered-in-models" class="section level2 hasAnchor" number="7.13">
+<h2><span class="header-section-number">A.13</span> Deal with factors (ordered/unordered) in models<a href="r-basics.html#deal-with-factors-orderedunordered-in-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In typical cases at The Lab, we reorder factor levels to be substantively sorted, but we do not use R “ordered factors”. Reordering makes plotting and regression baselines substantively meaningful; using “unordered” factors ensures that our modeling yields the results we usually desire.</p>
+<p>R provides a useful data class called “factors” for categorical variables. See the relevant <a href="https://r4ds.hadley.nz/factors">chapter</a> of <span class="citation">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="#ref-wiccetgro23">2023</a>)</span> for a full introduction.</p>
+<p>We use factors to reorder the groups in a variable. E.g., a simple factor variable sorts its levels in alphabetical order (note the “<code>## Levels:</code>” comment below)</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="r-basics.html#cb85-1" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb85-2"><a href="r-basics.html#cb85-2" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="r-basics.html#cb85-3" tabindex="-1"></a>simple_fct <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;High&quot;</span>), <span class="at">each =</span> <span class="dv">2</span>))</span>
+<span id="cb85-4"><a href="r-basics.html#cb85-4" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="r-basics.html#cb85-5" tabindex="-1"></a>simple_fct</span></code></pre></div>
+<pre><code>## [1] Low    Low    Medium Medium High   High  
+## Levels: High Low Medium</code></pre>
+<p>and thus plots in alphabetical, not substantive, order:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="r-basics.html#cb87-1" tabindex="-1"></a><span class="co"># Make into data frame:</span></span>
+<span id="cb87-2"><a href="r-basics.html#cb87-2" tabindex="-1"></a>df_factor <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">simple_fct =</span> simple_fct,</span>
+<span id="cb87-3"><a href="r-basics.html#cb87-3" tabindex="-1"></a>                    <span class="at">random_outcome =</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(simple_fct)))</span>
+<span id="cb87-4"><a href="r-basics.html#cb87-4" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="r-basics.html#cb87-5" tabindex="-1"></a><span class="fu">ggplot</span>(df_factor, <span class="fu">aes</span>(simple_fct)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;A Poorly Ordered Factor&quot;</span>)</span></code></pre></div>
+<p><img src="90-R_files/figure-html/rfactorbar-1.png" width="672" /></p>
+<p>So, we reorder the levels to improve our plotting and give us a better regression baseline category:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="r-basics.html#cb88-1" tabindex="-1"></a>df_factor<span class="sc">$</span>reordered_fct <span class="ot">&lt;-</span>  <span class="fu">fct_relevel</span>(simple_fct, </span>
+<span id="cb88-2"><a href="r-basics.html#cb88-2" tabindex="-1"></a>                                        <span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;High&quot;</span>)</span>
+<span id="cb88-3"><a href="r-basics.html#cb88-3" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="r-basics.html#cb88-4" tabindex="-1"></a>df_factor<span class="sc">$</span>reordered_fct</span></code></pre></div>
+<pre><code>## [1] Low    Low    Medium Medium High   High  
+## Levels: Low Medium High</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="r-basics.html#cb90-1" tabindex="-1"></a><span class="fu">ggplot</span>(df_factor, <span class="fu">aes</span>(reordered_fct)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;A Substantively &#39;Ordered&#39; Factor&quot;</span>)</span></code></pre></div>
+<p><img src="90-R_files/figure-html/rfactorreorder-1.png" width="672" /></p>
+<p>However, we have <strong>not</strong> created what R calls an “ordered” factor!</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="r-basics.html#cb91-1" tabindex="-1"></a><span class="co"># The factor we reordered is not &quot;ordered&quot;:</span></span>
+<span id="cb91-2"><a href="r-basics.html#cb91-2" tabindex="-1"></a><span class="fu">is.ordered</span>(df_factor<span class="sc">$</span>reordered_fct)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>To make a factor R-ordered, we would need to set <code>ordered = TRUE</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="r-basics.html#cb93-1" tabindex="-1"></a>df_factor<span class="sc">$</span>ordered_fct <span class="ot">&lt;-</span> <span class="fu">factor</span>(df_factor<span class="sc">$</span>reordered_fct, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb93-2"><a href="r-basics.html#cb93-2" tabindex="-1"></a></span>
+<span id="cb93-3"><a href="r-basics.html#cb93-3" tabindex="-1"></a><span class="fu">is.ordered</span>(df_factor<span class="sc">$</span>ordered_fct)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>However, for our typical modeling strategies we use an R-unordered factor (for <code>lm_lin()</code>, <code>lm()</code>, <code>glm()</code>, etc.):</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="r-basics.html#cb95-1" tabindex="-1"></a><span class="co"># The &quot;unordered&quot; factor behaves as we usually want.</span></span>
+<span id="cb95-2"><a href="r-basics.html#cb95-2" tabindex="-1"></a><span class="co"># We compare levels Medium and High to the baseline:</span></span>
+<span id="cb95-3"><a href="r-basics.html#cb95-3" tabindex="-1"></a><span class="fu">lm</span>(random_outcome <span class="sc">~</span> reordered_fct, <span class="at">data =</span> df_factor)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = random_outcome ~ reordered_fct, data = df_factor)
+## 
+## Coefficients:
+##         (Intercept)  reordered_fctMedium    reordered_fctHigh  
+##             -0.3146               0.1738               1.1078</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="r-basics.html#cb97-1" tabindex="-1"></a><span class="co"># The R &quot;ordered&quot; factor does something different:</span></span>
+<span id="cb97-2"><a href="r-basics.html#cb97-2" tabindex="-1"></a><span class="fu">lm</span>(random_outcome <span class="sc">~</span> ordered_fct, <span class="at">data =</span> df_factor)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = random_outcome ~ ordered_fct, data = df_factor)
+## 
+## Coefficients:
+##   (Intercept)  ordered_fct.L  ordered_fct.Q  
+##        0.1126         0.7833         0.3104</code></pre>
+<p>Unless we want these exact polynomial contrasts as your results, we avoid R “ordered” factors.
+Where do these coefficients come from in the “ordered” factor model? See <a href="https://stackoverflow.com/questions/57297771/interpretation-of-l-q-c-4-for-logistic-regression">here</a>. For a deeper dive into how R forms the orthonormal basis to create the variables in the “ordered” factor model, see <a href="https://stats.stackexchange.com/questions/105115/polynomial-contrasts-for-regression">here</a>.</p>
+
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bermul04" class="csl-entry">
 Bertrand, Marianne, and Sendhil Mullainathan. 2004. <span>“Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination.”</span> <em>American Economic Review</em> 94 (4): 991–1013.
+</div>
+<div id="ref-wiccetgro23" class="csl-entry">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science (2e)</em>. "O’Reilly Media, Inc.". <a href="https://r4ds.hadley.nz">https://r4ds.hadley.nz</a>.
 </div>
 <div id="ref-wicgro16" class="csl-entry">
 Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. "O’Reilly Media, Inc.". <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>.

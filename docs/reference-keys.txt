@@ -75,6 +75,7 @@ proportions-for-binary-variables
 merge-join-dataframes
 anonymize-sensitive-data
 salting
+deal-with-factors-orderedunordered-in-models
 python-basics-using-rrstudio
 installing-tools-r-packages-and-python
 get-rtools
