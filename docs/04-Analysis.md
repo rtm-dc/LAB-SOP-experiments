@@ -100,7 +100,7 @@ Second, adjustment can increase our ATE estimate precision.
 
 ### How we adjust for covariates
 
-In analyzing experiments, we follow the guidance of @lin2013, using HC2 standard
+To estimate average treatment effects in experiments, we follow the guidance of @lin2013, using HC2 standard
 errors for inference, and, where we adjust for covariates, centering and
 interacting predictors with treatment status. Where $Z$ is treatment status and
 $X$ is a covariate, $\beta_1$ below is the ATE:
@@ -135,6 +135,10 @@ We can view the adjusted ITT treatment effect from the model object with
 The estimate of the average treatment effect is $0.949$, with a 95% confidence
 interval covering $(0.484, 1.413)$.
 
+When we want to adjust for a factor variable that has many levels, the interactions in the Lin estimator may not all be identified. In this case, when we want the Lin estimate of the ATE, we coarsen the factor into fewer categories. 
+
+Sometimes we are interested in quantities other than average treatment effects. For example, in an [experiment](https://thelabprojects.dc.gov/high-risk-drivers) involving safety messaging, we might have exploratory interest in whether different models of cars' registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors. Here, we are not interested in the average treatment effect; further, the Lin version of this model demands more than the data can provide -- a treatment and control unit for every car model. 
+
 ### Adjusting for Blocks {#sec-adjust-blocks}
 
 Where treatment probabilities or sample sizes vary across blocks we account for our blocking by either treating the block indicators $B_j$ as Lin covariates and estimating
@@ -142,7 +146,7 @@ Where treatment probabilities or sample sizes vary across blocks we account for 
 \begin{eqnarray*}
 y_i & = &  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \ldots \\
 && \gamma_1 (B_1 - \bar{B}_1) + \gamma_2 (B_2 - \bar{B}_2) + \ldots \\
-&& \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) +  \epsilon_i
+&& \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) + \ldots + \epsilon_i
 \end{eqnarray*}
 
 or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via
@@ -181,7 +185,7 @@ lm_robust(y ~ z, data = df, clusters = cluster_id)
 
 Though our standard procedure is to cluster at the level of assignment, we note
 that "[[s]ometimes you need to cluster standard errors above the level of
-treatment](https://declaredesign.org/blog/sometimes-you-need-to-cluster-standard-errors-above-the-level-of-treatment.html)."
+treatment](https://declaredesign.org/blog/posts/sometimes-you-need-to-cluster-standard-errors-above-level-of-treatment.html)."
 
 ### Weights
 

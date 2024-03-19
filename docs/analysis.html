@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-03-12" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -429,7 +429,7 @@ using least squares. First, some preliminaries:</p>
 </div>
 <div id="how-we-adjust-for-covariates" class="section level3 hasAnchor" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> How we adjust for covariates<a href="analysis.html#how-we-adjust-for-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In analyzing experiments, we follow the guidance of <span class="citation">Lin (<a href="#ref-lin2013">2013</a>)</span>, using HC2 standard
+<p>To estimate average treatment effects in experiments, we follow the guidance of <span class="citation">Lin (<a href="#ref-lin2013">2013</a>)</span>, using HC2 standard
 errors for inference, and, where we adjust for covariates, centering and
 interacting predictors with treatment status. Where <span class="math inline">\(Z\)</span> is treatment status and
 <span class="math inline">\(X\)</span> is a covariate, <span class="math inline">\(\beta_1\)</span> below is the ATE:</p>
@@ -446,6 +446,8 @@ To implement this, we can use <code>lm_lin()</code> from the <code>estimatr</cod
 <code>summary(lin_out)</code> or extract it with <code>lin_out$coefficients["z"]</code>.</p>
 <p>The estimate of the average treatment effect is <span class="math inline">\(0.949\)</span>, with a 95% confidence
 interval covering <span class="math inline">\((0.484, 1.413)\)</span>.</p>
+<p>When we want to adjust for a factor variable that has many levels, the interactions in the Lin estimator may not all be identified. In this case, when we want the Lin estimate of the ATE, we coarsen the factor into fewer categories.</p>
+<p>Sometimes we are interested in quantities other than average treatment effects. For example, in an <a href="https://thelabprojects.dc.gov/high-risk-drivers">experiment</a> involving safety messaging, we might have exploratory interest in whether different models of cars’ registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors. Here, we are not interested in the average treatment effect; further, the Lin version of this model demands more than the data can provide – a treatment and control unit for every car model.</p>
 </div>
 <div id="sec-adjust-blocks" class="section level3 hasAnchor" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Adjusting for Blocks<a href="analysis.html#sec-adjust-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -453,7 +455,7 @@ interval covering <span class="math inline">\((0.484, 1.413)\)</span>.</p>
 <p><span class="math display">\[\begin{eqnarray*}
 y_i &amp; = &amp;  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \ldots \\
 &amp;&amp; \gamma_1 (B_1 - \bar{B}_1) + \gamma_2 (B_2 - \bar{B}_2) + \ldots \\
-&amp;&amp; \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) +  \epsilon_i
+&amp;&amp; \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) + \ldots + \epsilon_i
 \end{eqnarray*}\]</span></p>
 <p>or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="analysis.html#cb24-1" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block1_id <span class="sc">+</span> block2_id <span class="sc">+</span> ..., <span class="at">data =</span> df)</span>
@@ -479,7 +481,7 @@ provides an example with a highly skewed outcome, e.g.</p>
 a clustered assignment analysis,</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="analysis.html#cb25-1" tabindex="-1"></a><span class="fu">lm_robust</span>(y <span class="sc">~</span> z, <span class="at">data =</span> df, <span class="at">clusters =</span> cluster_id)</span></code></pre></div>
 <p>Though our standard procedure is to cluster at the level of assignment, we note
-that “<a href="https://declaredesign.org/blog/sometimes-you-need-to-cluster-standard-errors-above-the-level-of-treatment.html">[s]ometimes you need to cluster standard errors above the level of
+that “<a href="https://declaredesign.org/blog/posts/sometimes-you-need-to-cluster-standard-errors-above-level-of-treatment.html">[s]ometimes you need to cluster standard errors above the level of
 treatment</a>.”</p>
 <div id="weights" class="section level3 hasAnchor" number="4.6.1">
 <h3><span class="header-section-number">4.6.1</span> Weights<a href="analysis.html#weights" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -747,7 +749,7 @@ Holm, Sture. 1979. <span>“A Simple Sequentially Rejective Multiple Test Proced
 Lin, Winston. 2013. <span>“Agnostic Notes on Regression Adjustments to Experimental Data: Reexamining Freedman’s Critique.”</span> <em>The Annals of Applied Statistics</em> 7 (1): 295–318.
 </div>
 <div id="ref-mooganmin22" class="csl-entry">
-Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>“Anchor Management: A Field Experiment to Encourage Families to Meet Critical Program Deadlines.”</span> <em>Journal of Public Policy</em>.
+Moore, Ryan T., Katherine N. Gan, Karissa Minnich, and David Yokum. 2022. <span>“Anchor Management: A Field Experiment to Encourage Families to Meet Critical Programme Deadlines.”</span> <em>Journal of Public Policy</em> 42 (4): 615–36. <a href="https://doi.org/10.1017/S0143814X21000131">https://doi.org/10.1017/S0143814X21000131</a>.
 </div>
 <div id="ref-morgan17" class="csl-entry">
 Morgan, Kari Lock. 2017. <span>“Reallocating and Resampling: A Comparison for Inference.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.1708.02102">https://doi.org/10.48550/ARXIV.1708.02102</a>.
