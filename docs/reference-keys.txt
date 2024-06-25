@@ -99,3 +99,4 @@ see-the-project-directory
 create-a-path-with-here
 what-packages-are-installed
 getting-started-with-git-and-github
+introductory-reading-at-the-lab-dc
