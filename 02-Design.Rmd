@@ -32,7 +32,7 @@ difficult to isolate.
 
 ## Blocking on Background Characteristics
 
-In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. In a _random allocation_, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See @moore12 for discussion.
+In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. In a _random allocation_, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See @moore12 or the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) for an introduction and discussion.
 
 ### Examples
 
