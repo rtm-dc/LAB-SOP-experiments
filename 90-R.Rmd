@@ -133,7 +133,7 @@ x %>% f(y)
 
 ## Rename variables
 
-Variable names should adhere to good  [practices](https://thelab.dc.gov/LAB-SOP-experiments/managing-code.html#best-practices). 
+Variable names should adhere to good  [practices](https://rtm-dc.github.io/LAB-SOP-experiments/managing-code-and-scientific-communication.html). 
 
 The `rename()` function in `dplyr` can rename several variables at once:
 

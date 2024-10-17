@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-09-12" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -79,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -444,7 +444,7 @@ will pass arguments <code>x</code> and <code>y</code> (in that order), I can wri
 </div>
 <div id="rename-variables" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">A.4</span> Rename variables<a href="r-basics.html#rename-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Variable names should adhere to good <a href="https://thelab.dc.gov/LAB-SOP-experiments/managing-code.html#best-practices">practices</a>.</p>
+<p>Variable names should adhere to good <a href="https://rtm-dc.github.io/LAB-SOP-experiments/managing-code-and-scientific-communication.html">practices</a>.</p>
 <p>The <code>rename()</code> function in <code>dplyr</code> can rename several variables at once:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-basics.html#cb45-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">new_var_name_1 =</span> <span class="st">`</span><span class="at">Bad, old, long, spacey name</span><span class="st">`</span>,</span>
 <span id="cb45-2"><a href="r-basics.html#cb45-2" tabindex="-1"></a>                    <span class="at">new_var_name_2 =</span> <span class="st">&quot;inconsistentsquishedvarname&quot;</span>,</span>
