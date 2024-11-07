@@ -22,3 +22,74 @@ For academic papers, we ascribe to the three standards of _substantial contribut
 We strive to post useful replication data to the extent possible in each project. Some examples of our work doing so include projects on the 911 [nurse triage line](https://github.com/thelabdc/FEMS-911NurseTriageLine-Public) and 457b [enrollment](https://github.com/thelabdc/DCHR-457b-Public).
 
 The federal OPRE has some helpful advice for doing so [here](https://www.acf.hhs.gov/opre/report/guide-publishing-research-data-secondary-analysis).
+
+## Presenting Results
+
+### Estimates and uncertainties
+
+When we want to communicate group estimates along with treatment effects, we display them with barplots or scatterplots. Where we are interested in inference about a treatment effect, we display the control group and treatment group means, with the uncertainty around the treatment group mean representing the uncertainty around the treatment effect. For example, 
+
+```{r display_te_uncertainty, echo=FALSE, message=FALSE}
+library(estimatr)
+library(tidyverse)
+
+set.seed(739696075)
+
+n_te_display <- 100
+
+
+df_te_display <- tibble(tr = sample(0:1, n_te_display, replace = TRUE),
+                        y = 5 + tr + rnorm(n_te_display))
+
+lm_te_display <- lm_robust(y ~ tr, data = df_te_display) 
+
+lm_te_display_tidy <- lm_te_display |> tidy()
+
+mean_co <- lm_te_display_tidy |> 
+  filter(term == "(Intercept)") |> 
+  pull(estimate)
+
+te <- lm_te_display_tidy |> 
+  filter(term == "tr") |> 
+  pull(estimate)
+
+mean_tr <- mean_co + te
+
+te_se <- lm_te_display_tidy |> 
+  filter(term == "tr") |> 
+  pull(std.error)
+
+df_means <- tibble(Group = c("Control", "Treatment"),
+                   Mean = c(mean_co, mean_tr),
+                   se = c(NA, te_se))
+
+ggplot(df_means, aes(x = Group, y = Mean, fill = Group)) + 
+  geom_bar(stat = "identity") + 
+  geom_errorbar(data = df_means[df_means$Group == "Treatment", ],
+                aes(ymin = Mean - 1.96 * se, 
+                    ymax = Mean + 1.96 * se),
+                width = 0.3) +
+  theme_minimal()
+```
+
+When we want to communicate treatment effects without both group means being explicit, we do so with a coefficient plot. For example, with the intercept (control group mean),
+
+```{r display_coefplot, echo=FALSE, message=FALSE}
+library(modelsummary)
+library(patchwork)
+mp1 <- modelplot(lm_te_display) +
+  geom_vline(xintercept = 0) + 
+  lims(x = c(0, 6))
+mp1
+```
+
+or without the intercept,
+
+
+```{r display_coefplot_noint, echo=FALSE, message=FALSE}
+mp2 <- modelplot(lm_te_display, coef_omit = 'Intercept') +
+  geom_vline(xintercept = 0) +
+  lims(x = c(0, 3))
+mp2
+```
+

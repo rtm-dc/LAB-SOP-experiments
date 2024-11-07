@@ -19,7 +19,7 @@ https://cran.rstudio.com/bin/windows/Rtools/rtools43/rtools.html
 Install the `tinytex` package (and `tinytex` itself) at the R Console via
 
 
-```r
+``` r
 install.packages("tinytex")
 tinytex::install_tinytex()
 ```
@@ -45,7 +45,7 @@ Now restart RStudio.
 Install the `reticulate` package at the R Console via
 
 
-```r
+``` r
 install.packages("reticulate")
 ```
 
@@ -56,7 +56,7 @@ install.packages("reticulate")
 To open a Python prompt from within R:
 
 
-```r
+``` r
 reticulate::repl_python()
 ```
 
@@ -69,7 +69,7 @@ From the RStudio menus, File -> New File -> Quarto Document. Name and save the `
 Then, edit one of the code chunks to run `python` instead of `r`. Knit the `.qmd` to (e.g.) `.html` and see the output. Your Quarto document has run both R and Python. Here's some sample Python code:
 
 
-```python
+``` python
 import pandas as pd
 
 df = pd.read_csv("test.csv")
@@ -80,14 +80,14 @@ df.shape
 To run code from a `.py` in a Python chunk:
 
 
-```python
+``` python
 import mypythoncode
 ```
 
 To run a `.py` file from an R chunk:
 
 
-```r
+``` r
 reticulate::source_python("mypythoncode.py")
 ```
 

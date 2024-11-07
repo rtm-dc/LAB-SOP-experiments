@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Publication | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Publication | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-10-17" />
+<meta name="date" content="2024-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -252,6 +252,10 @@ div.csl-indent {
 <li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship-in-pre-analysis-plans"><i class="fa fa-check"></i><b>6.1</b> Authorship in Pre-Analysis Plans</a></li>
 <li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#authorship-in-academic-articles"><i class="fa fa-check"></i><b>6.2</b> Authorship in Academic Articles</a></li>
 <li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.3</b> Publishing Data</a></li>
+<li class="chapter" data-level="6.4" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.4</b> Presenting Results</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.4.1</b> Estimates and uncertainties</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>A</b> R Basics</a>
@@ -371,7 +375,19 @@ div.csl-indent {
 <h2><span class="header-section-number">6.3</span> Publishing Data<a href="publication.html#publishing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We strive to post useful replication data to the extent possible in each project. Some examples of our work doing so include projects on the 911 <a href="https://github.com/thelabdc/FEMS-911NurseTriageLine-Public">nurse triage line</a> and 457b <a href="https://github.com/thelabdc/DCHR-457b-Public">enrollment</a>.</p>
 <p>The federal OPRE has some helpful advice for doing so <a href="https://www.acf.hhs.gov/opre/report/guide-publishing-research-data-secondary-analysis">here</a>.</p>
+</div>
+<div id="presenting-results" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Presenting Results<a href="publication.html#presenting-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estimates-and-uncertainties" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Estimates and uncertainties<a href="publication.html#estimates-and-uncertainties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we want to communicate group estimates along with treatment effects, we display them with barplots or scatterplots. Where we are interested in inference about a treatment effect, we display the control group and treatment group means, with the uncertainty around the treatment group mean representing the uncertainty around the treatment effect. For example,</p>
+<p><img src="05-Publication_files/figure-html/display_te_uncertainty-1.png" width="672" /></p>
+<p>When we want to communicate treatment effects without both group means being explicit, we do so with a coefficient plot. For example, with the intercept (control group mean),</p>
+<p><img src="05-Publication_files/figure-html/display_coefplot-1.png" width="672" /></p>
+<p>or without the intercept,</p>
+<p><img src="05-Publication_files/figure-html/display_coefplot_noint-1.png" width="672" /></p>
 
+</div>
 </div>
 </div>
 

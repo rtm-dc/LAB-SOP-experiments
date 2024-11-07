@@ -50,6 +50,8 @@ publication
 authorship-in-pre-analysis-plans
 authorship-in-academic-articles
 publishing-data
+presenting-results
+estimates-and-uncertainties
 r-basics
 get-r-and-rstudio
 read-in-data-files

@@ -24,7 +24,7 @@ for more detail and painful counterexamples.
 for that file to run. Keep these in alphabetical order.
 
 
-```r
+``` r
 library(here)
 library(tidyverse)
 ```
@@ -41,7 +41,7 @@ for examples in R.
 7. Use the assignment arrow for assignment. The structure: 
 
 
-```r
+``` r
 new_obj_name <- value_of_that_object
 ```
 
@@ -103,7 +103,7 @@ platform-independent. For more on the `here` package, see
 The code below requires the following packages to be loaded and attached:
 
 
-```r
+``` r
 library(here)
 ```
 
@@ -116,7 +116,7 @@ To see the current working directory, type `getwd()`.
 The "project directory" is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at \@ref(sec-projects), and start work by opening the `.Rproj` file. To see the project directory: 
 
 
-```r
+``` r
 here()
 ```
 
@@ -130,7 +130,7 @@ I have an object called `02-01-df.RData` in a subdirectory called `/data/`. The
 `dir()` function shows what is in that subdirectory:
 
 
-```r
+``` r
 dir("data")
 ```
 
@@ -141,7 +141,7 @@ dir("data")
 To see its full path, 
 
 
-```r
+``` r
 here("data", "02-01-df.RData")
 ```
 
@@ -153,7 +153,7 @@ To use that path to read in the data, I first create the path, then use it to
 read in the object:
 
 
-```r
+``` r
 my_rdata_path <- here("data", "02-01-df.RData")
 
 # Use load() for an .RData object:
@@ -165,7 +165,7 @@ load(my_rdata_path)
 The object `02-01-df.RData` contains a single dataframe called `df`. I can now see that dataframe in my environment:
 
 
-```r
+``` r
 ls()
 ```
 
@@ -176,7 +176,7 @@ ls()
 and examine it
 
 
-```r
+``` r
 head(df)
 ```
 
@@ -195,89 +195,94 @@ head(df)
 To see what packages are installed, 
 
 
-```r
+``` r
 library()
 ```
 
 or 
 
 
-```r
+``` r
 lapply(.libPaths(), dir)
 ```
 
 ```
 ## [[1]]
-##   [1] "abind"         "askpass"       "assertthat"    "backports"    
-##   [5] "bandit"        "base"          "base64enc"     "bit"          
-##   [9] "bit64"         "blob"          "blockTools"    "bookdown"     
-##  [13] "boot"          "boxr"          "brew"          "brio"         
-##  [17] "broom"         "bslib"         "cachem"        "callr"        
-##  [21] "car"           "carData"       "cellranger"    "class"        
-##  [25] "cli"           "clipr"         "clock"         "cluster"      
-##  [29] "codetools"     "coefplot"      "colorspace"    "commonmark"   
-##  [33] "compiler"      "config"        "conflicted"    "cpp11"        
-##  [37] "crayon"        "credentials"   "crosstalk"     "curl"         
-##  [41] "dagitty"       "data.table"    "datasets"      "DBI"          
-##  [45] "dbplyr"        "DeclareDesign" "desc"          "devtools"     
-##  [49] "diagram"       "dials"         "DiceDesign"    "diffobj"      
-##  [53] "digest"        "doFuture"      "downlit"       "dplyr"        
-##  [57] "DT"            "dtplyr"        "dygraphs"      "ellipsis"     
-##  [61] "estimatr"      "evaluate"      "fabricatr"     "fansi"        
-##  [65] "farver"        "fastmap"       "fontawesome"   "forcats"      
-##  [69] "foreach"       "foreign"       "Formula"       "fs"           
-##  [73] "furrr"         "future"        "future.apply"  "gam"          
-##  [77] "gargle"        "generics"      "gert"          "ggdag"        
-##  [81] "ggforce"       "ggplot2"       "ggraph"        "ggrepel"      
-##  [85] "gh"            "gitcreds"      "globals"       "glue"         
-##  [89] "googledrive"   "googlesheets4" "gower"         "GPfit"        
-##  [93] "graphics"      "graphlayouts"  "grDevices"     "grid"         
-##  [97] "gridExtra"     "gtable"        "hardhat"       "haven"        
-## [101] "here"          "highr"         "hms"           "htmltools"    
-## [105] "htmlwidgets"   "httpuv"        "httr"          "httr2"        
-## [109] "ids"           "igraph"        "infer"         "ini"          
-## [113] "ipred"         "isoband"       "iterators"     "janitor"      
-## [117] "jquerylib"     "jsonlite"      "kableExtra"    "KernSmooth"   
-## [121] "knitr"         "labeling"      "later"         "lattice"      
-## [125] "lava"          "lazyeval"      "lhs"           "lifecycle"    
-## [129] "listenv"       "lme4"          "lubridate"     "magrittr"     
-## [133] "maps"          "markdown"      "MASS"          "Matching"     
-## [137] "Matrix"        "MatrixModels"  "memoise"       "methods"      
-## [141] "mgcv"          "mime"          "miniUI"        "minqa"        
-## [145] "modeldata"     "modelenv"      "modelr"        "munsell"      
-## [149] "nlme"          "nloptr"        "nnet"          "numDeriv"     
-## [153] "openssl"       "parallel"      "parallelly"    "parsnip"      
-## [157] "patchwork"     "pbkrtest"      "pillar"        "pkgbuild"     
-## [161] "pkgconfig"     "pkgdown"       "pkgload"       "plotly"       
-## [165] "plyr"          "png"           "polyclip"      "praise"       
-## [169] "prettyunits"   "processx"      "prodlim"       "profvis"      
-## [173] "progress"      "progressr"     "promises"      "ps"           
-## [177] "purrr"         "quantreg"      "R.cache"       "R.methodsS3"  
-## [181] "R.oo"          "R.utils"       "R6"            "ragg"         
-## [185] "randomizr"     "rappdirs"      "rcmdcheck"     "RColorBrewer" 
-## [189] "Rcpp"          "RcppArmadillo" "RcppEigen"     "RcppTOML"     
-## [193] "readr"         "readxl"        "recipes"       "rematch"      
-## [197] "rematch2"      "remotes"       "renv"          "reprex"       
-## [201] "reshape2"      "reticulate"    "rio"           "rlang"        
-## [205] "rmarkdown"     "roxygen2"      "rpart"         "rprojroot"    
-## [209] "rsample"       "rstudioapi"    "rversions"     "rvest"        
-## [213] "sass"          "scales"        "selectr"       "sessioninfo"  
-## [217] "shape"         "shiny"         "slider"        "snakecase"    
-## [221] "sourcetools"   "SparseM"       "spatial"       "splines"      
-## [225] "SQUAREM"       "stargazer"     "stats"         "stats4"       
-## [229] "stringi"       "stringr"       "styler"        "survival"     
-## [233] "svglite"       "sys"           "systemfonts"   "tcltk"        
-## [237] "testthat"      "textshaping"   "tibble"        "tidygraph"    
-## [241] "tidymodels"    "tidyr"         "tidyselect"    "tidyverse"    
-## [245] "timechange"    "timeDate"      "tinytex"       "tools"        
-## [249] "translations"  "tune"          "tweenr"        "tzdb"         
-## [253] "urlchecker"    "useful"        "usethis"       "utf8"         
-## [257] "utils"         "uuid"          "V8"            "vctrs"        
-## [261] "viridis"       "viridisLite"   "vroom"         "waldo"        
-## [265] "warp"          "whisker"       "withr"         "workflows"    
-## [269] "workflowsets"  "writexl"       "xfun"          "xml2"         
-## [273] "xopen"         "xtable"        "xts"           "yaml"         
-## [277] "yardstick"     "zip"           "zoo"
+##   [1] "abind"          "askpass"        "assertthat"     "backports"     
+##   [5] "bandit"         "base"           "base64enc"      "bayestestR"    
+##   [9] "bit"            "bit64"          "bizdays"        "blob"          
+##  [13] "blockTools"     "bookdown"       "boot"           "boxr"          
+##  [17] "brew"           "brio"           "broom"          "bslib"         
+##  [21] "cachem"         "callr"          "car"            "carData"       
+##  [25] "cellranger"     "checkmate"      "class"          "cli"           
+##  [29] "clipr"          "clock"          "cluster"        "codetools"     
+##  [33] "coefplot"       "colorspace"     "commonmark"     "compiler"      
+##  [37] "config"         "conflicted"     "cowplot"        "cpp11"         
+##  [41] "crayon"         "credentials"    "crosstalk"      "curl"          
+##  [45] "dagitty"        "data.table"     "datasets"       "datawizard"    
+##  [49] "DBI"            "dbplyr"         "DeclareDesign"  "Deriv"         
+##  [53] "desc"           "devtools"       "diagram"        "dials"         
+##  [57] "DiceDesign"     "diffobj"        "digest"         "directlabels"  
+##  [61] "doBy"           "doFuture"       "downlit"        "dplyr"         
+##  [65] "DT"             "dtplyr"         "dygraphs"       "ellipsis"      
+##  [69] "estimatr"       "evaluate"       "fabricatr"      "fansi"         
+##  [73] "farver"         "fastmap"        "fontawesome"    "forcats"       
+##  [77] "foreach"        "foreign"        "Formula"        "fs"            
+##  [81] "furrr"          "future"         "future.apply"   "gam"           
+##  [85] "gargle"         "generics"       "gert"           "ggdag"         
+##  [89] "ggforce"        "ggplot2"        "ggraph"         "ggrepel"       
+##  [93] "gh"             "gitcreds"       "globals"        "glue"          
+##  [97] "googledrive"    "googlesheets4"  "gower"          "GPfit"         
+## [101] "graphics"       "graphlayouts"   "grDevices"      "grid"          
+## [105] "gridExtra"      "gtable"         "hardhat"        "haven"         
+## [109] "here"           "highr"          "hms"            "htmltools"     
+## [113] "htmlwidgets"    "httpuv"         "httr"           "httr2"         
+## [117] "ids"            "igraph"         "infer"          "ini"           
+## [121] "insight"        "ipred"          "isoband"        "iterators"     
+## [125] "janitor"        "jquerylib"      "jsonlite"       "kableExtra"    
+## [129] "KernSmooth"     "knitr"          "labeling"       "later"         
+## [133] "lattice"        "lava"           "lazyeval"       "lhs"           
+## [137] "lifecycle"      "listenv"        "lme4"           "lobstr"        
+## [141] "lubridate"      "magrittr"       "maps"           "markdown"      
+## [145] "MASS"           "Matching"       "Matrix"         "MatrixModels"  
+## [149] "memoise"        "methods"        "mgcv"           "microbenchmark"
+## [153] "mime"           "miniUI"         "minqa"          "modeldata"     
+## [157] "modelenv"       "modelr"         "modelsummary"   "munsell"       
+## [161] "nlme"           "nloptr"         "nnet"           "numDeriv"      
+## [165] "openssl"        "parallel"       "parallelly"     "parameters"    
+## [169] "parsnip"        "patchwork"      "pbkrtest"       "performance"   
+## [173] "pillar"         "pkgbuild"       "pkgconfig"      "pkgdown"       
+## [177] "pkgload"        "plotly"         "plyr"           "png"           
+## [181] "polyclip"       "praise"         "prettyunits"    "processx"      
+## [185] "prodlim"        "profvis"        "progress"       "progressr"     
+## [189] "promises"       "ps"             "purrr"          "quadprog"      
+## [193] "quantreg"       "R.cache"        "R.methodsS3"    "R.oo"          
+## [197] "R.utils"        "R6"             "ragg"           "randomizr"     
+## [201] "rappdirs"       "rcmdcheck"      "RColorBrewer"   "Rcpp"          
+## [205] "RcppArmadillo"  "RcppEigen"      "RcppTOML"       "readr"         
+## [209] "readxl"         "recipes"        "rematch"        "rematch2"      
+## [213] "remotes"        "renv"           "reprex"         "reshape2"      
+## [217] "reticulate"     "rio"            "rlang"          "rmarkdown"     
+## [221] "Rmisc"          "roxygen2"       "rpart"          "rprojroot"     
+## [225] "rsample"        "rstudioapi"     "rversions"      "rvest"         
+## [229] "sass"           "scales"         "selectr"        "sessioninfo"   
+## [233] "sfd"            "shape"          "shiny"          "slider"        
+## [237] "snakecase"      "sourcetools"    "SparseM"        "spatial"       
+## [241] "splines"        "SQUAREM"        "stargazer"      "stats"         
+## [245] "stats4"         "stringi"        "stringr"        "styler"        
+## [249] "survival"       "svglite"        "sys"            "systemfonts"   
+## [253] "tables"         "tcltk"          "testthat"       "textshaping"   
+## [257] "tibble"         "tidygraph"      "tidymodels"     "tidyr"         
+## [261] "tidyselect"     "tidyverse"      "timechange"     "timeDate"      
+## [265] "tinytable"      "tinytex"        "tools"          "translations"  
+## [269] "tune"           "tweenr"         "tzdb"           "urlchecker"    
+## [273] "useful"         "usethis"        "utf8"           "utils"         
+## [277] "uuid"           "V8"             "vctrs"          "viridis"       
+## [281] "viridisLite"    "vroom"          "waldo"          "warp"          
+## [285] "whisker"        "withr"          "workflows"      "workflowsets"  
+## [289] "writexl"        "xfun"           "xml2"           "xopen"         
+## [293] "xtable"         "xts"            "yaml"           "yardstick"     
+## [297] "zip"            "zoo"
 ```
 
 

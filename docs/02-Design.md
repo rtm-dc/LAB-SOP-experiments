@@ -47,7 +47,7 @@ our results can be perfectly replicated.
 We set the seed at the top of the file, just after the (e.g., `library()`) commands that load and attach that file's packages. In a short random assignment file, e.g., we might have
 
 
-```r
+``` r
 # Packages:
 library(dplyr) 
 
@@ -77,7 +77,7 @@ We consider other implementations to include simulations to create example datas
 To seed the random seed, run at the R prompt
 
 
-```r
+``` r
 set.seed(YYMMDDHH)
 ```
 
@@ -88,7 +88,7 @@ where `YY` is the two-digit year (`23` for 2023), `MM` is the two-digit month, `
 To set the random seed, run at the R prompt only once
 
 
-```r
+``` r
 sample(1e9, 1)
 ```
 
@@ -96,7 +96,7 @@ then copy and paste the result as the argument of `set.seed()`. If the result of
 `sample(1e9, 1)` is `SSSSSSSSS`, then set the seed with
 
 
-```r
+``` r
 set.seed(SSSSSSSSS)
 ```
 
@@ -111,7 +111,7 @@ We do not need to update `sampled` seeds in our other design, demonstration, or 
 
 We want to ensure that our stochastic work can be exactly replicated. We do not manipulate seeds to obtain particular results. However, we do not want our draws to be entirely dependent within a given date, and we note that some seemingly-random phenomena are sometimes later found to have patterns. For an example of dependence, consider these two different draws that use the same seed: 
 
-```r
+``` r
 set.seed(758296545)
 sample(100, 10)
 ```
@@ -120,7 +120,7 @@ sample(100, 10)
 ##  [1] 11 22 88 94 25 76  1  4 64 12
 ```
 
-```r
+``` r
 set.seed(758296545)
 sample(100, 20)
 ```
@@ -228,7 +228,7 @@ strategy, etc. that we like.
 
 Create some data to illustrate simulation-based power analysis:
 
-```r
+``` r
 library(estimatr)
 library(here)
 library(tidyverse)
@@ -246,7 +246,7 @@ save(df, file = here("data", "02-01-df.RData"))
 Suppose the estimation strategy is linear regression $y_i = \beta_0 + \beta_1 z_i +  \beta_2 x_i + \epsilon_i$ with heteroskedasticity-robust HC2 standard errors, and the coefficient of interest is $\beta_1$. Perform 1000 reassignments and determine what proportion of them reveal $\hat{\beta}_1$ that is statistically significant at $\alpha = 0.05$.
 
 
-```r
+``` r
 n_sims <- 1000
 alpha <- 0.05
 true_te <- 1

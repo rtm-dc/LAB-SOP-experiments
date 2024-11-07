@@ -58,7 +58,7 @@ $$Y_i = \beta_0 + \beta_1 Z_i + \epsilon_i$$
 using least squares. First, some preliminaries:
 
 
-```r
+``` r
 library(dplyr)
 library(estimatr)
 library(here)
@@ -70,7 +70,7 @@ load(here("data", "02-01-df.RData"))
 Our estimation procedure:
 
 
-```r
+``` r
 lm_out <- lm_robust(y ~ z, data = df)
 
 lm_out
@@ -114,7 +114,7 @@ in their linear terms, using $T_i$, $z_i-\bar{z}$, and $T_i(z_i − \bar{z})$. W
 show elsewhere that it doesn't matter which of these models we estimate.]:
 
 
-```r
+``` r
 lin_out <- lm_lin(y ~ z, covariates = ~ x, data = df)
 lin_out
 ```
@@ -152,7 +152,7 @@ y_i & = &  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - 
 or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via
 
 
-```r
+``` r
 lm_lin(y ~ z, covariates = ~ x + block1_id + block2_id + ..., data = df)
 lm_lin(y ~ z, covariates = ~ x + block_id_factor, data = df)
 ```
@@ -179,7 +179,7 @@ https://declaredesign.org/r/estimatr/reference/lm_robust.html. For example, for
 a clustered assignment analysis,
 
 
-```r
+``` r
 lm_robust(y ~ z, data = df, clusters = cluster_id)
 ```
 
@@ -242,7 +242,7 @@ doing so, using a `for` loop. We set the seed using the method in Section
 Section \@ref(sec-create-treatment). More simulations reduces simulation error.
 
 
-```r
+``` r
 # Set seed:
 set.seed(534722898)
 
@@ -346,7 +346,7 @@ $p$-values $p_1 = .01$, $p_2 = .02$, and $p_3 = .08$, in increasing order. To
 adjust these $p$-values with the Holm procedure, we use
 
 
-```r
+``` r
 p.adjust(c(0.01, 0.02, 0.08), method = "holm")
 ```
 
