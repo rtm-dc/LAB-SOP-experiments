@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-11-07" />
+<meta name="date" content="2024-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,12 +249,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship-in-pre-analysis-plans"><i class="fa fa-check"></i><b>6.1</b> Authorship in Pre-Analysis Plans</a></li>
-<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#authorship-in-academic-articles"><i class="fa fa-check"></i><b>6.2</b> Authorship in Academic Articles</a></li>
-<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.3</b> Publishing Data</a></li>
-<li class="chapter" data-level="6.4" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.4</b> Presenting Results</a>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a></li>
+<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.2</b> Publishing Data</a></li>
+<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.3</b> Presenting Results</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.4.1</b> Estimates and uncertainties</a></li>
+<li class="chapter" data-level="6.3.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.3.1</b> Estimates and uncertainties</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -673,7 +672,7 @@ indicating whether the résumé had a putatively female name at the top:</p>
 <p>We may have dates accurate to the day, but we want a count of which month of
 participation it is for each participant. Assume that each <code>firstname</code> in the
 <code>resume</code> data represents a participant, and each <code>dob_date</code> represents an event
-for that participant that we care about. We want to produce a variable that is 0 for the first month of participation (say, February), and 2 for the month two months later (April), regardless of whether the month between (March) appears in the data, and even if participants start or finish participation at very different times.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+for that participant that we care about. We want to produce a variable that is 0 for the first month of participation (say, February), and 2 for the month two months later (April), regardless of whether the month between (March) appears in the data, and even if participants start or finish participation at very different times.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p>Below, we group by <code>firstname</code>, then round all months to the first date of the month, then count those months (within <code>firstname</code>). We show the first three rows for each participant.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="r-basics.html#cb68-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
 <span id="cb68-2"><a href="r-basics.html#cb68-2" tabindex="-1"></a>  <span class="co"># Ensure ranking _within_ firstname:</span></span>
@@ -916,8 +915,8 @@ Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Import, Ti
 </div>
 <div class="footnotes">
 <hr />
-<ol start="8">
-<li id="fn8"><p>If, instead, we want a variable with 1 for the first date for that participant, 2 for the second date, etc., <em>regardless of how far between the two dates are</em>, we can use <code>dplyr::dense_rank()</code>.<a href="r-basics.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<ol start="9">
+<li id="fn9"><p>If, instead, we want a variable with 1 for the first date for that participant, 2 for the second date, etc., <em>regardless of how far between the two dates are</em>, we can use <code>dplyr::dense_rank()</code>.<a href="r-basics.html#fnref9" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

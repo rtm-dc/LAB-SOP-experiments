@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-11-07" />
+<meta name="date" content="2024-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,12 +249,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship-in-pre-analysis-plans"><i class="fa fa-check"></i><b>6.1</b> Authorship in Pre-Analysis Plans</a></li>
-<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#authorship-in-academic-articles"><i class="fa fa-check"></i><b>6.2</b> Authorship in Academic Articles</a></li>
-<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.3</b> Publishing Data</a></li>
-<li class="chapter" data-level="6.4" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.4</b> Presenting Results</a>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a></li>
+<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.2</b> Publishing Data</a></li>
+<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.3</b> Presenting Results</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.4.1</b> Estimates and uncertainties</a></li>
+<li class="chapter" data-level="6.3.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.3.1</b> Estimates and uncertainties</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -384,7 +383,7 @@ for that file to run. Keep these in alphabetical order.</p></li>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Do <strong>not</strong> include your “workflow” in your code files. Anything that’s
 interactive or changes the environment should be excluded. Do not include
-<code>install.packages()</code>, <code>View()</code>, <code>setwd()</code>, in your <code>.R</code> file. Do not start your <code>.R</code> file with <code>rm(list = ls())</code>; it is both too strong and too weak.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p></li>
+<code>install.packages()</code>, <code>View()</code>, <code>setwd()</code>, in your <code>.R</code> file. Do not start your <code>.R</code> file with <code>rm(list = ls())</code>; it is both too strong and too weak.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p></li>
 <li><p>Don’t open or change the original data. Read it in programmatically with,
 e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 <a href="https://thelab.dc.gov/LAB-SOP-experiments/r-basics.html#read-in-data-files">here</a>
@@ -572,8 +571,8 @@ read in the object:</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="9">
-<li id="fn9"><p>It is “too weak” in that you should start a new R session regularly to ensure replicability. Removing objects from the workspace does nothing to packages, session options, graphical <code>par()</code>’s, etc.<a href="managing-code-and-scientific-communication.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<ol start="10">
+<li id="fn10"><p>It is “too weak” in that you should start a new R session regularly to ensure replicability. Removing objects from the workspace does nothing to packages, session options, graphical <code>par()</code>’s, etc.<a href="managing-code-and-scientific-communication.html#fnref10" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

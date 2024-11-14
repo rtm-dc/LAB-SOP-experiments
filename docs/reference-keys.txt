@@ -47,8 +47,7 @@ selecting-the-method-for-analysis
 calipers
 alternatives
 publication
-authorship-in-pre-analysis-plans
-authorship-in-academic-articles
+authorship
 publishing-data
 presenting-results
 estimates-and-uncertainties
