@@ -16,7 +16,7 @@ As a general rule, we ascribe to the three standards of _substantial contributio
 
 - A CREDIT statement that describes the role played by each of the authors for that specific document. Feel free to modify the roles to appropriately reflect the work done. If the document builds significantly on past outputs, those outputs should additionally be cited.  
 - "The Footnote" (in papers, usually included as a phrase in the acknowledgments):
-  - "Every project of The Lab @ DC is the product of collaboration between many team members, supporting staff, and external partners. The authors, acknowledgements, and CREDIT statement listed here reflect contributions to this document specifically. The details on how we determine authorship and acknowledgements can be found in our Authorship Standard Operating Procedures (link)"
+  - "Every project of The Lab @ DC is the product of collaboration between many team members, supporting staff, and external partners. The authors, acknowledgements, and CREDIT statement listed here reflect contributions to this document specifically. The details on how we determine authorship and acknowledgements can be found in our Authorship Standard Operating Procedures (link [here](https://rtm-dc.github.io/LAB-SOP-experiments/publication.html#authorship))."
 
 2. Project teams should plan (and Senior Advisors should remind them) to discuss authorship concretely at a project's major inflection points:  
     - When beginning the pre-analysis plan  
