@@ -40,8 +40,25 @@ for examples in R.
 7. Use the assignment arrow for assignment. The structure: 
 
 ```{r eval=FALSE}
+# Use <- 
+
 new_obj_name <- value_of_that_object
+
+df <- df |> mutate()
 ```
+
+8. Use the equals sign for setting argument values. The structure:
+
+```{r eval=FALSE}
+# Use =
+
+mean(x, na.rm = TRUE)
+
+# Use <- and =, as appropriate
+
+mx <- mean(x, na.rm = TRUE)
+```
+
 
 8. Use space around operators (write `3 + 4 = 7`, not `3+4=7`) and after a
 comma, as in English (write `f(x, y)`, not `f(x,y)`).

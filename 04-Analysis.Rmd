@@ -240,7 +240,7 @@ store_te <- vector("double", length = n_sims)
 for(i in 1:n_sims){
   
   # Reassign 0/1 treatment:
-  df_tmp <- df %>% mutate(z_tmp = sample(0:1, n(), replace = TRUE))
+  df_tmp <- df |> mutate(z_tmp = sample(0:1, n(), replace = TRUE))
   
   # Estimate treatment effect:
   lm_tmp <- lm_robust(y ~ z_tmp, data = df_tmp)

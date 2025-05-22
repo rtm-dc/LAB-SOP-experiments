@@ -42,8 +42,26 @@ for examples in R.
 
 
 ``` r
+# Use <- 
+
 new_obj_name <- value_of_that_object
+
+df <- df |> mutate()
 ```
+
+8. Use the equals sign for setting argument values. The structure:
+
+
+``` r
+# Use =
+
+mean(x, na.rm = TRUE)
+
+# Use <- and =, as appropriate
+
+mx <- mean(x, na.rm = TRUE)
+```
+
 
 8. Use space around operators (write `3 + 4 = 7`, not `3+4=7`) and after a
 comma, as in English (write `f(x, y)`, not `f(x,y)`).
@@ -208,30 +226,30 @@ lapply(.libPaths(), dir)
 
 ```
 ## [[1]]
-##   [1] "abind"          "askpass"        "assertthat"     "backports"     
-##   [5] "bandit"         "base"           "base64enc"      "bayestestR"    
-##   [9] "bit"            "bit64"          "bizdays"        "blob"          
-##  [13] "blockTools"     "bookdown"       "boot"           "boxr"          
-##  [17] "brew"           "brio"           "broom"          "bslib"         
-##  [21] "cachem"         "callr"          "car"            "carData"       
-##  [25] "cellranger"     "checkmate"      "class"          "cli"           
-##  [29] "clipr"          "clock"          "cluster"        "codetools"     
-##  [33] "coefplot"       "colorspace"     "commonmark"     "compiler"      
-##  [37] "config"         "conflicted"     "cowplot"        "cpp11"         
+##   [1] "abind"          "animation"      "askpass"        "assertthat"    
+##   [5] "backports"      "bandit"         "base"           "base64enc"     
+##   [9] "bayestestR"     "BH"             "bit"            "bit64"         
+##  [13] "bitops"         "blob"           "blockTools"     "bookdown"      
+##  [17] "boot"           "boxr"           "brew"           "brio"          
+##  [21] "broom"          "bslib"          "cachem"         "callr"         
+##  [25] "car"            "carData"        "cellranger"     "checkmate"     
+##  [29] "class"          "cli"            "clipr"          "clock"         
+##  [33] "cluster"        "codetools"      "colorspace"     "commonmark"    
+##  [37] "compiler"       "conflicted"     "cowplot"        "cpp11"         
 ##  [41] "crayon"         "credentials"    "crosstalk"      "curl"          
 ##  [45] "dagitty"        "data.table"     "datasets"       "datawizard"    
 ##  [49] "DBI"            "dbplyr"         "DeclareDesign"  "Deriv"         
 ##  [53] "desc"           "devtools"       "diagram"        "dials"         
-##  [57] "DiceDesign"     "diffobj"        "digest"         "directlabels"  
-##  [61] "doBy"           "doFuture"       "downlit"        "dplyr"         
-##  [65] "DT"             "dtplyr"         "dygraphs"       "ellipsis"      
-##  [69] "estimatr"       "evaluate"       "fabricatr"      "fansi"         
-##  [73] "farver"         "fastmap"        "fontawesome"    "forcats"       
-##  [77] "foreach"        "foreign"        "Formula"        "fs"            
-##  [81] "furrr"          "future"         "future.apply"   "gam"           
-##  [85] "gargle"         "generics"       "gert"           "ggdag"         
-##  [89] "ggforce"        "ggplot2"        "ggraph"         "ggrepel"       
-##  [93] "gh"             "gitcreds"       "globals"        "glue"          
+##  [57] "DiceDesign"     "diffobj"        "digest"         "doBy"          
+##  [61] "doFuture"       "downlit"        "dplyr"          "DT"            
+##  [65] "dtplyr"         "ellipsis"       "estimatr"       "evaluate"      
+##  [69] "fabricatr"      "fansi"          "farver"         "fastmap"       
+##  [73] "fontawesome"    "forcats"        "foreach"        "foreign"       
+##  [77] "Formula"        "fs"             "furrr"          "future"        
+##  [81] "future.apply"   "gam"            "gargle"         "generics"      
+##  [85] "gert"           "ggdag"          "ggforce"        "ggplot2"       
+##  [89] "ggraph"         "ggrepel"        "gh"             "gitcreds"      
+##  [93] "glmnet"         "globals"        "glue"           "goftest"       
 ##  [97] "googledrive"    "googlesheets4"  "gower"          "GPfit"         
 ## [101] "graphics"       "graphlayouts"   "grDevices"      "grid"          
 ## [105] "gridExtra"      "gtable"         "hardhat"        "haven"         
@@ -239,50 +257,54 @@ lapply(.libPaths(), dir)
 ## [113] "htmlwidgets"    "httpuv"         "httr"           "httr2"         
 ## [117] "ids"            "igraph"         "infer"          "ini"           
 ## [121] "insight"        "ipred"          "isoband"        "iterators"     
-## [125] "janitor"        "jquerylib"      "jsonlite"       "kableExtra"    
-## [129] "KernSmooth"     "knitr"          "labeling"       "later"         
-## [133] "lattice"        "lava"           "lazyeval"       "lhs"           
-## [137] "lifecycle"      "listenv"        "lme4"           "lobstr"        
-## [141] "lubridate"      "magrittr"       "maps"           "markdown"      
-## [145] "MASS"           "Matching"       "Matrix"         "MatrixModels"  
-## [149] "memoise"        "methods"        "mgcv"           "microbenchmark"
-## [153] "mime"           "miniUI"         "minqa"          "modeldata"     
-## [157] "modelenv"       "modelr"         "modelsummary"   "munsell"       
-## [161] "nlme"           "nloptr"         "nnet"           "numDeriv"      
-## [165] "openssl"        "parallel"       "parallelly"     "parameters"    
-## [169] "parsnip"        "patchwork"      "pbkrtest"       "performance"   
-## [173] "pillar"         "pkgbuild"       "pkgconfig"      "pkgdown"       
-## [177] "pkgload"        "plotly"         "plyr"           "png"           
-## [181] "polyclip"       "praise"         "prettyunits"    "processx"      
-## [185] "prodlim"        "profvis"        "progress"       "progressr"     
-## [189] "promises"       "ps"             "purrr"          "quadprog"      
-## [193] "quantreg"       "R.cache"        "R.methodsS3"    "R.oo"          
-## [197] "R.utils"        "R6"             "ragg"           "randomizr"     
-## [201] "rappdirs"       "rcmdcheck"      "RColorBrewer"   "Rcpp"          
-## [205] "RcppArmadillo"  "RcppEigen"      "RcppTOML"       "readr"         
-## [209] "readxl"         "recipes"        "rematch"        "rematch2"      
-## [213] "remotes"        "renv"           "reprex"         "reshape2"      
-## [217] "reticulate"     "rio"            "rlang"          "rmarkdown"     
-## [221] "Rmisc"          "roxygen2"       "rpart"          "rprojroot"     
-## [225] "rsample"        "rstudioapi"     "rversions"      "rvest"         
-## [229] "sass"           "scales"         "selectr"        "sessioninfo"   
-## [233] "sfd"            "shape"          "shiny"          "slider"        
-## [237] "snakecase"      "sourcetools"    "SparseM"        "spatial"       
-## [241] "splines"        "SQUAREM"        "stargazer"      "stats"         
-## [245] "stats4"         "stringi"        "stringr"        "styler"        
-## [249] "survival"       "svglite"        "sys"            "systemfonts"   
-## [253] "tables"         "tcltk"          "testthat"       "textshaping"   
-## [257] "tibble"         "tidygraph"      "tidymodels"     "tidyr"         
-## [261] "tidyselect"     "tidyverse"      "timechange"     "timeDate"      
-## [265] "tinytable"      "tinytex"        "tools"          "translations"  
-## [269] "tune"           "tweenr"         "tzdb"           "urlchecker"    
-## [273] "useful"         "usethis"        "utf8"           "utils"         
-## [277] "uuid"           "V8"             "vctrs"          "viridis"       
-## [281] "viridisLite"    "vroom"          "waldo"          "warp"          
-## [285] "whisker"        "withr"          "workflows"      "workflowsets"  
-## [289] "writexl"        "xfun"           "xml2"           "xopen"         
-## [293] "xtable"         "xts"            "yaml"           "yardstick"     
-## [297] "zip"            "zoo"
+## [125] "janitor"        "jomo"           "jose"           "jquerylib"     
+## [129] "jsonlite"       "kableExtra"     "KernSmooth"     "knitr"         
+## [133] "labeling"       "later"          "lattice"        "lava"          
+## [137] "lazyeval"       "lhs"            "lifecycle"      "lintr"         
+## [141] "listenv"        "litedown"       "lme4"           "lubridate"     
+## [145] "magick"         "magrittr"       "maps"           "markdown"      
+## [149] "MASS"           "Matching"       "Matrix"         "MatrixModels"  
+## [153] "memoise"        "methods"        "mgcv"           "mice"          
+## [157] "microbenchmark" "mime"           "miniUI"         "minqa"         
+## [161] "mitml"          "modeldata"      "modelenv"       "modelr"        
+## [165] "modelsummary"   "munsell"        "nlme"           "nloptr"        
+## [169] "NLP"            "nnet"           "nortest"        "numDeriv"      
+## [173] "olsrr"          "openssl"        "ordinal"        "pan"           
+## [177] "parallel"       "parallelly"     "parameters"     "parsnip"       
+## [181] "patchwork"      "pbkrtest"       "performance"    "pillar"        
+## [185] "pkgbuild"       "pkgconfig"      "pkgdown"        "pkgload"       
+## [189] "png"            "polyclip"       "praise"         "prettyunits"   
+## [193] "processx"       "prodlim"        "profvis"        "progress"      
+## [197] "progressr"      "promises"       "ps"             "purrr"         
+## [201] "qss"            "quantreg"       "R.cache"        "R.methodsS3"   
+## [205] "R.oo"           "R.utils"        "R6"             "ragg"          
+## [209] "randomizr"      "rappdirs"       "rbibutils"      "rcmdcheck"     
+## [213] "RColorBrewer"   "Rcpp"           "RcppArmadillo"  "RcppEigen"     
+## [217] "RcppTOML"       "RCurl"          "Rdpack"         "readr"         
+## [221] "readxl"         "recipes"        "reformulas"     "rematch"       
+## [225] "rematch2"       "remotes"        "renv"           "reprex"        
+## [229] "reticulate"     "rex"            "rio"            "rlang"         
+## [233] "rmarkdown"      "roxygen2"       "rpart"          "rprojroot"     
+## [237] "rsample"        "rstudioapi"     "rversions"      "rvest"         
+## [241] "sass"           "scales"         "selectr"        "sessioninfo"   
+## [245] "sfd"            "shape"          "shiny"          "slam"          
+## [249] "slider"         "snakecase"      "SnowballC"      "sourcetools"   
+## [253] "SparseM"        "sparsevctrs"    "spatial"        "splines"       
+## [257] "SQUAREM"        "stargazer"      "stats"          "stats4"        
+## [261] "stringi"        "stringr"        "styler"         "survival"      
+## [265] "svglite"        "swirl"          "sys"            "systemfonts"   
+## [269] "tables"         "tcltk"          "testthat"       "textshaping"   
+## [273] "tibble"         "tidygraph"      "tidymodels"     "tidyr"         
+## [277] "tidyselect"     "tidyverse"      "timechange"     "timeDate"      
+## [281] "tinytable"      "tinytex"        "tm"             "tools"         
+## [285] "translations"   "tune"           "tweenr"         "tzdb"          
+## [289] "ucminf"         "urlchecker"     "usethis"        "utf8"          
+## [293] "utils"          "uuid"           "V8"             "vctrs"         
+## [297] "viridis"        "viridisLite"    "vroom"          "waldo"         
+## [301] "warp"           "whisker"        "withr"          "wordcloud"     
+## [305] "workflows"      "workflowsets"   "writexl"        "xfun"          
+## [309] "xml2"           "xmlparsedata"   "xopen"          "xplorerr"      
+## [313] "xtable"         "yaml"           "yardstick"      "zip"
 ```
 
 

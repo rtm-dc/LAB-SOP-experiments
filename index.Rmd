@@ -28,7 +28,7 @@ This version of the book was built with
 ```{r message = FALSE, warning = FALSE, echo = FALSE}
 library(dplyr)
 
-all_pkgs <- renv::dependencies(progress = FALSE) %>% 
+all_pkgs <- renv::dependencies(progress = FALSE) |> 
  pull(Package) 
 
 session <- devtools::session_info(pkgs = all_pkgs)
@@ -39,8 +39,8 @@ session$platform
 Along with these packages:
 
 ```{r message = FALSE, warning = FALSE, echo = FALSE}
-session$packages %>% 
-  select(package, loadedversion, date, source) %>% 
+session$packages |> 
+  select(package, loadedversion, date, source) |> 
   DT::datatable(rownames = FALSE,
                 class = 'cell-border stripe',
                 filter = list(position = 'top'),

@@ -54,7 +54,7 @@ library(dplyr)
 set.seed(SSSSSSSSS)
 
 # Conduct Bernoulli randomization:
-df <- df %>% mutate(
+df <- df |> mutate(
   treatment = sample(0:1, 
                      size = n(),
                      replace = TRUE))
@@ -204,8 +204,8 @@ for(idx in 1:n_sims){
   
   # Re-assign treatment and recalculate outcomes n_sims times:
   # (Note: conditions on original x in df, but not original y.)
-  df <- df %>% mutate(z_tmp = rbinom(n_samp, 1, prob = 0.5),
-                      y_tmp = true_te * z_tmp + x + rnorm(100, sd = 1.1))
+  df <- df |> mutate(z_tmp = rbinom(n_samp, 1, prob = 0.5),
+                     y_tmp = true_te * z_tmp + x + rnorm(100, sd = 1.1))
   
   # Estimation:
   lm_out <- lm_robust(y_tmp ~ z_tmp + x, data = df)

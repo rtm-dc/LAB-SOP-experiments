@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Design | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Design | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-11-14" />
+<meta name="date" content="2025-05-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -399,7 +399,7 @@ our results can be perfectly replicated.</p>
 <span id="cb2-5"><a href="design.html#cb2-5" tabindex="-1"></a><span class="fu">set.seed</span>(SSSSSSSSS)</span>
 <span id="cb2-6"><a href="design.html#cb2-6" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="design.html#cb2-7" tabindex="-1"></a><span class="co"># Conduct Bernoulli randomization:</span></span>
-<span id="cb2-8"><a href="design.html#cb2-8" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a href="design.html#cb2-8" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
 <span id="cb2-9"><a href="design.html#cb2-9" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, </span>
 <span id="cb2-10"><a href="design.html#cb2-10" tabindex="-1"></a>                     <span class="at">size =</span> <span class="fu">n</span>(),</span>
 <span id="cb2-11"><a href="design.html#cb2-11" tabindex="-1"></a>                     <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
@@ -535,8 +535,8 @@ strategy, etc. that we like.</p>
 <span id="cb17-8"><a href="design.html#cb17-8" tabindex="-1"></a>  </span>
 <span id="cb17-9"><a href="design.html#cb17-9" tabindex="-1"></a>  <span class="co"># Re-assign treatment and recalculate outcomes n_sims times:</span></span>
 <span id="cb17-10"><a href="design.html#cb17-10" tabindex="-1"></a>  <span class="co"># (Note: conditions on original x in df, but not original y.)</span></span>
-<span id="cb17-11"><a href="design.html#cb17-11" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
-<span id="cb17-12"><a href="design.html#cb17-12" tabindex="-1"></a>                      <span class="at">y_tmp =</span> true_te <span class="sc">*</span> z_tmp <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
+<span id="cb17-11"><a href="design.html#cb17-11" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">rbinom</span>(n_samp, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>),</span>
+<span id="cb17-12"><a href="design.html#cb17-12" tabindex="-1"></a>                     <span class="at">y_tmp =</span> true_te <span class="sc">*</span> z_tmp <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="fl">1.1</span>))</span>
 <span id="cb17-13"><a href="design.html#cb17-13" tabindex="-1"></a>  </span>
 <span id="cb17-14"><a href="design.html#cb17-14" tabindex="-1"></a>  <span class="co"># Estimation:</span></span>
 <span id="cb17-15"><a href="design.html#cb17-15" tabindex="-1"></a>  lm_out <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y_tmp <span class="sc">~</span> z_tmp <span class="sc">+</span> x, <span class="at">data =</span> df)</span>
@@ -598,42 +598,42 @@ available from <a href="https://egap.shinyapps.io/Power_Calculator/">EGAP</a>, e
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C Managing Code and Scientific Communication | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C Managing Code and Scientific Communication | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2024-11-14" />
+<meta name="date" content="2025-05-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -390,7 +390,21 @@ e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 for examples in R.</p></li>
 <li><p>Use the assignment arrow for assignment. The structure:</p></li>
 </ol>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="managing-code-and-scientific-communication.html#cb106-1" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="managing-code-and-scientific-communication.html#cb106-1" tabindex="-1"></a><span class="co"># Use &lt;- </span></span>
+<span id="cb106-2"><a href="managing-code-and-scientific-communication.html#cb106-2" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="managing-code-and-scientific-communication.html#cb106-3" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span>
+<span id="cb106-4"><a href="managing-code-and-scientific-communication.html#cb106-4" tabindex="-1"></a></span>
+<span id="cb106-5"><a href="managing-code-and-scientific-communication.html#cb106-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>()</span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Use the equals sign for setting argument values. The structure:</li>
+</ol>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="managing-code-and-scientific-communication.html#cb107-1" tabindex="-1"></a><span class="co"># Use =</span></span>
+<span id="cb107-2"><a href="managing-code-and-scientific-communication.html#cb107-2" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="managing-code-and-scientific-communication.html#cb107-3" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb107-4"><a href="managing-code-and-scientific-communication.html#cb107-4" tabindex="-1"></a></span>
+<span id="cb107-5"><a href="managing-code-and-scientific-communication.html#cb107-5" tabindex="-1"></a><span class="co"># Use &lt;- and =, as appropriate</span></span>
+<span id="cb107-6"><a href="managing-code-and-scientific-communication.html#cb107-6" tabindex="-1"></a></span>
+<span id="cb107-7"><a href="managing-code-and-scientific-communication.html#cb107-7" tabindex="-1"></a>mx <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Use space around operators (write <code>3 + 4 = 7</code>, not <code>3+4=7</code>) and after a
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</p></li>
@@ -443,7 +457,7 @@ are not hard-coding a path that no one else has (like <code>~/Me/My Docs/my_spec
 platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="managing-code-and-scientific-communication.html#cb107-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="managing-code-and-scientific-communication.html#cb108-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="see-the-working-directory" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">C.4.1</span> See the working directory<a href="managing-code-and-scientific-communication.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
@@ -451,30 +465,30 @@ platform-independent. For more on the <code>here</code> package, see
 <div id="see-the-project-directory" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">C.4.2</span> See the project directory<a href="managing-code-and-scientific-communication.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code-and-scientific-communication.html#sec-projects">C.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="managing-code-and-scientific-communication.html#cb108-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="managing-code-and-scientific-communication.html#cb109-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
 <div id="create-a-path-with-here" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">C.4.3</span> Create a path with <code>here()</code><a href="managing-code-and-scientific-communication.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="managing-code-and-scientific-communication.html#cb110-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="managing-code-and-scientific-communication.html#cb111-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;02-01-df.RData&quot;</code></pre>
 <p>To see its full path,</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="managing-code-and-scientific-communication.html#cb112-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="managing-code-and-scientific-communication.html#cb113-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/ryanmoore/Documents/github/thelab/LAB-SOP-experiments/data/02-01-df.RData&quot;</code></pre>
 <p>To use that path to read in the data, I first create the path, then use it to
 read in the object:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="managing-code-and-scientific-communication.html#cb114-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
-<span id="cb114-2"><a href="managing-code-and-scientific-communication.html#cb114-2" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="managing-code-and-scientific-communication.html#cb114-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
-<span id="cb114-4"><a href="managing-code-and-scientific-communication.html#cb114-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="managing-code-and-scientific-communication.html#cb115-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
+<span id="cb115-2"><a href="managing-code-and-scientific-communication.html#cb115-2" tabindex="-1"></a></span>
+<span id="cb115-3"><a href="managing-code-and-scientific-communication.html#cb115-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
+<span id="cb115-4"><a href="managing-code-and-scientific-communication.html#cb115-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
 <p>(These could be combined into a single line.)</p>
 <p>The object <code>02-01-df.RData</code> contains a single dataframe called <code>df</code>. I can now see that dataframe in my environment:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="managing-code-and-scientific-communication.html#cb115-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="managing-code-and-scientific-communication.html#cb116-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;df&quot;            &quot;my_rdata_path&quot;</code></pre>
 <p>and examine it</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="managing-code-and-scientific-communication.html#cb117-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="managing-code-and-scientific-communication.html#cb118-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>##           x z         y
 ## 1 5.8873201 0 5.6125511
 ## 2 2.3428286 0 2.0830483
@@ -487,34 +501,34 @@ read in the object:</p>
 <div id="what-packages-are-installed" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">C.5</span> What Packages are Installed?<a href="managing-code-and-scientific-communication.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="managing-code-and-scientific-communication.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="managing-code-and-scientific-communication.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="managing-code-and-scientific-communication.html#cb120-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="managing-code-and-scientific-communication.html#cb121-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
 <pre><code>## [[1]]
-##   [1] &quot;abind&quot;          &quot;askpass&quot;        &quot;assertthat&quot;     &quot;backports&quot;     
-##   [5] &quot;bandit&quot;         &quot;base&quot;           &quot;base64enc&quot;      &quot;bayestestR&quot;    
-##   [9] &quot;bit&quot;            &quot;bit64&quot;          &quot;bizdays&quot;        &quot;blob&quot;          
-##  [13] &quot;blockTools&quot;     &quot;bookdown&quot;       &quot;boot&quot;           &quot;boxr&quot;          
-##  [17] &quot;brew&quot;           &quot;brio&quot;           &quot;broom&quot;          &quot;bslib&quot;         
-##  [21] &quot;cachem&quot;         &quot;callr&quot;          &quot;car&quot;            &quot;carData&quot;       
-##  [25] &quot;cellranger&quot;     &quot;checkmate&quot;      &quot;class&quot;          &quot;cli&quot;           
-##  [29] &quot;clipr&quot;          &quot;clock&quot;          &quot;cluster&quot;        &quot;codetools&quot;     
-##  [33] &quot;coefplot&quot;       &quot;colorspace&quot;     &quot;commonmark&quot;     &quot;compiler&quot;      
-##  [37] &quot;config&quot;         &quot;conflicted&quot;     &quot;cowplot&quot;        &quot;cpp11&quot;         
+##   [1] &quot;abind&quot;          &quot;animation&quot;      &quot;askpass&quot;        &quot;assertthat&quot;    
+##   [5] &quot;backports&quot;      &quot;bandit&quot;         &quot;base&quot;           &quot;base64enc&quot;     
+##   [9] &quot;bayestestR&quot;     &quot;BH&quot;             &quot;bit&quot;            &quot;bit64&quot;         
+##  [13] &quot;bitops&quot;         &quot;blob&quot;           &quot;blockTools&quot;     &quot;bookdown&quot;      
+##  [17] &quot;boot&quot;           &quot;boxr&quot;           &quot;brew&quot;           &quot;brio&quot;          
+##  [21] &quot;broom&quot;          &quot;bslib&quot;          &quot;cachem&quot;         &quot;callr&quot;         
+##  [25] &quot;car&quot;            &quot;carData&quot;        &quot;cellranger&quot;     &quot;checkmate&quot;     
+##  [29] &quot;class&quot;          &quot;cli&quot;            &quot;clipr&quot;          &quot;clock&quot;         
+##  [33] &quot;cluster&quot;        &quot;codetools&quot;      &quot;colorspace&quot;     &quot;commonmark&quot;    
+##  [37] &quot;compiler&quot;       &quot;conflicted&quot;     &quot;cowplot&quot;        &quot;cpp11&quot;         
 ##  [41] &quot;crayon&quot;         &quot;credentials&quot;    &quot;crosstalk&quot;      &quot;curl&quot;          
 ##  [45] &quot;dagitty&quot;        &quot;data.table&quot;     &quot;datasets&quot;       &quot;datawizard&quot;    
 ##  [49] &quot;DBI&quot;            &quot;dbplyr&quot;         &quot;DeclareDesign&quot;  &quot;Deriv&quot;         
 ##  [53] &quot;desc&quot;           &quot;devtools&quot;       &quot;diagram&quot;        &quot;dials&quot;         
-##  [57] &quot;DiceDesign&quot;     &quot;diffobj&quot;        &quot;digest&quot;         &quot;directlabels&quot;  
-##  [61] &quot;doBy&quot;           &quot;doFuture&quot;       &quot;downlit&quot;        &quot;dplyr&quot;         
-##  [65] &quot;DT&quot;             &quot;dtplyr&quot;         &quot;dygraphs&quot;       &quot;ellipsis&quot;      
-##  [69] &quot;estimatr&quot;       &quot;evaluate&quot;       &quot;fabricatr&quot;      &quot;fansi&quot;         
-##  [73] &quot;farver&quot;         &quot;fastmap&quot;        &quot;fontawesome&quot;    &quot;forcats&quot;       
-##  [77] &quot;foreach&quot;        &quot;foreign&quot;        &quot;Formula&quot;        &quot;fs&quot;            
-##  [81] &quot;furrr&quot;          &quot;future&quot;         &quot;future.apply&quot;   &quot;gam&quot;           
-##  [85] &quot;gargle&quot;         &quot;generics&quot;       &quot;gert&quot;           &quot;ggdag&quot;         
-##  [89] &quot;ggforce&quot;        &quot;ggplot2&quot;        &quot;ggraph&quot;         &quot;ggrepel&quot;       
-##  [93] &quot;gh&quot;             &quot;gitcreds&quot;       &quot;globals&quot;        &quot;glue&quot;          
+##  [57] &quot;DiceDesign&quot;     &quot;diffobj&quot;        &quot;digest&quot;         &quot;doBy&quot;          
+##  [61] &quot;doFuture&quot;       &quot;downlit&quot;        &quot;dplyr&quot;          &quot;DT&quot;            
+##  [65] &quot;dtplyr&quot;         &quot;ellipsis&quot;       &quot;estimatr&quot;       &quot;evaluate&quot;      
+##  [69] &quot;fabricatr&quot;      &quot;fansi&quot;          &quot;farver&quot;         &quot;fastmap&quot;       
+##  [73] &quot;fontawesome&quot;    &quot;forcats&quot;        &quot;foreach&quot;        &quot;foreign&quot;       
+##  [77] &quot;Formula&quot;        &quot;fs&quot;             &quot;furrr&quot;          &quot;future&quot;        
+##  [81] &quot;future.apply&quot;   &quot;gam&quot;            &quot;gargle&quot;         &quot;generics&quot;      
+##  [85] &quot;gert&quot;           &quot;ggdag&quot;          &quot;ggforce&quot;        &quot;ggplot2&quot;       
+##  [89] &quot;ggraph&quot;         &quot;ggrepel&quot;        &quot;gh&quot;             &quot;gitcreds&quot;      
+##  [93] &quot;glmnet&quot;         &quot;globals&quot;        &quot;glue&quot;           &quot;goftest&quot;       
 ##  [97] &quot;googledrive&quot;    &quot;googlesheets4&quot;  &quot;gower&quot;          &quot;GPfit&quot;         
 ## [101] &quot;graphics&quot;       &quot;graphlayouts&quot;   &quot;grDevices&quot;      &quot;grid&quot;          
 ## [105] &quot;gridExtra&quot;      &quot;gtable&quot;         &quot;hardhat&quot;        &quot;haven&quot;         
@@ -522,50 +536,54 @@ read in the object:</p>
 ## [113] &quot;htmlwidgets&quot;    &quot;httpuv&quot;         &quot;httr&quot;           &quot;httr2&quot;         
 ## [117] &quot;ids&quot;            &quot;igraph&quot;         &quot;infer&quot;          &quot;ini&quot;           
 ## [121] &quot;insight&quot;        &quot;ipred&quot;          &quot;isoband&quot;        &quot;iterators&quot;     
-## [125] &quot;janitor&quot;        &quot;jquerylib&quot;      &quot;jsonlite&quot;       &quot;kableExtra&quot;    
-## [129] &quot;KernSmooth&quot;     &quot;knitr&quot;          &quot;labeling&quot;       &quot;later&quot;         
-## [133] &quot;lattice&quot;        &quot;lava&quot;           &quot;lazyeval&quot;       &quot;lhs&quot;           
-## [137] &quot;lifecycle&quot;      &quot;listenv&quot;        &quot;lme4&quot;           &quot;lobstr&quot;        
-## [141] &quot;lubridate&quot;      &quot;magrittr&quot;       &quot;maps&quot;           &quot;markdown&quot;      
-## [145] &quot;MASS&quot;           &quot;Matching&quot;       &quot;Matrix&quot;         &quot;MatrixModels&quot;  
-## [149] &quot;memoise&quot;        &quot;methods&quot;        &quot;mgcv&quot;           &quot;microbenchmark&quot;
-## [153] &quot;mime&quot;           &quot;miniUI&quot;         &quot;minqa&quot;          &quot;modeldata&quot;     
-## [157] &quot;modelenv&quot;       &quot;modelr&quot;         &quot;modelsummary&quot;   &quot;munsell&quot;       
-## [161] &quot;nlme&quot;           &quot;nloptr&quot;         &quot;nnet&quot;           &quot;numDeriv&quot;      
-## [165] &quot;openssl&quot;        &quot;parallel&quot;       &quot;parallelly&quot;     &quot;parameters&quot;    
-## [169] &quot;parsnip&quot;        &quot;patchwork&quot;      &quot;pbkrtest&quot;       &quot;performance&quot;   
-## [173] &quot;pillar&quot;         &quot;pkgbuild&quot;       &quot;pkgconfig&quot;      &quot;pkgdown&quot;       
-## [177] &quot;pkgload&quot;        &quot;plotly&quot;         &quot;plyr&quot;           &quot;png&quot;           
-## [181] &quot;polyclip&quot;       &quot;praise&quot;         &quot;prettyunits&quot;    &quot;processx&quot;      
-## [185] &quot;prodlim&quot;        &quot;profvis&quot;        &quot;progress&quot;       &quot;progressr&quot;     
-## [189] &quot;promises&quot;       &quot;ps&quot;             &quot;purrr&quot;          &quot;quadprog&quot;      
-## [193] &quot;quantreg&quot;       &quot;R.cache&quot;        &quot;R.methodsS3&quot;    &quot;R.oo&quot;          
-## [197] &quot;R.utils&quot;        &quot;R6&quot;             &quot;ragg&quot;           &quot;randomizr&quot;     
-## [201] &quot;rappdirs&quot;       &quot;rcmdcheck&quot;      &quot;RColorBrewer&quot;   &quot;Rcpp&quot;          
-## [205] &quot;RcppArmadillo&quot;  &quot;RcppEigen&quot;      &quot;RcppTOML&quot;       &quot;readr&quot;         
-## [209] &quot;readxl&quot;         &quot;recipes&quot;        &quot;rematch&quot;        &quot;rematch2&quot;      
-## [213] &quot;remotes&quot;        &quot;renv&quot;           &quot;reprex&quot;         &quot;reshape2&quot;      
-## [217] &quot;reticulate&quot;     &quot;rio&quot;            &quot;rlang&quot;          &quot;rmarkdown&quot;     
-## [221] &quot;Rmisc&quot;          &quot;roxygen2&quot;       &quot;rpart&quot;          &quot;rprojroot&quot;     
-## [225] &quot;rsample&quot;        &quot;rstudioapi&quot;     &quot;rversions&quot;      &quot;rvest&quot;         
-## [229] &quot;sass&quot;           &quot;scales&quot;         &quot;selectr&quot;        &quot;sessioninfo&quot;   
-## [233] &quot;sfd&quot;            &quot;shape&quot;          &quot;shiny&quot;          &quot;slider&quot;        
-## [237] &quot;snakecase&quot;      &quot;sourcetools&quot;    &quot;SparseM&quot;        &quot;spatial&quot;       
-## [241] &quot;splines&quot;        &quot;SQUAREM&quot;        &quot;stargazer&quot;      &quot;stats&quot;         
-## [245] &quot;stats4&quot;         &quot;stringi&quot;        &quot;stringr&quot;        &quot;styler&quot;        
-## [249] &quot;survival&quot;       &quot;svglite&quot;        &quot;sys&quot;            &quot;systemfonts&quot;   
-## [253] &quot;tables&quot;         &quot;tcltk&quot;          &quot;testthat&quot;       &quot;textshaping&quot;   
-## [257] &quot;tibble&quot;         &quot;tidygraph&quot;      &quot;tidymodels&quot;     &quot;tidyr&quot;         
-## [261] &quot;tidyselect&quot;     &quot;tidyverse&quot;      &quot;timechange&quot;     &quot;timeDate&quot;      
-## [265] &quot;tinytable&quot;      &quot;tinytex&quot;        &quot;tools&quot;          &quot;translations&quot;  
-## [269] &quot;tune&quot;           &quot;tweenr&quot;         &quot;tzdb&quot;           &quot;urlchecker&quot;    
-## [273] &quot;useful&quot;         &quot;usethis&quot;        &quot;utf8&quot;           &quot;utils&quot;         
-## [277] &quot;uuid&quot;           &quot;V8&quot;             &quot;vctrs&quot;          &quot;viridis&quot;       
-## [281] &quot;viridisLite&quot;    &quot;vroom&quot;          &quot;waldo&quot;          &quot;warp&quot;          
-## [285] &quot;whisker&quot;        &quot;withr&quot;          &quot;workflows&quot;      &quot;workflowsets&quot;  
-## [289] &quot;writexl&quot;        &quot;xfun&quot;           &quot;xml2&quot;           &quot;xopen&quot;         
-## [293] &quot;xtable&quot;         &quot;xts&quot;            &quot;yaml&quot;           &quot;yardstick&quot;     
-## [297] &quot;zip&quot;            &quot;zoo&quot;</code></pre>
+## [125] &quot;janitor&quot;        &quot;jomo&quot;           &quot;jose&quot;           &quot;jquerylib&quot;     
+## [129] &quot;jsonlite&quot;       &quot;kableExtra&quot;     &quot;KernSmooth&quot;     &quot;knitr&quot;         
+## [133] &quot;labeling&quot;       &quot;later&quot;          &quot;lattice&quot;        &quot;lava&quot;          
+## [137] &quot;lazyeval&quot;       &quot;lhs&quot;            &quot;lifecycle&quot;      &quot;lintr&quot;         
+## [141] &quot;listenv&quot;        &quot;litedown&quot;       &quot;lme4&quot;           &quot;lubridate&quot;     
+## [145] &quot;magick&quot;         &quot;magrittr&quot;       &quot;maps&quot;           &quot;markdown&quot;      
+## [149] &quot;MASS&quot;           &quot;Matching&quot;       &quot;Matrix&quot;         &quot;MatrixModels&quot;  
+## [153] &quot;memoise&quot;        &quot;methods&quot;        &quot;mgcv&quot;           &quot;mice&quot;          
+## [157] &quot;microbenchmark&quot; &quot;mime&quot;           &quot;miniUI&quot;         &quot;minqa&quot;         
+## [161] &quot;mitml&quot;          &quot;modeldata&quot;      &quot;modelenv&quot;       &quot;modelr&quot;        
+## [165] &quot;modelsummary&quot;   &quot;munsell&quot;        &quot;nlme&quot;           &quot;nloptr&quot;        
+## [169] &quot;NLP&quot;            &quot;nnet&quot;           &quot;nortest&quot;        &quot;numDeriv&quot;      
+## [173] &quot;olsrr&quot;          &quot;openssl&quot;        &quot;ordinal&quot;        &quot;pan&quot;           
+## [177] &quot;parallel&quot;       &quot;parallelly&quot;     &quot;parameters&quot;     &quot;parsnip&quot;       
+## [181] &quot;patchwork&quot;      &quot;pbkrtest&quot;       &quot;performance&quot;    &quot;pillar&quot;        
+## [185] &quot;pkgbuild&quot;       &quot;pkgconfig&quot;      &quot;pkgdown&quot;        &quot;pkgload&quot;       
+## [189] &quot;png&quot;            &quot;polyclip&quot;       &quot;praise&quot;         &quot;prettyunits&quot;   
+## [193] &quot;processx&quot;       &quot;prodlim&quot;        &quot;profvis&quot;        &quot;progress&quot;      
+## [197] &quot;progressr&quot;      &quot;promises&quot;       &quot;ps&quot;             &quot;purrr&quot;         
+## [201] &quot;qss&quot;            &quot;quantreg&quot;       &quot;R.cache&quot;        &quot;R.methodsS3&quot;   
+## [205] &quot;R.oo&quot;           &quot;R.utils&quot;        &quot;R6&quot;             &quot;ragg&quot;          
+## [209] &quot;randomizr&quot;      &quot;rappdirs&quot;       &quot;rbibutils&quot;      &quot;rcmdcheck&quot;     
+## [213] &quot;RColorBrewer&quot;   &quot;Rcpp&quot;           &quot;RcppArmadillo&quot;  &quot;RcppEigen&quot;     
+## [217] &quot;RcppTOML&quot;       &quot;RCurl&quot;          &quot;Rdpack&quot;         &quot;readr&quot;         
+## [221] &quot;readxl&quot;         &quot;recipes&quot;        &quot;reformulas&quot;     &quot;rematch&quot;       
+## [225] &quot;rematch2&quot;       &quot;remotes&quot;        &quot;renv&quot;           &quot;reprex&quot;        
+## [229] &quot;reticulate&quot;     &quot;rex&quot;            &quot;rio&quot;            &quot;rlang&quot;         
+## [233] &quot;rmarkdown&quot;      &quot;roxygen2&quot;       &quot;rpart&quot;          &quot;rprojroot&quot;     
+## [237] &quot;rsample&quot;        &quot;rstudioapi&quot;     &quot;rversions&quot;      &quot;rvest&quot;         
+## [241] &quot;sass&quot;           &quot;scales&quot;         &quot;selectr&quot;        &quot;sessioninfo&quot;   
+## [245] &quot;sfd&quot;            &quot;shape&quot;          &quot;shiny&quot;          &quot;slam&quot;          
+## [249] &quot;slider&quot;         &quot;snakecase&quot;      &quot;SnowballC&quot;      &quot;sourcetools&quot;   
+## [253] &quot;SparseM&quot;        &quot;sparsevctrs&quot;    &quot;spatial&quot;        &quot;splines&quot;       
+## [257] &quot;SQUAREM&quot;        &quot;stargazer&quot;      &quot;stats&quot;          &quot;stats4&quot;        
+## [261] &quot;stringi&quot;        &quot;stringr&quot;        &quot;styler&quot;         &quot;survival&quot;      
+## [265] &quot;svglite&quot;        &quot;swirl&quot;          &quot;sys&quot;            &quot;systemfonts&quot;   
+## [269] &quot;tables&quot;         &quot;tcltk&quot;          &quot;testthat&quot;       &quot;textshaping&quot;   
+## [273] &quot;tibble&quot;         &quot;tidygraph&quot;      &quot;tidymodels&quot;     &quot;tidyr&quot;         
+## [277] &quot;tidyselect&quot;     &quot;tidyverse&quot;      &quot;timechange&quot;     &quot;timeDate&quot;      
+## [281] &quot;tinytable&quot;      &quot;tinytex&quot;        &quot;tm&quot;             &quot;tools&quot;         
+## [285] &quot;translations&quot;   &quot;tune&quot;           &quot;tweenr&quot;         &quot;tzdb&quot;          
+## [289] &quot;ucminf&quot;         &quot;urlchecker&quot;     &quot;usethis&quot;        &quot;utf8&quot;          
+## [293] &quot;utils&quot;          &quot;uuid&quot;           &quot;V8&quot;             &quot;vctrs&quot;         
+## [297] &quot;viridis&quot;        &quot;viridisLite&quot;    &quot;vroom&quot;          &quot;waldo&quot;         
+## [301] &quot;warp&quot;           &quot;whisker&quot;        &quot;withr&quot;          &quot;wordcloud&quot;     
+## [305] &quot;workflows&quot;      &quot;workflowsets&quot;   &quot;writexl&quot;        &quot;xfun&quot;          
+## [309] &quot;xml2&quot;           &quot;xmlparsedata&quot;   &quot;xopen&quot;          &quot;xplorerr&quot;      
+## [313] &quot;xtable&quot;         &quot;yaml&quot;           &quot;yardstick&quot;      &quot;zip&quot;</code></pre>
 
 </div>
 </div>
@@ -595,42 +613,42 @@ read in the object:</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
