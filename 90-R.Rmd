@@ -71,7 +71,7 @@ a multi-sheet spreadsheet, add an argument like `read_excel(..., sheet = 2)`.
 
 To read a file directly from box, we use the `boxr` package. To do so, 
 
-- Have a member of the data science team (currently, Nathan) add you as Box RStudio App collaborator
+- Have a senior member of the data science team add you as Box RStudio App collaborator
 - Go to dcgov.box.com. At the bottom left, click "Dev Console"
 - Click on The Lab @ DC
 - Click the Configuration tab
@@ -108,7 +108,8 @@ For more information, see the `boxr` [vignette](https://r-box.github.io/boxr/art
 ## Pipes
 
 Pipe operators make it easier for humans to follow a code chunk, and they allow
-us to string together a sequence of operations into a "pipeline". The native R pipe is `|>`; the pipe from package `magrittr` is also very common (`%>%`).
+us to string together a sequence of operations into a "pipeline". We prefer the 
+native R pipe, which is `|>`; the pipe from `{magrittr}` is also very common (`%>%`).
 
 The pipe simply takes the argument on its left and passes it as the first
 argument of the function to its right. So, if I have function `f()` to which I

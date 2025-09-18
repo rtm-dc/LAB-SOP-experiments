@@ -2,7 +2,8 @@
 
 ## Installing tools, R packages, and Python
 
-For reference, Posit provides instructions for using Python from RStudio (including `.py` files, and Python and R in the same document) at
+For reference, Posit provides instructions for using Python from RStudio
+(including `.py` files, and Python and R in the same document) at
 
 https://support.posit.co/hc/en-us/articles/1500007929061-Using-Python-with-the-RStudio-IDE
 
@@ -10,7 +11,8 @@ Follow the key steps below.
 
 ### Get Rtools
 
-You will need some developer tools. If you are on Windows, download the installer and click the `.exe` to install the latest version of Rtools from 
+You will need some developer tools. If you are on Windows, download the
+installer and click the `.exe` to install the latest version of Rtools from
 
 https://cran.rstudio.com/bin/windows/Rtools/rtools43/rtools.html
 
