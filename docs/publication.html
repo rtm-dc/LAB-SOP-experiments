@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2025-09-18" />
+<meta name="date" content="2025-09-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,7 +250,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a></li>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="publication.html"><a href="publication.html#sec-labcredit"><i class="fa fa-check"></i><b>6.1.1</b> CRediT Roles at The Lab @ DC</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.2</b> Publishing Data</a></li>
 <li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.3</b> Presenting Results</a>
 <ul>
@@ -370,8 +373,7 @@ div.csl-indent {
 <li>Every authored Lab document (i.e., academic publications, pre-analysis plans, blog posts, presentations, policy briefs, etc.) should include the following two components:</li>
 </ol>
 <ul>
-<li>A <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1087/20150211">CRediT</a> statement that describes the role played by each of the authors for that specific document. Feel free to modify the roles to appropriately reflect the work done. If the document builds significantly on past outputs, those outputs should additionally be cited.<br />
-</li>
+<li>A <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1087/20150211">CRediT</a> statement that describes the role played by each of the authors for that specific document. We sometimes modify the roles to appropriately reflect the work done; see Section <a href="publication.html#sec-labcredit">6.1.1</a> below. If the document builds significantly on past outputs, those outputs should additionally be cited.</li>
 <li>“The Footnote” (in papers, usually included as a phrase in the acknowledgments):
 <ul>
 <li>“Every project of The Lab @ DC is the product of collaboration between many team members, supporting staff, and external partners. The authors, acknowledgements, and CRediT statement listed here reflect contributions to this document specifically. The details on how we determine authorship and acknowledgements can be found in our Authorship Standard Operating Procedures (link <a href="https://rtm-dc.github.io/LAB-SOP-experiments/publication.html#authorship">here</a>).”</li>
@@ -409,19 +411,37 @@ div.csl-indent {
 <li><p>When Lab projects generate spinoff papers, authorship is not assumed for anyone involved in the project, and should be discussed when the idea is proposed. If it will involve Lab staff time, the Director should approve the spinoff paper and should make sure expectations about staff time and authorship are clear.</p></li>
 <li><p>The <strong>Acknowledgements</strong> section of Lab documents should err on the side of inclusion.</p></li>
 </ol>
+<div id="sec-labcredit" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> CRediT Roles at The Lab @ DC<a href="publication.html#sec-labcredit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We sometimes augment or alter the 14 standard CRediT roles to add accuracy or detail to our authorship contributions. We acknowledge contribution roles including</p>
+<ul>
+<li><em>Statistical Design</em>: Quantitative analysis of design features such as power, bias, and outcome measurement; development of random assignment algorithms<br />
+</li>
+<li><em>Subject Matter Expertise</em>: Provision of domain-specific knowledge, often from an agency perspective, that informs research design or interpretation</li>
+</ul>
+</div>
 </div>
 <div id="publishing-data" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Publishing Data<a href="publication.html#publishing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We strive to post useful replication data to the extent possible in each project. Some examples of our work doing so include projects on the 911 <a href="https://github.com/thelabdc/FEMS-911NurseTriageLine-Public">nurse triage line</a> and 457b <a href="https://github.com/thelabdc/DCHR-457b-Public">enrollment</a>.</p>
+<p>We strive to post useful replication data to the extent possible in each
+project. Some examples of our work doing so include projects on the 911 <a href="https://github.com/thelabdc/FEMS-911NurseTriageLine-Public">nurse
+triage line</a> and
+457b <a href="https://github.com/thelabdc/DCHR-457b-Public">enrollment</a>.</p>
 <p>The federal OPRE has some helpful advice for doing so <a href="https://www.acf.hhs.gov/opre/report/guide-publishing-research-data-secondary-analysis">here</a>.</p>
 </div>
 <div id="presenting-results" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Presenting Results<a href="publication.html#presenting-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="estimates-and-uncertainties" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Estimates and uncertainties<a href="publication.html#estimates-and-uncertainties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When we want to communicate group estimates along with treatment effects, we display them with barplots or scatterplots. Where we are interested in inference about a treatment effect, we display the control group and treatment group means, with the uncertainty around the treatment group mean representing the uncertainty around the treatment effect. For example,</p>
+<p>When we want to communicate group estimates along with treatment effects, we
+display them with barplots or scatterplots. Where we are interested in inference
+about a treatment effect, we display the control group and treatment group
+means, with the uncertainty around the treatment group mean representing the
+uncertainty around the treatment effect. For example,</p>
 <p><img src="05-Publication_files/figure-html/display_te_uncertainty-1.png" width="672" /></p>
-<p>When we want to communicate treatment effects without both group means being explicit, we do so with a coefficient plot. For example, with the intercept (control group mean),</p>
+<p>When we want to communicate treatment effects without both group means being
+explicit, we do so with a coefficient plot. For example, with the intercept
+(control group mean),</p>
 <p><img src="05-Publication_files/figure-html/display_coefplot-1.png" width="672" /></p>
 <p>or without the intercept,</p>
 <p><img src="05-Publication_files/figure-html/display_coefplot_noint-1.png" width="672" /></p>

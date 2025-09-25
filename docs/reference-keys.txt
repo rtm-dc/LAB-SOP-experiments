@@ -48,6 +48,7 @@ calipers
 alternatives
 publication
 authorship
+sec-labcredit
 publishing-data
 presenting-results
 estimates-and-uncertainties

@@ -14,7 +14,7 @@ As a general rule, we ascribe to the three standards of _substantial contributio
 
 1. Every authored Lab document (i.e., academic publications, pre-analysis plans, blog posts, presentations, policy briefs, etc.) should include the following two components:  
 
-- A [CRediT](https://onlinelibrary.wiley.com/doi/epdf/10.1087/20150211) statement that describes the role played by each of the authors for that specific document. Feel free to modify the roles to appropriately reflect the work done. If the document builds significantly on past outputs, those outputs should additionally be cited.  
+- A [CRediT](https://onlinelibrary.wiley.com/doi/epdf/10.1087/20150211) statement that describes the role played by each of the authors for that specific document. We sometimes modify the roles to appropriately reflect the work done; see Section \@ref(sec-labcredit) below. If the document builds significantly on past outputs, those outputs should additionally be cited. 
 - "The Footnote" (in papers, usually included as a phrase in the acknowledgments):
   - "Every project of The Lab @ DC is the product of collaboration between many team members, supporting staff, and external partners. The authors, acknowledgements, and CRediT statement listed here reflect contributions to this document specifically. The details on how we determine authorship and acknowledgements can be found in our Authorship Standard Operating Procedures (link [here](https://rtm-dc.github.io/LAB-SOP-experiments/publication.html#authorship))."
 
@@ -42,10 +42,20 @@ As a general rule, we ascribe to the three standards of _substantial contributio
 
 6. The **Acknowledgements** section of Lab documents should err on the side of inclusion.  
 
+### CRediT Roles at The Lab @ DC {#sec-labcredit}
+
+We sometimes augment or alter the 14 standard CRediT roles to add accuracy or detail to our authorship contributions. We acknowledge contribution roles including
+
+* _Statistical Design_: Quantitative analysis of design features such as power, bias, and outcome measurement; development of random assignment algorithms  
+* _Subject Matter Expertise_: Provision of domain-specific knowledge, often from an agency perspective, that informs research design or interpretation 
+
 
 ## Publishing Data
 
-We strive to post useful replication data to the extent possible in each project. Some examples of our work doing so include projects on the 911 [nurse triage line](https://github.com/thelabdc/FEMS-911NurseTriageLine-Public) and 457b [enrollment](https://github.com/thelabdc/DCHR-457b-Public).
+We strive to post useful replication data to the extent possible in each
+project. Some examples of our work doing so include projects on the 911 [nurse
+triage line](https://github.com/thelabdc/FEMS-911NurseTriageLine-Public) and
+457b [enrollment](https://github.com/thelabdc/DCHR-457b-Public).
 
 The federal OPRE has some helpful advice for doing so [here](https://www.acf.hhs.gov/opre/report/guide-publishing-research-data-secondary-analysis).
 
@@ -53,7 +63,11 @@ The federal OPRE has some helpful advice for doing so [here](https://www.acf.hhs
 
 ### Estimates and uncertainties
 
-When we want to communicate group estimates along with treatment effects, we display them with barplots or scatterplots. Where we are interested in inference about a treatment effect, we display the control group and treatment group means, with the uncertainty around the treatment group mean representing the uncertainty around the treatment effect. For example, 
+When we want to communicate group estimates along with treatment effects, we
+display them with barplots or scatterplots. Where we are interested in inference
+about a treatment effect, we display the control group and treatment group
+means, with the uncertainty around the treatment group mean representing the
+uncertainty around the treatment effect. For example,
 
 ```{r display_te_uncertainty, echo=FALSE, message=FALSE}
 library(estimatr)
@@ -98,7 +112,9 @@ ggplot(df_means, aes(x = Group, y = Mean, fill = Group)) +
   theme_minimal()
 ```
 
-When we want to communicate treatment effects without both group means being explicit, we do so with a coefficient plot. For example, with the intercept (control group mean),
+When we want to communicate treatment effects without both group means being
+explicit, we do so with a coefficient plot. For example, with the intercept
+(control group mean),
 
 ```{r display_coefplot, echo=FALSE, message=FALSE}
 library(modelsummary)
