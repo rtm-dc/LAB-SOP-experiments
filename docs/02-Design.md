@@ -30,7 +30,48 @@ concerned about interference between students, where students in one condition
 interact with students in the other, and causal effects of the intervention are
 difficult to isolate.
 
-## Blocking on Background Characteristics
+## Random Assignment Methods
+
+As a general rule, our preference ordering over assignment methods is
+
+1. Blocked assignment (e.g., 30% Tr, 70% Co _within_ homogeneous covariate groups)
+2. Random allocation (e.g., 30% Tr, 70% Co overall)
+3. Bernoulli assignment (e.g., each unit assigned independently, with probability 0.3 to Tr, 0.7 to Co)
+
+For blocked assignments, see our motivations and methods in Section \@ref(sec-blocking), the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf), and @moore12.
+
+For random allocation, see the example below and the vignettes [here](https://github.com/DeclareDesign/randomizr) and [here](https://declaredesign.org/r/randomizr/articles/randomizr_vignette.html).
+
+
+``` r
+library(randomizr)
+
+# Assign 30 of 100 to Tr:
+rand_alloc <- complete_ra(N = 100, m = 30)
+table(rand_alloc)
+```
+
+```
+## rand_alloc
+##  0  1 
+## 70 30
+```
+
+``` r
+# Assign 100 to T1, T2, T3 with probabilities (.2, .3, .5):
+rand_alloc <- complete_ra(N = 100, prob_each = c(.2, .3, .5))
+table(rand_alloc)
+```
+
+```
+## rand_alloc
+## T1 T2 T3 
+## 20 30 50
+```
+
+For simple Bernoulli assignments, we use `sample()` or `randomizr::simple_ra()`.
+
+## Blocking on Background Characteristics {#sec-blocking}
 
 In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. In a _random allocation_, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See @moore12 or the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) for an introduction and discussion.
 
@@ -81,7 +122,9 @@ To seed the random seed, run at the R prompt
 set.seed(YYMMDDHH)
 ```
 
-where `YY` is the two-digit year (`23` for 2023), `MM` is the two-digit month, `DD` is the two-digit date, and `HH` is the two-digit hour (between `00` and `23`) of implementation.
+where `YY` is the two-digit year (`23` for 2023), `MM` is the two-digit month,
+`DD` is the two-digit date, and `HH` is the two-digit hour (between `00` and
+`23`) of implementation.
 
 #### _Sampled_ Seeds
 
@@ -109,7 +152,13 @@ We do not need to update `sampled` seeds in our other design, demonstration, or 
 
 ### Motivation
 
-We want to ensure that our stochastic work can be exactly replicated. We do not manipulate seeds to obtain particular results. However, we do not want our draws to be entirely dependent within a given date, and we note that some seemingly-random phenomena are sometimes later found to have patterns. For an example of dependence, consider these two different draws that use the same seed: 
+We want to ensure that our stochastic work can be exactly replicated. We do not
+manipulate seeds to obtain particular results. However, we do not want our draws
+to be entirely dependent within a given date, and we note that some
+seemingly-random phenomena are sometimes later found to have patterns. For an
+example of dependence, consider these two different draws that use the same
+seed:
+
 
 ``` r
 set.seed(758296545)
@@ -182,11 +231,20 @@ power_out
 ## NOTE: n is number in *each* group
 ```
 
-For two equally-sized samples drawn from a population with standard normal outcomes, we need 17 observations in each group to have a probability of 0.8 of detecting a true effect that is one standard deviation of the outcome in size, where "detecting" means rejecting a null hypothesis of $H_0: \mu_{Tr} = \mu_{Co}$ against an alternative of $H_a: \mu_{Tr} \neq \mu_{Co}$ using $\alpha = 0.05$.
+For two equally-sized samples drawn from a population with standard normal
+outcomes, we need 17 observations in each group to have a
+probability of 0.8 of detecting a true effect that is one
+standard deviation of the outcome in size, where "detecting" means rejecting a
+null hypothesis of $H_0: \mu_{Tr} = \mu_{Co}$ against an alternative of $H_a:
+\mu_{Tr} \neq \mu_{Co}$ using $\alpha = 0.05$.
 
 ### Formula-based MDE (minimum detectable effect)
 
-An example of a formula-based MDE calculation follows, where the analysis plans for a two-sample test of proportions. The sample size is 75 (in _each_ group), and we want to detect stipulated effects with probability 0.8. Below, we make the most conservative (SE-maximizing) possible assumption about the base rate, that it is 0.5.
+An example of a formula-based MDE calculation follows, where the analysis plans
+for a two-sample test of proportions. The sample size is 75 (in _each_ group),
+and we want to detect stipulated effects with probability 0.8. Below, we make
+the most conservative (SE-maximizing) possible assumption about the base rate,
+that it is 0.5.
 
 
 ```{.r .fold.hide}

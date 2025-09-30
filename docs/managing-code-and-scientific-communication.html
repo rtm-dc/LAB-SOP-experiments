@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2025-09-25" />
+<meta name="date" content="2025-09-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -186,23 +186,24 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="design.html"><a href="design.html#units"><i class="fa fa-check"></i><b>2.1</b> Units</a></li>
 <li class="chapter" data-level="2.2" data-path="design.html"><a href="design.html#level-of-randomization"><i class="fa fa-check"></i><b>2.2</b> Level of Randomization</a></li>
-<li class="chapter" data-level="2.3" data-path="design.html"><a href="design.html#blocking-on-background-characteristics"><i class="fa fa-check"></i><b>2.3</b> Blocking on Background Characteristics</a>
+<li class="chapter" data-level="2.3" data-path="design.html"><a href="design.html#random-assignment-methods"><i class="fa fa-check"></i><b>2.3</b> Random Assignment Methods</a></li>
+<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-blocking"><i class="fa fa-check"></i><b>2.4</b> Blocking on Background Characteristics</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.3.1</b> Examples</a></li>
+<li class="chapter" data-level="2.4.1" data-path="design.html"><a href="design.html#examples"><i class="fa fa-check"></i><b>2.4.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.4</b> Setting the Assignment Seed</a>
+<li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#sec-set-seed"><i class="fa fa-check"></i><b>2.5</b> Setting the Assignment Seed</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="design.html"><a href="design.html#seeding-procedures"><i class="fa fa-check"></i><b>2.4.1</b> Seeding Procedures</a></li>
-<li class="chapter" data-level="2.4.2" data-path="design.html"><a href="design.html#updating-the-seed"><i class="fa fa-check"></i><b>2.4.2</b> Updating the Seed</a></li>
-<li class="chapter" data-level="2.4.3" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.4.3</b> Motivation</a></li>
+<li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#seeding-procedures"><i class="fa fa-check"></i><b>2.5.1</b> Seeding Procedures</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design.html"><a href="design.html#updating-the-seed"><i class="fa fa-check"></i><b>2.5.2</b> Updating the Seed</a></li>
+<li class="chapter" data-level="2.5.3" data-path="design.html"><a href="design.html#motivation"><i class="fa fa-check"></i><b>2.5.3</b> Motivation</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.5</b> Power</a>
+<li class="chapter" data-level="2.6" data-path="design.html"><a href="design.html#power"><i class="fa fa-check"></i><b>2.6</b> Power</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.5.1</b> Formula-based Power Analysis</a></li>
-<li class="chapter" data-level="2.5.2" data-path="design.html"><a href="design.html#formula-based-mde-minimum-detectable-effect"><i class="fa fa-check"></i><b>2.5.2</b> Formula-based MDE (minimum detectable effect)</a></li>
-<li class="chapter" data-level="2.5.3" data-path="design.html"><a href="design.html#simulation-based-power-analysis"><i class="fa fa-check"></i><b>2.5.3</b> Simulation-based Power Analysis</a></li>
+<li class="chapter" data-level="2.6.1" data-path="design.html"><a href="design.html#formula-based-power-analysis"><i class="fa fa-check"></i><b>2.6.1</b> Formula-based Power Analysis</a></li>
+<li class="chapter" data-level="2.6.2" data-path="design.html"><a href="design.html#formula-based-mde-minimum-detectable-effect"><i class="fa fa-check"></i><b>2.6.2</b> Formula-based MDE (minimum detectable effect)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="design.html"><a href="design.html#simulation-based-power-analysis"><i class="fa fa-check"></i><b>2.6.3</b> Simulation-based Power Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="design.html"><a href="design.html#balance-checking"><i class="fa fa-check"></i><b>2.6</b> Balance Checking</a></li>
+<li class="chapter" data-level="2.7" data-path="design.html"><a href="design.html#balance-checking"><i class="fa fa-check"></i><b>2.7</b> Balance Checking</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>3</b> Implementation</a>
 <ul>
@@ -382,8 +383,8 @@ for more detail and painful counterexamples.</p>
 <li><p>Begin your code file with a <code>library()</code> command for every package required
 for that file to run. Keep these in alphabetical order.</p></li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="managing-code-and-scientific-communication.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb105-2"><a href="managing-code-and-scientific-communication.html#cb105-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="managing-code-and-scientific-communication.html#cb109-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb109-2"><a href="managing-code-and-scientific-communication.html#cb109-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Do <strong>not</strong> include your “workflow” in your code files. Anything that’s
 interactive or changes the environment should be excluded. Do not include
@@ -394,21 +395,21 @@ e.g., <code>read_csv()</code> or <code>read_excel()</code>. See
 for examples in R.</p></li>
 <li><p>Use the assignment arrow for assignment. The structure:</p></li>
 </ol>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="managing-code-and-scientific-communication.html#cb106-1" tabindex="-1"></a><span class="co"># Use &lt;- </span></span>
-<span id="cb106-2"><a href="managing-code-and-scientific-communication.html#cb106-2" tabindex="-1"></a></span>
-<span id="cb106-3"><a href="managing-code-and-scientific-communication.html#cb106-3" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span>
-<span id="cb106-4"><a href="managing-code-and-scientific-communication.html#cb106-4" tabindex="-1"></a></span>
-<span id="cb106-5"><a href="managing-code-and-scientific-communication.html#cb106-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="managing-code-and-scientific-communication.html#cb110-1" tabindex="-1"></a><span class="co"># Use &lt;- </span></span>
+<span id="cb110-2"><a href="managing-code-and-scientific-communication.html#cb110-2" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="managing-code-and-scientific-communication.html#cb110-3" tabindex="-1"></a>new_obj_name <span class="ot">&lt;-</span> value_of_that_object</span>
+<span id="cb110-4"><a href="managing-code-and-scientific-communication.html#cb110-4" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="managing-code-and-scientific-communication.html#cb110-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>()</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Use the equals sign for setting argument values. The structure:</li>
 </ol>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="managing-code-and-scientific-communication.html#cb107-1" tabindex="-1"></a><span class="co"># Use =</span></span>
-<span id="cb107-2"><a href="managing-code-and-scientific-communication.html#cb107-2" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="managing-code-and-scientific-communication.html#cb107-3" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb107-4"><a href="managing-code-and-scientific-communication.html#cb107-4" tabindex="-1"></a></span>
-<span id="cb107-5"><a href="managing-code-and-scientific-communication.html#cb107-5" tabindex="-1"></a><span class="co"># Use &lt;- and =, as appropriate</span></span>
-<span id="cb107-6"><a href="managing-code-and-scientific-communication.html#cb107-6" tabindex="-1"></a></span>
-<span id="cb107-7"><a href="managing-code-and-scientific-communication.html#cb107-7" tabindex="-1"></a>mx <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="managing-code-and-scientific-communication.html#cb111-1" tabindex="-1"></a><span class="co"># Use =</span></span>
+<span id="cb111-2"><a href="managing-code-and-scientific-communication.html#cb111-2" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="managing-code-and-scientific-communication.html#cb111-3" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb111-4"><a href="managing-code-and-scientific-communication.html#cb111-4" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="managing-code-and-scientific-communication.html#cb111-5" tabindex="-1"></a><span class="co"># Use &lt;- and =, as appropriate</span></span>
+<span id="cb111-6"><a href="managing-code-and-scientific-communication.html#cb111-6" tabindex="-1"></a></span>
+<span id="cb111-7"><a href="managing-code-and-scientific-communication.html#cb111-7" tabindex="-1"></a>mx <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Use space around operators (write <code>3 + 4 = 7</code>, not <code>3+4=7</code>) and after a
 comma, as in English (write <code>f(x, y)</code>, not <code>f(x,y)</code>).</p></li>
@@ -461,7 +462,7 @@ are not hard-coding a path that no one else has (like <code>~/Me/My Docs/my_spec
 platform-independent. For more on the <code>here</code> package, see
 <a href="https://github.com/jennybc/here_here">here</a>.</p>
 <p>The code below requires the following packages to be loaded and attached:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="managing-code-and-scientific-communication.html#cb108-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="managing-code-and-scientific-communication.html#cb112-1" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="see-the-working-directory" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">C.4.1</span> See the working directory<a href="managing-code-and-scientific-communication.html#see-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the current working directory, type <code>getwd()</code>.</p>
@@ -469,30 +470,30 @@ platform-independent. For more on the <code>here</code> package, see
 <div id="see-the-project-directory" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">C.4.2</span> See the project directory<a href="managing-code-and-scientific-communication.html#see-the-project-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “project directory” is the top-level directory of your project. It should be the working directory, as well, if you follow the advice at <a href="managing-code-and-scientific-communication.html#sec-projects">C.3</a>, and start work by opening the <code>.Rproj</code> file. To see the project directory:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="managing-code-and-scientific-communication.html#cb109-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="managing-code-and-scientific-communication.html#cb113-1" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/rtm/Documents/github/thelab/LAB-SOP-experiments&quot;</code></pre>
 </div>
 <div id="create-a-path-with-here" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">C.4.3</span> Create a path with <code>here()</code><a href="managing-code-and-scientific-communication.html#create-a-path-with-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have an object called <code>02-01-df.RData</code> in a subdirectory called <code>/data/</code>. The
 <code>dir()</code> function shows what is in that subdirectory:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="managing-code-and-scientific-communication.html#cb111-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="managing-code-and-scientific-communication.html#cb115-1" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;02-01-df.RData&quot;</code></pre>
 <p>To see its full path,</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="managing-code-and-scientific-communication.html#cb113-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="managing-code-and-scientific-communication.html#cb117-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/rtm/Documents/github/thelab/LAB-SOP-experiments/data/02-01-df.RData&quot;</code></pre>
 <p>To use that path to read in the data, I first create the path, then use it to
 read in the object:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="managing-code-and-scientific-communication.html#cb115-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
-<span id="cb115-2"><a href="managing-code-and-scientific-communication.html#cb115-2" tabindex="-1"></a></span>
-<span id="cb115-3"><a href="managing-code-and-scientific-communication.html#cb115-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
-<span id="cb115-4"><a href="managing-code-and-scientific-communication.html#cb115-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="managing-code-and-scientific-communication.html#cb119-1" tabindex="-1"></a>my_rdata_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;02-01-df.RData&quot;</span>)</span>
+<span id="cb119-2"><a href="managing-code-and-scientific-communication.html#cb119-2" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="managing-code-and-scientific-communication.html#cb119-3" tabindex="-1"></a><span class="co"># Use load() for an .RData object:</span></span>
+<span id="cb119-4"><a href="managing-code-and-scientific-communication.html#cb119-4" tabindex="-1"></a><span class="fu">load</span>(my_rdata_path) </span></code></pre></div>
 <p>(These could be combined into a single line.)</p>
 <p>The object <code>02-01-df.RData</code> contains a single dataframe called <code>df</code>. I can now see that dataframe in my environment:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="managing-code-and-scientific-communication.html#cb116-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="managing-code-and-scientific-communication.html#cb120-1" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;df&quot;            &quot;my_rdata_path&quot;</code></pre>
 <p>and examine it</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="managing-code-and-scientific-communication.html#cb118-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="managing-code-and-scientific-communication.html#cb122-1" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>##           x z         y
 ## 1 5.8873201 0 5.6125511
 ## 2 2.3428286 0 2.0830483
@@ -505,9 +506,9 @@ read in the object:</p>
 <div id="what-packages-are-installed" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">C.5</span> What Packages are Installed?<a href="managing-code-and-scientific-communication.html#what-packages-are-installed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To see what packages are installed,</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="managing-code-and-scientific-communication.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="managing-code-and-scientific-communication.html#cb124-1" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="managing-code-and-scientific-communication.html#cb121-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="managing-code-and-scientific-communication.html#cb125-1" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">.libPaths</span>(), dir)</span></code></pre></div>
 <pre><code>## [[1]]
 ##   [1] &quot;abind&quot;          &quot;animation&quot;      &quot;askpass&quot;        &quot;backports&quot;     
 ##   [5] &quot;bandit&quot;         &quot;base&quot;           &quot;base64enc&quot;      &quot;bayestestR&quot;    
@@ -557,35 +558,35 @@ read in the object:</p>
 ## [181] &quot;png&quot;            &quot;polyclip&quot;       &quot;praise&quot;         &quot;prettyunits&quot;   
 ## [185] &quot;processx&quot;       &quot;prodlim&quot;        &quot;profvis&quot;        &quot;progress&quot;      
 ## [189] &quot;progressr&quot;      &quot;promises&quot;       &quot;ps&quot;             &quot;purrr&quot;         
-## [193] &quot;qss&quot;            &quot;quantreg&quot;       &quot;R.cache&quot;        &quot;R.methodsS3&quot;   
-## [197] &quot;R.oo&quot;           &quot;R.utils&quot;        &quot;R6&quot;             &quot;ragg&quot;          
-## [201] &quot;randomizr&quot;      &quot;rappdirs&quot;       &quot;rbibutils&quot;      &quot;rcmdcheck&quot;     
-## [205] &quot;RColorBrewer&quot;   &quot;Rcpp&quot;           &quot;RcppArmadillo&quot;  &quot;RcppEigen&quot;     
-## [209] &quot;RcppTOML&quot;       &quot;RCurl&quot;          &quot;Rdpack&quot;         &quot;readr&quot;         
-## [213] &quot;readxl&quot;         &quot;recipes&quot;        &quot;reformulas&quot;     &quot;rematch&quot;       
-## [217] &quot;rematch2&quot;       &quot;remotes&quot;        &quot;renv&quot;           &quot;reprex&quot;        
-## [221] &quot;reticulate&quot;     &quot;rex&quot;            &quot;ri2&quot;            &quot;rlang&quot;         
-## [225] &quot;rmarkdown&quot;      &quot;roxygen2&quot;       &quot;rpart&quot;          &quot;rprojroot&quot;     
-## [229] &quot;rsample&quot;        &quot;rstudioapi&quot;     &quot;rversions&quot;      &quot;rvest&quot;         
-## [233] &quot;sass&quot;           &quot;scales&quot;         &quot;selectr&quot;        &quot;sessioninfo&quot;   
-## [237] &quot;sfd&quot;            &quot;shape&quot;          &quot;shiny&quot;          &quot;slam&quot;          
-## [241] &quot;slider&quot;         &quot;snakecase&quot;      &quot;SnowballC&quot;      &quot;sourcetools&quot;   
-## [245] &quot;SparseM&quot;        &quot;sparsevctrs&quot;    &quot;spatial&quot;        &quot;splines&quot;       
-## [249] &quot;SQUAREM&quot;        &quot;stargazer&quot;      &quot;stats&quot;          &quot;stats4&quot;        
-## [253] &quot;stringi&quot;        &quot;stringr&quot;        &quot;styler&quot;         &quot;survival&quot;      
-## [257] &quot;svglite&quot;        &quot;swirl&quot;          &quot;sys&quot;            &quot;systemfonts&quot;   
-## [261] &quot;tables&quot;         &quot;tcltk&quot;          &quot;testthat&quot;       &quot;textshaping&quot;   
-## [265] &quot;tibble&quot;         &quot;tidygraph&quot;      &quot;tidymodels&quot;     &quot;tidyr&quot;         
-## [269] &quot;tidyselect&quot;     &quot;tidyverse&quot;      &quot;timechange&quot;     &quot;timeDate&quot;      
-## [273] &quot;tinytable&quot;      &quot;tinytex&quot;        &quot;tm&quot;             &quot;tools&quot;         
-## [277] &quot;translations&quot;   &quot;tufte&quot;          &quot;tune&quot;           &quot;tweenr&quot;        
-## [281] &quot;tzdb&quot;           &quot;urlchecker&quot;     &quot;usethis&quot;        &quot;utf8&quot;          
-## [285] &quot;utils&quot;          &quot;uuid&quot;           &quot;V8&quot;             &quot;vctrs&quot;         
-## [289] &quot;viridis&quot;        &quot;viridisLite&quot;    &quot;vroom&quot;          &quot;waldo&quot;         
-## [293] &quot;warp&quot;           &quot;whisker&quot;        &quot;withr&quot;          &quot;wordcloud&quot;     
-## [297] &quot;workflows&quot;      &quot;workflowsets&quot;   &quot;xfun&quot;           &quot;xml2&quot;          
-## [301] &quot;xmlparsedata&quot;   &quot;xopen&quot;          &quot;xplorerr&quot;       &quot;xtable&quot;        
-## [305] &quot;yaml&quot;           &quot;yardstick&quot;      &quot;zip&quot;</code></pre>
+## [193] &quot;qss&quot;            &quot;quantreg&quot;       &quot;quartets&quot;       &quot;R.cache&quot;       
+## [197] &quot;R.methodsS3&quot;    &quot;R.oo&quot;           &quot;R.utils&quot;        &quot;R6&quot;            
+## [201] &quot;ragg&quot;           &quot;randomizr&quot;      &quot;rappdirs&quot;       &quot;rbibutils&quot;     
+## [205] &quot;rcmdcheck&quot;      &quot;RColorBrewer&quot;   &quot;Rcpp&quot;           &quot;RcppArmadillo&quot; 
+## [209] &quot;RcppEigen&quot;      &quot;RcppTOML&quot;       &quot;RCurl&quot;          &quot;Rdpack&quot;        
+## [213] &quot;readr&quot;          &quot;readxl&quot;         &quot;recipes&quot;        &quot;reformulas&quot;    
+## [217] &quot;rematch&quot;        &quot;rematch2&quot;       &quot;remotes&quot;        &quot;renv&quot;          
+## [221] &quot;reprex&quot;         &quot;reticulate&quot;     &quot;rex&quot;            &quot;ri2&quot;           
+## [225] &quot;rlang&quot;          &quot;rmarkdown&quot;      &quot;roxygen2&quot;       &quot;rpart&quot;         
+## [229] &quot;rprojroot&quot;      &quot;rsample&quot;        &quot;rstudioapi&quot;     &quot;rversions&quot;     
+## [233] &quot;rvest&quot;          &quot;sass&quot;           &quot;scales&quot;         &quot;selectr&quot;       
+## [237] &quot;sessioninfo&quot;    &quot;sfd&quot;            &quot;shape&quot;          &quot;shiny&quot;         
+## [241] &quot;slam&quot;           &quot;slider&quot;         &quot;snakecase&quot;      &quot;SnowballC&quot;     
+## [245] &quot;sourcetools&quot;    &quot;SparseM&quot;        &quot;sparsevctrs&quot;    &quot;spatial&quot;       
+## [249] &quot;splines&quot;        &quot;SQUAREM&quot;        &quot;stargazer&quot;      &quot;stats&quot;         
+## [253] &quot;stats4&quot;         &quot;stringi&quot;        &quot;stringr&quot;        &quot;styler&quot;        
+## [257] &quot;survival&quot;       &quot;svglite&quot;        &quot;swirl&quot;          &quot;sys&quot;           
+## [261] &quot;systemfonts&quot;    &quot;tables&quot;         &quot;tcltk&quot;          &quot;testthat&quot;      
+## [265] &quot;textshaping&quot;    &quot;tibble&quot;         &quot;tidygraph&quot;      &quot;tidymodels&quot;    
+## [269] &quot;tidyr&quot;          &quot;tidyselect&quot;     &quot;tidyverse&quot;      &quot;timechange&quot;    
+## [273] &quot;timeDate&quot;       &quot;tinytable&quot;      &quot;tinytex&quot;        &quot;tm&quot;            
+## [277] &quot;tools&quot;          &quot;translations&quot;   &quot;tufte&quot;          &quot;tune&quot;          
+## [281] &quot;tweenr&quot;         &quot;tzdb&quot;           &quot;urlchecker&quot;     &quot;usethis&quot;       
+## [285] &quot;utf8&quot;           &quot;utils&quot;          &quot;uuid&quot;           &quot;V8&quot;            
+## [289] &quot;vctrs&quot;          &quot;viridis&quot;        &quot;viridisLite&quot;    &quot;vroom&quot;         
+## [293] &quot;waldo&quot;          &quot;warp&quot;           &quot;whisker&quot;        &quot;withr&quot;         
+## [297] &quot;wordcloud&quot;      &quot;workflows&quot;      &quot;workflowsets&quot;   &quot;xfun&quot;          
+## [301] &quot;xml2&quot;           &quot;xmlparsedata&quot;   &quot;xopen&quot;          &quot;xplorerr&quot;      
+## [305] &quot;xtable&quot;         &quot;yaml&quot;           &quot;yardstick&quot;      &quot;zip&quot;</code></pre>
 
 </div>
 </div>

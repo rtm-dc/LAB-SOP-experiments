@@ -3,7 +3,8 @@ getting-started
 design
 units
 level-of-randomization
-blocking-on-background-characteristics
+random-assignment-methods
+sec-blocking
 examples
 sec-set-seed
 seeding-procedures
