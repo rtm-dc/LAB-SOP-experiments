@@ -124,7 +124,14 @@ interval covering $(`r ci_low`, `r ci_high`)$.
 
 When we want to adjust for a factor variable that has many levels, the interactions in the Lin estimator may not all be identified. In this case, when we want the Lin estimate of the ATE, we coarsen the factor into fewer categories. 
 
-Sometimes we are interested in quantities other than average treatment effects. For example, in an [experiment](https://thelabprojects.dc.gov/high-risk-drivers) involving safety messaging, we might have exploratory interest in whether different models of cars' registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors. Here, we are not interested in the average treatment effect; further, the Lin version of this model demands more than the data can provide -- a treatment and control unit for every car model. 
+Sometimes we are interested in quantities other than average treatment effects. For example, in an [experiment](https://thelabprojects.dc.gov/high-risk-drivers) involving safety messaging, we might have exploratory interest in whether different models of cars' registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors.  
+
+### Lin Adjustment with Small Cells {#sec-smallcells}
+
+In the example above, there are _many_ models of cars that appear in the data.
+In cases like this, models with category-by-treatment interactions may demand more than the data can provide -- a
+treatment and control unit for every car model.
+
 
 ### Adjusting for Blocks {#sec-adjust-blocks}
 
@@ -148,6 +155,7 @@ estimates of the ATE and its standard error. This approach weights block-level
 effects by $p_j(1-p_j)n_j$, where $p_j$ is the probability of treatment in the
 block, and $n_j$ is the sample size in the block. See the helpful blog post
 [here](https://declaredesign.org/blog/posts/biased-fixed-effects.html).
+
 
 
 ## Binary or Count Outcomes {#sec-binary-outcomes}
@@ -366,7 +374,8 @@ wy_out <- boot_stepdown(
   boot_type = "wild",
   pb = FALSE)
 
-wy_out |> mutate(across(where(is.numeric), round, 3))
+wy_out |> mutate(across(where(is.numeric), 
+                        \(x) round(x, 3)))
 ```
 
 

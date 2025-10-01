@@ -137,7 +137,14 @@ interval covering $(0.484, 1.413)$.
 
 When we want to adjust for a factor variable that has many levels, the interactions in the Lin estimator may not all be identified. In this case, when we want the Lin estimate of the ATE, we coarsen the factor into fewer categories. 
 
-Sometimes we are interested in quantities other than average treatment effects. For example, in an [experiment](https://thelabprojects.dc.gov/high-risk-drivers) involving safety messaging, we might have exploratory interest in whether different models of cars' registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors. Here, we are not interested in the average treatment effect; further, the Lin version of this model demands more than the data can provide -- a treatment and control unit for every car model. 
+Sometimes we are interested in quantities other than average treatment effects. For example, in an [experiment](https://thelabprojects.dc.gov/high-risk-drivers) involving safety messaging, we might have exploratory interest in whether different models of cars' registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors.  
+
+### Lin Adjustment with Small Cells {#sec-smallcells}
+
+In the example above, there are _many_ models of cars that appear in the data.
+In cases like this, models with category-by-treatment interactions may demand more than the data can provide -- a
+treatment and control unit for every car model.
+
 
 ### Adjusting for Blocks {#sec-adjust-blocks}
 
@@ -162,6 +169,7 @@ estimates of the ATE and its standard error. This approach weights block-level
 effects by $p_j(1-p_j)n_j$, where $p_j$ is the probability of treatment in the
 block, and $n_j$ is the sample size in the block. See the helpful blog post
 [here](https://declaredesign.org/blog/posts/biased-fixed-effects.html).
+
 
 
 ## Binary or Count Outcomes {#sec-binary-outcomes}
@@ -361,7 +369,7 @@ We see that the three adjusted $p$-values are $0.03$, $0.04$, and $0.08$. (Here,
 @wesyou93 provides a bootstrapping approach to $p$-value adjustment that tends to be more powerful than the Holm-Bonferroni procedure.^[@morgan17 shows that resampling and reallocation methods behave very similarly (up to $\frac{n-1}{n}$) in testing, and argues that, for interval estimation, we should prefer bootstrap resampling methods to reallocation methods (which depend on an equal-variances assumption and additivity).] It strongly controls the FWER under the assumption of subset pivotality. We show an example using the implementation of @hidalgo17 below. 
 
 
-```r
+``` r
 # Add another outcome and centered covariate:
 df <- df |> mutate(y2 = 0.5 * z + rnorm(nrow(df), sd = 1),
                    x_c = as.vector(scale(x, scale = FALSE)))
@@ -392,21 +400,8 @@ wy_out <- boot_stepdown(
   boot_type = "wild",
   pb = FALSE)
 
-wy_out |> mutate(across(where(is.numeric), round, 3))
-```
-
-```
-## Warning: There was 1 warning in `mutate()`.
-## ℹ In argument: `across(where(is.numeric), round, 3)`.
-## Caused by warning:
-## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
-## Supply arguments directly to `.fns` through an anonymous function instead.
-## 
-##   # Previously
-##   across(a:b, mean, na.rm = TRUE)
-## 
-##   # Now
-##   across(a:b, \(x) mean(x, na.rm = TRUE))
+wy_out |> mutate(across(where(is.numeric), 
+                        \(x) round(x, 3)))
 ```
 
 ```

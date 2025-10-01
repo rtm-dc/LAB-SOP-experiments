@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Analysis | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Analysis | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2025-09-30" />
+<meta name="date" content="2025-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,7 +221,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="analysis.html"><a href="analysis.html#why-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.1</b> Why we adjust for covariates</a></li>
 <li class="chapter" data-level="4.4.2" data-path="analysis.html"><a href="analysis.html#how-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.2</b> How we adjust for covariates</a></li>
-<li class="chapter" data-level="4.4.3" data-path="analysis.html"><a href="analysis.html#sec-adjust-blocks"><i class="fa fa-check"></i><b>4.4.3</b> Adjusting for Blocks</a></li>
+<li class="chapter" data-level="4.4.3" data-path="analysis.html"><a href="analysis.html#sec-smallcells"><i class="fa fa-check"></i><b>4.4.3</b> Lin Adjustment with Small Cells</a></li>
+<li class="chapter" data-level="4.4.4" data-path="analysis.html"><a href="analysis.html#sec-adjust-blocks"><i class="fa fa-check"></i><b>4.4.4</b> Adjusting for Blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#sec-binary-outcomes"><i class="fa fa-check"></i><b>4.5</b> Binary or Count Outcomes</a></li>
 <li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#clusters-weights-fixed-effects"><i class="fa fa-check"></i><b>4.6</b> Clusters, Weights, Fixed Effects</a>
@@ -458,10 +459,16 @@ To implement this, we can use <code>lm_lin()</code> from the <code>estimatr</cod
 <p>The estimate of the average treatment effect is <span class="math inline">\(0.949\)</span>, with a 95% confidence
 interval covering <span class="math inline">\((0.484, 1.413)\)</span>.</p>
 <p>When we want to adjust for a factor variable that has many levels, the interactions in the Lin estimator may not all be identified. In this case, when we want the Lin estimate of the ATE, we coarsen the factor into fewer categories.</p>
-<p>Sometimes we are interested in quantities other than average treatment effects. For example, in an <a href="https://thelabprojects.dc.gov/high-risk-drivers">experiment</a> involving safety messaging, we might have exploratory interest in whether different models of cars’ registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors. Here, we are not interested in the average treatment effect; further, the Lin version of this model demands more than the data can provide – a treatment and control unit for every car model.</p>
+<p>Sometimes we are interested in quantities other than average treatment effects. For example, in an <a href="https://thelabprojects.dc.gov/high-risk-drivers">experiment</a> involving safety messaging, we might have exploratory interest in whether different models of cars’ registrants appear to behave differently. In such an exploration, we estimate a linear model with a coefficient for each car model without centering and interacting the predictors.</p>
 </div>
-<div id="sec-adjust-blocks" class="section level3 hasAnchor" number="4.4.3">
-<h3><span class="header-section-number">4.4.3</span> Adjusting for Blocks<a href="analysis.html#sec-adjust-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sec-smallcells" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Lin Adjustment with Small Cells<a href="analysis.html#sec-smallcells" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the example above, there are <em>many</em> models of cars that appear in the data.
+In cases like this, models with category-by-treatment interactions may demand more than the data can provide – a
+treatment and control unit for every car model.</p>
+</div>
+<div id="sec-adjust-blocks" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Adjusting for Blocks<a href="analysis.html#sec-adjust-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Where treatment probabilities or sample sizes vary across blocks we account for our blocking by either treating the block indicators <span class="math inline">\(B_j\)</span> as Lin covariates and estimating</p>
 <p><span class="math display">\[\begin{eqnarray*}
 y_i &amp; = &amp;  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \ldots \\
@@ -706,18 +713,8 @@ adjust these <span class="math inline">\(p\)</span>-values with the Holm procedu
 <span id="cb34-28"><a href="analysis.html#cb34-28" tabindex="-1"></a>  <span class="at">boot_type =</span> <span class="st">&quot;wild&quot;</span>,</span>
 <span id="cb34-29"><a href="analysis.html#cb34-29" tabindex="-1"></a>  <span class="at">pb =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb34-30"><a href="analysis.html#cb34-30" tabindex="-1"></a></span>
-<span id="cb34-31"><a href="analysis.html#cb34-31" tabindex="-1"></a>wy_out <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## Warning: There was 1 warning in `mutate()`.
-## ℹ In argument: `across(where(is.numeric), round, 3)`.
-## Caused by warning:
-## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
-## Supply arguments directly to `.fns` through an anonymous function instead.
-## 
-##   # Previously
-##   across(a:b, mean, na.rm = TRUE)
-## 
-##   # Now
-##   across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
+<span id="cb34-31"><a href="analysis.html#cb34-31" tabindex="-1"></a>wy_out <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb34-32"><a href="analysis.html#cb34-32" tabindex="-1"></a>                        \(x) <span class="fu">round</span>(x, <span class="dv">3</span>)))</span></code></pre></div>
 <pre><code>##     Hypothesis  coef bs_pvalues_unadjusted bs_pvalues_adjusted
 ## 1 Hypothesis 1     z                 0.001               0.001
 ## 2 Hypothesis 2 z:x_c                 0.148               0.268
