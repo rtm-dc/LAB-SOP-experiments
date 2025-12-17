@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2025-10-01" />
+<meta name="date" content="2025-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -392,7 +392,7 @@ difficult to isolate.</p>
 <li>Random allocation (e.g., 30% Tr, 70% Co overall)</li>
 <li>Bernoulli assignment (e.g., each unit assigned independently, with probability 0.3 to Tr, 0.7 to Co)</li>
 </ol>
-<p>For blocked assignments, see our motivations and methods in Section <a href="design.html#sec-blocking">2.4</a>, the slides <a href="https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf">here</a>, and <span class="citation">Moore (<a href="#ref-moore12">2012</a>)</span>.</p>
+<p>For blocked assignments, see our motivations and methods in Section <a href="design.html#sec-blocking">2.4</a>, the slides <a href="https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf">here</a>, and <span class="citation">Moore (<a href="#ref-moore12">2012</a>)</span>. Note that the assignment done within each block should be a <em>random allocation</em> of a fixed proportion of the units to each condition, not an independent Bernoulli assignment. Random allocations and blocked random allocations exploit advantages of a specific type of <em>dependence</em> among the assignments; if unit <span class="math inline">\(A\)</span> is assigned to treatment, then there is one fewer treatment slot for unit <span class="math inline">\(B\)</span> to occupy.</p>
 <p>For random allocation, see the example below and the vignettes <a href="https://github.com/DeclareDesign/randomizr">here</a> and <a href="https://declaredesign.org/r/randomizr/articles/randomizr_vignette.html">here</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="design.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(randomizr)</span>
 <span id="cb2-2"><a href="design.html#cb2-2" tabindex="-1"></a></span>
@@ -412,7 +412,8 @@ difficult to isolate.</p>
 </div>
 <div id="sec-blocking" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Blocking on Background Characteristics<a href="design.html#sec-blocking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A <em>blocked</em> randomization first creates groups of similar randomization units, and then randomizes within those groups. In a <em>random allocation</em>, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See <span class="citation">Moore (<a href="#ref-moore12">2012</a>)</span> or the slides <a href="https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf">here</a> for an introduction and discussion.</p>
+<p>In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A <em>blocked</em> randomization first creates groups of similar randomization units, and then randomizes within those groups. The assignment done within each block should be a random allocation of a fixed proportion of the units to each condition, not an independent Bernoulli assignment.</p>
+<p>In an unblocked <em>random allocation</em>, by contrast, one assigns a fixed proportion of units to each treatment condition from a single pool. See <span class="citation">Moore (<a href="#ref-moore12">2012</a>)</span> or the slides <a href="https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf">here</a> for an introduction and discussion.</p>
 <div id="examples" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Examples<a href="design.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The Lab’s TANF recertification experiment <span class="citation">(<a href="#ref-mooganmin22">Moore et al. 2022</a>)</span> blocked participants on

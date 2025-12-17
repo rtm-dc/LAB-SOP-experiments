@@ -38,7 +38,7 @@ As a general rule, our preference ordering over assignment methods is
 2. Random allocation (e.g., 30% Tr, 70% Co overall)
 3. Bernoulli assignment (e.g., each unit assigned independently, with probability 0.3 to Tr, 0.7 to Co)
 
-For blocked assignments, see our motivations and methods in Section \@ref(sec-blocking), the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf), and @moore12.
+For blocked assignments, see our motivations and methods in Section \@ref(sec-blocking), the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf), and @moore12. Note that the assignment done within each block should be a _random allocation_ of a fixed proportion of the units to each condition, not an independent Bernoulli assignment. Random allocations and blocked random allocations exploit advantages of a specific type of _dependence_ among the assignments; if unit $A$ is assigned to treatment, then there is one fewer treatment slot for unit $B$ to occupy.
 
 For random allocation, see the example below and the vignettes [here](https://github.com/DeclareDesign/randomizr) and [here](https://declaredesign.org/r/randomizr/articles/randomizr_vignette.html).
 
@@ -58,7 +58,9 @@ For simple Bernoulli assignments, we use `sample()` or `randomizr::simple_ra()`.
 
 ## Blocking on Background Characteristics {#sec-blocking}
 
-In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. In a _random allocation_, by contrast, one assigns a proportion of units to each treatment condition from a single pool. See @moore12 or the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) for an introduction and discussion.
+In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. The assignment done within each block should be a random allocation of a fixed proportion of the units to each condition, not an independent Bernoulli assignment.
+
+In an unblocked _random allocation_, by contrast, one assigns a fixed proportion of units to each treatment condition from a single pool. See @moore12 or the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) for an introduction and discussion.
 
 ### Examples
 
