@@ -34,13 +34,17 @@ difficult to isolate.
 
 As a general rule, our preference ordering over assignment methods is
 
-1. Blocked assignment (e.g., 30% Tr, 70% Co _within_ homogeneous covariate groups)
-2. Random allocation (e.g., 30% Tr, 70% Co overall)
-3. Bernoulli assignment (e.g., each unit assigned independently, with probability 0.3 to Tr, 0.7 to Co)
+1. Blocked assignment: Assign a consistent share of each covariate group to receive the treatment (e.g., 30% Tr, 70% Co _within_ homogeneous covariate groups)
+2. Random allocation: Assign a consistent share of the whole sample to receive the treatment (e.g., 30% Tr, 70% Co overall)
+3. Bernoulli assignment: Assign each unit independently, using a consistent probability.  (e.g., each unit assigned independently, with probability 0.3 to Tr, 0.7 to Co)
+
+We have statistical reasons to prefer some assignment mechanisms over others. Assigning exactly 50 participants out of 100 to treatment will have less variance than will flipping 100 coins to assign treatment, despite the same underlying probability of treatment.
+
+The choice of assignment mechanism can also matter if, for example, partners expect a certain share of participants to be treated, or if we want to ensure that the treatment probability is constant within covariate groups. When we run small lotteries, the choice tends to matter more.
 
 For blocked assignments, see our motivations and methods in Section \@ref(sec-blocking), the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf), and @moore12. Note that the assignment done within each block should be a _random allocation_ of a fixed proportion of the units to each condition, not an independent Bernoulli assignment. Random allocations and blocked random allocations exploit advantages of a specific type of _dependence_ among the assignments; if unit $A$ is assigned to treatment, then there is one fewer treatment slot for unit $B$ to occupy.
 
-For random allocation, see the example below and the vignettes [here](https://github.com/DeclareDesign/randomizr) and [here](https://declaredesign.org/r/randomizr/articles/randomizr_vignette.html).
+For random allocation, see the example below and the vignettes [here](https://github.com/DeclareDesign/randomizr) and [here](https://declaredesign.org/r/randomizr/articles/randomizr_vignette.html). Below, note that the proportion treated equals the assignment probability.
 
 ```{r}
 library(randomizr)
@@ -54,7 +58,23 @@ rand_alloc <- complete_ra(N = 100, prob_each = c(.2, .3, .5))
 table(rand_alloc)
 ```
 
-For simple Bernoulli assignments, we use `sample()` or `randomizr::simple_ra()`.
+For simple Bernoulli assignments, we use `sample()` or `randomizr::simple_ra()`. Below, note that the proportion treated does not generally match the underlying probability.
+
+```{r}
+set.seed(741448875)
+
+simple_bern_50 <- simple_ra(N = 100)
+table(simple_bern_50)
+
+simple_bern_20 <- simple_ra(N = 100, prob = 0.2)
+table(simple_bern_20)
+
+bern_sample <- sample(0:1, 100, replace = TRUE)
+table(bern_sample)
+```
+
+
+
 
 ## Blocking on Background Characteristics {#sec-blocking}
 
