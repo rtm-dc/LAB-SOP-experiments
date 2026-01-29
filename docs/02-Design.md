@@ -113,17 +113,117 @@ table(bern_sample)
 
 
 
-
 ## Blocking on Background Characteristics {#sec-blocking}
 
 In order to create balance on potential outcomes, which promotes less estimation error and more precision, we block using prognostic covariates. A _blocked_ randomization first creates groups of similar randomization units, and then randomizes within those groups. The assignment done within each block should be a random allocation of a fixed proportion of the units to each condition, not an independent Bernoulli assignment.
 
 In an unblocked _random allocation_, by contrast, one assigns a fixed proportion of units to each treatment condition from a single pool. See @moore12 or the slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) for an introduction and discussion.
 
-### Examples
+### Applications
 
 The Lab's TANF recertification experiment [@mooganmin22] blocked participants on
 service center and assigned visit date.
+
+### Code Examples
+
+The slides [here](https://github.com/ryantmoore/discussions/blob/main/997-2024-06-11_blocking.pdf) include an example of blocking the data, doing a random allocation within blocks, and attaching the assigned treatment conditions to the original dataframe. The code below provide similar examples.
+
+#### `{blockTools}`
+
+
+``` r
+library(blockTools)
+library(tidyverse)
+
+# Sample data:
+data(x100) 
+
+# Block on continuous b1, b2, within groups of g:
+b <- block(x100, 
+           groups = "g",
+           id.vars = "id",
+           block.vars = c("b1", "b2"),
+           distance = "mve")
+
+# Assign within blocks:
+a <- assignment(b, seed = 723876328)
+
+# Attach conditions (here, the defaults, 1 or 2) to original data:
+x100 <- x100 |> mutate(
+  bt_condition = extract_conditions(a, x100, id.var = "id")
+)
+
+head(x100)
+```
+
+```
+##     id id2  b1  b2 g  ig bt_condition
+## 1 1001 101 156 795 b 729            1
+## 2 1002 102 813 469 a 627            2
+## 3 1003 103 950 978 a 959            2
+## 4 1004 104 991 781 a 661            2
+## 5 1005 105 613 759 a 819            1
+## 6 1006 106 654 838 b 643            1
+```
+
+There are 36 units in group `a`, 32 in `b`, and 32 in `c`. Below, see that the assignment within blocks is perfectly half 1's, half 2's. Similarly, `b1` and `b2` will be better balanced on average than in an unblocked assignment. See the resources above for details.
+
+
+``` r
+x100 |> count(g, bt_condition)
+```
+
+```
+##   g bt_condition  n
+## 1 a            1 18
+## 2 a            2 18
+## 3 b            1 16
+## 4 b            2 16
+## 5 c            1 16
+## 6 c            2 16
+```
+
+#### `{randomizr}`
+
+We can use `{randomizr}` to block on discrete covariates only. The example below ignores continuous variables `b1` and `b2`. Its default condition labels are 0 and 1.
+
+
+``` r
+library(randomizr)
+
+x100 <- x100 |>
+  mutate(randr_condition = block_ra(x100$g))
+
+head(x100)
+```
+
+```
+##     id id2  b1  b2 g  ig bt_condition randr_condition
+## 1 1001 101 156 795 b 729            1               0
+## 2 1002 102 813 469 a 627            2               1
+## 3 1003 103 950 978 a 959            2               1
+## 4 1004 104 991 781 a 661            2               0
+## 5 1005 105 613 759 a 819            1               0
+## 6 1006 106 654 838 b 643            1               0
+```
+
+Below, see that the assignment is perfectly half 0's, half 1's.
+
+
+``` r
+x100 |> count(g, randr_condition)
+```
+
+```
+##   g randr_condition  n
+## 1 a               0 18
+## 2 a               1 18
+## 3 b               0 16
+## 4 b               1 16
+## 5 c               0 16
+## 6 c               1 16
+```
+
 
 ## Setting the Assignment Seed {#sec-set-seed}
 
@@ -334,7 +434,6 @@ Create some data to illustrate simulation-based power analysis:
 ``` r
 library(estimatr)
 library(here)
-library(tidyverse)
 
 set.seed(988869862)
 

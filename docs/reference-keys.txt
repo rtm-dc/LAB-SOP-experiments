@@ -5,7 +5,10 @@ units
 level-of-randomization
 random-assignment-methods
 sec-blocking
-examples
+applications
+code-examples
+blocktools
+randomizr
 sec-set-seed
 seeding-procedures
 date-seeds
