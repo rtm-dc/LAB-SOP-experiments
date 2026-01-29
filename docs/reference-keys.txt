@@ -33,6 +33,7 @@ sec-lin
 why-we-adjust-for-covariates
 how-we-adjust-for-covariates
 sec-smallcells
+sec-weights-dof
 sec-adjust-blocks
 sec-binary-outcomes
 clusters-weights-fixed-effects

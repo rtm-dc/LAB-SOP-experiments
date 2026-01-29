@@ -223,7 +223,8 @@ div.csl-indent {
 <li class="chapter" data-level="4.4.1" data-path="analysis.html"><a href="analysis.html#why-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.1</b> Why we adjust for covariates</a></li>
 <li class="chapter" data-level="4.4.2" data-path="analysis.html"><a href="analysis.html#how-we-adjust-for-covariates"><i class="fa fa-check"></i><b>4.4.2</b> How we adjust for covariates</a></li>
 <li class="chapter" data-level="4.4.3" data-path="analysis.html"><a href="analysis.html#sec-smallcells"><i class="fa fa-check"></i><b>4.4.3</b> Lin Adjustment with Small Cells</a></li>
-<li class="chapter" data-level="4.4.4" data-path="analysis.html"><a href="analysis.html#sec-adjust-blocks"><i class="fa fa-check"></i><b>4.4.4</b> Adjusting for Blocks</a></li>
+<li class="chapter" data-level="4.4.4" data-path="analysis.html"><a href="analysis.html#sec-weights-dof"><i class="fa fa-check"></i><b>4.4.4</b> Note: Weighted Adjustment and Degrees of Freedom</a></li>
+<li class="chapter" data-level="4.4.5" data-path="analysis.html"><a href="analysis.html#sec-adjust-blocks"><i class="fa fa-check"></i><b>4.4.5</b> Adjusting for Blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#sec-binary-outcomes"><i class="fa fa-check"></i><b>4.5</b> Binary or Count Outcomes</a></li>
 <li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#clusters-weights-fixed-effects"><i class="fa fa-check"></i><b>4.6</b> Clusters, Weights, Fixed Effects</a>
@@ -468,8 +469,49 @@ interval covering <span class="math inline">\((0.484, 1.413)\)</span>.</p>
 In cases like this, models with category-by-treatment interactions may demand more than the data can provide – a
 treatment and control unit for every car model.</p>
 </div>
-<div id="sec-adjust-blocks" class="section level3 hasAnchor" number="4.4.4">
-<h3><span class="header-section-number">4.4.4</span> Adjusting for Blocks<a href="analysis.html#sec-adjust-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sec-weights-dof" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Note: Weighted Adjustment and Degrees of Freedom<a href="analysis.html#sec-weights-dof" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When estimating a weighted regression, base R’s <code>lm()</code> and <code>{estimatr}</code>’s <code>lm_lin()</code> and <code>lm_robust()</code> return different values for the residual degrees of freedom.</p>
+<ul>
+<li><code>lm()</code> returns the quantity (sample size) - (sample size that has weight = zero) - (number of parameters)</li>
+<li><code>lm_lin()</code> and <code>lm_robust()</code> return the quantity (sample size) - (number of parameters), ignoring the fact that some observations may have weight <span class="math inline">\(=0\)</span>.</li>
+</ul>
+<p>A code example follows.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="analysis.html#cb42-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb42-2"><a href="analysis.html#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="analysis.html#cb42-3" tabindex="-1"></a><span class="co"># Simulate data:</span></span>
+<span id="cb42-4"><a href="analysis.html#cb42-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">452821792</span>)</span>
+<span id="cb42-5"><a href="analysis.html#cb42-5" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="analysis.html#cb42-6" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb42-7"><a href="analysis.html#cb42-7" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="analysis.html#cb42-8" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb42-9"><a href="analysis.html#cb42-9" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(n),</span>
+<span id="cb42-10"><a href="analysis.html#cb42-10" tabindex="-1"></a>  <span class="at">t =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb42-11"><a href="analysis.html#cb42-11" tabindex="-1"></a>  <span class="at">y =</span> t <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n),</span>
+<span id="cb42-12"><a href="analysis.html#cb42-12" tabindex="-1"></a>  <span class="at">w =</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb42-13"><a href="analysis.html#cb42-13" tabindex="-1"></a>  <span class="at">w_zero =</span> <span class="fu">if_else</span>(w <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="dv">0</span>, w)</span>
+<span id="cb42-14"><a href="analysis.html#cb42-14" tabindex="-1"></a>)</span></code></pre></div>
+<p>Note that 35 observations have weight <span class="math inline">\(=0\)</span>:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="analysis.html#cb43-1" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">count</span>(w_zero <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   `w_zero == 0`     n
+##   &lt;lgl&gt;         &lt;int&gt;
+## 1 FALSE           165
+## 2 TRUE             35</code></pre>
+<p>Three weighted regression estimations’ degrees of freedom:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="analysis.html#cb45-1" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> t <span class="sc">+</span> x, <span class="at">weights =</span> w, <span class="at">data =</span> df)<span class="sc">$</span>df</span></code></pre></div>
+<pre><code>## [1] 197</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="analysis.html#cb47-1" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> t <span class="sc">+</span> x, <span class="at">weights =</span> w_zero, <span class="at">data =</span> df)<span class="sc">$</span>df</span></code></pre></div>
+<pre><code>## [1] 162</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="analysis.html#cb49-1" tabindex="-1"></a><span class="fu">lm_robust</span>(y <span class="sc">~</span> t <span class="sc">+</span> x, <span class="at">data =</span> df, <span class="at">weights =</span> w_zero) <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="analysis.html#cb49-2" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(term, estimate, df)</span></code></pre></div>
+<pre><code>##          term  estimate  df
+## 1 (Intercept) 0.0621577 197
+## 2           t 0.8892474 197
+## 3           x 1.0421735 197</code></pre>
+</div>
+<div id="sec-adjust-blocks" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Adjusting for Blocks<a href="analysis.html#sec-adjust-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Where treatment probabilities or sample sizes vary across blocks we account for our blocking by either treating the block indicators <span class="math inline">\(B_j\)</span> as Lin covariates and estimating</p>
 <p><span class="math display">\[\begin{eqnarray*}
 y_i &amp; = &amp;  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i (X_i - \bar{X}) + \ldots \\
@@ -477,8 +519,8 @@ y_i &amp; = &amp;  \beta_0 + \beta_1 Z_i + \beta_2 (X_i - \bar{X}) + \beta_3 Z_i
 &amp;&amp; \delta_1 Z_i (B_1 - \bar{B}_1) + \delta_2 Z_i (B_2 - \bar{B}_2) + \ldots + \epsilon_i
 \end{eqnarray*}\]</span></p>
 <p>or by estimating the blocked difference-in-means (i.e., taking the average of the block-level ATEs, weighted by their sample sizes). We can do so via</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="analysis.html#cb42-1" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block1_id <span class="sc">+</span> block2_id <span class="sc">+</span> ..., <span class="at">data =</span> df)</span>
-<span id="cb42-2"><a href="analysis.html#cb42-2" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block_id_factor, <span class="at">data =</span> df)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="analysis.html#cb51-1" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block1_id <span class="sc">+</span> block2_id <span class="sc">+</span> ..., <span class="at">data =</span> df)</span>
+<span id="cb51-2"><a href="analysis.html#cb51-2" tabindex="-1"></a><span class="fu">lm_lin</span>(y <span class="sc">~</span> z, <span class="at">covariates =</span> <span class="sc">~</span> x <span class="sc">+</span> block_id_factor, <span class="at">data =</span> df)</span></code></pre></div>
 <p>We do this because the “least squares dummy variable” approach produces biased
 estimates of the ATE and its standard error. This approach weights block-level
 effects by <span class="math inline">\(p_j(1-p_j)n_j\)</span>, where <span class="math inline">\(p_j\)</span> is the probability of treatment in the
@@ -498,7 +540,7 @@ provides an example with a highly skewed outcome, e.g.</p>
 <code>lm_lin()</code>, start at the help file at
 <a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html" class="uri">https://declaredesign.org/r/estimatr/reference/lm_robust.html</a>. For example, for
 a clustered assignment analysis,</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="analysis.html#cb43-1" tabindex="-1"></a><span class="fu">lm_robust</span>(y <span class="sc">~</span> z, <span class="at">data =</span> df, <span class="at">clusters =</span> cluster_id)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="analysis.html#cb52-1" tabindex="-1"></a><span class="fu">lm_robust</span>(y <span class="sc">~</span> z, <span class="at">data =</span> df, <span class="at">clusters =</span> cluster_id)</span></code></pre></div>
 <p>Though our standard procedure is to cluster at the level of assignment, we note
 that “<a href="https://declaredesign.org/blog/posts/sometimes-you-need-to-cluster-standard-errors-above-level-of-treatment.html">[s]ometimes you need to cluster standard errors above the level of
 treatment</a>.”</p>
@@ -591,36 +633,36 @@ have complex designs or analysis strategies, we use randomization inference.</p>
 doing so, using a <code>for</code> loop. We set the seed using the method in Section
 <a href="design.html#sec-set-seed">2.5</a>; we simulate treatment assignments using the method in
 Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="analysis.html#cb44-1" tabindex="-1"></a><span class="co"># Set seed:</span></span>
-<span id="cb44-2"><a href="analysis.html#cb44-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">534722898</span>)</span>
-<span id="cb44-3"><a href="analysis.html#cb44-3" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="analysis.html#cb44-4" tabindex="-1"></a><span class="co"># Set simulation size:</span></span>
-<span id="cb44-5"><a href="analysis.html#cb44-5" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb44-6"><a href="analysis.html#cb44-6" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="analysis.html#cb44-7" tabindex="-1"></a><span class="co"># Create empty storage vector:</span></span>
-<span id="cb44-8"><a href="analysis.html#cb44-8" tabindex="-1"></a>store_te <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> n_sims)</span>
-<span id="cb44-9"><a href="analysis.html#cb44-9" tabindex="-1"></a></span>
-<span id="cb44-10"><a href="analysis.html#cb44-10" tabindex="-1"></a><span class="co"># Rerandomise and perform estimation n_sims times:</span></span>
-<span id="cb44-11"><a href="analysis.html#cb44-11" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
-<span id="cb44-12"><a href="analysis.html#cb44-12" tabindex="-1"></a>  </span>
-<span id="cb44-13"><a href="analysis.html#cb44-13" tabindex="-1"></a>  <span class="co"># Reassign 0/1 treatment:</span></span>
-<span id="cb44-14"><a href="analysis.html#cb44-14" tabindex="-1"></a>  df_tmp <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb44-15"><a href="analysis.html#cb44-15" tabindex="-1"></a>  </span>
-<span id="cb44-16"><a href="analysis.html#cb44-16" tabindex="-1"></a>  <span class="co"># Estimate treatment effect:</span></span>
-<span id="cb44-17"><a href="analysis.html#cb44-17" tabindex="-1"></a>  lm_tmp <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y <span class="sc">~</span> z_tmp, <span class="at">data =</span> df_tmp)</span>
-<span id="cb44-18"><a href="analysis.html#cb44-18" tabindex="-1"></a>  </span>
-<span id="cb44-19"><a href="analysis.html#cb44-19" tabindex="-1"></a>  <span class="co"># Store estimate:</span></span>
-<span id="cb44-20"><a href="analysis.html#cb44-20" tabindex="-1"></a>  store_te[i] <span class="ot">&lt;-</span> lm_tmp<span class="sc">$</span>coefficients[<span class="st">&quot;z_tmp&quot;</span>]</span>
-<span id="cb44-21"><a href="analysis.html#cb44-21" tabindex="-1"></a>}</span>
-<span id="cb44-22"><a href="analysis.html#cb44-22" tabindex="-1"></a></span>
-<span id="cb44-23"><a href="analysis.html#cb44-23" tabindex="-1"></a><span class="co"># Estimate treatment effect from actual assignment:</span></span>
-<span id="cb44-24"><a href="analysis.html#cb44-24" tabindex="-1"></a>te_est <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>coefficients[<span class="st">&quot;z&quot;</span>]</span>
-<span id="cb44-25"><a href="analysis.html#cb44-25" tabindex="-1"></a></span>
-<span id="cb44-26"><a href="analysis.html#cb44-26" tabindex="-1"></a><span class="co"># The p-value:</span></span>
-<span id="cb44-27"><a href="analysis.html#cb44-27" tabindex="-1"></a><span class="co"># &quot;What proportion of effects estimated under sharp null hypothesis</span></span>
-<span id="cb44-28"><a href="analysis.html#cb44-28" tabindex="-1"></a><span class="co">#  are at least as extreme as that which we observed?&quot;</span></span>
-<span id="cb44-29"><a href="analysis.html#cb44-29" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(store_te) <span class="sc">&gt;=</span> <span class="fu">abs</span>(te_est))</span></code></pre></div>
-<pre><code>## [1] 0.003</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="analysis.html#cb53-1" tabindex="-1"></a><span class="co"># Set seed:</span></span>
+<span id="cb53-2"><a href="analysis.html#cb53-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">534722898</span>)</span>
+<span id="cb53-3"><a href="analysis.html#cb53-3" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="analysis.html#cb53-4" tabindex="-1"></a><span class="co"># Set simulation size:</span></span>
+<span id="cb53-5"><a href="analysis.html#cb53-5" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb53-6"><a href="analysis.html#cb53-6" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="analysis.html#cb53-7" tabindex="-1"></a><span class="co"># Create empty storage vector:</span></span>
+<span id="cb53-8"><a href="analysis.html#cb53-8" tabindex="-1"></a>store_te <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> n_sims)</span>
+<span id="cb53-9"><a href="analysis.html#cb53-9" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="analysis.html#cb53-10" tabindex="-1"></a><span class="co"># Rerandomise and perform estimation n_sims times:</span></span>
+<span id="cb53-11"><a href="analysis.html#cb53-11" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
+<span id="cb53-12"><a href="analysis.html#cb53-12" tabindex="-1"></a>  </span>
+<span id="cb53-13"><a href="analysis.html#cb53-13" tabindex="-1"></a>  <span class="co"># Reassign 0/1 treatment:</span></span>
+<span id="cb53-14"><a href="analysis.html#cb53-14" tabindex="-1"></a>  df_tmp <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">z_tmp =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb53-15"><a href="analysis.html#cb53-15" tabindex="-1"></a>  </span>
+<span id="cb53-16"><a href="analysis.html#cb53-16" tabindex="-1"></a>  <span class="co"># Estimate treatment effect:</span></span>
+<span id="cb53-17"><a href="analysis.html#cb53-17" tabindex="-1"></a>  lm_tmp <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(y <span class="sc">~</span> z_tmp, <span class="at">data =</span> df_tmp)</span>
+<span id="cb53-18"><a href="analysis.html#cb53-18" tabindex="-1"></a>  </span>
+<span id="cb53-19"><a href="analysis.html#cb53-19" tabindex="-1"></a>  <span class="co"># Store estimate:</span></span>
+<span id="cb53-20"><a href="analysis.html#cb53-20" tabindex="-1"></a>  store_te[i] <span class="ot">&lt;-</span> lm_tmp<span class="sc">$</span>coefficients[<span class="st">&quot;z_tmp&quot;</span>]</span>
+<span id="cb53-21"><a href="analysis.html#cb53-21" tabindex="-1"></a>}</span>
+<span id="cb53-22"><a href="analysis.html#cb53-22" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="analysis.html#cb53-23" tabindex="-1"></a><span class="co"># Estimate treatment effect from actual assignment:</span></span>
+<span id="cb53-24"><a href="analysis.html#cb53-24" tabindex="-1"></a>te_est <span class="ot">&lt;-</span> lm_out<span class="sc">$</span>coefficients[<span class="st">&quot;z&quot;</span>]</span>
+<span id="cb53-25"><a href="analysis.html#cb53-25" tabindex="-1"></a></span>
+<span id="cb53-26"><a href="analysis.html#cb53-26" tabindex="-1"></a><span class="co"># The p-value:</span></span>
+<span id="cb53-27"><a href="analysis.html#cb53-27" tabindex="-1"></a><span class="co"># &quot;What proportion of effects estimated under sharp null hypothesis</span></span>
+<span id="cb53-28"><a href="analysis.html#cb53-28" tabindex="-1"></a><span class="co">#  are at least as extreme as that which we observed?&quot;</span></span>
+<span id="cb53-29"><a href="analysis.html#cb53-29" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(store_te) <span class="sc">&gt;=</span> <span class="fu">abs</span>(te_est))</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
 <p>Sometimes, this will differ greatly from the parametric <span class="math inline">\(p\)</span>-value. Here, the
 parametric <span class="math inline">\(p\)</span>-value is 0.00482.</p>
 <p>For another example, see <span class="citation">Gerber and Green (<a href="#ref-gergre12">2012</a>)</span>, Chapter 3 for a demonstration using highly skewed data.</p>
@@ -677,45 +719,45 @@ procedure of <span class="citation">Westfall and Young (<a href="#ref-wesyou93">
 <p>Suppose we have conducted three confirmatory hypothesis tests in a family, with
 <span class="math inline">\(p\)</span>-values <span class="math inline">\(p_1 = .01\)</span>, <span class="math inline">\(p_2 = .02\)</span>, and <span class="math inline">\(p_3 = .08\)</span>, in increasing order. To
 adjust these <span class="math inline">\(p\)</span>-values with the Holm procedure, we use</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="analysis.html#cb46-1" tabindex="-1"></a><span class="fu">p.adjust</span>(<span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.08</span>), <span class="at">method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="analysis.html#cb55-1" tabindex="-1"></a><span class="fu">p.adjust</span>(<span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.08</span>), <span class="at">method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.03 0.04 0.08</code></pre>
 <p>We see that the three adjusted <span class="math inline">\(p\)</span>-values are <span class="math inline">\(0.03\)</span>, <span class="math inline">\(0.04\)</span>, and <span class="math inline">\(0.08\)</span>. (Here, these are <span class="math inline">\(p_1 \times 3\)</span>, <span class="math inline">\(p_2 \times 2\)</span>, and <span class="math inline">\(p_3 \times 1\)</span>.)</p>
 </div>
 <div id="westfall-young-adjustment" class="section level3 hasAnchor" number="4.10.2">
 <h3><span class="header-section-number">4.10.2</span> Westfall-Young Adjustment<a href="analysis.html#westfall-young-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="citation">Westfall and Young (<a href="#ref-wesyou93">1993</a>)</span> provides a bootstrapping approach to <span class="math inline">\(p\)</span>-value adjustment that tends to be more powerful than the Holm-Bonferroni procedure.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> It strongly controls the FWER under the assumption of subset pivotality. We show an example using the implementation of <span class="citation">Hidalgo (<a href="#ref-hidalgo17">2017</a>)</span> below.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="analysis.html#cb48-1" tabindex="-1"></a><span class="co"># Add another outcome and centered covariate:</span></span>
-<span id="cb48-2"><a href="analysis.html#cb48-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">y2 =</span> <span class="fl">0.5</span> <span class="sc">*</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(df), <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb48-3"><a href="analysis.html#cb48-3" tabindex="-1"></a>                   <span class="at">x_c =</span> <span class="fu">as.vector</span>(<span class="fu">scale</span>(x, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb48-4"><a href="analysis.html#cb48-4" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="analysis.html#cb48-5" tabindex="-1"></a><span class="co"># Install multitestr:</span></span>
-<span id="cb48-6"><a href="analysis.html#cb48-6" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;fdhidalgo/multitestr&quot;)</span></span>
-<span id="cb48-7"><a href="analysis.html#cb48-7" tabindex="-1"></a><span class="fu">library</span>(multitestr)</span>
-<span id="cb48-8"><a href="analysis.html#cb48-8" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="analysis.html#cb48-9" tabindex="-1"></a><span class="co"># Define formulas with treatment (and interaction):</span></span>
-<span id="cb48-10"><a href="analysis.html#cb48-10" tabindex="-1"></a>ff <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
-<span id="cb48-11"><a href="analysis.html#cb48-11" tabindex="-1"></a>  <span class="st">&quot;y ~ z + x_c + z * x_c&quot;</span>, </span>
-<span id="cb48-12"><a href="analysis.html#cb48-12" tabindex="-1"></a>  <span class="st">&quot;y2 ~ z + x_c + z * x_c&quot;</span>),</span>
-<span id="cb48-13"><a href="analysis.html#cb48-13" tabindex="-1"></a>  as.formula)</span>
-<span id="cb48-14"><a href="analysis.html#cb48-14" tabindex="-1"></a></span>
-<span id="cb48-15"><a href="analysis.html#cb48-15" tabindex="-1"></a><span class="co"># Define null formulas without treatment:</span></span>
-<span id="cb48-16"><a href="analysis.html#cb48-16" tabindex="-1"></a>ff_null <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
-<span id="cb48-17"><a href="analysis.html#cb48-17" tabindex="-1"></a>  <span class="st">&quot;y ~ x_c&quot;</span>, </span>
-<span id="cb48-18"><a href="analysis.html#cb48-18" tabindex="-1"></a>  <span class="st">&quot;y2 ~ x_c&quot;</span>),</span>
-<span id="cb48-19"><a href="analysis.html#cb48-19" tabindex="-1"></a>  as.formula)</span>
-<span id="cb48-20"><a href="analysis.html#cb48-20" tabindex="-1"></a></span>
-<span id="cb48-21"><a href="analysis.html#cb48-21" tabindex="-1"></a>wy_out <span class="ot">&lt;-</span> <span class="fu">boot_stepdown</span>(</span>
-<span id="cb48-22"><a href="analysis.html#cb48-22" tabindex="-1"></a>  <span class="at">full_formulas =</span> ff,</span>
-<span id="cb48-23"><a href="analysis.html#cb48-23" tabindex="-1"></a>  <span class="at">null_formulas =</span> ff_null,</span>
-<span id="cb48-24"><a href="analysis.html#cb48-24" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
-<span id="cb48-25"><a href="analysis.html#cb48-25" tabindex="-1"></a>  <span class="at">coef_list =</span> <span class="fu">list</span>(<span class="at">coef =</span> <span class="fu">c</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;z:x_c&quot;</span>)),</span>
-<span id="cb48-26"><a href="analysis.html#cb48-26" tabindex="-1"></a>  <span class="at">nboots =</span> <span class="dv">1000</span>,</span>
-<span id="cb48-27"><a href="analysis.html#cb48-27" tabindex="-1"></a>  <span class="at">parallel =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb48-28"><a href="analysis.html#cb48-28" tabindex="-1"></a>  <span class="at">boot_type =</span> <span class="st">&quot;wild&quot;</span>,</span>
-<span id="cb48-29"><a href="analysis.html#cb48-29" tabindex="-1"></a>  <span class="at">pb =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb48-30"><a href="analysis.html#cb48-30" tabindex="-1"></a></span>
-<span id="cb48-31"><a href="analysis.html#cb48-31" tabindex="-1"></a>wy_out <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
-<span id="cb48-32"><a href="analysis.html#cb48-32" tabindex="-1"></a>                        \(x) <span class="fu">round</span>(x, <span class="dv">3</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="analysis.html#cb57-1" tabindex="-1"></a><span class="co"># Add another outcome and centered covariate:</span></span>
+<span id="cb57-2"><a href="analysis.html#cb57-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">y2 =</span> <span class="fl">0.5</span> <span class="sc">*</span> z <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(df), <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb57-3"><a href="analysis.html#cb57-3" tabindex="-1"></a>                   <span class="at">x_c =</span> <span class="fu">as.vector</span>(<span class="fu">scale</span>(x, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb57-4"><a href="analysis.html#cb57-4" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="analysis.html#cb57-5" tabindex="-1"></a><span class="co"># Install multitestr:</span></span>
+<span id="cb57-6"><a href="analysis.html#cb57-6" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;fdhidalgo/multitestr&quot;)</span></span>
+<span id="cb57-7"><a href="analysis.html#cb57-7" tabindex="-1"></a><span class="fu">library</span>(multitestr)</span>
+<span id="cb57-8"><a href="analysis.html#cb57-8" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="analysis.html#cb57-9" tabindex="-1"></a><span class="co"># Define formulas with treatment (and interaction):</span></span>
+<span id="cb57-10"><a href="analysis.html#cb57-10" tabindex="-1"></a>ff <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
+<span id="cb57-11"><a href="analysis.html#cb57-11" tabindex="-1"></a>  <span class="st">&quot;y ~ z + x_c + z * x_c&quot;</span>, </span>
+<span id="cb57-12"><a href="analysis.html#cb57-12" tabindex="-1"></a>  <span class="st">&quot;y2 ~ z + x_c + z * x_c&quot;</span>),</span>
+<span id="cb57-13"><a href="analysis.html#cb57-13" tabindex="-1"></a>  as.formula)</span>
+<span id="cb57-14"><a href="analysis.html#cb57-14" tabindex="-1"></a></span>
+<span id="cb57-15"><a href="analysis.html#cb57-15" tabindex="-1"></a><span class="co"># Define null formulas without treatment:</span></span>
+<span id="cb57-16"><a href="analysis.html#cb57-16" tabindex="-1"></a>ff_null <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">list</span>(</span>
+<span id="cb57-17"><a href="analysis.html#cb57-17" tabindex="-1"></a>  <span class="st">&quot;y ~ x_c&quot;</span>, </span>
+<span id="cb57-18"><a href="analysis.html#cb57-18" tabindex="-1"></a>  <span class="st">&quot;y2 ~ x_c&quot;</span>),</span>
+<span id="cb57-19"><a href="analysis.html#cb57-19" tabindex="-1"></a>  as.formula)</span>
+<span id="cb57-20"><a href="analysis.html#cb57-20" tabindex="-1"></a></span>
+<span id="cb57-21"><a href="analysis.html#cb57-21" tabindex="-1"></a>wy_out <span class="ot">&lt;-</span> <span class="fu">boot_stepdown</span>(</span>
+<span id="cb57-22"><a href="analysis.html#cb57-22" tabindex="-1"></a>  <span class="at">full_formulas =</span> ff,</span>
+<span id="cb57-23"><a href="analysis.html#cb57-23" tabindex="-1"></a>  <span class="at">null_formulas =</span> ff_null,</span>
+<span id="cb57-24"><a href="analysis.html#cb57-24" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
+<span id="cb57-25"><a href="analysis.html#cb57-25" tabindex="-1"></a>  <span class="at">coef_list =</span> <span class="fu">list</span>(<span class="at">coef =</span> <span class="fu">c</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;z:x_c&quot;</span>)),</span>
+<span id="cb57-26"><a href="analysis.html#cb57-26" tabindex="-1"></a>  <span class="at">nboots =</span> <span class="dv">1000</span>,</span>
+<span id="cb57-27"><a href="analysis.html#cb57-27" tabindex="-1"></a>  <span class="at">parallel =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb57-28"><a href="analysis.html#cb57-28" tabindex="-1"></a>  <span class="at">boot_type =</span> <span class="st">&quot;wild&quot;</span>,</span>
+<span id="cb57-29"><a href="analysis.html#cb57-29" tabindex="-1"></a>  <span class="at">pb =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb57-30"><a href="analysis.html#cb57-30" tabindex="-1"></a></span>
+<span id="cb57-31"><a href="analysis.html#cb57-31" tabindex="-1"></a>wy_out <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb57-32"><a href="analysis.html#cb57-32" tabindex="-1"></a>                        \(x) <span class="fu">round</span>(x, <span class="dv">3</span>)))</span></code></pre></div>
 <pre><code>##     Hypothesis  coef bs_pvalues_unadjusted bs_pvalues_adjusted
 ## 1 Hypothesis 1     z                 0.001               0.001
 ## 2 Hypothesis 2 z:x_c                 0.148               0.268

@@ -145,6 +145,80 @@ In the example above, there are _many_ models of cars that appear in the data.
 In cases like this, models with category-by-treatment interactions may demand more than the data can provide -- a
 treatment and control unit for every car model.
 
+### Note: Weighted Adjustment and Degrees of Freedom {#sec-weights-dof}
+
+When estimating a weighted regression, base R's `lm()` and `{estimatr}`'s `lm_lin()` and `lm_robust()` return different values for the residual degrees of freedom.
+
+- `lm()` returns the quantity (sample size) - (sample size that has weight = zero) - (number of parameters)
+- `lm_lin()` and `lm_robust()` return the quantity (sample size) - (number of parameters), ignoring the fact that some observations may have weight $=0$.
+
+A code example follows.
+
+
+``` r
+library(tidyverse)
+
+# Simulate data:
+set.seed(452821792)
+
+n <- 200
+
+df <- tibble(
+  x = rnorm(n),
+  t = sample(0:1, n, replace = TRUE),
+  y = t + x + rnorm(n),
+  w = runif(n, 0, 3),
+  w_zero = if_else(w < 0.5, 0, w)
+)
+```
+
+Note that 35 observations have weight $=0$:
+
+
+``` r
+df |> count(w_zero == 0)
+```
+
+```
+## # A tibble: 2 × 2
+##   `w_zero == 0`     n
+##   <lgl>         <int>
+## 1 FALSE           165
+## 2 TRUE             35
+```
+
+Three weighted regression estimations' degrees of freedom:
+
+
+``` r
+lm(y ~ t + x, weights = w, data = df)$df
+```
+
+```
+## [1] 197
+```
+
+``` r
+lm(y ~ t + x, weights = w_zero, data = df)$df
+```
+
+```
+## [1] 162
+```
+
+``` r
+lm_robust(y ~ t + x, data = df, weights = w_zero) |> 
+  tidy() |> select(term, estimate, df)
+```
+
+```
+##          term  estimate  df
+## 1 (Intercept) 0.0621577 197
+## 2           t 0.8892474 197
+## 3           x 1.0421735 197
+```
+
+
 
 ### Adjusting for Blocks {#sec-adjust-blocks}
 
@@ -283,7 +357,7 @@ mean(abs(store_te) >= abs(te_est))
 ```
 
 ```
-## [1] 0.003
+## [1] 0
 ```
 
 Sometimes, this will differ greatly from the parametric $p$-value. Here, the
