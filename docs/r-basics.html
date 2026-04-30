@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A R Basics | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A R Basics | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2026-01-29" />
+<meta name="date" content="2026-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.34.0/datatables.js"></script>
@@ -142,7 +142,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -254,14 +253,15 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="publication.html"><a href="publication.html"><i class="fa fa-check"></i><b>6</b> Publication</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.1</b> Authorship</a>
+<li class="chapter" data-level="6.1" data-path="publication.html"><a href="publication.html#pre-analysis-plans"><i class="fa fa-check"></i><b>6.1</b> Pre-analysis Plans</a></li>
+<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#authorship"><i class="fa fa-check"></i><b>6.2</b> Authorship</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="publication.html"><a href="publication.html#sec-labcredit"><i class="fa fa-check"></i><b>6.1.1</b> CRediT Roles at The Lab @ DC</a></li>
+<li class="chapter" data-level="6.2.1" data-path="publication.html"><a href="publication.html#sec-labcredit"><i class="fa fa-check"></i><b>6.2.1</b> CRediT Roles at The Lab @ DC</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.2</b> Publishing Data</a></li>
-<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.3</b> Presenting Results</a>
+<li class="chapter" data-level="6.3" data-path="publication.html"><a href="publication.html#publishing-data"><i class="fa fa-check"></i><b>6.3</b> Publishing Data</a></li>
+<li class="chapter" data-level="6.4" data-path="publication.html"><a href="publication.html#presenting-results"><i class="fa fa-check"></i><b>6.4</b> Presenting Results</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.3.1</b> Estimates and uncertainties</a></li>
+<li class="chapter" data-level="6.4.1" data-path="publication.html"><a href="publication.html#estimates-and-uncertainties"><i class="fa fa-check"></i><b>6.4.1</b> Estimates and uncertainties</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -740,12 +740,12 @@ vector of <code>Treatment</code>’s and <code>Control</code>’s and attach it 
 <p>Use <code>ggplot()</code> to plot the distribution of calls back that these résumés
 receive. Calls are fairly rare.</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="r-basics.html#cb99-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="90-R_files/figure-html/barplot_resume-1.png" width="672" /></p>
+<p><img src="90-R_files/figure-html/barplot_resume-1.png" alt="" width="672" /></p>
 <p>Look at the distribution by the putative race on the resume:</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="r-basics.html#cb100-1" tabindex="-1"></a>df_resume <span class="sc">|&gt;</span> </span>
 <span id="cb100-2"><a href="r-basics.html#cb100-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> call, <span class="at">fill =</span> race)) <span class="sc">+</span> </span>
 <span id="cb100-3"><a href="r-basics.html#cb100-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>) </span></code></pre></div>
-<p><img src="90-R_files/figure-html/barplot_resume_2-1.png" width="672" /></p>
+<p><img src="90-R_files/figure-html/barplot_resume_2-1.png" alt="" width="672" /></p>
 <p>Since there are exactly the same number of résumés with each race, these count
 distributions are comparable.</p>
 </div>
@@ -851,7 +851,7 @@ distributions are comparable.</p>
 <div id="deal-with-factors-orderedunordered-in-models" class="section level2 hasAnchor" number="7.13">
 <h2><span class="header-section-number">A.13</span> Deal with factors (ordered/unordered) in models<a href="r-basics.html#deal-with-factors-orderedunordered-in-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In typical cases at The Lab, we reorder factor levels to be substantively sorted, but we do not use R “ordered factors”. Reordering makes plotting and regression baselines substantively meaningful; using “unordered” factors ensures that our modeling yields the results we usually desire.</p>
-<p>R provides a useful data class called “factors” for categorical variables. See the relevant <a href="https://r4ds.hadley.nz/factors">chapter</a> of <span class="citation">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="#ref-wiccetgro23">2023</a>)</span> for a full introduction.</p>
+<p>R provides a useful data class called “factors” for categorical variables. See the relevant <a href="https://r4ds.hadley.nz/factors">chapter</a> of <span class="citation">Wickham et al. (<a href="#ref-wiccetgro23">2023</a>)</span> for a full introduction.</p>
 <p>We use factors to reorder the groups in a variable. E.g., a simple factor variable sorts its levels in alphabetical order (note the “<code>## Levels:</code>” comment below)</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="r-basics.html#cb111-1" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
 <span id="cb111-2"><a href="r-basics.html#cb111-2" tabindex="-1"></a></span>
@@ -866,7 +866,7 @@ distributions are comparable.</p>
 <span id="cb113-3"><a href="r-basics.html#cb113-3" tabindex="-1"></a>                    <span class="at">random_outcome =</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(simple_fct)))</span>
 <span id="cb113-4"><a href="r-basics.html#cb113-4" tabindex="-1"></a></span>
 <span id="cb113-5"><a href="r-basics.html#cb113-5" tabindex="-1"></a><span class="fu">ggplot</span>(df_factor, <span class="fu">aes</span>(simple_fct)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;A Poorly Ordered Factor&quot;</span>)</span></code></pre></div>
-<p><img src="90-R_files/figure-html/rfactorbar-1.png" width="672" /></p>
+<p><img src="90-R_files/figure-html/rfactorbar-1.png" alt="" width="672" /></p>
 <p>So, we reorder the levels to improve our plotting and give us a better regression baseline category:</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="r-basics.html#cb114-1" tabindex="-1"></a>df_factor<span class="sc">$</span>reordered_fct <span class="ot">&lt;-</span>  <span class="fu">fct_relevel</span>(simple_fct, </span>
 <span id="cb114-2"><a href="r-basics.html#cb114-2" tabindex="-1"></a>                                        <span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;High&quot;</span>)</span>
@@ -875,7 +875,7 @@ distributions are comparable.</p>
 <pre><code>## [1] Low    Low    Medium Medium High   High  
 ## Levels: Low Medium High</code></pre>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="r-basics.html#cb116-1" tabindex="-1"></a><span class="fu">ggplot</span>(df_factor, <span class="fu">aes</span>(reordered_fct)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;A Substantively &#39;Ordered&#39; Factor&quot;</span>)</span></code></pre></div>
-<p><img src="90-R_files/figure-html/rfactorreorder-1.png" width="672" /></p>
+<p><img src="90-R_files/figure-html/rfactorreorder-1.png" alt="" width="672" /></p>
 <p>However, we have <strong>not</strong> created what R calls an “ordered” factor!</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="r-basics.html#cb117-1" tabindex="-1"></a><span class="co"># The factor we reordered is not &quot;ordered&quot;:</span></span>
 <span id="cb117-2"><a href="r-basics.html#cb117-2" tabindex="-1"></a><span class="fu">is.ordered</span>(df_factor<span class="sc">$</span>reordered_fct)</span></code></pre></div>
@@ -911,7 +911,7 @@ Where do these coefficients come from in the “ordered” factor model? See <a 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bermul04" class="csl-entry">
 Bertrand, Marianne, and Sendhil Mullainathan. 2004. <span>“Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination.”</span> <em>American Economic Review</em> 94 (4): 991–1013.
 </div>

@@ -8,6 +8,24 @@ Projects generate a variety of types of publications. These may include
 - Public versions of data, and
 - Peer-reviewed academic journal articles. 
 
+## Pre-analysis Plans
+
+Pre-analysis plans are a tool to promote scientific integrity and transparency.
+In a pre-analysis plan, we publish our study's research questions, confirmatory
+hypotheses, data collection plans, and analysis methods before we begin any
+analysis of outcomes.
+ 
+The Lab @ DC uses pre-analysis plans for the following purposes: 
+
+- Establish a foundation of transparency and the expectation of public reporting for each randomized evaluation project we undertake. 
+- Provide a description of the program being evaluated and the context in which it operates. 
+- Provide a record of the research questions being answered, the outcomes and samples that will be most important in answering them, and the methods we will use to answer those questions. 
+- Provide a record of what data we have looked at and what we have analyzed at the time the document was published. 
+- Force ourselves to record known limitations of our analytic approach and how we will or will not address those limitations. 
+- Allow other people to review, critique, and vet our approach and scientific integrity before or after our results are published. 
+
+Importantly, we do not intend for the pre-analysis plan to outline exploratory analyses.  
+
 ## Authorship
 
 As a general rule, we ascribe to the three standards of _substantial contribution_, _approval_, and _accountability_ that _Nature_ lays out [here](https://www.nature.com/nature/editorial-policies/authorship).
@@ -69,16 +87,16 @@ about a treatment effect, we display the control group and treatment group
 means, with the uncertainty around the treatment group mean representing the
 uncertainty around the treatment effect. For example,
 
-<img src="05-Publication_files/figure-html/display_te_uncertainty-1.png" width="672" />
+<img src="05-Publication_files/figure-html/display_te_uncertainty-1.png" alt="" width="672" />
 
 When we want to communicate treatment effects without both group means being
 explicit, we do so with a coefficient plot. For example, with the intercept
 (control group mean),
 
-<img src="05-Publication_files/figure-html/display_coefplot-1.png" width="672" />
+<img src="05-Publication_files/figure-html/display_coefplot-1.png" alt="" width="672" />
 
 or without the intercept,
 
 
-<img src="05-Publication_files/figure-html/display_coefplot_noint-1.png" width="672" />
+<img src="05-Publication_files/figure-html/display_coefplot_noint-1.png" alt="" width="672" />
 

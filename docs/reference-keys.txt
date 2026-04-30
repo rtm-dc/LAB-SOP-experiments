@@ -53,6 +53,7 @@ selecting-the-method-for-analysis
 calipers
 alternatives
 publication
+pre-analysis-plans
 authorship
 sec-labcredit
 publishing-data
