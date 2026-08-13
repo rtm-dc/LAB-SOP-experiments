@@ -40,6 +40,9 @@ clusters-weights-fixed-effects
 weights
 fixed-effects
 sec-rand-inf
+testing
+confidence-intervals-continuous-outcomes
+confidence-intervals-binary-outcomes
 addressing-non-compliance
 missing-data
 multiple-comparisons

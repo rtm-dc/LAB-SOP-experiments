@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Analysis | SOPs for The Lab @ DC</title>
   <meta name="description" content="Standard Operating Procedures for Experiments and Data Analysis at The Lab @ DC." />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Analysis | SOPs for The Lab @ DC" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ryan T. Moore" />
 
 
-<meta name="date" content="2026-04-30" />
+<meta name="date" content="2026-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -231,7 +231,12 @@ div.csl-indent {
 <li class="chapter" data-level="4.6.1" data-path="analysis.html"><a href="analysis.html#weights"><i class="fa fa-check"></i><b>4.6.1</b> Weights</a></li>
 <li class="chapter" data-level="4.6.2" data-path="analysis.html"><a href="analysis.html#fixed-effects"><i class="fa fa-check"></i><b>4.6.2</b> Fixed Effects</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="analysis.html"><a href="analysis.html#sec-rand-inf"><i class="fa fa-check"></i><b>4.7</b> Randomization Inference</a></li>
+<li class="chapter" data-level="4.7" data-path="analysis.html"><a href="analysis.html#sec-rand-inf"><i class="fa fa-check"></i><b>4.7</b> Randomization Inference</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="analysis.html"><a href="analysis.html#testing"><i class="fa fa-check"></i><b>4.7.1</b> Testing</a></li>
+<li class="chapter" data-level="4.7.2" data-path="analysis.html"><a href="analysis.html#confidence-intervals-continuous-outcomes"><i class="fa fa-check"></i><b>4.7.2</b> Confidence Intervals, Continuous Outcomes</a></li>
+<li class="chapter" data-level="4.7.3" data-path="analysis.html"><a href="analysis.html#confidence-intervals-binary-outcomes"><i class="fa fa-check"></i><b>4.7.3</b> Confidence Intervals, Binary Outcomes</a></li>
+</ul></li>
 <li class="chapter" data-level="4.8" data-path="analysis.html"><a href="analysis.html#addressing-non-compliance"><i class="fa fa-check"></i><b>4.8</b> Addressing Non-compliance</a></li>
 <li class="chapter" data-level="4.9" data-path="analysis.html"><a href="analysis.html#missing-data"><i class="fa fa-check"></i><b>4.9</b> Missing Data</a></li>
 <li class="chapter" data-level="4.10" data-path="analysis.html"><a href="analysis.html#multiple-comparisons"><i class="fa fa-check"></i><b>4.10</b> Multiple Comparisons</a>
@@ -628,11 +633,13 @@ homogeneous treatment effects.</p>
 <p>Often, we prefer to rely on our <em>design</em>, rather than asymptotic or
 distributional assumptions, for statistical inference. In particular, when we
 have complex designs or analysis strategies, we use randomization inference.</p>
+<div id="testing" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Testing<a href="analysis.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For example, with modest sample sizes and a complex experimental design, in
-<span class="citation">Avila et al. (<a href="#ref-avimammoo23">2023</a>)</span> we use randomization inference. Below is an annotated example of
+<span class="citation">Avila et al. (<a href="#ref-avimammoo23">2023</a>)</span> we use randomization inference for testing. Below is an annotated example of
 doing so, using a <code>for</code> loop. We set the seed using the method in Section
 <a href="design.html#sec-set-seed">2.5</a>; we simulate treatment assignments using the method in
-Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error.</p>
+Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations reduces simulation error. In this example, the original randomization is an independent Bernoulli coin-flip for each unit, and the estimation strategy is bivariate linear regression. Adjust these details to fit your design and analysis strategies.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="analysis.html#cb53-1" tabindex="-1"></a><span class="co"># Set seed:</span></span>
 <span id="cb53-2"><a href="analysis.html#cb53-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">534722898</span>)</span>
 <span id="cb53-3"><a href="analysis.html#cb53-3" tabindex="-1"></a></span>
@@ -666,6 +673,23 @@ Section <a href="r-basics.html#sec-create-treatment">A.8</a>. More simulations r
 <p>Sometimes, this will differ greatly from the parametric <span class="math inline">\(p\)</span>-value. Here, the
 parametric <span class="math inline">\(p\)</span>-value is 0.00482.</p>
 <p>For another example, see <span class="citation">Gerber and Green (<a href="#ref-gergre12">2012</a>)</span>, Chapter 3 for a demonstration using highly skewed data.</p>
+</div>
+<div id="confidence-intervals-continuous-outcomes" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Confidence Intervals, Continuous Outcomes<a href="analysis.html#confidence-intervals-continuous-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Where we use randomization inference for testing with continuous outcomes, we form confidence intervals around our estimates by inverting the randomization inference test. The procedure: for a set of possible treatment effects <span class="math inline">\(\tau^* \in \{\ldots, \hat{\tau}-2, \hat{\tau}-1, \hat{\tau}, \hat{\tau} + 1, \hat{\tau} + 2, \ldots \}\)</span>, fill in a full schedule of potential outcomes using the observed outcomes and a value of <span class="math inline">\(\tau^*\)</span>. Then do randomization inference to see if that <span class="math inline">\(\tau^*\)</span> is rejected or not rejected. If it is not rejected, then it is consistent with the data, and it is retained in the confidence interval. Test enough values of <span class="math inline">\(\tau^*\)</span> that we are confident we have found the full set of values that should be included.</p>
+<p>Example: Suppose we estimate from our data that <span class="math inline">\(\hat{\tau} = 4\)</span>. We are first interested in whether <span class="math inline">\(\tau^* = 3\)</span> is consistent with the data. If for unit 1, we observe <span class="math inline">\(Y_1(0) = 10\)</span>, then we impute <span class="math inline">\(Y_1(1) = 10 + 3 = 13\)</span>. If for unit 2, we observe <span class="math inline">\(Y_2(1) = 20\)</span>, then we impute <span class="math inline">\(Y_2(0) = 20 - 3 = 17\)</span>. With the completed schedule of potential outcomes, we conduct randomization inference. If, for <span class="math inline">\(\tau^* = 3\)</span>, the RI <span class="math inline">\(p\)</span>-value is less than <span class="math inline">\(\alpha\)</span>, we reject and do not include 3 in the confidence interval. If the RI <span class="math inline">\(p\)</span>-value is greater than <span class="math inline">\(\alpha\)</span>, we do not reject and we include 3 in the confidence interval.</p>
+<p>Implementation: Functions like <code>ri2::ri_ci()</code>, <code>blockTools::invertRIconfInt()</code>, and <code>ri::invert.ci()</code> (archived on CRAN) can help. The intuition is two nested loops: the outer loop iterates over values of <span class="math inline">\(\tau^*\)</span>; the inner loop does the randomization inference for that particular <span class="math inline">\(\tau^*\)</span>, looping over the 1000 hypothetical treatment assignment vectors.</p>
+</div>
+<div id="confidence-intervals-binary-outcomes" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Confidence Intervals, Binary Outcomes<a href="analysis.html#confidence-intervals-binary-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To get an exact randomization inference confidence interval is more difficult in the case of a binary outcome than a continuous outcome. It is not obvious how to fill in the schedule of potential outcomes.</p>
+<p>Suppose we estimate <span class="math inline">\(\hat{\bar{\tau}} = 0.04\)</span>, a four percentage point effect, and we want to check if <span class="math inline">\(\tau^* = 0.03\)</span> is in the confidence interval. If for unit 1, we observe <span class="math inline">\(Y_1(0) = 1\)</span>, what do we impute for <span class="math inline">\(Y_1(1)\)</span>?</p>
+<ul>
+<li>If we impute <span class="math inline">\(Y_1(1) = 1 + 0.03 = 1.03\)</span>, this cannot be the underlying potential outcome.</li>
+<li>If we set <span class="math inline">\(Y_1(0) = \hat{\pi}_{Y(0) = 1}\)</span>, a predicted probability that unit 1’s potential outcome under control equals 1, and then <span class="math inline">\(Y_1(1) = \hat{\pi}_{Y(0) = 1} + 0.03\)</span>, then neither potential outcome can be the underlying potential outcome, and tests for these probabilities will have different rejection properties to analysis on the 0/1 binary outcomes.</li>
+<li>If we try to test the <span class="math inline">\(\tau^* = 0.03\)</span> as an effect on a latent variable that underlies the revealed 0/1 binary outcome, our inner loop RI tests will basically never reject modest values of <span class="math inline">\(\tau^*\)</span>, and we’ll end up with a confidence interval that covers <span class="math inline">\([-1, 1]\)</span>.</li>
+</ul>
+</div>
 </div>
 <div id="addressing-non-compliance" class="section level2 hasAnchor" number="4.8">
 <h2><span class="header-section-number">4.8</span> Addressing Non-compliance<a href="analysis.html#addressing-non-compliance" class="anchor-section" aria-label="Anchor link to header"></a></h2>

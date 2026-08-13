@@ -317,11 +317,13 @@ Often, we prefer to rely on our _design_, rather than asymptotic or
 distributional assumptions, for statistical inference. In particular, when we
 have complex designs or analysis strategies, we use randomization inference.
 
+### Testing
+
 For example, with modest sample sizes and a complex experimental design, in
-@avimammoo23 we use randomization inference. Below is an annotated example of
+@avimammoo23 we use randomization inference for testing. Below is an annotated example of
 doing so, using a `for` loop. We set the seed using the method in Section
 \@ref(sec-set-seed); we simulate treatment assignments using the method in
-Section \@ref(sec-create-treatment). More simulations reduces simulation error.
+Section \@ref(sec-create-treatment). More simulations reduces simulation error. In this example, the original randomization is an independent Bernoulli coin-flip for each unit, and the estimation strategy is bivariate linear regression. Adjust these details to fit your design and analysis strategies.
 
 
 ``` r
@@ -364,6 +366,29 @@ Sometimes, this will differ greatly from the parametric $p$-value. Here, the
 parametric $p$-value is 0.00482.
 
 For another example, see @gergre12, Chapter 3 for a demonstration using highly skewed data.
+
+### Confidence Intervals, Continuous Outcomes
+
+Where we use randomization inference for testing with continuous outcomes, we form confidence intervals around our estimates by inverting the randomization inference test. The procedure: for a set of possible treatment effects $\tau^* \in \{\ldots, \hat{\tau}-2, \hat{\tau}-1, \hat{\tau}, \hat{\tau} + 1, \hat{\tau} + 2, \ldots \}$, fill in a full schedule of potential outcomes using the observed outcomes and a value of $\tau^*$. Then do randomization inference to see if that $\tau^*$ is rejected or not rejected. If it is not rejected, then it is consistent with the data, and it is retained in the confidence interval. Test enough values of $\tau^*$ that we are confident we have found the full set of values that should be included. 
+
+Example: Suppose we estimate from our data that $\hat{\tau} = 4$. We are first interested in whether $\tau^* = 3$ is consistent with the data. If for unit 1, we observe $Y_1(0) = 10$, then we impute $Y_1(1) = 10 + 3 = 13$. If for unit 2, we observe $Y_2(1) = 20$, then we impute $Y_2(0) = 20 - 3 = 17$. With the completed schedule of potential outcomes, we conduct randomization inference. If, for $\tau^* = 3$, the RI $p$-value is less than $\alpha$, we reject and do not include 3 in the confidence interval. If the RI $p$-value is greater than $\alpha$, we do not reject and we include 3 in the confidence interval. 
+
+Implementation: Functions like `ri2::ri_ci()`,  `blockTools::invertRIconfInt()`, and `ri::invert.ci()` (archived on CRAN) can help. The intuition is two nested loops: the outer loop iterates over values of $\tau^*$; the inner loop does the randomization inference for that particular $\tau^*$, looping over the 1000 hypothetical treatment assignment vectors.
+
+
+
+### Confidence Intervals, Binary Outcomes
+
+To get an exact randomization inference confidence interval is more difficult in the case of a binary outcome than a continuous outcome. It is not obvious how to fill in the schedule of potential outcomes. 
+
+Suppose we estimate $\hat{\bar{\tau}} = 0.04$, a four percentage point effect, and we want to check if $\tau^* = 0.03$ is in the confidence interval. If for unit 1, we observe $Y_1(0) = 1$, what do we impute for $Y_1(1)$?  
+
+* If we impute $Y_1(1) = 1 + 0.03 = 1.03$, this cannot be the underlying potential outcome. 
+* If we set $Y_1(0) = \hat{\pi}_{Y(0) = 1}$, a predicted probability that unit 1's potential outcome under control equals 1, and then $Y_1(1) = \hat{\pi}_{Y(0) = 1} + 0.03$, then neither potential outcome can be the underlying potential outcome, and tests for these probabilities will have different rejection properties to analysis on the 0/1 binary outcomes.
+* If we try to test the $\tau^* = 0.03$ as an effect on a latent variable that underlies the revealed 0/1 binary outcome, our inner loop RI tests will basically never reject modest values of $\tau^*$, and we'll end up with a confidence interval that covers $[-1, 1]$.
+
+
+
 
 ## Addressing Non-compliance
 
